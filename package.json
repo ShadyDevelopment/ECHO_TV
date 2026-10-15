@@ -169,7 +169,7 @@
         "saxes": "6.0.0",
         "shaka-player": "5.2.12",
         "shell-path": "3.1.0",
-        "video.js": "8.24.1",
+        "video.js": "8.24.2",
         "videojs-contrib-quality-levels": "4.1.0",
         "videojs-quality-selector-hls": "1.1.1",
         "zone.js": "0.16.3"
@@ -177,11 +177,11 @@
     "devDependencies": {
         "@angular-devkit/core": "22.2.2",
         "@angular-devkit/schematics": "22.2.2",
-        "@angular-eslint/builder": "22.5.0",
-        "@angular-eslint/eslint-plugin": "22.5.0",
-        "@angular-eslint/eslint-plugin-template": "22.5.0",
-        "@angular-eslint/schematics": "22.5.0",
-        "@angular-eslint/template-parser": "22.5.0",
+        "@angular-eslint/builder": "22.6.0",
+        "@angular-eslint/eslint-plugin": "22.6.0",
+        "@angular-eslint/eslint-plugin-template": "22.6.0",
+        "@angular-eslint/schematics": "22.6.0",
+        "@angular-eslint/template-parser": "22.6.0",
         "@angular/build": "22.1.8",
         "@angular/cli": "22.2.2",
         "@angular/common": "22.2.2",
@@ -222,7 +222,7 @@
         "@playwright/test": "^1.64.0",
         "@schematics/angular": "22.2.2",
         "@swc-node/register": "1.12.1",
-        "@swc/core": "1.16.13",
+        "@swc/core": "1.16.18",
         "@swc/helpers": "0.5.23",
         "@tailwindcss/typography": "0.5.20",
         "@types/better-sqlite3": "^9.6.0",
@@ -237,8 +237,8 @@
         "@typescript-eslint/eslint-plugin": "^8.71.1",
         "@typescript-eslint/parser": "^8.71.1",
         "@typescript-eslint/utils": "^8.71.1",
-        "angular-eslint": "22.5.0",
-        "astro": "7.2.10",
+        "angular-eslint": "22.6.0",
+        "astro": "7.3.8",
         "autoprefixer": "10.6.1",
         "axe-core": "4.14.0",
         "cookie": "2.0.1",
@@ -274,7 +274,7 @@
         "nx-electron": "22.0.0",
         "parse-srcset": "1.0.2",
         "parse5": "8.0.1",
-        "prettier": "^3.9.9",
+        "prettier": "^3.9.10",
         "sharp": "0.35.5",
         "tailwindcss": "^3.4.19",
         "ts-jest": "^29.4.14",
@@ -284,7 +284,7 @@
         "typescript": "6.0.3",
         "typescript-eslint": "^8.71.1",
         "yaml": "2.9.1",
-        "zod": "4.6.5"
+        "zod": "4.6.6"
     },
     "pnpm": {
         "overrides": {

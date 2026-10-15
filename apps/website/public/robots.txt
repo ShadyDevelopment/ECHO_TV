@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shadydevelopment.github.io/ECHO_TV/sitemap-index.xml

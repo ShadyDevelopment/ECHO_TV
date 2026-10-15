@@ -1,0 +1,54 @@
+# ECHO TV
+
+> ECHO TV is an open-source cross-platform IPTV player (desktop + web) that supports M3U/M3U8 playlists, Xtream Codes API, Stalker portals, and XMLTV EPG.
+
+## Canonical URLs
+
+- Website: https://shadydevelopment.github.io/ECHO_TV/
+- Blog: https://shadydevelopment.github.io/ECHO_TV/blog/
+- Guides by task: https://shadydevelopment.github.io/ECHO_TV/guides/
+- Latest Release: https://github.com/ShadyDevelopment/ECHO_TV/releases/latest
+- Developer: Antonio Martinovic @ ShadyDevelopment
+- Downloads overview: https://shadydevelopment.github.io/ECHO_TV/download/
+- Download for Windows: https://shadydevelopment.github.io/ECHO_TV/download/windows/
+- Download for macOS: https://shadydevelopment.github.io/ECHO_TV/download/macos/
+- Download for Linux: https://shadydevelopment.github.io/ECHO_TV/download/linux/
+- Self-host the browser version with Docker: https://shadydevelopment.github.io/ECHO_TV/download/docker/
+- Blog topic, all guides: https://shadydevelopment.github.io/ECHO_TV/blog/tag/guide/
+- Blog topic, release notes: https://shadydevelopment.github.io/ECHO_TV/blog/tag/release/
+- Blog topic, troubleshooting: https://shadydevelopment.github.io/ECHO_TV/blog/tag/troubleshooting/
+- Guide, Xtream Codes setup: https://shadydevelopment.github.io/ECHO_TV/blog/xtream-codes-setup-guide/
+- Guide, Stalker/Ministra portal setup: https://shadydevelopment.github.io/ECHO_TV/blog/stalker-portal-setup-guide/
+- Guide, M3U playlist and EPG setup: https://shadydevelopment.github.io/ECHO_TV/blog/m3u-playlist-epg-setup-guide/
+- Guide, offline viewing with the download manager (desktop): https://shadydevelopment.github.io/ECHO_TV/blog/offline-downloads-guide/
+- Guide, alternative sources for a movie across your own playlists (desktop): https://shadydevelopment.github.io/ECHO_TV/blog/alternative-sources-guide/
+- Guide, phone remote control setup (desktop): https://shadydevelopment.github.io/ECHO_TV/blog/remote-control-guide/
+- Troubleshooting, EPG shows the wrong program or nothing (channel mapping, time offset): https://shadydevelopment.github.io/ECHO_TV/blog/epg-wrong-program-fix/
+- Guide, optional TMDB metadata enrichment (what is sent, API key, cache): https://shadydevelopment.github.io/ECHO_TV/blog/tmdb-metadata-guide/
+- Features overview: https://shadydevelopment.github.io/ECHO_TV/features/
+- Feature, M3U playlist player: https://shadydevelopment.github.io/ECHO_TV/features/m3u-player/
+- Feature, Xtream Codes player: https://shadydevelopment.github.io/ECHO_TV/features/xtream-codes-player/
+- Feature, Stalker portal player: https://shadydevelopment.github.io/ECHO_TV/features/stalker-portal-player/
+- Feature, TV guide (EPG): https://shadydevelopment.github.io/ECHO_TV/features/epg/
+- Feature, phone remote control: https://shadydevelopment.github.io/ECHO_TV/features/remote-control/
+- Comparisons overview: https://shadydevelopment.github.io/ECHO_TV/compare/
+- Compare, M3U vs Xtream Codes vs Stalker portal: https://shadydevelopment.github.io/ECHO_TV/compare/m3u-vs-xtream-vs-stalker/
+- Compare, playback engines (built-in vs MPV/VLC vs embedded MPV): https://shadydevelopment.github.io/ECHO_TV/compare/playback-engines/
+- Compare, desktop app vs self-hosted browser version: https://shadydevelopment.github.io/ECHO_TV/compare/desktop-vs-browser/
+- Compare, ECHO TV vs VLC (when a general media player is enough): https://shadydevelopment.github.io/ECHO_TV/compare/iptvnator-vs-vlc/
+- Compare, ECHO TV vs Kodi (media center with a PVR add-on vs dedicated player): https://shadydevelopment.github.io/ECHO_TV/compare/iptvnator-vs-kodi/
+- Compare, IPTV on a computer vs on a TV box (which room does what): https://shadydevelopment.github.io/ECHO_TV/compare/computer-vs-tv-box/
+- Release Notes (v0.18): https://shadydevelopment.github.io/ECHO_TV/blog/v0-18-release-notes/
+- Troubleshooting (macOS app damaged fix): https://shadydevelopment.github.io/ECHO_TV/blog/macos-arm-app-damaged-fix/
+- Source Code: https://github.com/ShadyDevelopment/ECHO_TV
+
+## Product Scope
+
+- ECHO TV is a media player application.
+- It does not provide, host, or sell playlists, channels, or media content.
+- Any channel names or metadata shown in screenshots/posts are demo examples only.
+
+## Machine-readable Discovery
+
+- Sitemap: https://shadydevelopment.github.io/ECHO_TV/sitemap-index.xml
+- Robots: https://shadydevelopment.github.io/ECHO_TV/robots.txt

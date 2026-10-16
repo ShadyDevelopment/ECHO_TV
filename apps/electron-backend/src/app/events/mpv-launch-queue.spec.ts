@@ -96,7 +96,7 @@ describe('MPV launch queue', () => {
         const second = openMpvPlayer({
             title: 'Channel B',
             url: 'https://example.com/b.m3u8',
-            userAgent: 'IPTVnator test agent',
+            userAgent: 'ECHO TV test agent',
         });
         await nextTick();
         await nextTick();
@@ -743,7 +743,7 @@ describe('MPV launch queue', () => {
             const first = openMpvPlayer({
                 title: 'Channel A',
                 url: 'https://example.com/a.m3u8',
-                userAgent: 'IPTVnator test agent',
+                userAgent: 'ECHO TV test agent',
             });
             const firstRejection = expect(first).rejects.toThrow(
                 'External player process did not exit'

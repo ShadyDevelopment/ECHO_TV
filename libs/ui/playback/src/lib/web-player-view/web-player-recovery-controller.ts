@@ -10,11 +10,11 @@ import type {
     PlaybackDiagnosticCode,
     PlaybackFallbackRequest,
     PlaybackRecommendationTarget,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import {
     VideoPlayer,
     type ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { ExternalPlaybackRecoveryCoordinator } from './external-playback-recovery-coordinator';
 import type {
     PlaybackBinding,

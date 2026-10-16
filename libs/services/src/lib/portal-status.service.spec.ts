@@ -4,7 +4,7 @@ import {
     createEnvironmentInjector,
     runInInjectionContext,
 } from '@angular/core';
-import { CONNECTIVITY_GUARD_RESET } from '@iptvnator/shared/interfaces';
+import { CONNECTIVITY_GUARD_RESET } from '@echo-tv/shared/interfaces';
 import { DataService } from './data.service';
 import { PortalStatusService } from './portal-status.service';
 

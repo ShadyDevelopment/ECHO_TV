@@ -122,7 +122,7 @@ app.whenReady().then(() => new BrowserWindow({
         await page.waitForLoadState();
         await page.evaluate(async (playlists) => {
             await new Promise<void>((resolve, reject) => {
-                const req = indexedDB.open('iptvnator', 1);
+                const req = indexedDB.open('echo-tv', 1);
                 req.onupgradeneeded = () => {
                     const store = req.result.createObjectStore('playlists', {
                         keyPath: '_id',
@@ -215,7 +215,7 @@ app.whenReady().then(() => new BrowserWindow({
                     db.close();
                 },
                 {
-                    path: join(dataDir, 'databases', 'iptvnator.db'),
+                    path: join(dataDir, 'databases', 'echo-tv.db'),
                     dependency: join(
                         workspaceRoot,
                         'node_modules/better-sqlite3'

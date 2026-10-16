@@ -2,14 +2,14 @@ import {
     resolvePortalActivityWatchKind,
     type PlaybackPositionData,
     type PortalActivityItem,
-} from '@iptvnator/shared/interfaces';
-import type { GlobalRecentItem } from '@iptvnator/workspace/dashboard/data-access';
+} from '@echo-tv/shared/interfaces';
+import type { GlobalRecentItem } from '@echo-tv/workspace/dashboard/data-access';
 
 import {
     formatRemainingLabel,
     playbackProgressPercent,
     type RemainingTimeLabel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 export type DashboardRemainingLabel = RemainingTimeLabel;
 export { formatRemainingLabel, playbackProgressPercent };

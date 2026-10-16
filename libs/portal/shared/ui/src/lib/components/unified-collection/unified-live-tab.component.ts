@@ -26,15 +26,15 @@ import {
     PORTAL_PLAYER,
     UnifiedCollectionItem,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import { setupUnifiedLiveTabRemoteControl } from './unified-live-tab-remote-control';
-import { ResolvedLiveCollectionDetail } from '@iptvnator/portal/shared/data-access';
+import { ResolvedLiveCollectionDetail } from '@echo-tv/portal/shared/data-access';
 import {
     EpgDateNavigationDirection,
     EpgListViewComponent,
     EpgProgramActivationEvent,
     EpgTimelineComponent,
-} from '@iptvnator/ui/epg';
+} from '@echo-tv/ui/epg';
 import { GlobalFavoritesListComponent } from '../global-favorites-list/global-favorites-list.component';
 import { OpenInPlaylistChipComponent } from '../open-in-playlist-chip/open-in-playlist-chip.component';
 import { ChannelListHiddenStateComponent } from '../channel-list-hidden-state/channel-list-hidden-state.component';
@@ -46,14 +46,14 @@ import {
     type FullscreenChannelPanelHost,
     type PlaybackFallbackRequest,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { ResizableDirective } from '@iptvnator/ui/components';
+} from '@echo-tv/ui/playback';
+import { ResizableDirective } from '@echo-tv/ui/components';
 import {
     RuntimeCapabilitiesService,
     SettingsStore,
     injectTranslationTick,
-} from '@iptvnator/services';
-import { RecordingStoppedEvent } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { RecordingStoppedEvent } from '@echo-tv/shared/interfaces';
 import {
     createUnifiedLiveCatchup,
     UnifiedLiveTimeshift,

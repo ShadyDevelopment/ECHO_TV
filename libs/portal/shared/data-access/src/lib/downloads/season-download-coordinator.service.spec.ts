@@ -4,9 +4,9 @@ import {
     DownloadsService,
     type DownloadItem,
     type DownloadStartInput,
-} from '@iptvnator/services';
-import type { ElectronBridgeDownloadStartResult } from '@iptvnator/shared/interfaces';
-import type { EpisodeDownloadIdentity } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/services';
+import type { ElectronBridgeDownloadStartResult } from '@echo-tv/shared/interfaces';
+import type { EpisodeDownloadIdentity } from '@echo-tv/portal/shared/util';
 import type { EpisodeDownloadCandidate } from './season-download.models';
 import { SeasonDownloadCoordinator } from './season-download-coordinator.service';
 

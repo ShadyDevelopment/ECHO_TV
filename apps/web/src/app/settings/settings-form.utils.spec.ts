@@ -1,5 +1,5 @@
 import { FormBuilder } from '@angular/forms';
-import { Settings, VideoPlayer } from '@iptvnator/shared/interfaces';
+import { Settings, VideoPlayer } from '@echo-tv/shared/interfaces';
 import {
     createEpgUrlControl,
     createSettingsForm,

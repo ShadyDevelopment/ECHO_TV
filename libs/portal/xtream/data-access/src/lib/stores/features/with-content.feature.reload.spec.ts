@@ -8,7 +8,7 @@ import {
     waitForCondition,
 } from './with-content.feature.spec-helpers';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@echo-tv/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

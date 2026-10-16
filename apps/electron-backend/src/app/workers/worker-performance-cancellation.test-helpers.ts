@@ -7,7 +7,7 @@ export interface ArmGate {
     readonly release: () => void;
 }
 
-export const WORKER_PROFILING_ENV = 'IPTVNATOR_PERF_WORKER_PROFILING';
+export const WORKER_PROFILING_ENV = 'ECHO_TV_PERF_WORKER_PROFILING';
 
 const originalWorkerProfilingValue = process.env[WORKER_PROFILING_ENV];
 

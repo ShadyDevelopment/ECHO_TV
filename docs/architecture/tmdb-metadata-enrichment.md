@@ -266,7 +266,7 @@ descriptions provider-first (`buildSeasonDescriptions` in
 `libs/portal/xtream/feature/src/lib/serial-details/season-descriptions.util.ts`):
 a `get_series_info` season overview wins when it is real prose, but panels
 routinely fill it with a bare cover-image URL —
-`sanitizeProviderOverview` (`@iptvnator/shared/interfaces`) treats a
+`sanitizeProviderOverview` (`@echo-tv/shared/interfaces`) treats a
 URL-only value as absent, and the stored TMDB overview fills the gap.
 
 The same payload's `poster_path` — every TMDB season has its own poster,
@@ -359,7 +359,7 @@ Filmography has two scopes:
   over ALL imported Xtream playlists
   (`operations/title-match.operations.ts`), confirming candidates with
   the same two-tier normalized-title matching the renderer uses
-  (`normalizeTitle` now lives in `@iptvnator/shared/interfaces` so the
+  (`normalizeTitle` now lives in `@echo-tv/shared/interfaces` so the
   worker and the renderer share it). Matches carry the playlist name
   (shown in the badge) and navigate into that playlist's detail view.
   This also works from Stalker actor pages — the one place the Stalker

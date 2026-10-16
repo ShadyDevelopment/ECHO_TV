@@ -3,9 +3,9 @@ import {
     EpgItem,
     EpgProgram,
     epgProviderClockMs,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
-import { EpgSourceSettingsService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
+import { EpgSourceSettingsService, SettingsStore } from '@echo-tv/services';
 
 type ElectronEpgBridge = {
     getChannelPrograms?: (channelId: string) => Promise<EpgProgram[]>;

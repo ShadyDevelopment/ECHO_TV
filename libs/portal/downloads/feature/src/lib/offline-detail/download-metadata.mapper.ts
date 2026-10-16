@@ -1,18 +1,18 @@
 import {
     createMovieDownloadSnapshot,
     createSeriesEpisodeDownloadSnapshot,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     mergeSerieInfoWithTmdb,
     mergeStalkerInfoWithTmdb,
     mergeVodInfoWithTmdb,
     type TmdbMovieDetails,
     type TmdbTvDetails,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import type {
     DownloadMetadataPerson,
     DownloadMetadataSnapshot,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     movieSeed,
     seriesSeed,

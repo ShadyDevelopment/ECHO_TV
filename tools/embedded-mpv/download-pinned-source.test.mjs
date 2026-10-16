@@ -34,7 +34,7 @@ function sha256(value) {
 
 function withTemporaryDirectory(run) {
     const temporaryDirectory = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-pinned-source-test-')
+        path.join(os.tmpdir(), 'echo-tv-pinned-source-test-')
     );
     try {
         return run(temporaryDirectory);

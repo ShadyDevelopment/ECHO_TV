@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { signalStore, withState } from '@ngrx/signals';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { EpgItem } from '@iptvnator/shared/interfaces';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { EpgItem } from '@echo-tv/shared/interfaces';
 import { XtreamApiService } from '../../services/xtream-api.service';
 import { XtreamXmltvFallbackService } from '../../services/xtream-xmltv-fallback.service';
 import { withEpg } from './with-epg.feature';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@echo-tv/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

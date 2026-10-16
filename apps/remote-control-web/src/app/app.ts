@@ -8,7 +8,7 @@ import { DOCUMENT } from '@angular/common';
 import {
     RemoteControlComponent,
     resolveRemoteControlLanguage,
-} from '@iptvnator/ui/remote-control';
+} from '@echo-tv/ui/remote-control';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

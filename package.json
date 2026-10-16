@@ -1,6 +1,6 @@
 {
     "name": "echo-tv",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "engines": {
         "node": "^22.22.3 || ^24.15.0"
     },
@@ -82,7 +82,7 @@
         "typecheck:spec": "node tools/typecheck/spec-typecheck.mjs",
         "typecheck:spec:test": "node --test tools/typecheck/spec-typecheck.test.mjs",
         "verify:package-layout": "node tools/packaging/verify-electron-package-layout.mjs",
-        "embedded-mpv:build-native:homebrew": "IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1 nx run electron-backend:build-embedded-mpv",
+        "embedded-mpv:build-native:homebrew": "ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1 nx run electron-backend:build-embedded-mpv",
         "embedded-mpv:build-runtime": "node tools/embedded-mpv/build-macos-runtime.mjs",
         "embedded-mpv:build-runtime:linux": "node tools/embedded-mpv/build-linux-runtime.mjs",
         "embedded-mpv:stage-runtime": "node tools/embedded-mpv/stage-runtime.mjs",
@@ -90,7 +90,7 @@
         "embedded-mpv:stage-runtime:windows-archive": "node tools/embedded-mpv/stage-windows-runtime-archive.mjs",
         "embedded-mpv:windows-runtime-pin:check": "node tools/embedded-mpv/windows-runtime-pin.mjs",
         "embedded-mpv:windows-runtime-pin:refresh": "node tools/embedded-mpv/update-windows-runtime-pin.mjs",
-        "serve:backend:embedded-mpv": "pnpm embedded-mpv:build-native:homebrew && IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1 IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT=1 pnpm serve:backend",
+        "serve:backend:embedded-mpv": "pnpm embedded-mpv:build-native:homebrew && ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1 ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT=1 pnpm serve:backend",
         "package:app": "nx run electron-backend:make --prepackageOnly",
         "make:app": "nx run electron-backend:make",
         "smoke:packaged": "node tools/testing/launch-packaged-electron.mjs",
@@ -158,7 +158,7 @@
         "electron-updater": "6.8.9",
         "epg-parser": "^0.5.0",
         "hls.js": "1.7.3",
-        "iptv-playlist-parser": "github:4gray/iptv-playlist-parser#v0.15.2-iptvnator.2",
+        "iptv-playlist-parser": "github:4gray/iptv-playlist-parser#v0.15.2-echo-tv.2",
         "marked": "18.1.0",
         "mpegts.js": "1.8.2",
         "ms": "2.1.3",

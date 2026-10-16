@@ -8,7 +8,7 @@ import {
     type DatabaseRequestIdentityCaptureApi,
 } from './database-request-identity-capture';
 
-const CHANNEL = 'IPTVNATOR_PERF_CAPTURE_MARKER';
+const CHANNEL = 'ECHO_TV_PERF_CAPTURE_MARKER';
 let nextStateId = 1;
 
 function createCapture(): {

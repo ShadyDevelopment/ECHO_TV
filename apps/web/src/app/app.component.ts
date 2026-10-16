@@ -14,16 +14,16 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
+} from '@echo-tv/epg/data-access';
 import {
     WorkspaceShellContextDrawerService,
     WORKSPACE_SHELL_ACTIONS,
-} from '@iptvnator/workspace/shell/util';
-import { EpgProgressPanelComponent } from '@iptvnator/ui/epg/progress-panel';
-// File-level entry: the @iptvnator/ui/components barrel would put the whole
+} from '@echo-tv/workspace/shell/util';
+import { EpgProgressPanelComponent } from '@echo-tv/ui/epg/progress-panel';
+// File-level entry: the @echo-tv/ui/components barrel would put the whole
 // library (channel lists, EPG, forms, date-fns) on the initial path.
-import { WindowControlsComponent } from '@iptvnator/ui/components/window-controls';
-import { PlaylistActions, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+import { WindowControlsComponent } from '@echo-tv/ui/components/window-controls';
+import { PlaylistActions, selectAllPlaylistsMeta } from '@echo-tv/m3u-state';
 import { filter, take } from 'rxjs';
 import {
     DataService,
@@ -31,7 +31,7 @@ import {
     RuntimeCapabilitiesService,
     SettingsStore,
     EpgSourceSettingsService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     AUTO_UPDATE_PLAYLISTS,
     Language,
@@ -39,7 +39,7 @@ import {
     STORE_KEY,
     Theme,
     createDevLogger,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { AppDateLocaleService } from './app-date-locales';
 import { SettingsService } from './services/settings.service';
 import { ParentalLockEnforcementService } from './services/parental-lock-enforcement.service';
@@ -171,7 +171,7 @@ export class AppComponent implements OnInit {
                     // flash for non-English users.
                     try {
                         localStorage.setItem(
-                            'iptvnator:preferred-language',
+                            'echo-tv:preferred-language',
                             resolvedLang
                         );
                     } catch {

@@ -20,7 +20,7 @@ export const WINDOWS_RUNTIME_REFRESH_AFTER_DAYS = 14;
 function githubApiHeaders() {
     return {
         Accept: 'application/vnd.github+json',
-        'User-Agent': 'iptvnator-windows-runtime-pin-updater',
+        'User-Agent': 'echo-tv-windows-runtime-pin-updater',
         ...(process.env.GITHUB_TOKEN
             ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
             : {}),
@@ -126,7 +126,7 @@ export async function isRuntimeAssetAvailable(url, fetchImpl = fetch) {
             method: 'HEAD',
             redirect: 'follow',
             headers: {
-                'User-Agent': 'iptvnator-windows-runtime-pin-updater',
+                'User-Agent': 'echo-tv-windows-runtime-pin-updater',
             },
         });
         return response.ok;

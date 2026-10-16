@@ -7,7 +7,7 @@ import {
 import type {
     ElectronBridgeApi,
     PlaylistRefreshPayload,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import { PlaylistRefreshService } from './playlist-refresh.service';
 

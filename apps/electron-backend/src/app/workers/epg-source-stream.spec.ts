@@ -41,7 +41,7 @@ describe('openEpgSourceStream', () => {
     let dir: string;
 
     beforeEach(() => {
-        dir = mkdtempSync(join(tmpdir(), 'iptvnator-epg-source-'));
+        dir = mkdtempSync(join(tmpdir(), 'echo-tv-epg-source-'));
         requestWithValidatedRedirects.mockReset();
     });
 

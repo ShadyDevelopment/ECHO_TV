@@ -151,7 +151,7 @@ test('writes the summary below dist/performance/journeys/<timestamp> and never o
         () => formatJourneyOutputTimestamp(new Date('nope')),
         /invalid-date/
     );
-    const root = await mkdtemp(join(tmpdir(), 'iptvnator-journey-summary-'));
+    const root = await mkdtemp(join(tmpdir(), 'echo-tv-journey-summary-'));
     try {
         const summaryPath = resolveJourneySummaryPath(root, date);
         assert.equal(
@@ -240,7 +240,7 @@ test('one journey run resolves to one summary path from its start time', () => {
 });
 
 test('journeys of one run are merged into one summary and never replaced', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'iptvnator-journey-run-'));
+    const root = await mkdtemp(join(tmpdir(), 'echo-tv-journey-run-'));
     try {
         const summaryPath = resolveJourneySummaryPath(
             root,

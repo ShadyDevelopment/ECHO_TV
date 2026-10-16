@@ -2,12 +2,12 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
 import {
     XTREAM_DATA_SOURCE,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { ParentalLockService } from '@iptvnator/services';
+} from '@echo-tv/portal/xtream/data-access';
+import { ParentalLockService } from '@echo-tv/services';
 import { ParentalLockEnforcementService } from './parental-lock-enforcement.service';
 import { PlaybackKeepAwakeService } from './playback-keep-awake.service';
 

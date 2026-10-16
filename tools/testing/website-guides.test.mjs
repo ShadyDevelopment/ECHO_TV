@@ -12,7 +12,7 @@ import { launchBrowser, serveDist } from './website-browser-support.mjs';
  */
 
 const distRoot = new URL('../../dist/apps/website/', import.meta.url);
-const SITE = 'https://4gray.github.io/iptvnator';
+const SITE = 'https://4gray.github.io/echo-tv';
 
 const GUIDES = [
   {
@@ -124,8 +124,8 @@ test('feature guide drafts reference screenshots that ship with the site', async
   for (const [slug, shot] of Object.entries(FEATURE_GUIDE_SHOTS)) {
     const source = await readFile(new URL(`../../apps/website/src/content/blog/${slug}.mdx`, import.meta.url), 'utf8');
     const screenshot = `blog/feature-guides/screenshots/${shot}-dark.png`;
-    assert.ok(source.includes(`](/iptvnator/${screenshot})`), `${slug}: inline screenshot`);
-    assert.ok(source.includes(`heroImage: /iptvnator/${screenshot}`), `${slug}: card image`);
+    assert.ok(source.includes(`](/echo-tv/${screenshot})`), `${slug}: inline screenshot`);
+    assert.ok(source.includes(`heroImage: /echo-tv/${screenshot}`), `${slug}: card image`);
     await access(new URL(screenshot, distRoot));
   }
 });
@@ -152,7 +152,7 @@ test('guides hub groups working article links by task and keeps draft visibility
   assert.equal(new Set(links.map((link) => link.dataset.guideArticle)).size, links.length);
   for (const link of links) {
     const slug = link.dataset.guideArticle;
-    assert.equal(link.getAttribute('href'), `/iptvnator/blog/${slug}/`);
+    assert.equal(link.getAttribute('href'), `/echo-tv/blog/${slug}/`);
     await access(new URL(`blog/${slug}/index.html`, distRoot));
     const source = await readFile(new URL(`../../apps/website/src/content/blog/${slug}.mdx`, import.meta.url), 'utf8');
     const meta = parseYaml(source.split('---')[1]);
@@ -170,16 +170,16 @@ test('guides hub groups working article links by task and keeps draft visibility
   assert.equal(collection.url, `${SITE}/guides/`);
   assert.deepEqual(collection.hasPart.map((entry) => entry.url), links.map((link) => `https://4gray.github.io${link.getAttribute('href')}`));
   assert.equal(schema.find((entry) => entry['@type'] === 'BreadcrumbList').itemListElement.at(-1).item, `${SITE}/guides/`);
-  assert.match(await readDist('sitemap-0.xml'), /<loc>https:\/\/4gray.github.io\/iptvnator\/guides\/<\/loc>/);
+  assert.match(await readDist('sitemap-0.xml'), /<loc>https:\/\/4gray.github.io\/echo-tv\/guides\/<\/loc>/);
 });
 
 test('guides are discoverable from the header, footer and blog', async () => {
   const home = new JSDOM(await readDist('index.html')).window.document;
-  assert.ok(home.querySelector('header a[href="/iptvnator/guides/"]'));
-  assert.ok(home.querySelector('#mobile-menu a[href="/iptvnator/guides/"]'));
-  assert.ok(home.querySelector('footer a[href="/iptvnator/guides/"]'));
+  assert.ok(home.querySelector('header a[href="/echo-tv/guides/"]'));
+  assert.ok(home.querySelector('#mobile-menu a[href="/echo-tv/guides/"]'));
+  assert.ok(home.querySelector('footer a[href="/echo-tv/guides/"]'));
   const blog = new JSDOM(await readDist('blog/index.html')).window.document;
-  assert.ok(blog.querySelector('main a[href="/iptvnator/guides/"]'));
+  assert.ok(blog.querySelector('main a[href="/echo-tv/guides/"]'));
 });
 
 test('guides hub: responsive navigation and task anchors work in Chromium', async (t) => {
@@ -190,7 +190,7 @@ test('guides hub: responsive navigation and task anchors work in Chromium', asyn
     for (const width of [390, 768, 1024, 1280]) {
       const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
       try {
-        await page.goto(`${origin}/iptvnator/guides/`);
+        await page.goto(`${origin}/echo-tv/guides/`);
         await page.evaluate(() => document.fonts.ready);
         assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `${width}: no horizontal overflow`);
         if (width < 1024) {
@@ -198,7 +198,7 @@ test('guides hub: responsive navigation and task anchors work in Chromium', asyn
           await button.click();
           assert.equal(await button.getAttribute('aria-expanded'), 'true');
           await page.locator('#mobile-menu').getByRole('link', { name: 'Guides', exact: true }).click();
-          await page.waitForURL(`${origin}/iptvnator/guides/`);
+          await page.waitForURL(`${origin}/echo-tv/guides/`);
         } else {
           const bounds = await page.locator('#site-header a:visible').evaluateAll((links) => links.map((link) => {
             const { left, right } = link.getBoundingClientRect();
@@ -246,10 +246,10 @@ for (const guide of GUIDES) {
 
   test(`${guide.slug}: links to the download hub and ships its screenshots`, async () => {
     const html = await readDist(`blog/${guide.slug}/index.html`);
-    assert.match(html, /href="\/iptvnator\/download\/"/);
+    assert.match(html, /href="\/echo-tv\/download\/"/);
 
     for (const screenshot of guide.screenshots) {
-      assert.match(html, new RegExp(`src="/iptvnator/${screenshot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
+      assert.match(html, new RegExp(`src="/echo-tv/${screenshot.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"`));
       await access(new URL(screenshot, distRoot));
     }
   });

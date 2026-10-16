@@ -1,8 +1,8 @@
-import { WorkspaceResolvedCommandItem } from '@iptvnator/portal/shared/util';
+import { WorkspaceResolvedCommandItem } from '@echo-tv/portal/shared/util';
 import {
     SETTINGS_SECTION_DEFINITIONS,
     SettingsSearchService,
-} from '@iptvnator/workspace/shell/util/settings-search';
+} from '@echo-tv/workspace/shell/util/settings-search';
 import { TranslateFn } from './workspace-shell-search-labels';
 
 /** Palette rows reserved for settings matches, so commands stay visible. */

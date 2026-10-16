@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { XTREAM_MAIN_PERFORMANCE_PHASE } from '@iptvnator/shared/interfaces';
+import { XTREAM_MAIN_PERFORMANCE_PHASE } from '@echo-tv/shared/interfaces';
 
 import {
     XTREAM_SCENARIO_ID,

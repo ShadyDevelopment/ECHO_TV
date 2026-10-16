@@ -8,13 +8,13 @@ import {
     selectChannelsLoading,
     selectCurrentEpgProgram,
     selectFavorites,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import {
     Channel,
     EpgProgram,
     ExternalPlayerSession,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { BehaviorSubject, EMPTY, of } from 'rxjs';
 
 /**

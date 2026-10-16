@@ -54,7 +54,7 @@ test('accepts one parseable diagnostic playlist-worker profile inside the iterat
     const validate = module.validateDiagnosticPlaylistWorkerCapture;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-diagnostic-worker-')
+        join(tmpdir(), 'echo-tv-diagnostic-worker-')
     );
 
     try {
@@ -80,7 +80,7 @@ test('fails closed for missing, escaped, malformed, or contaminated diagnostic a
     const validate = module.validateDiagnosticPlaylistWorkerCapture;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-diagnostic-worker-invalid-')
+        join(tmpdir(), 'echo-tv-diagnostic-worker-invalid-')
     );
 
     try {

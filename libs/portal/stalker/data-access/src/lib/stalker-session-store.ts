@@ -1,7 +1,7 @@
 import { firstValueFrom } from 'rxjs';
-import type { Playlist } from '@iptvnator/shared/interfaces';
-import type { PlaylistsService } from '@iptvnator/services';
-import type { createLogger } from '@iptvnator/portal/shared/util';
+import type { Playlist } from '@echo-tv/shared/interfaces';
+import type { PlaylistsService } from '@echo-tv/services';
+import type { createLogger } from '@echo-tv/portal/shared/util';
 import { STALKER_WATCHDOG_DEFAULT_PERIOD_SECONDS } from './stalker-watchdog.controller';
 import { stalkerIdentityFingerprint } from './stalker-identity.utils';
 import type { StalkerAuthenticationResult } from './stalker-auth.api';

@@ -3,7 +3,7 @@ import type {
     ElectronBridgeEpisodeIdentityScope,
     DownloadContentType,
     ElectronDownloadFileAvailability,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface EpisodeDownloadIdentity {
     readonly playlistId: string;

@@ -1,6 +1,6 @@
 import { epgLogger } from '../util/epg-logger';
 import { and, eq, inArray, isNull, or, sql, type SQL } from 'drizzle-orm';
-import { EpgChannelMetadata, EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgChannelMetadata, EpgProgram } from '@echo-tv/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 import { isValidEpgProgram, toEpgProgramFromRow } from './epg-program-row.util';

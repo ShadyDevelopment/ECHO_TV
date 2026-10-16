@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SettingsAboutSectionComponent } from './settings-about-section.component';
 import { SETTINGS_UPDATE_CHANNEL_OPTIONS } from './settings-options';
 

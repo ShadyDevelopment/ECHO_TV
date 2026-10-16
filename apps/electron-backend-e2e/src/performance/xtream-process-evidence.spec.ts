@@ -131,7 +131,7 @@ function electronApp(pid: number): ElectronApplication {
 
 async function temporaryDirectory(): Promise<string> {
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-xtream-process-evidence-')
+        join(tmpdir(), 'echo-tv-xtream-process-evidence-')
     );
     directories.push(directory);
     return directory;

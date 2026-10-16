@@ -6,14 +6,14 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { injectTranslationTick } from '@iptvnator/services';
+import { injectTranslationTick } from '@echo-tv/services';
 import {
     ContentCardComponent,
     ContentRailShellComponent,
-} from '@iptvnator/portal/shared/ui';
-import { toXtreamRecentlyAddedTimestamp } from '@iptvnator/shared/interfaces';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { ContentType } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/ui';
+import { toXtreamRecentlyAddedTimestamp } from '@echo-tv/shared/interfaces';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { ContentType } from '@echo-tv/portal/xtream/data-access';
 
 interface RecentlyAddedItem {
     readonly added?: string;

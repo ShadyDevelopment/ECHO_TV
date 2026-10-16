@@ -7,7 +7,7 @@ import { TestBed } from '@angular/core/testing';
 import {
     DEFAULT_DASHBOARD_RAILS_SETTINGS,
     type DashboardRailsSettings,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createDashboardRailSkeletons,
     type DashboardRailSkeletonHost,

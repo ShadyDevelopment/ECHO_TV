@@ -4,7 +4,7 @@ import type BetterSqlite3 from 'better-sqlite3';
  * Counts the SQL statements the database worker executes and reports the
  * count to the main process, where `main.sqlStatements` is kept (see
  * `services/performance-counters.ts`). Only active with
- * `IPTVNATOR_PERF_CAPTURE=1` and `IPTVNATOR_PERF_COUNT_SQL=1`, which only the
+ * `ECHO_TV_PERF_CAPTURE=1` and `ECHO_TV_PERF_COUNT_SQL=1`, which only the
  * launch journey sets: the import benchmarks run with the capture flag alone
  * and keep measuring unwrapped statements.
  *
@@ -46,7 +46,7 @@ export interface SqlStatementCountReporter {
 }
 
 const STATEMENT_EXECUTION_METHODS = ['run', 'get', 'all', 'iterate'] as const;
-const COUNTED = Symbol.for('iptvnator.sqlStatementCount.counted');
+const COUNTED = Symbol.for('echo-tv.sqlStatementCount.counted');
 
 type ExecutionMethod = ((...args: unknown[]) => unknown) & {
     [COUNTED]?: true;

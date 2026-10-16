@@ -1,7 +1,7 @@
 import { Injectable, WritableSignal, inject, signal } from '@angular/core';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService, resetHostConnectivityGuard } from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util';
+import { DataService, resetHostConnectivityGuard } from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { StalkerItvChannel } from './models';
 import {
     StalkerItvLoadProgress,

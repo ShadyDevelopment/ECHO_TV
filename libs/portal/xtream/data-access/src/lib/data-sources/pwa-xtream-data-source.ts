@@ -10,8 +10,8 @@ import {
     XtreamLiveStream,
     XtreamSerieItem,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
+} from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
 import {
     CategoryType,
     StreamType,
@@ -23,7 +23,7 @@ import {
     PlaylistsService,
     USER_DATA_STORAGE,
     XTREAM_USER_DATA_KEYS,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { firstValueFrom } from 'rxjs';
 import {
     DbCategoryType,

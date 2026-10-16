@@ -85,7 +85,7 @@ test('the preload traces every bridge invocation on that channel when IPC tracin
         resolve(electronBackendSource, 'services/debug-trace.ts'),
         'utf8'
     );
-    assert.match(debugTrace, /readFlag\('IPTVNATOR_TRACE_IPC'\)/);
+    assert.match(debugTrace, /readFlag\('ECHO_TV_TRACE_IPC'\)/);
 });
 
 test('the sentinel method is a no-op for an unknown id in the main process', () => {

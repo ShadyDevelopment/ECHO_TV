@@ -1,5 +1,5 @@
 import { sourceProbeControl } from './source-probe-control';
-import type { SourceProbeContext } from '@iptvnator/shared/interfaces';
+import type { SourceProbeContext } from '@echo-tv/shared/interfaces';
 /**
  * This module handles all Stalker portal related IPC communications
  * between the frontend and the electron backend.
@@ -15,7 +15,7 @@ import {
     STALKER_REQUEST,
     buildStalkerIdentityRequestContext,
     buildStalkerRequestUrl,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { rememberStalkerPlaybackContext } from '../services/stalker-playback-context.service';
 import { emitPortalDebugEvent } from './portal-debug.events';
 import {

@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ContentHeroComponent } from '@iptvnator/ui/components';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
+import { ContentHeroComponent } from '@echo-tv/ui/components';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
 import {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SerialDetailsComponent } from './serial-details.component';
 import { SerialDetailsMenuService } from './serial-details-menu.service';
 import { SerialDetailsPlaybackService } from './serial-details-playback.service';
-import { createPlaybackSessionKey } from '@iptvnator/playback/util';
+import { createPlaybackSessionKey } from '@echo-tv/playback/util';
 import {
     configureSerialDetailsTestBed,
     createSerialDetailsStubs,

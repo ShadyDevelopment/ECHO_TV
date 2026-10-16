@@ -6,7 +6,7 @@ import {
     APP_UPDATE_INSTALL,
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const mockHandlers = new Map<string, (...args: unknown[]) => unknown>();
 

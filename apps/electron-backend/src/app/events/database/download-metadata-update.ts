@@ -1,4 +1,4 @@
-import type { DownloadMetadataSnapshot } from '@iptvnator/shared/interfaces';
+import type { DownloadMetadataSnapshot } from '@echo-tv/shared/interfaces';
 import { and, eq, sql } from 'drizzle-orm';
 import { getDatabase } from '../../database/connection';
 import * as schema from '../../database/schema';

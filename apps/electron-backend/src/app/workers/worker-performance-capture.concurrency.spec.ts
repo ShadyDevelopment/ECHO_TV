@@ -9,7 +9,7 @@ import {
 } from './worker-performance-capture';
 import { createFakeRuntime } from './worker-performance-capture.test-harness';
 
-const PROFILING_ENV = 'IPTVNATOR_PERF_WORKER_PROFILING';
+const PROFILING_ENV = 'ECHO_TV_PERF_WORKER_PROFILING';
 
 const BLOCK_DURATION_MS = 20;
 const REAL_TIMER_TEST_TIMEOUT_MS = 30_000;

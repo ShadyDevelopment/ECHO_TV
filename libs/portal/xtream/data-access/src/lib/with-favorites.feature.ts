@@ -1,4 +1,4 @@
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import { inject } from '@angular/core';
 import {
     patchState,
@@ -6,7 +6,7 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
 import { XTREAM_DATA_SOURCE } from './data-sources/xtream-data-source.interface';
 
 export const withFavorites = function () {

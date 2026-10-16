@@ -67,7 +67,7 @@ function settle(): Promise<void> {
 
 test('the module does not touch Electron when loaded outside it', () => {
     assert.equal(typeof gateModule.installJourneyRendererGate, 'function');
-    assert.equal(gateModule.GATE_KEY, '__iptvnatorJourneyGate');
+    assert.equal(gateModule.GATE_KEY, '__echo-tvJourneyGate');
     assert.equal(
         (globalThis as Record<string, unknown>)[gateModule.GATE_KEY],
         undefined

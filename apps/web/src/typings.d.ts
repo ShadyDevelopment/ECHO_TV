@@ -4,7 +4,7 @@ interface NodeModule {
     id: string;
 }
 
-import type { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+import type { ElectronBridgeApi } from '@echo-tv/shared/interfaces';
 
 declare global {
     interface Window {

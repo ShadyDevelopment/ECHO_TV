@@ -1,4 +1,4 @@
-import type { StalkerAuthFailureBody } from '@iptvnator/shared/interfaces';
+import type { StalkerAuthFailureBody } from '@echo-tv/shared/interfaces';
 
 /**
  * Why a Stalker portal refused the session.

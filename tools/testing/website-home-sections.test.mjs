@@ -24,10 +24,10 @@ test('hero: generic download CTA, self-host link and project facts', async () =>
   const html = await readFile(join(distRoot, 'index.html'), 'utf8');
   const primary = html.match(/<a[^>]*data-hero-primary[^>]*>[\s\S]*?<\/a>/)?.[0];
   assert.ok(primary, 'hero primary button');
-  assert.match(primary, /href="\/iptvnator\/download\/"/, 'server-rendered CTA goes to the download hub');
+  assert.match(primary, /href="\/echo-tv\/download\/"/, 'server-rendered CTA goes to the download hub');
   assert.match(primary, /Download for desktop/);
   assert.match(html, /data-hero-secondary[^>]*>\s*All platforms/);
-  assert.match(html, /href="\/iptvnator\/download\/docker\/"[^>]*>\s*Self-host the web app/);
+  assert.match(html, /href="\/echo-tv\/download\/docker\/"[^>]*>\s*Self-host the web app/);
   assert.match(html, /<dd[^>]*>19<\/dd>/, 'languages fact');
   assert.match(html, /<dd[^>]*>MIT<\/dd>/, 'license fact');
   assert.doesNotMatch(html, /img\.shields\.io/, 'no badge images');
@@ -39,7 +39,7 @@ test('features bento links every feature page and shows interface fragments', as
   const section = html.match(/<section id="features"[\s\S]*?<\/section>/)?.[0];
   assert.ok(section, 'features section');
   for (const slug of ['m3u-player', 'xtream-codes-player', 'stalker-portal-player', 'epg', 'remote-control']) {
-    assert.match(section, new RegExp(`href="/iptvnator/features/${slug}/"`));
+    assert.match(section, new RegExp(`href="/echo-tv/features/${slug}/"`));
   }
   assert.match(section, /Aurora News/, 'EPG fragment uses fictional channels');
   assert.match(section, /REC/, 'recording fragment');
@@ -50,17 +50,17 @@ test('download panel: one row per platform with release file names and package c
   const html = await readFile(join(distRoot, 'index.html'), 'utf8');
   const section = html.match(/<section id="download"[\s\S]*?<\/section>/)?.[0];
   assert.ok(section, 'download section');
-  assert.match(section, /Get IPTVnator \d+\.\d+\.\d+/);
+  assert.match(section, /Get ECHO TV \d+\.\d+\.\d+/);
   for (const platform of PLATFORMS) {
     const row = section.match(new RegExp(`<div[^>]*data-platform-row="${platform}"[\\s\\S]*?data-platform-link[^>]*>[\\s\\S]*?</a>`))?.[0];
     assert.ok(row, `${platform} row`);
-    assert.match(row, new RegExp(`href="/iptvnator/download/${platform}/"`));
-    assert.match(row, /iptvnator-\d+\.\d+\.\d+-/, 'lists a release file name');
+    assert.match(row, new RegExp(`href="/echo-tv/download/${platform}/"`));
+    assert.match(row, /echo-tv-\d+\.\d+\.\d+-/, 'lists a release file name');
     assert.match(row, /class="hidden[^"]*"[^>]*data-detected-badge/, 'the Detected badge is hidden until the browser decides');
   }
-  assert.match(section, /brew install --cask iptvnator/);
-  assert.match(section, /sudo snap install iptvnator/);
-  assert.match(section, /yay -S iptvnator-bin/);
+  assert.match(section, /brew install --cask echo-tv/);
+  assert.match(section, /sudo snap install echo-tv/);
+  assert.match(section, /yay -S echo-tv-bin/);
 });
 
 test('footer carries the disclaimer, the mascot and the site links', async () => {
@@ -68,8 +68,8 @@ test('footer carries the disclaimer, the mascot and the site links', async () =>
   const footer = html.match(/<footer[\s\S]*?<\/footer>/)?.[0];
   assert.ok(footer, 'footer');
   assert.match(footer, /does not provide, host or sell/);
-  assert.match(footer, /iptvnator-1-mascot/, 'the mascot lives in the footer');
-  for (const href of ['/iptvnator/features/', '/iptvnator/compare/', '/iptvnator/download/', '/iptvnator/blog/']) {
+  assert.match(footer, /echo-tv-1-mascot/, 'the mascot lives in the footer');
+  for (const href of ['/echo-tv/features/', '/echo-tv/compare/', '/echo-tv/download/', '/echo-tv/blog/']) {
     assert.match(footer, new RegExp(`href="${href}"`));
   }
 });
@@ -111,7 +111,7 @@ test('browser: the download CTA and the Detected row follow the visitor OS, phon
       page.on('pageerror', (error) => errors.push(String(error)));
       await page.goto(`${origin}${BASE}/`, { waitUntil: 'networkidle' });
       const state = await readState(page);
-      assert.equal(state.primary, `/iptvnator/download/${platform}/`, `${platform}: primary CTA target`);
+      assert.equal(state.primary, `/echo-tv/download/${platform}/`, `${platform}: primary CTA target`);
       assert.equal(state.label, `Download for ${agent.label}`, `${platform}: primary CTA label`);
       assert.deepEqual(state.detected, [platform], `${platform}: detected row`);
       assert.deepEqual(errors, []);
@@ -137,7 +137,7 @@ test('browser: the download CTA and the Detected row follow the visitor OS, phon
       const page = await browser.newPage({ userAgent: device.userAgent, viewport: device.viewport, hasTouch: device.hasTouch });
       await page.goto(`${origin}${BASE}/`, { waitUntil: 'networkidle' });
       const state = await readState(page);
-      assert.equal(state.primary, '/iptvnator/download/', `${device.name} keeps the generic CTA`);
+      assert.equal(state.primary, '/echo-tv/download/', `${device.name} keeps the generic CTA`);
       assert.equal(state.label, 'Download for desktop', `${device.name} keeps the generic label`);
       assert.deepEqual(state.detected, [], `${device.name} highlights no platform row`);
       await page.close();
@@ -158,7 +158,7 @@ test('browser: the download CTA and the Detected row follow the visitor OS, phon
     await button.scrollIntoViewIfNeeded();
     await button.click();
     await expect(button).toHaveText('Copied', { timeout: 5000 });
-    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'brew install --cask iptvnator');
+    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'brew install --cask echo-tv');
     await context.close();
   } finally {
     await browser.close();

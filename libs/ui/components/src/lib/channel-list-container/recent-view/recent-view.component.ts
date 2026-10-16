@@ -13,15 +13,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
-import { SettingsStore } from '@iptvnator/services';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { resolveChannelEpgLookupKey } from '@echo-tv/m3u-state';
+import { SettingsStore } from '@echo-tv/services';
 import {
     foldSearchText,
     Channel,
     EpgProgram,
     epgProviderClockMs,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { EpgMappingDialogComponent } from '../epg-mapping-dialog/epg-mapping-dialog.component';
 import { ChannelDetailsDialogComponent } from '../channel-details-dialog/channel-details-dialog.component';
 import { resolveChannelLogo } from '../channel-logo-fallback.util';

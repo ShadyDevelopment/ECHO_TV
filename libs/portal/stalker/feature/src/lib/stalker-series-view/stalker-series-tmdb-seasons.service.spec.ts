@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { TmdbEnrichmentService } from '@iptvnator/services';
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+import { TmdbEnrichmentService } from '@echo-tv/services';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 import { StalkerSeriesTmdbSeasonsService } from './stalker-series-tmdb-seasons.service';
 
 describe('StalkerSeriesTmdbSeasonsService', () => {

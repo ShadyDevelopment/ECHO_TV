@@ -2,8 +2,8 @@ import {
     XTREAM_PRELOAD_PERFORMANCE_MARKER_CHANNEL,
     XTREAM_PRELOAD_PERFORMANCE_SCHEMA_VERSION,
     type XtreamPreloadPerformanceMarker,
-} from '@iptvnator/shared/interfaces';
-import { XtreamCodeActions } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
+import { XtreamCodeActions } from '@echo-tv/shared/interfaces';
 import { createXtreamPreloadPerformanceCapture } from './xtream-preload-performance-capture';
 
 const MARKER_KEYS = [

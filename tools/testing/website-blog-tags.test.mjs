@@ -11,8 +11,8 @@ import assert from 'node:assert/strict';
  */
 
 const distRoot = new URL('../../dist/apps/website/', import.meta.url);
-const SITE = 'https://4gray.github.io/iptvnator';
-const TAG_HREF = /href="\/iptvnator\/blog\/tag\/([a-z0-9-]+)\/"/g;
+const SITE = 'https://4gray.github.io/echo-tv';
+const TAG_HREF = /href="\/echo-tv\/blog\/tag\/([a-z0-9-]+)\/"/g;
 
 const readDist = (relativePath) => readFile(new URL(relativePath, distRoot), 'utf8');
 const distExists = (relativePath) =>
@@ -54,7 +54,7 @@ test('every tag hub: canonical, CollectionPage schema, breadcrumb, cards and the
     assert.match(html, new RegExp(`<link rel="canonical" href="${SITE}/blog/tag/${tag}/"`));
     assert.match(html, /<meta name="robots" content="index, follow/);
     assert.match(html, /Back to blog/);
-    assert.match(html, new RegExp(`aria-current="page"[^>]*href="/iptvnator/blog/tag/${tag}/"|href="/iptvnator/blog/tag/${tag}/"[^>]*aria-current="page"`));
+    assert.match(html, new RegExp(`aria-current="page"[^>]*href="/echo-tv/blog/tag/${tag}/"|href="/echo-tv/blog/tag/${tag}/"[^>]*aria-current="page"`));
 
     const cards = html.match(/<article class="card-panel/g) ?? [];
     assert.ok(cards.length >= 1, `Tag "${tag}" renders no post cards.`);
@@ -72,7 +72,7 @@ test('every tag hub: canonical, CollectionPage schema, breadcrumb, cards and the
 
 test('post pages link their tag chips to existing hubs', async () => {
   const blogIndex = await readDist('blog/index.html');
-  const slugs = [...new Set([...blogIndex.matchAll(/href="\/iptvnator\/blog\/([a-z0-9-]+)\/"/g)].map((match) => match[1]))]
+  const slugs = [...new Set([...blogIndex.matchAll(/href="\/echo-tv\/blog\/([a-z0-9-]+)\/"/g)].map((match) => match[1]))]
     .filter((slug) => slug !== 'tag');
   assert.ok(slugs.length >= 10, `Expected the blog index to link at least ten posts, found ${slugs.length}.`);
   let chipCount = 0;

@@ -4,8 +4,8 @@ import {
     ParentalLockService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { WorkspaceStartupPreferencesService } from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/services';
+import { WorkspaceStartupPreferencesService } from '@echo-tv/workspace/shell/util';
 import { settingsUnsavedChangesGuard } from './settings/settings-unsaved-changes.guard';
 
 // The workspace activates only once settings AND the parental lock state
@@ -81,7 +81,7 @@ export const routes: Routes = [
             settingsReady: settingsReadyResolver,
         },
         loadComponent: () =>
-            import('@iptvnator/workspace/shell/feature').then(
+            import('@echo-tv/workspace/shell/feature').then(
                 (c) => c.WorkspaceShellComponent
             ),
         children: [
@@ -94,21 +94,21 @@ export const routes: Routes = [
                 path: 'dashboard',
                 canActivate: [dashboardAccessGuard],
                 loadComponent: () =>
-                    import('@iptvnator/workspace/dashboard/feature').then(
+                    import('@echo-tv/workspace/dashboard/feature').then(
                         (c) => c.WorkspaceDashboardRailsComponent
                     ),
             },
             {
                 path: 'sources',
                 loadComponent: () =>
-                    import('@iptvnator/workspace/shell/feature').then(
+                    import('@echo-tv/workspace/shell/feature').then(
                         (c) => c.WorkspaceSourcesComponent
                     ),
             },
             {
                 path: 'playlists/:id',
                 loadChildren: () =>
-                    import('@iptvnator/playlist/m3u/feature-player').then((m) =>
+                    import('@echo-tv/playlist/m3u/feature-player').then((m) =>
                         m.createM3uWorkspaceRoutes()
                     ),
             },
@@ -141,7 +141,7 @@ export const routes: Routes = [
                     isGlobalSearch: true,
                 },
                 loadComponent: () =>
-                    import('@iptvnator/portal/xtream/feature').then(
+                    import('@echo-tv/portal/xtream/feature').then(
                         (c) => c.GlobalSearchResultsComponent
                     ),
             },
@@ -149,35 +149,35 @@ export const routes: Routes = [
                 path: 'downloads/recording/:recordingId',
                 canActivate: [recordingsCapabilityGuard],
                 loadComponent: () =>
-                    import('@iptvnator/portal/downloads/feature').then(
+                    import('@echo-tv/portal/downloads/feature').then(
                         (c) => c.RecordingDetailComponent
                     ),
             },
             {
                 path: 'downloads/:downloadId',
                 loadComponent: () =>
-                    import('@iptvnator/portal/downloads/feature').then(
+                    import('@echo-tv/portal/downloads/feature').then(
                         (c) => c.DownloadOfflineDetailComponent
                     ),
             },
             {
                 path: 'downloads',
                 loadComponent: () =>
-                    import('@iptvnator/portal/downloads/feature').then(
+                    import('@echo-tv/portal/downloads/feature').then(
                         (c) => c.DownloadsComponent
                     ),
             },
             {
                 path: '',
                 loadChildren: () =>
-                    import('@iptvnator/portal/xtream/feature').then((m) =>
+                    import('@echo-tv/portal/xtream/feature').then((m) =>
                         m.createXtreamRoutes()
                     ),
             },
             {
                 path: '',
                 loadChildren: () =>
-                    import('@iptvnator/portal/stalker/feature').then((m) =>
+                    import('@echo-tv/portal/stalker/feature').then((m) =>
                         m.createStalkerRoutes()
                     ),
             },

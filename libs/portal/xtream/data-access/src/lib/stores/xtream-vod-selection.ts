@@ -2,7 +2,7 @@ import {
     getXtreamVodInfo,
     XtreamVodDetails,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     resolveXtreamVodPlaybackSource,
     XtreamVodPlaybackItem,

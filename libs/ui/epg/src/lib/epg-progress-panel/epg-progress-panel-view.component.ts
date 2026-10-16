@@ -18,9 +18,9 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
     EpgImportProgress,
     EpgProgressService,
-} from '@iptvnator/epg/data-access';
-import { ELECTRON_BRIDGE_SECURITY_ERROR_CODES } from '@iptvnator/shared/interfaces';
-import { normalizeDateLocale } from '@iptvnator/pipes/date-format';
+} from '@echo-tv/epg/data-access';
+import { ELECTRON_BRIDGE_SECURITY_ERROR_CODES } from '@echo-tv/shared/interfaces';
+import { normalizeDateLocale } from '@echo-tv/pipes/date-format';
 import { formatEpgImportDisplayUrl } from './epg-import-display-url';
 
 interface EpgTrustConfirmDialogData {

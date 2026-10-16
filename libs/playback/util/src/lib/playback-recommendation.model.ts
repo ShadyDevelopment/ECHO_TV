@@ -1,6 +1,6 @@
 import type {
     ExternalPlayerName,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type {
     InlinePlaybackPlayer,
     PlaybackDiagnostic,

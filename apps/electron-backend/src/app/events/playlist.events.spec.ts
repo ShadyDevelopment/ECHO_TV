@@ -3,7 +3,7 @@ import type {
     Playlist,
     PlaylistRefreshEvent,
     PlaylistRefreshPayload,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     AUTO_UPDATE_PLAYLISTS,
     M3U_IMPORT_PERFORMANCE_PHASE,
@@ -11,7 +11,7 @@ import {
     PLAYLIST_CANCEL_REFRESH,
     PLAYLIST_REFRESH,
     PLAYLIST_REFRESH_EVENT,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { channel } from 'node:diagnostics_channel';
 import { resolve } from 'node:path';
 
@@ -44,7 +44,7 @@ const mockCreatePlaylistObject = jest.fn();
 const mockGetFilenameFromUrl = jest.fn();
 const mockResolveWorkerRuntimeBootstrap = jest.fn();
 const mockWorkerInstances: MockWorker[] = [];
-const PERF_CAPTURE_ENV = 'IPTVNATOR_PERF_CAPTURE';
+const PERF_CAPTURE_ENV = 'ECHO_TV_PERF_CAPTURE';
 const originalPerformanceCaptureValue = process.env[PERF_CAPTURE_ENV];
 
 jest.mock('electron', () => ({
@@ -72,7 +72,7 @@ jest.mock('iptv-playlist-parser', () => ({
     parse: (...args: unknown[]) => mockParse(...args),
 }));
 
-jest.mock('@iptvnator/shared/m3u-utils', () => ({
+jest.mock('@echo-tv/shared/m3u-utils', () => ({
     createPlaylistObject: (...args: unknown[]) =>
         mockCreatePlaylistObject(...args),
     getFilenameFromUrl: (...args: unknown[]) => mockGetFilenameFromUrl(...args),
@@ -220,7 +220,7 @@ describe('playlist IPC events', () => {
         expect(result).toEqual(playlist);
     });
 
-    it.each(['  IPTVnator-Test/1.0  ', '', '   '])(
+    it.each(['  ECHO TV-Test/1.0  ', '', '   '])(
         'uses and persists the optional initial download User-Agent: %s',
         async (userAgent) => {
             mockAxiosGet.mockResolvedValue({ data: '#EXTM3U' });

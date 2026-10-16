@@ -171,7 +171,7 @@ async function runIteration(
         recursive: false,
     });
     const dataDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-m3u-import-performance-')
+        join(tmpdir(), 'echo-tv-m3u-import-performance-')
     );
     let app: LaunchedElectronApp | null = null;
     let renderer: RunningM3uImportRendererCapture | null = null;
@@ -187,11 +187,11 @@ async function runIteration(
             ],
             environmentInheritance: 'runtime-only',
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: '0',
-                IPTVNATOR_PERF_CAPTURE: '1',
-                IPTVNATOR_PERF_WORKER_PROFILING: '1',
-                IPTVNATOR_TRACE_RENDERER_CONSOLE:
-                    process.env['IPTVNATOR_TRACE_RENDERER_CONSOLE'] ?? '0',
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: '0',
+                ECHO_TV_PERF_CAPTURE: '1',
+                ECHO_TV_PERF_WORKER_PROFILING: '1',
+                ECHO_TV_TRACE_RENDERER_CONSOLE:
+                    process.env['ECHO_TV_TRACE_RENDERER_CONSOLE'] ?? '0',
             },
         });
         app.mainWindow.setDefaultTimeout(120_000);

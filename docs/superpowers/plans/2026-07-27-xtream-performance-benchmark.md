@@ -39,8 +39,8 @@
 - Cancellation acknowledgement is the terminal database `cancelled` event.
   Also retain click-to-preload return, main HTTP abort, DB cancel dispatch, and
   dev-only worker-receipt timestamps as separate diagnostics.
-- Instrumentation is active only when `IPTVNATOR_PERF_CAPTURE=1` and/or
-  `IPTVNATOR_PERF_WORKER_PROFILING=1`, is count/identifier-only, never logs
+- Instrumentation is active only when `ECHO_TV_PERF_CAPTURE=1` and/or
+  `ECHO_TV_PERF_WORKER_PROFILING=1`, is count/identifier-only, never logs
   credentials/URLs/titles/search text/payloads, and is fail-neutral.
 - No production bottleneck fix belongs in this branch. This branch establishes
   the benchmark and instrumentation required to prove a later fix.
@@ -80,7 +80,7 @@ git log -1 --oneline
 ```
 
 Expected: branch `agent/perf-xtream-harness`, clean tracked tree, repository root
-`/Users/4gray/.codex/worktrees/05cf/iptvnator`, and base commit
+`/Users/4gray/.codex/worktrees/05cf/echo-tv`, and base commit
 `24f0dee6f033613148aeab4b699e9db667041927`.
 
 - [ ] **Step 2: Verify dependencies and Nx discovery**
@@ -242,7 +242,7 @@ and lint checks pass.
 Use a real loopback HTTP server on port `0`; do not add `supertest`.
 Cover:
 
-- controls are absent unless `IPTVNATOR_XTREAM_MOCK_CONTROL=1`;
+- controls are absent unless `ECHO_TV_XTREAM_MOCK_CONTROL=1`;
 - performance mode rejects non-loopback bind hosts;
 - every `/__control/*` request requires the exact per-process token header;
 - JSON bodies reject unknown fields, arbitrary scenarios/cardinalities/URLs,
@@ -370,7 +370,7 @@ Do not overload `preload-performance-correlation.ts`, whose state machine is
 M3U refresh-specific. Add a separate channel and schema. Extract safe identity
 from arguments without cloning/traversing payload arrays. Emit start and
 success/error around the existing proxied call only when
-`IPTVNATOR_PERF_CAPTURE=1`.
+`ECHO_TV_PERF_CAPTURE=1`.
 
 - [ ] **Step 3: Instrument main HTTP phases without changing normal Axios behavior**
 
@@ -818,7 +818,7 @@ pnpm nx run electron-backend-e2e:e2e-ci--src/xtream-responsiveness.e2e.ts --skip
 
 The existing E2E may keep its deliberate worker batch delay because it is a
 functional regression test. The benchmark must always set
-`IPTVNATOR_DB_WORKER_BATCH_DELAY_MS=0`.
+`ECHO_TV_DB_WORKER_BATCH_DELAY_MS=0`.
 
 ## Task 10: Add The Orchestrator, Nx Target, And Artifact Validation
 
@@ -861,10 +861,10 @@ For each scenario, run all seven definitions serially. Launch Electron with:
 Set:
 
 ```text
-IPTVNATOR_DB_WORKER_BATCH_DELAY_MS=0
-IPTVNATOR_PERF_CAPTURE=1
-IPTVNATOR_PERF_WORKER_PROFILING=1
-IPTVNATOR_TRACE_RENDERER_CONSOLE=0
+ECHO_TV_DB_WORKER_BATCH_DELAY_MS=0
+ECHO_TV_PERF_CAPTURE=1
+ECHO_TV_PERF_WORKER_PROFILING=1
+ECHO_TV_TRACE_RENDERER_CONSOLE=0
 ```
 
 Start renderer/main capture before trigger, wait for authoritative terminal and
@@ -936,10 +936,10 @@ smoke:
 
 ```bash
 perf_output="$PWD/dist/performance/$(date -u +%Y%m%dT%H%M%SZ)-xtream-smoke"
-IPTVNATOR_PERF_OUTPUT_DIR="$perf_output" \
-IPTVNATOR_PERF_VARIANT=smoke \
-IPTVNATOR_PERF_SMOKE=1 \
-IPTVNATOR_PERF_CDP_PORT=9322 \
+ECHO_TV_PERF_OUTPUT_DIR="$perf_output" \
+ECHO_TV_PERF_VARIANT=smoke \
+ECHO_TV_PERF_SMOKE=1 \
+ECHO_TV_PERF_CDP_PORT=9322 \
 NX_TASKS_RUNNER_DYNAMIC_OUTPUT=false \
 pnpm nx run electron-backend-e2e:benchmark-xtream --skip-nx-cache
 ```
@@ -1003,8 +1003,8 @@ and request authorization rather than killing it.
 
 ```bash
 perf_output="$PWD/dist/performance/$(date -u +%Y%m%dT%H%M%SZ)-xtream"
-IPTVNATOR_PERF_OUTPUT_DIR="$perf_output" \
-IPTVNATOR_PERF_VARIANT=baseline \
+ECHO_TV_PERF_OUTPUT_DIR="$perf_output" \
+ECHO_TV_PERF_VARIANT=baseline \
 NX_TASKS_RUNNER_DYNAMIC_OUTPUT=false \
 pnpm nx run electron-backend-e2e:benchmark-xtream --skip-nx-cache
 ```

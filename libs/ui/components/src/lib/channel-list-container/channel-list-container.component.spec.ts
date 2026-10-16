@@ -11,20 +11,20 @@ import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { BehaviorSubject, firstValueFrom, of, Subject } from 'rxjs';
-import { EpgService } from '@iptvnator/epg/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { ChannelActions, PlaylistActions } from '@iptvnator/m3u-state';
+import { EpgService } from '@echo-tv/epg/data-access';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { ChannelActions, PlaylistActions } from '@echo-tv/m3u-state';
 import {
     ParentalLockService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     Channel,
     EpgProgram,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { ChannelListContainerComponent } from './channel-list-container.component';
 
 function createChannel(id: string, url: string): Channel {

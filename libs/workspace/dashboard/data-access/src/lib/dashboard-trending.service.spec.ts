@@ -3,9 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import {
     CatalogTitleMatchService,
     TmdbEnrichmentService,
-} from '@iptvnator/services';
-import type { TmdbTrendingEntry } from '@iptvnator/services';
-import { CatalogTitleMatch } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import type { TmdbTrendingEntry } from '@echo-tv/services';
+import { CatalogTitleMatch } from '@echo-tv/shared/interfaces';
 import { DashboardTrendingService } from './dashboard-trending.service';
 
 describe('DashboardTrendingService', () => {

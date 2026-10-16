@@ -2,8 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 import { nxE2EPreset } from '@nx/playwright/preset';
 import { workspaceRoot } from '@nx/devkit';
 
-const isStaticPwaE2E = process.env['IPTVNATOR_E2E_STATIC_PWA'] === '1';
-const staticPwaPort = process.env['IPTVNATOR_E2E_STATIC_PORT'] ?? '4300';
+const isStaticPwaE2E = process.env['ECHO_TV_E2E_STATIC_PWA'] === '1';
+const staticPwaPort = process.env['ECHO_TV_E2E_STATIC_PORT'] ?? '4300';
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL =
     process.env['BASE_URL'] ||
@@ -99,7 +99,7 @@ export default defineConfig({
                 PORT: webBackendPort,
                 CLIENT_URL: 'http://localhost:4200',
                 BACKEND_URL: '/api',
-                IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS: '1',
+                ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS: '1',
                 TSX_TSCONFIG_PATH: 'tsconfig.base.json',
             },
             url: `http://localhost:${webBackendPort}/health`,

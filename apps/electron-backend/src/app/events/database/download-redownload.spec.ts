@@ -20,7 +20,7 @@ async function setup(options: SetupOptions = {}) {
                   requestHeaders: JSON.stringify({
                       Authorization: 'not-allowed',
                       Referer: 'https://example.test/',
-                      'User-Agent': 'IPTVnator',
+                      'User-Agent': 'ECHO TV',
                   }),
                   status: 'completed',
                   url: 'https://example.test/movie.mp4',
@@ -69,7 +69,7 @@ async function setup(options: SetupOptions = {}) {
     const enqueueDownload = jest.fn();
     const proof = { version: 1, phase: 'transfer' };
     const removeJournaledCatchupPartial = jest.fn((_path, _proof, record) =>
-        record('/downloads/.iptvnator-cleanup-test/entry')
+        record('/downloads/.echo-tv-cleanup-test/entry')
     );
     const recordArchiveCleanupPath = jest.fn();
 
@@ -131,7 +131,7 @@ describe('redownload missing completed file', () => {
             filePath: '/downloads/movie.mp4',
             headers: {
                 Referer: 'https://example.test/',
-                'User-Agent': 'IPTVnator',
+                'User-Agent': 'ECHO TV',
             },
             id: 42,
             resumeValidator: null,

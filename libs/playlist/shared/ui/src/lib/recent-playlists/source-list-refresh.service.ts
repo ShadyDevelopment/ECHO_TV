@@ -2,8 +2,8 @@ import { Injectable, inject, signal } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     DatabaseService,
     DataService,
@@ -12,12 +12,12 @@ import {
     PlaylistRefreshService,
     RuntimeCapabilitiesService,
     SourceActivityService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     PLAYLIST_UPDATE,
     PlaylistMeta,
     PlaylistRefreshEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     XtreamRefreshFlowService,
     type XtreamRefreshProgressReporter,

@@ -4,7 +4,7 @@ import {
     XTREAM_MAIN_PERFORMANCE_PHASE_EVENT_CHANNEL,
     type PerformancePhaseEvent,
     type XtreamMainPerformancePhase,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { channel } from 'node:diagnostics_channel';
 import {
     applyConfiguredTransforms,
@@ -44,13 +44,13 @@ function expectFailedResponsePhases(events: MainPhaseEvent[]): void {
 }
 
 describe('XtreamEvents failed-response performance phases', () => {
-    const originalCaptureValue = process.env['IPTVNATOR_PERF_CAPTURE'];
+    const originalCaptureValue = process.env['ECHO_TV_PERF_CAPTURE'];
 
     afterEach(() => {
         if (originalCaptureValue === undefined) {
-            delete process.env['IPTVNATOR_PERF_CAPTURE'];
+            delete process.env['ECHO_TV_PERF_CAPTURE'];
         } else {
-            process.env['IPTVNATOR_PERF_CAPTURE'] = originalCaptureValue;
+            process.env['ECHO_TV_PERF_CAPTURE'] = originalCaptureValue;
         }
     });
 

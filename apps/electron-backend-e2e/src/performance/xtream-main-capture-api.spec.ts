@@ -10,7 +10,7 @@ import {
     type XtreamMainCaptureTransport,
 } from './m3u-refresh-main-capture';
 
-const STATE_KEY = '__iptvnatorM3uRefreshMainCapture';
+const STATE_KEY = '__echo-tvM3uRefreshMainCapture';
 const target = globalThis as unknown as Record<string, unknown>;
 
 function electronApp(): ElectronApplication {

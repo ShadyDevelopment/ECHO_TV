@@ -7,17 +7,17 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormBuilder } from '@angular/forms';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
 import {
     EpgSourceReconciliationError,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     CoverSize,
     EpgViewMode,
     Language,
     Theme,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SettingsSnackbarService } from './settings-snackbar.service';
 import { SettingsStore } from '../services/settings-store.service';
 import { SettingsService } from '../services/settings.service';

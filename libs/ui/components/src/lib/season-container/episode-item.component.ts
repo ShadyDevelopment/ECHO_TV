@@ -16,11 +16,11 @@ import {
     getPortalPlaybackProgressPercent,
     isPortalPlaybackInProgress,
     isPortalPlaybackWatched,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { episodeTimeLabel, formatEpisodeAirDate } from './episode-meta.util';
 import { SeasonDownloadPresenter } from './season-download-presenter';
 import { resolveEpisodeInfo } from './season-watch-toggle.util';

@@ -15,18 +15,18 @@ import {
     normalizeStoredStalkerAccountInfo,
     StalkerAccountInfoService,
     StalkerAccountSnapshot,
-} from '@iptvnator/portal/stalker/data-access';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/stalker/data-access';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     DataService,
     PlaylistsService,
     resetHostConnectivityGuard,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     isHostConnectivityFastFailMessage,
     PlaylistMeta,
     type StalkerAccountInfoDialogData,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 type AccountLoadState = 'loading' | 'ready' | 'error';
 

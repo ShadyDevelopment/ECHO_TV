@@ -7,10 +7,10 @@ import {
     selectActivePlaylistId,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import { Subject } from 'rxjs';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import {
     PlaylistContextFacade,
     PlaylistRouteContext,

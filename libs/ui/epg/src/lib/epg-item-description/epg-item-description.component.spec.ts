@@ -4,8 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { MockModule } from 'ng-mocks';
-import { SettingsStore } from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { EpgItemDescriptionComponent } from './epg-item-description.component';
 
 describe('EpgItemDescriptionComponent', () => {

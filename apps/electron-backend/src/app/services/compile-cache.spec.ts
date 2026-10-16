@@ -12,8 +12,8 @@ import {
     type CompileCacheModule,
 } from './compile-cache';
 
-const OUTCOME_KEY = Symbol.for('iptvnator.compileCacheOutcome');
-const userData = join('/profiles', 'iptvnator');
+const OUTCOME_KEY = Symbol.for('echo-tv.compileCacheOutcome');
+const userData = join('/profiles', 'echo-tv');
 const defaultDirectory = join(userData, 'v8-compile-cache');
 
 function createModule(
@@ -45,19 +45,19 @@ describe('startup compile cache guard', () => {
             );
         });
 
-        it('prefers IPTVNATOR_COMPILE_CACHE_DIR and never asks for userData then', () => {
+        it('prefers ECHO_TV_COMPILE_CACHE_DIR and never asks for userData then', () => {
             const userDataPath = jest.fn(() => userData);
 
             const directory = resolveCompileCacheDirectory(
-                { [COMPILE_CACHE_DIR_ENV]: '  /tmp/iptvnator-cache  ' },
+                { [COMPILE_CACHE_DIR_ENV]: '  /tmp/echo-tv-cache  ' },
                 userDataPath
             );
 
-            expect(directory).toBe('/tmp/iptvnator-cache');
+            expect(directory).toBe('/tmp/echo-tv-cache');
             expect(userDataPath).not.toHaveBeenCalled();
         });
 
-        it('ignores a blank IPTVNATOR_COMPILE_CACHE_DIR', () => {
+        it('ignores a blank ECHO_TV_COMPILE_CACHE_DIR', () => {
             expect(
                 resolveCompileCacheDirectory(
                     { [COMPILE_CACHE_DIR_ENV]: '   ' },
@@ -68,7 +68,7 @@ describe('startup compile cache guard', () => {
 
         it('stays inside the E2E data directory, mirroring the userData override', () => {
             const directory = resolveCompileCacheDirectory(
-                { IPTVNATOR_E2E_DATA_DIR: '/tmp/e2e-run' },
+                { ECHO_TV_E2E_DATA_DIR: '/tmp/e2e-run' },
                 () => userData
             );
 
@@ -80,7 +80,7 @@ describe('startup compile cache guard', () => {
 
     describe('kill switch', () => {
         it.each(['1', 'true', 'yes', 'ON', ' on '])(
-            'honours IPTVNATOR_DISABLE_COMPILE_CACHE=%j without touching node:module',
+            'honours ECHO_TV_DISABLE_COMPILE_CACHE=%j without touching node:module',
             (value) => {
                 const module = createModule();
                 const userDataPath = jest.fn(() => userData);
@@ -101,7 +101,7 @@ describe('startup compile cache guard', () => {
         );
 
         it.each(['', '0', 'false', 'off'])(
-            'keeps the cache on for IPTVNATOR_DISABLE_COMPILE_CACHE=%j',
+            'keeps the cache on for ECHO_TV_DISABLE_COMPILE_CACHE=%j',
             (value) => {
                 expect(
                     isCompileCacheDisabled({

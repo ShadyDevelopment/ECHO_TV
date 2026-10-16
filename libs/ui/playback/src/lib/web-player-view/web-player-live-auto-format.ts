@@ -9,11 +9,11 @@ import {
 import {
     type PlaybackDiagnostic,
     resolvePlaybackUrlSourceKind,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import {
     type ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /** One source-format attempt per mounted logical live session, never an engine switch. */
 export class WebPlayerLiveAutoFormat {

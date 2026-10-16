@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DataService, withSourceProbe } from '@iptvnator/services';
+import { DataService, withSourceProbe } from '@echo-tv/services';
 import {
     accountHealth,
     isFullStalkerPortalPlaylist,
@@ -8,8 +8,8 @@ import {
     SourceProbeContext,
     sourceHealthUnknown,
     isStalkerAuthFailureResponse,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     StalkerSessionService,
     getStalkerPortalIdentityFromPlaylist,

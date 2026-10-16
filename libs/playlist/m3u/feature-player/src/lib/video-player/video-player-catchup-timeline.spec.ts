@@ -8,21 +8,21 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { MockPipe } from 'ng-mocks';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { EpgService } from '@iptvnator/epg/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { PORTAL_EXTERNAL_PLAYBACK } from '@iptvnator/portal/shared/util';
+import { EpgService } from '@echo-tv/epg/data-access';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { PORTAL_EXTERNAL_PLAYBACK } from '@echo-tv/portal/shared/util';
 import {
     DataService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
     TmdbEnrichmentService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     EpgProgram,
     Settings,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { VideoPlayerComponent as VideoPlayerComponentInstance } from './video-player.component';
 import {
     activeEpgProgram,

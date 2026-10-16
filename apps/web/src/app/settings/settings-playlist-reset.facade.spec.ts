@@ -5,13 +5,13 @@ import {
     PlaylistActions,
     selectAllPlaylistsMeta,
     selectIsEpgAvailable,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import {
     ParentalLockService,
     DatabaseService,
     PlaylistsService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';

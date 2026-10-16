@@ -1,4 +1,4 @@
-name: 'IPTVnator CodeQL config'
+name: 'ECHO TV CodeQL config'
 
 # The mock servers are development/E2E fixtures. They bind to loopback by
 # default (HOST=0.0.0.0 is an explicit opt-in for pointing a phone/STB at

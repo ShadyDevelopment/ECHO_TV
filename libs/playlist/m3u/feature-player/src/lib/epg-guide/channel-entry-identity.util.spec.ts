@@ -1,4 +1,4 @@
-import { Channel } from '@iptvnator/shared/interfaces';
+import { Channel } from '@echo-tv/shared/interfaces';
 import { isSameChannelEntry } from './channel-entry-identity.util';
 
 function entry(overrides: Partial<Channel> = {}): Channel {

@@ -225,7 +225,7 @@ recent route.
 - A filesystem inspection error is treated as `missing` and does not crash or
   reject the entire list.
 - A recovery race in which the file reappears is resolved in favor of the
-  existing file; IPTVnator never overwrites it.
+  existing file; ECHO TV never overwrites it.
 - A deleted file detected by Play or Reveal shows the existing file-not-found
   feedback and refreshes the list.
 - A network, folder, or queue error during Download again uses the existing

@@ -111,7 +111,7 @@ const COMPONENT_IMPORTS = {
 
 const SCREENSHOT_ALERT = [
     '<Alert type="info" title="About the screenshots">',
-    "The screenshots and posters shown here come from the project's own mock servers with fictional catalog data. IPTVnator is a pure media player — it does not provide, host, bundle, or distribute any streams, playlists, or media content. You bring your own sources; the app just plays them.",
+    "The screenshots and posters shown here come from the project's own mock servers with fictional catalog data. ECHO TV is a pure media player — it does not provide, host, bundle, or distribute any streams, playlists, or media content. You bring your own sources; the app just plays them.",
     '</Alert>',
 ].join('\n');
 
@@ -167,7 +167,7 @@ function renderSlider(note, slug) {
     const images = ['dark', 'light']
         .map(
             (theme) =>
-                `        {\n            src: '/iptvnator/blog/${slug}/screenshots/${note.screenshot}-${theme}.png',\n            alt: '${alt}',\n        },`
+                `        {\n            src: '/echo-tv/blog/${slug}/screenshots/${note.screenshot}-${theme}.png',\n            alt: '${alt}',\n        },`
         )
         .join('\n');
 
@@ -283,7 +283,7 @@ function renderLinkCards(version, previousVersion) {
     cards.push({
         label: 'All Releases',
         href: `${REPO_URL}/releases`,
-        hint: 'Browse every IPTVnator release.',
+        hint: 'Browse every ECHO TV release.',
         icon: 'github',
     });
 
@@ -320,8 +320,8 @@ function renderFrontmatter(shortVersion, slug, date) {
         'description: TODO — one sentence naming the two or three headline changes.',
         'featured: true',
         `pubDate: ${date}`,
-        'author: 4gray',
-        `heroImage: /iptvnator/blog/${slug}/hero.jpg`,
+        'author: Antonio Martinovic @ ShadyDevelopment',
+        `heroImage: /echo-tv/blog/${slug}/hero.jpg`,
         'tags:',
         '    - release',
         '    - release-notes',

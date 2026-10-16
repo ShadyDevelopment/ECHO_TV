@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { SOURCE_TYPE_ICONS } from '@iptvnator/shared/interfaces';
+import { SOURCE_TYPE_ICONS } from '@echo-tv/shared/interfaces';
 
 export interface SettingsDeleteAllPlaylistsDialogData {
     summary: {

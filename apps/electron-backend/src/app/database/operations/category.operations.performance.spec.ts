@@ -1,5 +1,5 @@
 import type { AppDatabase } from '../database.types';
-import { XTREAM_DATABASE_PERFORMANCE_PHASE } from '@iptvnator/shared/interfaces';
+import { XTREAM_DATABASE_PERFORMANCE_PHASE } from '@echo-tv/shared/interfaces';
 import { getCategories, saveCategories } from './category.operations';
 import { createRecordingOperationPhaseCapture } from './performance-phase-capture.test-helpers';
 

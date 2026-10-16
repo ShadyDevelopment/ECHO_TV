@@ -1,7 +1,7 @@
 import type { ElectronApplication } from '@playwright/test';
 
 export const DATABASE_REQUEST_IDENTITY_CAPTURE_STATE_KEY =
-    '__iptvnatorM3uRefreshDatabaseRequestIdentityCapture';
+    '__echo-tvM3uRefreshDatabaseRequestIdentityCapture';
 
 export interface DatabaseRequestIdentity {
     ipcCallId: number | null;
@@ -63,7 +63,7 @@ export function installDatabaseRequestIdentityCaptureInMain(
         return;
     }
 
-    const markerChannel = 'IPTVNATOR_PERF_CAPTURE_MARKER';
+    const markerChannel = 'ECHO_TV_PERF_CAPTURE_MARKER';
     const markerMethodToOperation: Readonly<Record<string, string>> = {
         dbGetAppPlaylist: 'DB_GET_APP_PLAYLIST',
         dbUpsertAppPlaylist: 'DB_UPSERT_APP_PLAYLIST',

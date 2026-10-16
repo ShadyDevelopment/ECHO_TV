@@ -1,9 +1,9 @@
 ---
-name: iptvnator-nx-architecture
-description: Use when deciding where IPTVnator code belongs, creating or moving Nx projects, changing scoped aliases or tags, editing lint targets, or validating module boundaries.
+name: echo-tv-nx-architecture
+description: Use when deciding where ECHO TV code belongs, creating or moving Nx projects, changing scoped aliases or tags, editing lint targets, or validating module boundaries.
 ---
 
-# IPTVnator Nx Architecture
+# ECHO TV Nx Architecture
 
 ## Discover Before Deciding
 

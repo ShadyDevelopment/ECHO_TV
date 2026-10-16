@@ -58,7 +58,7 @@ describe('EmbeddedMpvFrameCopyAdapter Linux loader environment', () => {
     const createSession = () => createFrameCopySession(adapter);
 
     it('uses a sanitized system environment for the real helper session', () => {
-        ({ adapter } = createFrameCopyAdapter('/opt/iptvnator/native/helper', {
+        ({ adapter } = createFrameCopyAdapter('/opt/echo-tv/native/helper', {
             runtimeMode: 'system',
             environment: {
                 PATH: '/usr/bin',
@@ -81,7 +81,7 @@ describe('EmbeddedMpvFrameCopyAdapter Linux loader environment', () => {
     });
 
     it('keeps trusted Snap GL roots ahead of generic Snap libraries for playback', () => {
-        const snapRoot = '/snap/iptvnator/42';
+        const snapRoot = '/snap/echo-tv/42';
         const nativeDir = path.join(
             snapRoot,
             'resources',

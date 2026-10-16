@@ -25,7 +25,7 @@ interface TestResponse {
     statusCode: number | undefined;
 }
 
-const INDEX_BODY = Buffer.from('<main>IPTVnator remote control</main>');
+const INDEX_BODY = Buffer.from('<main>ECHO TV remote control</main>');
 const ASSETS = {
     '/app.js': {
         body: Buffer.from('globalThis.remoteControlLoaded = true;'),
@@ -129,7 +129,7 @@ describe('HttpServer', () => {
         jest.spyOn(console, 'log').mockImplementation(() => undefined);
 
         capturedServers = [];
-        tempRoot = mkdtempSync(join(tmpdir(), 'iptvnator-http-server-'));
+        tempRoot = mkdtempSync(join(tmpdir(), 'echo-tv-http-server-'));
         distPath = join(tempRoot, 'static', 'app');
         mkdirSync(distPath, { recursive: true });
         writeFileSync(join(distPath, 'index.html'), INDEX_BODY);

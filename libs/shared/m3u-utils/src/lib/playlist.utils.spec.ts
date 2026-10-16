@@ -1,4 +1,4 @@
-import { Channel, Playlist } from '@iptvnator/shared/interfaces';
+import { Channel, Playlist } from '@echo-tv/shared/interfaces';
 import {
     aggregateFavoriteChannels,
     createPlaylistObject,

@@ -4,8 +4,8 @@ import {
     PortalStatusService,
     SettingsStore,
     withSourceProbe,
-} from '@iptvnator/services';
-import { StalkerSourceHealthService } from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/services';
+import { StalkerSourceHealthService } from '@echo-tv/portal/stalker/data-access';
 import {
     PlaylistMeta,
     SourceProbeContext,
@@ -15,7 +15,7 @@ import {
     accountHealth,
     resolveXtreamPortalExpiration,
     XtreamPortalStatusResponseLike,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class SourceHealthProbesService {

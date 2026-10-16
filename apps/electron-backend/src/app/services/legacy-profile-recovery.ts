@@ -12,7 +12,7 @@ export async function readLegacyProfilePlaylists(
     profile: string
 ): Promise<Record<string, unknown>[]> {
     const snapshot = await mkdtemp(
-        join(tmpdir(), 'iptvnator-legacy-recovery-')
+        join(tmpdir(), 'echo-tv-legacy-recovery-')
     );
     let reader: BrowserWindow | undefined;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -35,7 +35,7 @@ export async function readLegacyProfilePlaylists(
         const read = reader.loadFile(index).then(() =>
             reader!.webContents
                 .executeJavaScript(`new Promise((resolve, reject) => {
-            const request = indexedDB.open('iptvnator', 1);
+            const request = indexedDB.open('echo-tv', 1);
             request.onupgradeneeded = () => { request.transaction.abort(); reject(new Error('Legacy database is absent')); };
             request.onerror = () => reject(new Error('Legacy database could not be opened'));
             request.onsuccess = () => {
@@ -81,7 +81,7 @@ export function recoverLegacyProfile(): Promise<void> {
                 type: 'error',
                 title: 'Legacy recovery could not finish',
                 message:
-                    'Your current sources are still available. Close the old IPTVnator version and restart to retry. The original data was retained.',
+                    'Your current sources are still available. Close the old ECHO TV version and restart to retry. The original data was retained.',
             })
             .then(() => undefined);
     }));
@@ -89,7 +89,7 @@ export function recoverLegacyProfile(): Promise<void> {
 
 async function recover(): Promise<void> {
     const root =
-        process.env.IPTVNATOR_E2E_DATA_DIR?.trim() || app.getPath('appData');
+        process.env.ECHO_TV_E2E_DATA_DIR?.trim() || app.getPath('appData');
     const legacy = join(root, 'electron-backend');
     if (resolve(legacy) === resolve(app.getPath('userData'))) return;
     try {
@@ -110,9 +110,9 @@ async function recover(): Promise<void> {
         return;
     const { response } = await dialog.showMessageBox({
         type: 'question',
-        title: 'Recover legacy IPTVnator sources',
-        message: 'An older IPTVnator profile was found.',
-        detail: 'Recover all missing sources from this profile? This can also restore sources you intentionally deleted after upgrading. Existing sources and current settings will be kept. The original profile will not be erased. Close the old IPTVnator version before continuing.',
+        title: 'Recover legacy ECHO TV sources',
+        message: 'An older ECHO TV profile was found.',
+        detail: 'Recover all missing sources from this profile? This can also restore sources you intentionally deleted after upgrading. Existing sources and current settings will be kept. The original profile will not be erased. Close the old ECHO TV version before continuing.',
         buttons: ['Keep current sources', 'Recover all missing sources'],
         defaultId: 0,
         cancelId: 0,

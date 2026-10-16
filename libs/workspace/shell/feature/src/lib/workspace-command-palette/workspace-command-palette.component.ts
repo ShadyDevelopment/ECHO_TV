@@ -20,8 +20,8 @@ import {
     WorkspaceCommandGroup,
     WorkspaceCommandSelection,
     WorkspaceResolvedCommandItem,
-} from '@iptvnator/portal/shared/util';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 export interface WorkspaceCommandPaletteData {
     commands: WorkspaceResolvedCommandItem[];

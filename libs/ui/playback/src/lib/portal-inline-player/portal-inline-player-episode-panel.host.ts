@@ -2,7 +2,7 @@ import { computed, type Signal, signal, type TemplateRef } from '@angular/core';
 import type {
     PlaybackPositionData,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type {
     FullscreenChannelPanelContext,
     FullscreenChannelPanelHost,

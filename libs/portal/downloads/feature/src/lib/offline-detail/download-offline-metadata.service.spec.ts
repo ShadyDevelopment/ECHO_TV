@@ -10,13 +10,13 @@ import {
     type TmdbMovieDetails,
     type TmdbTvDetails,
     type XtreamContent,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import type {
     DownloadMetadataSnapshot,
     Playlist,
     StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
-import type { DownloadItem } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import type { DownloadItem } from '@echo-tv/services';
 import type { DownloadOfflineDetail } from './download-offline-detail.viewmodel';
 import { DownloadOfflineMetadataService } from './download-offline-metadata.service';
 

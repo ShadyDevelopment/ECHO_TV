@@ -12,7 +12,7 @@ heuristics.
 The locked workspace installs mpegts.js `1.8.0`. Its public player error event
 has three arguments: error type, error detail, and an information value. The
 runtime exports exact `ErrorTypes` and `ErrorDetails` constants. The current
-IPTVnator classifier instead lowercases the arguments, serializes arbitrary
+ECHO TV classifier instead lowercases the arguments, serializes arbitrary
 `info`, and searches the resulting text for network, access, codec, format,
 MSE, and early-EOF fragments. This can misdiagnose failures, retain provider
 text, and miss reliable facts such as the HTTP status carried by
@@ -113,7 +113,7 @@ Error details:
 The package also exports loader-only `EarlyEof`, but it is not a public player
 `ErrorDetails` value. mpegts.js attempts its finite-source reconnect internally
 and exposes only `UnrecoverableEarlyEof` through the player error event when
-recovery cannot complete. IPTVnator must not create a terminal diagnostic for
+recovery cannot complete. ECHO TV must not create a terminal diagnostic for
 the internal recoverable value.
 
 A contract test compares the allowlist and package version with the real
@@ -187,14 +187,14 @@ borrowing meaning from only half of the public contract.
 
 ## Lifecycle And Disposition
 
-The public player `ERROR` event is terminal for IPTVnator's diagnostic
+The public player `ERROR` event is terminal for ECHO TV's diagnostic
 boundary. The installed engine handles recoverable finite-source early EOF
 inside `IOController`; only failed recovery becomes
 `UnrecoverableEarlyEof` and reaches the player event. Network, demux, and MSE
 error paths likewise reach the player event after the active engine operation
 has failed.
 
-IPTVnator does not subscribe to internal recovery events or duplicate engine
+ECHO TV does not subscribe to internal recovery events or duplicate engine
 retry logic. All accepted evidence therefore records `disposition=terminal`.
 
 ## User-Facing Classification

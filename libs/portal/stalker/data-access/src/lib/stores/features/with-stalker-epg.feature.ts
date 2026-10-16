@@ -7,19 +7,19 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     DataService,
     EpgSourceSettingsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     buildStalkerEpgMappingKey,
     EpgItem,
     EpgProgram,
     StalkerPortalActions,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { normalizeStalkerEntityId } from '../../stalker-vod.utils';
 import { StalkerPortalRepairService } from '../../stalker-portal-repair.service';
 import { StalkerSessionService } from '../../stalker-session.service';

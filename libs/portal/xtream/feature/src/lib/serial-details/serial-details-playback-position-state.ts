@@ -2,13 +2,13 @@ import { signal } from '@angular/core';
 import {
     stampPlaybackPositionNow,
     type SeriesResumeTarget,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import type {
     ExternalPlayerSession,
     PlaybackPositionData,
     ResolvedPortalPlayback,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { XtreamSerieDetailsView } from './serial-details-playback.service';
 
 interface ResumeEpisodeRequest {

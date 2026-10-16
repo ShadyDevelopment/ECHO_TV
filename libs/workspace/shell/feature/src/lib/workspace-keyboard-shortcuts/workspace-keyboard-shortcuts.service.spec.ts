@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import { WorkspaceKeyboardShortcutsDialogData } from './workspace-keyboard-shortcuts-dialog.component';
 import { WorkspaceKeyboardShortcutsService } from './workspace-keyboard-shortcuts.service';
-import { WorkspaceShellContextDrawerService } from '@iptvnator/workspace/shell/util';
+import { WorkspaceShellContextDrawerService } from '@echo-tv/workspace/shell/util';
 
 describe('WorkspaceKeyboardShortcutsService', () => {
     let afterClosed$: Subject<void>;

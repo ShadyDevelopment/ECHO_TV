@@ -15,7 +15,7 @@ jest.mock('@faker-js/faker', () => ({
 
 const TOKEN = 'delay-abort-token';
 const AUTH_HEADERS = {
-    'x-iptvnator-performance-token': TOKEN,
+    'x-echo-tv-performance-token': TOKEN,
 };
 
 describe('Xtream performance delay cancellation', () => {

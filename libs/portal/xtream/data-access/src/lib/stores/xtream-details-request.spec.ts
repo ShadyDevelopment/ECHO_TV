@@ -1,4 +1,4 @@
-import { XtreamVodStream } from '@iptvnator/shared/interfaces';
+import { XtreamVodStream } from '@echo-tv/shared/interfaces';
 import { resolveXtreamVodPlaybackSource } from '../services/xtream-vod-playback-source';
 import {
     createXtreamDetailsRequestGuard,

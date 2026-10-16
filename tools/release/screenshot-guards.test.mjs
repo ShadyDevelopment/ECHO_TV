@@ -335,7 +335,7 @@ describe('network policy handed to the main process', () => {
         assert.ok(policy.hosts.includes('127.0.0.1'));
         assert.ok(policy.protocols.includes('http:'));
         assert.deepEqual(policy.stubPrefixes, [
-            'https://api.github.com/repos/4gray/iptvnator/releases',
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases',
         ]);
     });
 
@@ -385,10 +385,10 @@ describe('G2 — environment allowlist', () => {
                 XDG_RUNTIME_DIR: '/run/user/1000',
                 TMDB_API_KEY: 'leaky-secret',
                 HTTPS_PROXY: 'http://proxy:8080',
-                IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT: '1',
+                ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT: '1',
                 AWS_SECRET_ACCESS_KEY: 'nope',
             },
-            { NODE_ENV: 'test', IPTVNATOR_E2E_DATA_DIR: '/tmp/x' }
+            { NODE_ENV: 'test', ECHO_TV_E2E_DATA_DIR: '/tmp/x' }
         );
 
         assert.deepEqual(env, {
@@ -397,7 +397,7 @@ describe('G2 — environment allowlist', () => {
             LC_ALL: 'en_US.UTF-8',
             XDG_RUNTIME_DIR: '/run/user/1000',
             NODE_ENV: 'test',
-            IPTVNATOR_E2E_DATA_DIR: '/tmp/x',
+            ECHO_TV_E2E_DATA_DIR: '/tmp/x',
         });
     });
 
@@ -459,7 +459,7 @@ describe('G3 — network gate', () => {
 describe('G3 — local stubs', () => {
     it('stubs the GitHub releases update check with an empty payload', () => {
         const stub = stubbedResponseFor(
-            'https://api.github.com/repos/4gray/iptvnator/releases?per_page=100'
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases?per_page=100'
         );
 
         assert.deepEqual(stub, { body: '[]', contentType: 'application/json' });
@@ -467,7 +467,7 @@ describe('G3 — local stubs', () => {
 
     it('stubs nothing else', () => {
         for (const url of [
-            'https://api.github.com/repos/4gray/iptvnator/issues',
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/issues',
             'https://api.github.com/repos/other/repo/releases',
             'https://api.themoviedb.org/3/trending/all/week',
             'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
@@ -538,9 +538,9 @@ describe('G1 — real database untouched', () => {
 
     it('reports no violation for an untouched directory', () => {
         const dir = tempDbDir({
-            'iptvnator.db': 'main',
-            'iptvnator.db-wal': 'wal',
-            'iptvnator.db-shm': 'shm',
+            'echo-tv.db': 'main',
+            'echo-tv.db-wal': 'wal',
+            'echo-tv.db-shm': 'shm',
         });
 
         assert.equal(
@@ -560,45 +560,45 @@ describe('G1 — real database untouched', () => {
     });
 
     it('detects a write that only lands in the WAL sidecar', () => {
-        // The exact hole this replaced: hashing iptvnator.db alone missed
+        // The exact hole this replaced: hashing echo-tv.db alone missed
         // writes that SQLite parks in -wal until a checkpoint.
-        const dir = tempDbDir({ 'iptvnator.db': 'main', 'iptvnator.db-wal': 'w' });
+        const dir = tempDbDir({ 'echo-tv.db': 'main', 'echo-tv.db-wal': 'w' });
         const before = snapshotDatabaseState(dir);
-        writeFileSync(path.join(dir, 'iptvnator.db-wal'), 'w+more');
+        writeFileSync(path.join(dir, 'echo-tv.db-wal'), 'w+more');
 
         assert.match(
             compareDatabaseStates(before, snapshotDatabaseState(dir)),
-            /iptvnator\.db-wal was modified/
+            /echo-tv\.db-wal was modified/
         );
     });
 
     it('detects a bare touch of the main database', () => {
-        const dir = tempDbDir({ 'iptvnator.db': 'same-bytes' });
+        const dir = tempDbDir({ 'echo-tv.db': 'same-bytes' });
         const before = snapshotDatabaseState(dir);
         utimesSync(
-            path.join(dir, 'iptvnator.db'),
+            path.join(dir, 'echo-tv.db'),
             new Date(),
             new Date(Date.now() + 5_000)
         );
 
         assert.match(
             compareDatabaseStates(before, snapshotDatabaseState(dir)),
-            /iptvnator\.db was modified/
+            /echo-tv\.db was modified/
         );
     });
 
     it('detects added and removed sidecars', () => {
-        const dir = tempDbDir({ 'iptvnator.db': 'main' });
+        const dir = tempDbDir({ 'echo-tv.db': 'main' });
         const before = snapshotDatabaseState(dir);
-        writeFileSync(path.join(dir, 'iptvnator.db-wal'), 'new');
+        writeFileSync(path.join(dir, 'echo-tv.db-wal'), 'new');
         const after = snapshotDatabaseState(dir);
 
-        assert.match(compareDatabaseStates(before, after), /gained iptvnator\.db-wal/);
-        assert.match(compareDatabaseStates(after, before), /lost iptvnator\.db-wal/);
+        assert.match(compareDatabaseStates(before, after), /gained echo-tv\.db-wal/);
+        assert.match(compareDatabaseStates(after, before), /lost echo-tv\.db-wal/);
     });
 
     it('detects a directory that appears during the run', () => {
-        const dir = tempDbDir({ 'iptvnator.db': 'x' });
+        const dir = tempDbDir({ 'echo-tv.db': 'x' });
 
         assert.match(
             compareDatabaseStates({ exists: false, entries: {} }, snapshotDatabaseState(dir)),
@@ -610,12 +610,12 @@ describe('G1 — real database untouched', () => {
         // Regression guard: the previous implementation read the whole file
         // into memory and swallowed the resulting failure as "absent",
         // silently disabling G1 against a 4 GB production database.
-        const dir = tempDbDir({ 'iptvnator.db': 'x' });
+        const dir = tempDbDir({ 'echo-tv.db': 'x' });
         const snapshot = snapshotDatabaseState(dir);
 
         assert.equal(snapshot.exists, true);
-        assert.ok(!('sha256' in snapshot.entries['iptvnator.db']));
-        assert.ok(snapshot.entries['iptvnator.db'].ino > 0);
+        assert.ok(!('sha256' in snapshot.entries['echo-tv.db']));
+        assert.ok(snapshot.entries['echo-tv.db'].ino > 0);
     });
 });
 
@@ -726,7 +726,7 @@ describe('external request verdict', () => {
         const violations = externalRequestViolations([
             'http://localhost:3211/player_api.php',
             'file:///dist/apps/web/index.html',
-            'https://api.github.com/repos/4gray/iptvnator/releases',
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases',
             'https://image.tmdb.org/t/p/w500/a.jpg',
             'https://image.tmdb.org/t/p/w500/a.jpg',
             'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',

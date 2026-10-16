@@ -89,7 +89,7 @@ source selection, settings, and engine lifecycle. It is rejected for v1.
 Create `libs/playback/util` as the pure playback-domain boundary:
 
 - Nx project name: `playback-util`;
-- path alias: `@iptvnator/playback/util`;
+- path alias: `@echo-tv/playback/util`;
 - tags: `scope:shared`, `domain:playback`, `type:util`;
 - public exports through `libs/playback/util/src/index.ts` only.
 
@@ -106,8 +106,8 @@ the pure Shaka evidence/classifier helpers from the Shaka area; the Shaka
 engine and video session remain in `ui-playback`. Engine components import the
 new alias instead of reaching back into UI-owned diagnostic paths.
 
-For one compatibility window, `@iptvnator/ui/playback` re-exports the public
-diagnostic contracts from `@iptvnator/playback/util`. Existing consumers can
+For one compatibility window, `@echo-tv/ui/playback` re-exports the public
+diagnostic contracts from `@echo-tv/playback/util`. Existing consumers can
 therefore migrate without deep imports or a flag day. New code imports the
 new alias directly, and the compatibility export can be removed in a later
 cleanup PR after all consumers have migrated.

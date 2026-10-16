@@ -1,7 +1,7 @@
 # Nx Workspace Boundaries
 
 This document records the current monorepo placement, tagging, and validation
-contract for IPTVnator. Nx discovery is the canonical project inventory; avoid
+contract for ECHO TV. Nx discovery is the canonical project inventory; avoid
 copying an exhaustive project list into documentation.
 
 ## Fresh Worktree Bootstrap and Discovery
@@ -88,7 +88,7 @@ Two third-party packages need scoped compatibility bridges in
 - `ngx-indexed-db@22.0.0` declares Angular `<22`, but its used API remains
   compatible. Its allowance is scoped to the exact Angular version and must be
   revalidated on upgrades. `apps/web-e2e/src/basic.e2e.ts` opens a historical
-  `iptvnator` v1 database, retains the `_id` key path, and checks reload
+  `echo-tv` v1 database, retains the `_id` key path, and checks reload
   persistence. The shared interfaces package declares the same library version.
   Remove the allowance when upstream includes the installed Angular version.
 
@@ -179,7 +179,7 @@ in `libs/playback/util` and receive browser capability checks as explicit
 probes.
 
 `libs/playback/util` is the `playback-util` Nx project and is imported through
-`@iptvnator/playback/util`. Its exact tags are `scope:shared`,
+`@echo-tv/playback/util`. Its exact tags are `scope:shared`,
 `domain:playback`, and `type:util`. It owns the public playback diagnostic,
 structured engine-evidence, source/engine-family, target-capability,
 content-session-key, and recovery-recommendation contracts and pure helpers.
@@ -194,11 +194,11 @@ other utility projects, including shared interface contracts, while
 session-local recovery actions.
 
 `libs/playback/data-access` is the `playback-data-access` Nx project,
-imported through `@iptvnator/playback/data-access` (tags `scope:shared`,
+imported through `@echo-tv/playback/data-access` (tags `scope:shared`,
 `domain:playback`, `type:data-access`). It owns renderer playback state that
 store, feature and player layers share — currently `PlaybackHistoryGate`,
 which holds "recently viewed" writes until playback is confirmed. It is kept
-out of `@iptvnator/services` on purpose: that barrel ships in the initial
+out of `@echo-tv/services` on purpose: that barrel ships in the initial
 bundle, and this project is only reached from lazy player and portal code.
 
 ## Project Tags
@@ -229,7 +229,7 @@ proper owner instead of weakening a constraint.
 
 `workspace-shell-util` is a deliberate path/tag exception:
 `libs/workspace/shell/util` is tagged `type:data-access` because it exports
-injectable services that depend on `@iptvnator/services`. The web app imports
+injectable services that depend on `@echo-tv/services`. The web app imports
 those services eagerly from `apps/web/src/app/app.routes.ts` without pulling
 the lazy workspace shell feature into the initial bundle.
 
@@ -239,19 +239,19 @@ Use scoped aliases from `tsconfig.base.json` and expose public imports through a
 library's `src/index.ts`. Do not introduce legacy bare aliases such as
 `services`, `components`, `shared-interfaces`, or `database`, and avoid deep
 imports unless a sub-entrypoint is explicitly configured. The configured
-sub-entrypoints are `@iptvnator/shared/interfaces/ipc-commands` and
-`@iptvnator/shared/interfaces/zoom-level`, both for the Electron preload: the
-`@iptvnator/shared/interfaces` barrel pulls in `ngx-indexed-db`, which the
+sub-entrypoints are `@echo-tv/shared/interfaces/ipc-commands` and
+`@echo-tv/shared/interfaces/zoom-level`, both for the Electron preload: the
+`@echo-tv/shared/interfaces` barrel pulls in `ngx-indexed-db`, which the
 preload bundle must not carry, so the preload only type-imports the barrel
 and value-imports those two dependency-free modules directly.
-`@iptvnator/workspace/shell/util/settings-search` exists for the opposite
+`@echo-tv/workspace/shell/util/settings-search` exists for the opposite
 reason: the main `workspace-shell-util` barrel is imported eagerly, and the
 settings search index must stay in the lazy settings and shell chunks.
-`@iptvnator/workspace/shell/util/settings-context` keeps
+`@echo-tv/workspace/shell/util/settings-context` keeps
 `SettingsContextService`, which only the lazy settings page and settings
 context panel use, out of that barrel for the same reason, and
-`@iptvnator/services/playlist-backup` keeps `PlaylistBackupService` (about
-22 KB, used only by the lazy settings page) out of the `@iptvnator/services`
+`@echo-tv/services/playlist-backup` keeps `PlaylistBackupService` (about
+22 KB, used only by the lazy settings page) out of the `@echo-tv/services`
 barrel.
 
 The web app's root shell (`app.component.ts`, `app.config.ts` and the services
@@ -259,16 +259,16 @@ they construct) is on the renderer's initial path, where a barrel costs its
 whole library: esbuild keeps every Angular component module a barrel
 re-exports, because their static definitions count as side effects (so do an
 `@Injectable` service's and a pipe's). Importing
-`WindowControlsComponent` and `DialogService` from `@iptvnator/ui/components`
+`WindowControlsComponent` and `DialogService` from `@echo-tv/ui/components`
 once put the channel lists, EPG views, `@angular/forms`, `date-fns` and the
 Stalker data layer into `main.js`. The root shell therefore uses file-level
-entries: `@iptvnator/ui/components/window-controls`,
-`@iptvnator/ui/components/confirm-dialog`,
-`@iptvnator/playlist/shared/ui/stalker-connection-editor`,
-`@iptvnator/playlist/shared/util/playlist-file-import` (the barrel would add
-`PlaylistContextFacade`) and `@iptvnator/pipes/date-format` (the barrel would
+entries: `@echo-tv/ui/components/window-controls`,
+`@echo-tv/ui/components/confirm-dialog`,
+`@echo-tv/playlist/shared/ui/stalker-connection-editor`,
+`@echo-tv/playlist/shared/util/playlist-file-import` (the barrel would add
+`PlaylistContextFacade`) and `@echo-tv/pipes/date-format` (the barrel would
 add `SafePipe`; the eager EPG progress panel uses it too), like the existing
-`@iptvnator/ui/epg/progress-panel`, and loads anything used only on demand
+`@echo-tv/ui/epg/progress-panel`, and loads anything used only on demand
 through a local file it imports dynamically (the Stalker connection editor,
 the release-notes dialog, the external-player info dialog, the parental-lock
 PIN dialog and the Stalker step of the parental-lock enforcement, which runs
@@ -282,9 +282,9 @@ code splitting places a module in the chunk shared by every entry point
 that reaches it, so a helper that only lazy routes use, but that an eager
 file can reach through a barrel's re-export, lands in an initial chunk even
 though tree shaking would drop it from a single bundle. The eager Xtream
-data layer and root shell therefore import `@iptvnator/portal/shared/util/logger`
-and `@iptvnator/portal/shared/util/tokens` (the portal DI tokens), not the
-`@iptvnator/portal/shared/util` barrel, whose navigation, keyboard-shortcut
+data layer and root shell therefore import `@echo-tv/portal/shared/util/logger`
+and `@echo-tv/portal/shared/util/tokens` (the portal DI tokens), not the
+`@echo-tv/portal/shared/util` barrel, whose navigation, keyboard-shortcut
 and download helpers (about 45 KB) belong to the lazy portal routes. A
 type-only import of a barrel uses `import type`, so it can never keep the
 barrel reachable. `renderer.initialBytes` in

@@ -56,7 +56,7 @@ import type { LaunchJourneyMeasurement } from '../performance/launch-journey-rec
  * scaffolding that journey does not need.
  */
 export const LAUNCH_JOURNEY_XTREAM_MOCK_PORT =
-    process.env['IPTVNATOR_JOURNEY_XTREAM_MOCK_PORT'] ?? '3231';
+    process.env['ECHO_TV_JOURNEY_XTREAM_MOCK_PORT'] ?? '3231';
 export const LAUNCH_JOURNEY_MOCK_ORIGIN = `http://127.0.0.1:${LAUNCH_JOURNEY_XTREAM_MOCK_PORT}`;
 /** Main-process hook loaded with `-r`; see journey-renderer-gate.cjs. */
 export const JOURNEY_RENDERER_GATE_PATH = resolve(
@@ -68,11 +68,11 @@ function launchOptions(
     env: Record<string, string> = {}
 ): LaunchElectronAppOptions {
     return {
-        env: { IPTVNATOR_TRACE_RENDERER_CONSOLE: '0', ...env },
+        env: { ECHO_TV_TRACE_RENDERER_CONSOLE: '0', ...env },
         environmentInheritance: 'runtime-only',
         omitEnvKeys: [
-            'IPTVNATOR_XTREAM_MOCK_CONTROL',
-            'IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN',
+            'ECHO_TV_XTREAM_MOCK_CONTROL',
+            'ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN',
         ],
     };
 }
@@ -103,7 +103,7 @@ export async function seedLaunchJourneyProfile(
     options: LaunchJourneySeedOptions = {}
 ): Promise<string> {
     const templateDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-journey-launch-seed-')
+        join(tmpdir(), 'echo-tv-journey-launch-seed-')
     );
     try {
         const app = await launchElectronApp(templateDirectory, launchOptions());
@@ -184,7 +184,7 @@ export async function runLaunchJourney<T>(
     readonly launch: LaunchJourneyMeasurement;
 }> {
     const dataDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-journey-launch-')
+        join(tmpdir(), 'echo-tv-journey-launch-')
     );
     try {
         await cp(templateDirectory, dataDirectory, { recursive: true });

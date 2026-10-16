@@ -2,7 +2,7 @@
 
 ## Objective
 
-Create ten original fictional movie posters for IPTVnator mock data and
+Create ten original fictional movie posters for ECHO TV mock data and
 marketing screenshots. The posters should feel like unrelated real theatrical
 releases collected by a streaming service, rather than a coordinated AI art
 series.

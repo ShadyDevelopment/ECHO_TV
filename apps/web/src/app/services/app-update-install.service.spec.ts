@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     AppQuitUnloadGuardHooks,
     AppUpdateInstallService,

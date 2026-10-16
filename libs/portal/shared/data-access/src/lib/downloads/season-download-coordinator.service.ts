@@ -3,8 +3,8 @@ import {
     DownloadsService,
     type DownloadItem,
     type DownloadStartInput,
-} from '@iptvnator/services';
-import { ELECTRON_BRIDGE_DOWNLOAD_START_REASONS } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { ELECTRON_BRIDGE_DOWNLOAD_START_REASONS } from '@echo-tv/shared/interfaces';
 import {
     createEpisodeDownloadIdentityKey,
     createLogger,
@@ -12,7 +12,7 @@ import {
     resolveEpisodeDownload,
     type EpisodeDownloadIdentity,
     type EpisodeDownloadResolution,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     EPISODE_DOWNLOAD_SUBMISSIONS,
     type EpisodeDownloadCandidate,

@@ -14,14 +14,14 @@
  */
 
 import { sql, type SQL } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import type { AppDatabase } from '../database.types';
 
 export {
     playlistConflictUpdate,
     readPayloadServerTimezone,
     type PlaylistConflictUpdate,
-} from '@iptvnator/shared/database/app-playlist';
+} from '@echo-tv/shared/database/app-playlist';
 
 export interface PlaylistConnectionIdentity {
     serverUrl: string;

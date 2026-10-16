@@ -14,14 +14,14 @@ import {
     selectActivePlaylistId,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import { filter } from 'rxjs';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import {
     PortalProvider,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/util';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import { PlaylistRecentHistoryService } from './playlist-recent-history.service';
 
 export interface PlaylistRouteContext {

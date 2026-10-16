@@ -24,7 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { PlaylistActions } from '@echo-tv/m3u-state';
 import {
     legacyTransformStalkerPortalUrl,
     normalizeStalkerPortalInputUrl,
@@ -33,7 +33,7 @@ import {
     StalkerPortalDiscoveryService,
     normalizeStalkerPortalIdentity,
     stalkerSessionFingerprint,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import {
     createRandomId,
     deriveStalkerDeviceIdsFromMac,
@@ -43,14 +43,14 @@ import {
     Playlist,
     type StalkerDerivedDeviceIds,
     validateStalkerMacAddressControl,
-} from '@iptvnator/shared/interfaces';
-import { PasswordVisibilityToggleDirective } from '@iptvnator/ui/components/password-visibility-toggle';
+} from '@echo-tv/shared/interfaces';
+import { PasswordVisibilityToggleDirective } from '@echo-tv/ui/components/password-visibility-toggle';
 import {
     type StalkerImportFeedback,
     toStalkerImportFeedback,
     toStalkerPlaylistIdentityFields,
 } from './stalker-import-identity';
-import { provideFormFieldDefaults } from '@iptvnator/ui/components/form-field-defaults';
+import { provideFormFieldDefaults } from '@echo-tv/ui/components/form-field-defaults';
 
 /**
  * A MAC and the device IDs that belong to exactly it. Kept together because

@@ -1,4 +1,4 @@
-import { focusLiveChannels } from '@iptvnator/ui/components';
+import { focusLiveChannels } from '@echo-tv/ui/components';
 import {
     ChangeDetectionStrategy,
     Component,

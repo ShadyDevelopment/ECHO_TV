@@ -3,7 +3,7 @@ import {
     buildStalkerSerialCfduid,
     isStalkerStreamCredentialSafe,
     normalizeStalkerSerialNumber,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const STALKER_STREAM_USER_AGENT = 'KSPlayer';
 

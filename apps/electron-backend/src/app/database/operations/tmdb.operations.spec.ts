@@ -1,4 +1,4 @@
-import type { TmdbCacheEntry } from '@iptvnator/shared/interfaces';
+import type { TmdbCacheEntry } from '@echo-tv/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import {
     clearTmdbMetadata,

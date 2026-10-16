@@ -14,11 +14,11 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 import '@yangkghjh/videojs-aspect-ratio-panel';
-import { createDevLogger } from '@iptvnator/shared/interfaces';
+import { createDevLogger } from '@echo-tv/shared/interfaces';
 import videoJs from 'video.js';
 import 'videojs-contrib-quality-levels';
 import 'videojs-quality-selector-hls';
-import { type PlaybackDiagnostic } from '@iptvnator/playback/util';
+import { type PlaybackDiagnostic } from '@echo-tv/playback/util';
 import { createVideoJsPlaybackDiagnostic } from './vjs-playback-diagnostics';
 import {
     type LegacyPlayerShortcuts,

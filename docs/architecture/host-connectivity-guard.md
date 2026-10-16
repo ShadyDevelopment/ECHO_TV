@@ -20,7 +20,7 @@ and the breaker landed there together.
 
 ## Where it lives
 
-`libs/shared/host-health` (`@iptvnator/shared/host-health`, tagged
+`libs/shared/host-health` (`@echo-tv/shared/host-health`, tagged
 `scope:shared` / `domain:shared-runtime` / `type:util`) — the breaker class, the
 failure classification and the redirect-attribution helpers, with no transport,
 logger or process singleton of its own. The owning app supplies the clock and
@@ -86,7 +86,7 @@ replaces the Electron guard and its weak set of admitted request tokens, clearin
 existing cooldowns and ignoring completions from the old generation. Disabled
 requests return no token and cannot contribute failures when the user re-enables
 the guard. Saving an unchanged value preserves existing evidence.
-`IPTVNATOR_DISABLE_CONNECTIVITY_GUARD=1` (or `true`) still overrides an enabled
+`ECHO_TV_DISABLE_CONNECTIVITY_GUARD=1` (or `true`) still overrides an enabled
 preference. The UI is capability-gated by `supportsPortalConnectivityGuard`
 (`updateSettings` plus `resetHostConnectivityGuard`); the PWA has no client-side
 switch for its shared server-wide guard.
@@ -111,7 +111,7 @@ errs towards contacting the host:
 | Half-open   | exactly ONE trial request; the rest keep fast-failing until it settles |
 | Reset       | any HTTP response — 200, 404, even 502; an accepted TCP connection clears the streak but not an open breaker |
 | Key         | `URL.origin` — scheme, host **and** port (see below)                   |
-| Kill switch | `IPTVNATOR_DISABLE_CONNECTIVITY_GUARD=1` (read per call)               |
+| Kill switch | `ECHO_TV_DISABLE_CONNECTIVITY_GUARD=1` (read per call)               |
 
 **Host-level failure** means an error with no HTTP response whose code is one of
 `ETIMEDOUT`, `ECONNABORTED`, `ENOTFOUND`, `EAI_AGAIN`, `ECONNREFUSED`,

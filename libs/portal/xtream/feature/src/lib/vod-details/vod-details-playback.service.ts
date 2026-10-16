@@ -14,12 +14,12 @@ import {
     createInlinePlaybackPositionWriter,
     createLogger,
     createPendingPlaybackStart,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     resolveXtreamVodPlaybackSource,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+} from '@echo-tv/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@echo-tv/services';
 import {
     ExternalPlayerName,
     ExternalPlayerSession,
@@ -28,8 +28,8 @@ import {
     ResolvedPortalPlayback,
     XtreamVodDetails,
     XtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+} from '@echo-tv/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@echo-tv/ui/playback';
 import {
     closeRunningExternalSession,
     runningExternalSession,

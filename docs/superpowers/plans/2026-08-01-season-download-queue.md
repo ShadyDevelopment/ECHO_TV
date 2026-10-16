@@ -80,9 +80,9 @@ Expected baseline: components 128 tests, focused Xtream 14, focused Stalker
 Read the full instructions for:
 
 ```text
-.codex/skills/iptvnator-ui-design/SKILL.md
-.codex/skills/iptvnator-theme-style/SKILL.md
-.codex/skills/iptvnator-sqlite-db-worker/SKILL.md
+.codex/skills/echo-tv-ui-design/SKILL.md
+.codex/skills/echo-tv-theme-style/SKILL.md
+.codex/skills/echo-tv-sqlite-db-worker/SKILL.md
 .codex/skills/xtream-electron/SKILL.md
 .codex/skills/stalker-portal/SKILL.md
 ~/.agents/skills/angular-developer/SKILL.md
@@ -437,9 +437,9 @@ Expected: FAIL because the models and coordinator do not exist.
 Create `season-download.models.ts`:
 
 ```typescript
-import type { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
-import type { DownloadStartInput } from '@iptvnator/services';
-import type { EpisodeDownloadIdentity } from '@iptvnator/portal/shared/util';
+import type { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
+import type { DownloadStartInput } from '@echo-tv/services';
+import type { EpisodeDownloadIdentity } from '@echo-tv/portal/shared/util';
 
 export interface EpisodeDownloadCandidate {
     readonly identity: EpisodeDownloadIdentity;
@@ -837,7 +837,7 @@ export function createXtreamSeriesDownloadAdapter(
 ```
 
 Change `createXtreamSeriesDownloadMetadataContext()` to return the pure
-`DownloadMovieSnapshotInput` type from `@iptvnator/portal/shared/util`, removing
+`DownloadMovieSnapshotInput` type from `@echo-tv/portal/shared/util`, removing
 its dependency on a UI-owned type. Preserve the current raw Xtream URL,
 credential, extension, title, poster, coordinate, and metadata semantics.
 

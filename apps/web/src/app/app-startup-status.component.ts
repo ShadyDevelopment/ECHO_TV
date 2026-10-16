@@ -12,7 +12,7 @@ import {
     PlaylistActions,
     selectPlaylistsLoadFailed,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 
 /** The first route also waits for settings and XMLTV source reconciliation. */
 @Component({

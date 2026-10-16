@@ -1,4 +1,4 @@
-import { XtreamVodDetails, XtreamVodStream } from '@iptvnator/shared/interfaces';
+import { XtreamVodDetails, XtreamVodStream } from '@echo-tv/shared/interfaces';
 import {
     buildXtreamVodFallbackViewModel,
     hasUsableXtreamVodMetadata,

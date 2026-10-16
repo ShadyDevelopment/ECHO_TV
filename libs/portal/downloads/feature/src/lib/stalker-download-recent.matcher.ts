@@ -1,7 +1,7 @@
 import {
     extractStalkerItemType,
     type StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 type DownloadContentType = 'vod' | 'episode';
 

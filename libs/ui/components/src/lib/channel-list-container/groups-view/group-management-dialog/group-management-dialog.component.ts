@@ -17,8 +17,8 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ParentalLockService } from '@iptvnator/services';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+import { ParentalLockService } from '@echo-tv/services';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 export interface GroupManagementDialogGroup {
     readonly count: number;

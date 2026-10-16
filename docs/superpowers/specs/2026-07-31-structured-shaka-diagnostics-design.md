@@ -34,7 +34,7 @@ severity-only gate.
   documented HTTP status.
 - Classify only exact Shaka 5.2.2 category/code pairs.
 - Keep insufficient or inconsistent evidence unknown.
-- Keep recoverable player events from becoming terminal IPTVnator
+- Keep recoverable player events from becoming terminal ECHO TV
   diagnostics.
 - Treat a rejected `Player.load()` as terminal even when the final public
   Shaka error still carries `RECOVERABLE`.

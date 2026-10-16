@@ -1,5 +1,5 @@
 import { eq, inArray, sql, type SQL } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import type { AppDatabase } from '../database.types';
 import {
     checkpointOperation,
@@ -23,8 +23,8 @@ import {
  * their 5 s `busy_timeout` while a write transaction holds the lock. Around
  * 5,000 rows keeps a commit near 100 ms on a laptop SSD.
  *
- * `IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION` overrides the budget. It is a
- * test-only knob, the companion of `IPTVNATOR_DB_WORKER_BATCH_DELAY_MS`: the
+ * `ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION` overrides the budget. It is a
+ * test-only knob, the companion of `ECHO_TV_DB_WORKER_BATCH_DELAY_MS`: the
  * responsiveness E2E suites slow the worker down and need enough commits in
  * a few-thousand-row mock catalog to observe progress mid-import.
  */
@@ -41,7 +41,7 @@ export function resolveContentRowsPerTransaction(
 }
 
 export const CONTENT_ROWS_PER_TRANSACTION = resolveContentRowsPerTransaction(
-    process.env['IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION']
+    process.env['ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION']
 );
 
 /** How many content rows reference one category. */

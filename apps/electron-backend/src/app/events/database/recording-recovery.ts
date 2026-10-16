@@ -75,8 +75,8 @@ function isProcessAlive(pid: number): boolean {
 
 /**
  * Best-effort check that the live process behind `pid` looks like another
- * IPTVnator/Electron instance. After a crash the OS can hand the persisted
- * `ownerPid` to an unrelated process before IPTVnator restarts; bare
+ * ECHO TV/Electron instance. After a crash the OS can hand the persisted
+ * `ownerPid` to an unrelated process before ECHO TV restarts; bare
  * `kill(pid, 0)` liveness would then skip the row on every startup while no
  * instance can ever finalize it. When the name cannot be read the answer
  * stays `true` — never repair a row a live peer might still own.
@@ -108,7 +108,7 @@ function processLooksLikeOwnInstance(pid: number): boolean {
         }
         const ownExecutable = basename(process.execPath).toLowerCase();
         return (
-            name.includes('iptvnator') ||
+            name.includes('echo-tv') ||
             name.includes('electron') ||
             (ownExecutable.length > 0 && name.includes(ownExecutable))
         );
@@ -198,13 +198,13 @@ function provablyStartedAfter(
  * ('failed').
  *
  * Rows whose owner process is still alive are skipped — but only when it
- * also looks like an IPTVnator/Electron process AND cannot be proven to have
+ * also looks like an ECHO TV/Electron process AND cannot be proven to have
  * started after the recording did. A recycled pid's holder is necessarily
  * younger than the recording (the pid frees only when its previous owner
  * dies), so the start-time check unmasks even a recycled pid that landed on
  * another Electron app; unreadable names or start times stay conservative
  * and keep the skip. The skip matters with
- * IPTVNATOR_ALLOW_MULTIPLE_INSTANCES a second instance shares this database,
+ * ECHO_TV_ALLOW_MULTIPLE_INSTANCES a second instance shares this database,
  * and its startup must not terminate a recording the first one is actively
  * writing (the tracker's own update is guarded on status 'recording', so the
  * row would never get its real end time or size).

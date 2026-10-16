@@ -5,7 +5,7 @@ import {
     EmbeddedMpvBounds,
     EmbeddedMpvFrameSource,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { isFrameCopyPlatformSupported } from './embedded-mpv-frame-copy-platform.util';
 import {
     applyHelperEvent,
@@ -27,7 +27,7 @@ import type {
 
 /**
  * Frame-copy engine adapter: implements the same surface as the native
- * embedded MPV addon, but backed by a per-session `iptvnator_mpv_helper`
+ * embedded MPV addon, but backed by a per-session `echo-tv_mpv_helper`
  * process. The helper owns libmpv (decode, offscreen render at viewport
  * size, audio) and publishes BGRA frames into a shared-memory ring that the
  * preload frame pump uploads to a renderer canvas.

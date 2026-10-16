@@ -97,13 +97,13 @@ describe('classifyExpectedPortalFailure', () => {
 });
 
 describe('logPortalRequestFailure', () => {
-    const originalTraceIpc = process.env['IPTVNATOR_TRACE_IPC'];
+    const originalTraceIpc = process.env['ECHO_TV_TRACE_IPC'];
     let logSpy: jest.SpyInstance;
     let warnSpy: jest.SpyInstance;
     let errorSpy: jest.SpyInstance;
 
     beforeEach(() => {
-        delete process.env['IPTVNATOR_TRACE_IPC'];
+        delete process.env['ECHO_TV_TRACE_IPC'];
         logSpy = jest.spyOn(console, 'log').mockImplementation();
         warnSpy = jest.spyOn(console, 'warn').mockImplementation();
         errorSpy = jest.spyOn(console, 'error').mockImplementation();
@@ -114,9 +114,9 @@ describe('logPortalRequestFailure', () => {
         warnSpy.mockRestore();
         errorSpy.mockRestore();
         if (originalTraceIpc === undefined) {
-            delete process.env['IPTVNATOR_TRACE_IPC'];
+            delete process.env['ECHO_TV_TRACE_IPC'];
         } else {
-            process.env['IPTVNATOR_TRACE_IPC'] = originalTraceIpc;
+            process.env['ECHO_TV_TRACE_IPC'] = originalTraceIpc;
         }
     });
 
@@ -141,7 +141,7 @@ describe('logPortalRequestFailure', () => {
         );
         expect(allOutput()).toBe('[]');
 
-        process.env['IPTVNATOR_TRACE_IPC'] = '1';
+        process.env['ECHO_TV_TRACE_IPC'] = '1';
         logPortalRequestFailure(
             'STALKER_REQUEST',
             { kind: 'cancelled' },
@@ -202,7 +202,7 @@ describe('logPortalRequestFailure', () => {
     ])(
         'never writes the MAC, token or query string (%s)',
         (_label, expected) => {
-            process.env['IPTVNATOR_TRACE_IPC'] = '1';
+            process.env['ECHO_TV_TRACE_IPC'] = '1';
             logPortalRequestFailure(
                 'STALKER_REQUEST',
                 expected,

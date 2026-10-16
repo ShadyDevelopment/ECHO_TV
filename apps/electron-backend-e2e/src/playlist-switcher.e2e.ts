@@ -300,10 +300,10 @@ test.describe('Electron Playlist Switcher', () => {
         ]);
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
                 // Keep the slowed-down import in 100-row commits so the switch
                 // below still happens mid-import (see xtream-responsiveness).
-                IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION: '100',
+                ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION: '100',
             },
         });
 

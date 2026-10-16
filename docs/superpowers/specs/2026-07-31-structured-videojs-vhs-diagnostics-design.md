@@ -37,7 +37,7 @@ The installed VHS `error-codes.js`, `videojs-http-streaming.js`, and
   `videojs.Error` identifiers.
 - Classify only exact confirmed values; unknown values remain unknown.
 - Keep recoverable VHS playlist/segment handling from becoming a terminal
-  IPTVnator diagnostic.
+  ECHO TV diagnostic.
 - Avoid retaining or rendering VHS/provider URLs, headers, xhr objects,
   response bodies, messages, credentials, or arbitrary metadata.
 - Correct the misleading case where VHS promotes a generic internal object or
@@ -171,7 +171,7 @@ details.
 - optional `httpStatus`: an integer from 400 through 599 copied only from the
   public top-level `MediaError.status`.
 
-There is no recoverable evidence object. IPTVnator creates this boundary only
+There is no recoverable evidence object. ECHO TV creates this boundary only
 from the public `Player#error` event after Video.js has stored the final error.
 Recoverable VHS handling remains inside VHS and produces no terminal
 diagnostic.
@@ -237,7 +237,7 @@ error:
 
 Video.js `8.23.9` constructs and stores the `MediaError`, then synchronously
 fires `Player#error`. The component therefore reads the final public error
-inside its existing listener and marks it terminal. IPTVnator does not
+inside its existing listener and marks it terminal. ECHO TV does not
 subscribe to internal VHS recovery events.
 
 ## Component Flow

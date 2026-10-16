@@ -1,9 +1,9 @@
-import type { DownloadMovieSnapshotInput } from '@iptvnator/portal/shared/util';
+import type { DownloadMovieSnapshotInput } from '@echo-tv/portal/shared/util';
 import type {
     DownloadMetadataPerson,
     TmdbEnrichedCastMember,
     XtreamSerieInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 function textList(value: string | undefined): string[] | undefined {
     const entries = value

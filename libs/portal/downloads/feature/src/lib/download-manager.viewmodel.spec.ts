@@ -1,5 +1,5 @@
-import type { DownloadItem } from '@iptvnator/services';
-import type { Playlist } from '@iptvnator/shared/interfaces';
+import type { DownloadItem } from '@echo-tv/services';
+import type { Playlist } from '@echo-tv/shared/interfaces';
 import {
     buildDownloadManagerViewModel,
     normalizeDownloadFilter,

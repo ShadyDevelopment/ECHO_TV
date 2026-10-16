@@ -174,7 +174,7 @@ function verifyCurrentSchema(sqlite: Database.Database) {
 async function main() {
     const fixture = process.argv[2];
     assert(
-        process.env['IPTVNATOR_E2E_DATA_DIR'],
+        process.env['ECHO_TV_E2E_DATA_DIR'],
         'Never open the user database'
     );
     const warnings: unknown[][] = [];

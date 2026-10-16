@@ -1,4 +1,4 @@
-import { EmbeddedMpvBounds } from '@iptvnator/shared/interfaces';
+import { EmbeddedMpvBounds } from '@echo-tv/shared/interfaces';
 import { createLinuxFrameCopyHelperLaunch } from './embedded-mpv-frame-copy-runtime';
 import type {
     EmbeddedMpvFrameCopyRuntimeMode,
@@ -58,8 +58,8 @@ export function resolveFrameCopyHelperSpawn(
         // Lip-sync compensation for the video path's added latency
         // (~10 ms measured on M1 Pro); tunable until calibration
         // lands, see the architecture doc.
-        ...(process.env.IPTVNATOR_EMBEDDED_MPV_AUDIO_DELAY
-            ? ['--audio-delay', process.env.IPTVNATOR_EMBEDDED_MPV_AUDIO_DELAY]
+        ...(process.env.ECHO_TV_EMBEDDED_MPV_AUDIO_DELAY
+            ? ['--audio-delay', process.env.ECHO_TV_EMBEDDED_MPV_AUDIO_DELAY]
             : []),
         // Session options follow as the first stdin line (see
         // buildMpvOptionsPreamble), never as arguments `ps` could read.

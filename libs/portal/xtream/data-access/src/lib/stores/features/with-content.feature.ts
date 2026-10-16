@@ -11,12 +11,12 @@ import {
     XtreamLiveStream,
     XtreamSerieItem,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     measureRendererPerformancePhase,
     RENDERER_PERFORMANCE_PHASE,
-} from '@iptvnator/shared/logging';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
+} from '@echo-tv/shared/logging';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
 import {
     DataService,
     DatabaseService,
@@ -26,7 +26,7 @@ import {
     SourceActivityService,
     XtreamPendingRestoreService,
     XtreamImportStatus,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     DbCategoryType,
     XTREAM_DATA_SOURCE,

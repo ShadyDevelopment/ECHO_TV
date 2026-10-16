@@ -22,19 +22,19 @@ import {
     switchMap,
     tap,
 } from 'rxjs';
-import { EpgService } from '@iptvnator/epg/data-access';
+import { EpgService } from '@echo-tv/epg/data-access';
 import {
     epgProviderClockMs,
     normalizeDashboardRailsSettings,
     type EpgProgram,
     type PortalActivityItem,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
-import { normalizeEpgUrls } from '@iptvnator/shared/m3u-utils';
+} from '@echo-tv/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
+import { normalizeEpgUrls } from '@echo-tv/shared/m3u-utils';
 import {
     buildDashboardPortalLiveEpgKey,
     DashboardDataService,
-} from '@iptvnator/workspace/dashboard/data-access';
+} from '@echo-tv/workspace/dashboard/data-access';
 import type { DashboardRailCard } from './dashboard-rail.component';
 import { DashboardLiveEpgClock } from './dashboard-live-epg-clock';
 import { DashboardPortalLiveEpgPresenter } from './dashboard-portal-live-epg.presenter';

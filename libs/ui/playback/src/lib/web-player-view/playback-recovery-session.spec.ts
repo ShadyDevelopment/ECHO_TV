@@ -1,7 +1,7 @@
 import {
     InlinePlaybackPlayer,
     type PlaybackRecommendationTarget,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import { PlaybackRecoverySession } from './playback-recovery-session';
 
 describe('PlaybackRecoverySession', () => {

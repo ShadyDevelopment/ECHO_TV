@@ -8,12 +8,12 @@ import type { DownloadPlatform } from './platforms';
  * exists, and so file sizes and the publish date can be shown. When the API
  * is unreachable (offline build, rate limit, `WEBSITE_SKIP_RELEASE_FETCH=1`)
  * the pages fall back to the published version in `released-version.json`,
- * injected as `__IPTVNATOR_RELEASED_VERSION__` by `astro.config.mjs`, and the
+ * injected as `__ECHO_TV_RELEASED_VERSION__` by `astro.config.mjs`, and the
  * known asset naming pattern from `electron-builder.json`. The development
  * version in the root package manifest must never select download assets.
  */
 
-const FALLBACK_VERSION = __IPTVNATOR_RELEASED_VERSION__;
+const FALLBACK_VERSION = __ECHO_TV_RELEASED_VERSION__;
 
 export const GITHUB_REPO = 'ShadyDevelopment/ECHO_TV';
 export const REPO_URL = `https://github.com/${GITHUB_REPO}`;

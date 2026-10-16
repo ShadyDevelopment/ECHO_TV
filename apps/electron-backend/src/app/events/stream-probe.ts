@@ -13,7 +13,7 @@
 
 import axios, { AxiosRequestConfig } from 'axios';
 import { ipcMain } from 'electron';
-import { XTREAM_CLIENT_USER_AGENT } from '@iptvnator/shared/interfaces';
+import { XTREAM_CLIENT_USER_AGENT } from '@echo-tv/shared/interfaces';
 import { UnsafeUrlError } from './url-safety';
 import { requestWithValidatedRedirects } from '../util/validated-axios';
 

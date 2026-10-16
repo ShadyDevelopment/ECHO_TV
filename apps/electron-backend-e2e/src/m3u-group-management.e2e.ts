@@ -1,7 +1,7 @@
 import type { Locator, Page } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import type { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+import type { ElectronBridgeApi } from '@echo-tv/shared/interfaces';
 import {
     closeElectronApp,
     electronMainPath,

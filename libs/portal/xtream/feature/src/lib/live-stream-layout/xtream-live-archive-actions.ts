@@ -1,13 +1,13 @@
 import {
     XtreamPlaylistData,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
-import { XTREAM_CLIENT_USER_AGENT } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/xtream/data-access';
+import { XTREAM_CLIENT_USER_AGENT } from '@echo-tv/shared/interfaces';
 import {
     EpgArchiveCopyService,
     EpgArchiveDownloadService,
     EpgProgramActivationEvent,
-} from '@iptvnator/ui/epg';
+} from '@echo-tv/ui/epg';
 import { XtreamLiveChannelItem } from './xtream-live-channel-navigation.service';
 
 /** Archive actions capture their source without changing the playback session. */

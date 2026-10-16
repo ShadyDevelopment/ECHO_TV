@@ -1,4 +1,4 @@
-import type { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+import type { ElectronBridgeApi } from '@echo-tv/shared/interfaces';
 
 type ElectronBridgeMethodName = Extract<
     {

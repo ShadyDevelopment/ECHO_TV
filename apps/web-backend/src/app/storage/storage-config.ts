@@ -1,9 +1,9 @@
 export interface ServerStorageConfig {
-    /** `IPTVNATOR_STORAGE=server`; the Docker image sets it. */
+    /** `ECHO_TV_STORAGE=server`; the Docker image sets it. */
     readonly enabled: boolean;
-    /** `IPTVNATOR_ACCESS_TOKEN`; guards every non-public route when set. */
+    /** `ECHO_TV_ACCESS_TOKEN`; guards every non-public route when set. */
     readonly accessToken: string | null;
-    /** Largest accepted playlist document (`IPTVNATOR_MAX_DOCUMENT_MB`). */
+    /** Largest accepted playlist document (`ECHO_TV_MAX_DOCUMENT_MB`). */
     readonly maxDocumentBytes: number;
 }
 
@@ -13,9 +13,9 @@ const BYTES_PER_MB = 1024 * 1024;
 export function readServerStorageConfig(
     env: Record<string, string | undefined> = process.env
 ): ServerStorageConfig {
-    const mode = env['IPTVNATOR_STORAGE']?.trim().toLowerCase();
-    const token = env['IPTVNATOR_ACCESS_TOKEN']?.trim();
-    const megabytes = Number(env['IPTVNATOR_MAX_DOCUMENT_MB']);
+    const mode = env['ECHO_TV_STORAGE']?.trim().toLowerCase();
+    const token = env['ECHO_TV_ACCESS_TOKEN']?.trim();
+    const megabytes = Number(env['ECHO_TV_MAX_DOCUMENT_MB']);
 
     return {
         enabled: mode === 'server',

@@ -2,11 +2,11 @@ import type {
     PlayerContentInfo,
     ResolvedPortalPlayback,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     resolveSeriesPlaybackEpisodeState,
     type SeriesPlaybackEpisodeState,
-} from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/playback';
 import type { XtreamSerieDetailsView } from './serial-details-playback.service';
 
 export interface SerialEpisodePlaybackRequest {

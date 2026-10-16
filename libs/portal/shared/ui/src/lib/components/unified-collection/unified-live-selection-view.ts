@@ -1,13 +1,13 @@
 import { computed, inject, Signal } from '@angular/core';
-import { isDashChannel, isDashStreamUrl } from '@iptvnator/shared/m3u-utils';
-import { ResolvedLiveCollectionDetail } from '@iptvnator/portal/shared/data-access';
+import { isDashChannel, isDashStreamUrl } from '@echo-tv/shared/m3u-utils';
+import { ResolvedLiveCollectionDetail } from '@echo-tv/portal/shared/data-access';
 import {
     getLiveCollectionPlaylistNavigation,
     PORTAL_PLAYER,
     UnifiedCollectionItem,
     WorkspaceNavigationTarget,
-} from '@iptvnator/portal/shared/util';
-import { SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/util';
+import { SettingsStore } from '@echo-tv/services';
 import {
     Channel,
     EpgItem,
@@ -15,7 +15,7 @@ import {
     playlistDisplayLabel,
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { createUnifiedLivePlaybackSessionKey } from './unified-live-playback-session-key';
 import { UnifiedLiveTimeshift } from './unified-live-catchup';
 

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { PlaylistActions } from '@echo-tv/m3u-state';
 import {
     catchError,
     firstValueFrom,
@@ -13,7 +13,7 @@ import {
     switchMap,
     throwError,
 } from 'rxjs';
-import { DataService } from '@iptvnator/services';
+import { DataService } from '@echo-tv/services';
 import {
     CONNECTIVITY_GUARD_RESET,
     ERROR,
@@ -25,7 +25,7 @@ import {
     XtreamCodeActions,
     XTREAM_REQUEST,
     XTREAM_RESPONSE,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { AppConfig } from '../../environments/environment';
 import {
     createPortalDebugErrorEvent,
@@ -34,7 +34,7 @@ import {
     logPortalDebugEvent,
     logPortalDebugRequest,
     createLogger,
-} from '@iptvnator/portal/shared/util/logger';
+} from '@echo-tv/portal/shared/util/logger';
 import { getRuntimeBackendUrl } from './runtime-config';
 
 /**

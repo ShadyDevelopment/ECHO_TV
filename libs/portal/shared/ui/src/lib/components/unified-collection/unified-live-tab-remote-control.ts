@@ -5,9 +5,9 @@ import {
     UnifiedFavoriteChannel,
     getAdjacentChannelItem,
     getChannelItemByNumber,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
+} from '@echo-tv/portal/shared/util';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
+import { LiveEpgPanelSummary } from '@echo-tv/ui/shared-portals';
 
 /**
  * Remote-control integration for the unified live tab (portal favorites,

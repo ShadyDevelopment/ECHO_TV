@@ -1,10 +1,10 @@
 /**
  * Main-process wrapper behaviour: the shared singleton and what a failure
  * reported through it proves about the endpoint. The state machine itself is
- * covered in `@iptvnator/shared/host-health`.
+ * covered in `@echo-tv/shared/host-health`.
  */
 
-import { HostConnectivityGuardError } from '@iptvnator/shared/host-health';
+import { HostConnectivityGuardError } from '@echo-tv/shared/host-health';
 import {
     beginGuardedHostRequest,
     reportGuardedHostConnected,
@@ -92,8 +92,8 @@ describe('reportGuardedHostFailure', () => {
     });
 
     it('keeps the environment disable switch authoritative', () => {
-        const original = process.env.IPTVNATOR_DISABLE_CONNECTIVITY_GUARD;
-        process.env.IPTVNATOR_DISABLE_CONNECTIVITY_GUARD = '1';
+        const original = process.env.ECHO_TV_DISABLE_CONNECTIVITY_GUARD;
+        process.env.ECHO_TV_DISABLE_CONNECTIVITY_GUARD = '1';
         try {
             setHostConnectivityGuardEnabled(true);
             attempt(ownFailure());
@@ -103,8 +103,8 @@ describe('reportGuardedHostFailure', () => {
             ).not.toThrow();
         } finally {
             if (original === undefined)
-                delete process.env.IPTVNATOR_DISABLE_CONNECTIVITY_GUARD;
-            else process.env.IPTVNATOR_DISABLE_CONNECTIVITY_GUARD = original;
+                delete process.env.ECHO_TV_DISABLE_CONNECTIVITY_GUARD;
+            else process.env.ECHO_TV_DISABLE_CONNECTIVITY_GUARD = original;
         }
     });
 

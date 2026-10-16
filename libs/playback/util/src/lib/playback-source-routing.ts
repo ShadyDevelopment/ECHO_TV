@@ -1,4 +1,4 @@
-import { getPlaybackMediaExtensionFromUrl } from '@iptvnator/shared/m3u-utils';
+import { getPlaybackMediaExtensionFromUrl } from '@echo-tv/shared/m3u-utils';
 import { PlaybackSourceKind } from './playback-recommendation.model';
 
 /**

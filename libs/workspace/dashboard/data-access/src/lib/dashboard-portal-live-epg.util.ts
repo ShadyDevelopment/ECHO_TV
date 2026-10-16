@@ -2,11 +2,11 @@ import {
     isStalkerRadioItem,
     type EpgProgram,
     type PortalActivityItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     buildCollectionUid,
     type UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 /**
  * One dashboard live card's portal EPG request: the key its answer is filed

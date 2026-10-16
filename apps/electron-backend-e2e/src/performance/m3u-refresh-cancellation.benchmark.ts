@@ -190,7 +190,7 @@ async function runIteration(
         recursive: false,
     });
     const dataDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-m3u-performance-')
+        join(tmpdir(), 'echo-tv-m3u-performance-')
     );
     let app: LaunchedElectronApp | null = null;
     let rendererConsoleListener: ((message: ConsoleMessage) => void) | null =
@@ -208,11 +208,11 @@ async function runIteration(
             ],
             environmentInheritance: 'runtime-only',
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: '0',
-                IPTVNATOR_PERF_CAPTURE: '1',
-                IPTVNATOR_PERF_WORKER_PROFILING: '1',
-                IPTVNATOR_TRACE_RENDERER_CONSOLE:
-                    process.env['IPTVNATOR_TRACE_RENDERER_CONSOLE'] ?? '0',
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: '0',
+                ECHO_TV_PERF_CAPTURE: '1',
+                ECHO_TV_PERF_WORKER_PROFILING: '1',
+                ECHO_TV_TRACE_RENDERER_CONSOLE:
+                    process.env['ECHO_TV_TRACE_RENDERER_CONSOLE'] ?? '0',
             },
         });
         await assertRendererCdpTarget(app.mainWindow);
@@ -415,9 +415,9 @@ function createIterationDefinitions(
 async function resolveConfiguration(): Promise<BenchmarkConfiguration> {
     const workspaceRoot = resolve(__dirname, '../../../..');
     const performanceRoot = join(workspaceRoot, 'dist', 'performance');
-    const requestedRoot = process.env['IPTVNATOR_PERF_OUTPUT_DIR'];
+    const requestedRoot = process.env['ECHO_TV_PERF_OUTPUT_DIR'];
     if (!requestedRoot) {
-        throw new Error('IPTVNATOR_PERF_OUTPUT_DIR is required');
+        throw new Error('ECHO_TV_PERF_OUTPUT_DIR is required');
     }
     const outputRoot = resolve(requestedRoot);
     if (
@@ -428,11 +428,11 @@ async function resolveConfiguration(): Promise<BenchmarkConfiguration> {
             'Performance output must be an absolute path below dist/performance'
         );
     }
-    const variant = process.env['IPTVNATOR_PERF_VARIANT'] ?? 'baseline';
+    const variant = process.env['ECHO_TV_PERF_VARIANT'] ?? 'baseline';
     if (!OUTPUT_VARIANT_PATTERN.test(variant)) {
-        throw new Error('IPTVNATOR_PERF_VARIANT is invalid');
+        throw new Error('ECHO_TV_PERF_VARIANT is invalid');
     }
-    const smoke = process.env['IPTVNATOR_PERF_SMOKE'] === '1';
+    const smoke = process.env['ECHO_TV_PERF_SMOKE'] === '1';
     const sourceState = readGitSourceState(workspaceRoot);
     if (!smoke && sourceState.dirty) {
         throw new Error(

@@ -15,14 +15,14 @@ import {
     Router,
 } from '@angular/router';
 import { filter, firstValueFrom } from 'rxjs';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { PortalRailSection } from '@iptvnator/portal/shared/util';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { PortalRailSection } from '@echo-tv/portal/shared/util';
 import {
     StalkerContentType,
     StalkerStore,
-} from '@iptvnator/portal/stalker/data-access';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/stalker/data-access';
+import { PlaylistsService } from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 
 @Injectable()
 export class StalkerWorkspaceRouteSession {

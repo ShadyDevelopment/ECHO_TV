@@ -3,16 +3,16 @@ name: CI
 on:
     push:
         branches:
-            - master
+            - main
     pull_request:
         branches:
-            - master
+            - main
     workflow_dispatch:
 
 # Superseded PR pushes cancel their still-running checks. Non-PR runs get a
 # unique group (run_id) because GitHub keeps at most one pending run per
 # group even with cancel-in-progress: false — a shared ref group would let a
-# rapid master push silently replace a queued sibling and leave a merged
+# rapid main push silently replace a queued sibling and leave a merged
 # commit without a lint/test record.
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
@@ -119,7 +119,7 @@ jobs:
                   CI: true
                   NX_TASKS_RUNNER_DYNAMIC_OUTPUT: false
 
-            - name: Lint all projects (master)
+            - name: Lint all projects (main)
               if: github.event_name != 'pull_request'
               run: pnpm nx run-many --target=lint --all --parallel=3 --output-style=static
               env:
@@ -155,10 +155,10 @@ jobs:
             # of the same commit, so it cannot see a change that grows the
             # payload and raises the baseline to match. Compare the file with
             # the revision this one is measured against instead: the target
-            # branch for a pull request, the previous head for a master push,
-            # master for a manual dispatch. Any raised limit, widened tolerance
+            # branch for a pull request, the previous head for a main push,
+            # main for a manual dispatch. Any raised limit, widened tolerance
             # or slack, or removed entry fails, unless a maintainer put the
-            # perf-baseline-increase label on the pull request. For a master
+            # perf-baseline-increase label on the pull request. For a main
             # push the label counts only when the push added exactly one
             # first-parent commit (a squash or merge of one PR) and that
             # commit's PR carries it: the check compares the whole push, so a
@@ -189,7 +189,7 @@ jobs:
                           git fetch --no-tags --depth=1 origin "$BEFORE_SHA"
                           ;;
                       *)
-                          git fetch --no-tags --depth=1 origin master
+                          git fetch --no-tags --depth=1 origin main
                           ;;
                   esac
                   git show "FETCH_HEAD:tools/performance/journey-baselines.json" > /tmp/base-journey-baselines.json 2>/dev/null ||
@@ -246,7 +246,7 @@ jobs:
 
     # Decides whether a pull request can move the performance journeys, so
     # the journeys job below does not spend a runner on docs-only changes.
-    # Pushes to master and manual dispatches always run them.
+    # Pushes to main and manual dispatches always run them.
     performance-journeys-scope:
         name: Performance journeys scope
         runs-on: ubuntu-latest
@@ -328,7 +328,7 @@ jobs:
               uses: ./.github/actions/performance-journeys
 
             # Only the counters identical in every measured iteration of
-            # recent master runs; their entries say whether a counter is
+            # recent main runs; their entries say whether a counter is
             # validated against wall-clock or a guard only (see Ratchet in
             # docs/architecture/performance-journeys.md). Here and not in the
             # composite action, so the weekly tightening still measures a run
@@ -477,7 +477,7 @@ jobs:
             # notes, other workflows, website, E2E and mock-server apps, release
             # and packaging tooling, a scripts-only package.json edit) skips the
             # suite. The allowlist lives in a unit-tested script; anything it
-            # does not know runs everything, and master always runs everything.
+            # does not know runs everything, and main always runs everything.
             - name: Decide unit coverage scope
               id: scope
               env:
@@ -521,9 +521,9 @@ jobs:
 
             # Jest's transform cache (TypeScript/Angular transpilation plus
             # coverage instrumentation, keyed by file content) is persisted
-            # between runs. Only master pushes and maintainer dispatches save
+            # between runs. Only main pushes and maintainer dispatches save
             # it; pull requests restore it and never write, so a PR cannot plant
-            # an entry that a later master run would read.
+            # an entry that a later main run would read.
             - name: Restore Jest transform cache
               if: steps.scope.outputs.run == 'true' && github.event_name != 'push'
               uses: actions/cache/restore@v6
@@ -545,13 +545,13 @@ jobs:
               if: steps.scope.outputs.run != 'true'
               run: pnpm run coverage:tools:test && pnpm run coverage:policy:check
 
-            # Master pushes start from an empty cache, so the saved cache holds
+            # Main pushes start from an empty cache, so the saved cache holds
             # exactly the current tree and does not grow run over run.
             - name: Save Jest transform cache
               if: >-
                   steps.scope.outputs.run == 'true' &&
                   (github.event_name == 'workflow_dispatch' ||
-                  (github.event_name == 'push' && github.ref == 'refs/heads/master'))
+                  (github.event_name == 'push' && github.ref == 'refs/heads/main'))
               uses: actions/cache/save@v6
               with:
                   path: ${{ runner.temp }}/jest-cache
@@ -578,7 +578,7 @@ jobs:
               with:
                   files: ./coverage/merged/lcov.info,./coverage/merged/cobertura-coverage.xml
                   flags: unit
-                  name: iptvnator-unit
+                  name: echo-tv-unit
                   fail_ci_if_error: false
                   handle_no_reports_found: true
                   disable_search: true

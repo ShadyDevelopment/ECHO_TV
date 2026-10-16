@@ -1,6 +1,6 @@
 # Player-Controls Contract
 
-This document is the canonical reference for IPTVnator's additive,
+This document is the canonical reference for ECHO TV's additive,
 engine-agnostic player-controls contract and shared default controls.
 Embedded MPV rendering and native-view bounds behavior remain documented in
 [embedded-mpv-native.md](./embedded-mpv-native.md).
@@ -100,7 +100,7 @@ commands for the shared controls; it does not classify errors, call
 `recommendPlaybackRecovery()`, rank actions, track recovery attempts, choose a
 temporary player, or own content-session policy.
 
-Those pure contracts and policies live in `@iptvnator/playback/util` (Nx
+Those pure contracts and policies live in `@echo-tv/playback/util` (Nx
 project `playback-util`). `WebPlayerViewComponent` owns their in-memory,
 session-local application. No diagnostic or recommendation state or command is
 added to `PlayerController`.
@@ -439,7 +439,7 @@ makes it relative to the window start, which is the activated programme's
 start. Xtream timeshift URLs request exactly `[start, stop]` of that
 programme, so the window ends at its stop. M3U catch-up URLs run from `utc`
 to `lutc`, the moment the URL was resolved, so M3U hosts pass
-`getM3uCatchupWindowEndSeconds(url)` (`@iptvnator/shared/m3u-utils`) and every
+`getM3uCatchupWindowEndSeconds(url)` (`@echo-tv/shared/m3u-utils`) and every
 programme up to then is drawn. Programme and window times follow the EPG view
 rule (unix timestamp, else the ISO string), so the display offset cancels.
 The activated programme always owns its own span, with its own title: a
@@ -923,7 +923,7 @@ be.
   VOD series, per-season load states (`seasonLoadStates`: `loading` while
   a request is on the wire, `unloaded` while the portal has not answered —
   after a failed request too; `vodSeasonLoadStates` on the host, computed
-  by `getVodSeasonLoadStates()` in `@iptvnator/portal/stalker/data-access`).
+  by `getVodSeasonLoadStates()` in `@echo-tv/portal/stalker/data-access`).
   `buildFullscreenEpisodePanelSeasons()`
   (`libs/ui/playback/src/lib/fullscreen-episode-panel/fullscreen-episode-panel.util.ts`)
   turns them into `FullscreenEpisodePanelSeason[]` — numeric keys ascending,
@@ -1563,7 +1563,7 @@ correct one specific stream.
 
 The canonical `PlayerSubtitleStyle` shape and the clamp/normalize rules
 (delay limit, size bounds, color validation) live in
-`@iptvnator/shared/interfaces` (`subtitle-style.util.ts`). The renderer
+`@echo-tv/shared/interfaces` (`subtitle-style.util.ts`). The renderer
 applies them to user input and the Electron main process re-applies the exact
 same implementation to untrusted IPC payloads — deliberate defense-in-depth
 with a single source of truth, so widening a limit on one side cannot

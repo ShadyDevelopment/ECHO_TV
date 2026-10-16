@@ -1,4 +1,4 @@
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { PlaylistState } from './state';
 import {
     selectActiveEpgProgram,

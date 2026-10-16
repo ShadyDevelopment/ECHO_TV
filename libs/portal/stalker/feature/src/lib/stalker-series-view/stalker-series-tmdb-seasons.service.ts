@@ -4,11 +4,11 @@ import {
     mergeEpisodesWithTmdb,
     tmdbSeasonPosterUrl,
     type TmdbEpisode,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     XtreamSerieEpisode,
     resolveEnrichmentSeasonNumber,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 interface FetchedTmdbSeason {
     /** Resolved TMDB season number this entry was fetched for */

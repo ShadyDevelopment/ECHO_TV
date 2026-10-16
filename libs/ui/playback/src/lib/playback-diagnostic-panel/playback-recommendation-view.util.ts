@@ -2,8 +2,8 @@ import {
     type PlaybackRecommendation,
     type PlaybackRecommendationReason,
     type PlaybackRecommendationTarget,
-} from '@iptvnator/playback/util';
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/playback/util';
+import type { ExternalPlayerName } from '@echo-tv/shared/interfaces';
 import type { ExternalRecoveryTargetState } from '../web-player-view/external-playback-recovery';
 
 export function getRecommendationKey(

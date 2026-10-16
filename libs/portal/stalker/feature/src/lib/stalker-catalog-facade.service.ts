@@ -15,11 +15,11 @@ import {
     StalkerStore,
     StalkerVodSource,
     stalkerCategoryLabelText,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import {
     PlaybackPositionRuntimeBridgeService,
     injectTranslationTick,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     PortalCatalogItemProgress,
     PortalCatalogPlaylistMeta,
@@ -30,8 +30,8 @@ import {
     getPortalPlaybackProgressPercent,
     resolvePortalSeriesWatchState,
     resolvePortalWatchState,
-} from '@iptvnator/portal/shared/util';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import { StalkerWorkspaceRouteSession } from './stalker-workspace-route-session.service';
 
 @Injectable()

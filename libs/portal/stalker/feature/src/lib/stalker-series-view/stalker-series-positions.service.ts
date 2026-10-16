@@ -3,15 +3,15 @@ import {
     createLogger,
     PORTAL_PLAYBACK_POSITIONS,
     stampPlaybackPositionNow,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     StalkerStore,
     type StalkerSelectedVodItem,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { toStalkerSeriesId } from './stalker-series-id';
 import {
     clearStalkerSeriesPosition,

@@ -33,23 +33,23 @@ import {
     VodMoreMenuComponent,
     readSavedEpisodeViewMode,
     scrollToCastCrewRow,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import {
     registerContentMetadataBackfill,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     buildUpNextRailItems,
     type PlaybackFallbackRequest,
     PortalInlinePlayerComponent,
     type UpNextRailItem,
-} from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/playback';
 import {
     TmdbEnrichedCastMember,
     XtreamSerieDetails,
     XtreamSerieEpisode,
     XtreamSerieInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { injectXtreamDetailNavigation } from '../xtream-detail-navigation';
 import {
     SerialDetailsPlaybackService,

@@ -6,7 +6,7 @@ import {
     StartupWindowMode,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface SettingsSection {
     id: string;

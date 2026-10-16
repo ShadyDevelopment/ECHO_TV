@@ -1,10 +1,10 @@
-import type { DataService } from '@iptvnator/services';
+import type { DataService } from '@echo-tv/services';
 import {
     extractStalkerAuthFailureBody,
     STALKER_REQUEST,
     STALKER_STB_PROFILE_PARAMS,
-} from '@iptvnator/shared/interfaces';
-import type { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/shared/interfaces';
+import type { createLogger } from '@echo-tv/portal/shared/util';
 import {
     normalizeStalkerPortalIdentity,
     type StalkerPortalIdentity,

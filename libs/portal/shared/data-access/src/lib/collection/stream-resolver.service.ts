@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { extractDrmFromRaw } from '@iptvnator/shared/m3u-utils';
+import { extractDrmFromRaw } from '@echo-tv/shared/m3u-utils';
 import {
     DataService,
     PlaylistsService,
     SettingsStore,
-} from '@iptvnator/services';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+} from '@echo-tv/services';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
 import {
     buildStalkerEpgMappingKey,
     buildXtreamEpgMappingKey,
@@ -22,11 +22,11 @@ import {
     STALKER_REQUEST,
     StalkerPortalActions,
     windowEpgItemsAtProviderClock,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     XtreamApiService,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     buildStalkerExternalPlaybackHeaders,
     ensureStalkerSession,
@@ -39,11 +39,11 @@ import {
     StalkerPortalRepairService,
     StalkerSessionService,
     type StalkerLinkFlagSource,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import {
     UnifiedCollectionItem,
     createLogger,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 type PlaylistWithChannels = Playlist & {
     readonly playlist?: { readonly items?: Channel[] };

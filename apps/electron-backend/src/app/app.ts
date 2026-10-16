@@ -3,7 +3,7 @@ import {
     ElectronBridgeWindowState,
     MACOS_TRAFFIC_LIGHTS_POSITION,
     WINDOW_STATE_CHANGED,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { rendererAppName, rendererAppPort } from './constants';
@@ -122,7 +122,7 @@ export function getMainWindowWebPreferences(): Electron.BrowserWindowConstructor
     const frameCopyExperiment =
         isEmbeddedMpvFeatureEnabled() &&
         ['1', 'true', 'yes', 'on'].includes(
-            (process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY ?? '')
+            (process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY ?? '')
                 .trim()
                 .toLowerCase()
         ) && isFrameCopyRuntimeUsable();

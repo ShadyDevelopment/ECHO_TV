@@ -1,4 +1,4 @@
-import { ChannelScrollFocusDirective } from '@iptvnator/ui/components';
+import { ChannelScrollFocusDirective } from '@echo-tv/ui/components';
 import {
     CdkVirtualScrollViewport,
     ScrollingModule,
@@ -35,27 +35,27 @@ import {
     epgProviderClockMs,
     XtreamCategory,
     XtreamItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     ChannelListItemComponent,
     ChannelListSkeletonComponent,
     EpgMappingDialogComponent,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import {
     createLogger,
     getXtreamCatchupDays,
     isXtreamCatchupAvailable,
     PortalChannelSortMode,
     sortPortalChannelItems,
-} from '@iptvnator/portal/shared/util';
-import { EpgQueueService } from '@iptvnator/portal/xtream/data-access';
-import { FavoritesService } from '@iptvnator/portal/xtream/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { EpgQueueService } from '@echo-tv/portal/xtream/data-access';
+import { FavoritesService } from '@echo-tv/portal/xtream/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     EpgSourceSettingsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     epgProgramProgressPercent,
     hasEpgProgramEnded,

@@ -19,15 +19,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { XTREAM_DATA_SOURCE } from '@iptvnator/portal/xtream/data-access';
+import { XTREAM_DATA_SOURCE } from '@echo-tv/portal/xtream/data-access';
 import {
     DatabaseService,
     ParentalLockService,
     RuntimeCapabilitiesService,
     XCategoryFromDb,
-} from '@iptvnator/services';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { createLogger } from '@echo-tv/portal/shared/util';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 export interface CategoryManagementDialogData {
     playlistId: string;

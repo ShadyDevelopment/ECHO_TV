@@ -2,15 +2,15 @@ import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
-import { SourceStatusService } from '@iptvnator/portal/shared/data-access';
-import { SourceRemovalService } from '@iptvnator/playlist/shared/ui';
-import { SourcesViewStateService } from '@iptvnator/playlist/shared/util';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { selectAllPlaylistsMeta } from '@echo-tv/m3u-state';
+import { SourceStatusService } from '@echo-tv/portal/shared/data-access';
+import { SourceRemovalService } from '@echo-tv/playlist/shared/ui';
+import { SourcesViewStateService } from '@echo-tv/playlist/shared/util';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import {
     WORKSPACE_SHELL_ACTIONS,
     WorkspaceShellContextDrawerService,
-} from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/workspace/shell/util';
 import { WorkspaceSourcesFiltersPanelComponent } from './workspace-sources-filters-panel.component';
 
 const PLAYLISTS = [

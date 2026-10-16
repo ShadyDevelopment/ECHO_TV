@@ -1,4 +1,4 @@
-import type { RendererPerformancePhaseEvent } from '@iptvnator/shared/logging';
+import type { RendererPerformancePhaseEvent } from '@echo-tv/shared/logging';
 
 import {
     XTREAM_SCENARIO_ID,

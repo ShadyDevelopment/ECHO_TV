@@ -1,6 +1,6 @@
 # Stalker Portal Architecture
 
-This document describes the Stalker portal implementation in IPTVnator and where each feature is integrated.
+This document describes the Stalker portal implementation in ECHO TV and where each feature is integrated.
 
 ## Related Docs
 
@@ -44,7 +44,7 @@ below is reached as `/workspace/stalker/:id/…`.
 - `/workspace/stalker/:id/actor/:personId`
 - `/workspace/stalker/:id/discover` (facet query params; see
   `docs/architecture/tmdb-metadata-enrichment.md`)
-- `/workspace/stalker/:id/downloads` (shared `DownloadsComponent` from `@iptvnator/portal/downloads/feature`)
+- `/workspace/stalker/:id/downloads` (shared `DownloadsComponent` from `@echo-tv/portal/downloads/feature`)
 - `/workspace/stalker/:id/downloads/:downloadId` (focused local movie/series
   detail with no category context panel)
 
@@ -158,7 +158,7 @@ Neither label is tied to a URL shape: mode follows OBSERVED behavior, so a
 everywhere — as a full portal, and a canonical `server/load.php` endpoint that
 answers without one is a simple portal.
 
-The single predicate lives in `@iptvnator/shared/interfaces`
+The single predicate lives in `@echo-tv/shared/interfaces`
 (`stalker-portal-mode.util.ts`): `isFullStalkerPortalPlaylist()` treats the
 persisted flag as authoritative and falls back to the URL shape
 (`isFullStalkerPortalUrl()`: `/stalker_portal` or `/server/load.php`) only
@@ -335,7 +335,7 @@ mock's tolerant `/portal.php`, strict `/server/load.php`, and
 
 ## Main UI Components
 
-- `CategoryContentViewComponent` from `@iptvnator/portal/catalog/feature` (`libs/portal/catalog/feature`)
+- `CategoryContentViewComponent` from `@echo-tv/portal/catalog/feature` (`libs/portal/catalog/feature`)
     - Shared category + content layout used by the `vod` and `series` routes (wired in `stalker-feature.routes.ts` via `loadCategoryContentViewComponent`)
 - `libs/portal/stalker/feature/src/lib/stalker-live-stream-layout/stalker-live-stream-layout.component.ts`
     - ITV live playback, radio playback, channel/station navigation, EPG panel integration
@@ -470,7 +470,7 @@ describes the emulated box, not the account — see "Reported device profile".)
       and the serial-derived `__cfduid` on portal-owned streams — while its
       API calls do not.
 
-- Empty optional identity fields remain absent. IPTVnator must never generate a
+- Empty optional identity fields remain absent. ECHO TV must never generate a
   device ID behind the user's back, and must never duplicate `device_id2` from
   `device_id1` on its own.
 - The legacy default serial value `BEDACD4569BAF` is treated as absent at
@@ -643,7 +643,7 @@ later empty value as a permanent lockout. Therefore:
 
 The trade-off the option exists for is interoperability, not obfuscation: a
 user who reaches the same account from StbEmu already has this exact value
-pinned, and IPTVnator has to send it or be refused.
+pinned, and ECHO TV has to send it or be refused.
 
 ### Reported device profile
 
@@ -800,7 +800,7 @@ and rethrows the envelope as the error the Stalker layers already classify: an
 A cancelled request therefore never resolves into an empty answer. In the main
 process the refusal is one `console.warn` through `formatPortalRequestError`
 and `redactSensitiveData` (host and pathname, never the MAC, token or query
-string); the cancellation is logged only under `IPTVNATOR_TRACE_IPC`. Every
+string); the cancellation is logged only under `ECHO_TV_TRACE_IPC`. Every
 other failure — 404, 5xx, network errors, the connectivity guard's fast-fail —
 still rejects with the message contracts above and keeps its `console.error`.
 `apps/electron-backend-e2e/src/portal-request-logging.e2e.ts` pins both
@@ -931,7 +931,7 @@ A real MAG/STB sends `cmd` unencoded: the portal's client JS concatenates raw
 `key=value` pairs, the browser URL layer escapes only what a URL cannot carry,
 and PHP's `$_GET` applies exactly one form-urldecode. The portal therefore sees
 the stored `cmd` decoded **once** — a pre-encoded `%3A` arrives as `:` and a
-literal `+` arrives as a space. IPTVnator reproduces that reference wire format
+literal `+` arrives as a space. ECHO TV reproduces that reference wire format
 on both transports with the shared `encodeStalkerCmdValue()`
 (`libs/shared/interfaces/src/lib/stalker-cmd-encoding.util.ts`):
 
@@ -948,7 +948,7 @@ on both transports with the shared `encodeStalkerCmdValue()`
   unaffected.
 
 Both transports assemble the portal request from the same two shared builders
-in `@iptvnator/shared/interfaces`, so their wire format cannot drift apart:
+in `@echo-tv/shared/interfaces`, so their wire format cannot drift apart:
 
 - `buildStalkerRequestUrl()`
   (`libs/shared/interfaces/src/lib/stalker-request-url.util.ts`) builds the
@@ -1172,11 +1172,11 @@ fact set as a parameter the stock server enforces:
 
 - **`forced_storage`** is a `create_link` request parameter that pins VOD
   playback to one storage server. It exists for clients that let the user pick
-  a storage; IPTVnator has no such concept, and omitting the parameter is what
+  a storage; ECHO TV has no such concept, and omitting the parameter is what
   produces the empty value the portal treats as "no preference". Wiring it
   would first need storage discovery and a picker in the VOD detail view.
 - **`play_token`** is a `create_link` response field for clients that assemble
-  the stream URL themselves. IPTVnator plays the `cmd` the portal returns
+  the stream URL themselves. ECHO TV plays the `cmd` the portal returns
   verbatim (after the solution-prefix strip and base resolution above), so the
   token the stream needs is already in the URL. Note the coupling with the
   section above: on the static path no `create_link` runs at all, so no
@@ -1249,7 +1249,7 @@ handover between them cannot drop the other's credentials.
 Two stream profiles exist, selected by one shared predicate:
 
 - **Portal-owned** (`isStalkerStreamCredentialSafe()` in
-  `@iptvnator/shared/interfaces`): the stream host equals the portal host
+  `@echo-tv/shared/interfaces`): the stream host equals the portal host
   (compared with a terminal DNS root dot normalized away, since
   `portal.example.` and `portal.example` are the same host but `URL` keeps
   the dot) —
@@ -1592,7 +1592,7 @@ series' positions and mapped episodes are available:
   mapped episode.
 - An exact scoped tracking-ID row always wins. The old tracking ID may supply
   an in-memory compatibility alias only when no exact row exists.
-- On the next position write, IPTVnator persists the scoped row through the
+- On the next position write, ECHO TV persists the scoped row through the
   strict, failure-propagating persistence boundary before removing a confirmed
   legacy row. If the scoped write fails, the legacy row remains intact.
 - This is an on-read/on-write compatibility path, not a database schema

@@ -1,18 +1,18 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@echo-tv/services';
 import type {
     ExternalPlayerSession,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     SerialDetailsPlaybackService,
     type XtreamSerieDetailsView,

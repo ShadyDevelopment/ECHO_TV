@@ -55,7 +55,7 @@ on the server. Adding a playlist stays the ordinary "Add playlist" flow.
 | --- | --- |
 | `PlaylistsService` persists whole playlist documents through a narrow bridge (`dbGetAppPlaylist(s)`, `dbGetAppPlaylistMetas`, `dbUpsertAppPlaylist(s)`, `dbDeletePlaylist`, `dbDeleteAllPlaylists`, `dbGet/SetAppState`). Every mutation re-reads the document, patches it and writes it back. | The server implements the same document contract over HTTP. The client change is one adapter plus a resolver; `PlaylistsService` keeps its API. |
 | Electron stores the whole document as JSON in `playlists.payload`, with projected columns for fast metadata reads (`buildPlaylistRow` / `parseAppPlaylist`). | Move that codec into `libs/shared/database` and reuse it on the server. Same row format on desktop and server. |
-| `initDatabase()` in `libs/shared/database` creates the full schema and runs every migration; the path comes from `path-utils`. | The server calls `initDatabase()`. A new `IPTVNATOR_DATA_DIR` variable in `path-utils` points it at the Docker volume. |
+| `initDatabase()` in `libs/shared/database` creates the full schema and runs every migration; the path comes from `path-utils`. | The server calls `initDatabase()`. A new `ECHO_TV_DATA_DIR` variable in `path-utils` points it at the Docker volume. |
 | better-sqlite3 13 is a Node-API addon. | One binary loads in Node and Electron. Only the Alpine Docker image needs its own native build stage. |
 | Read-modify-write of a document carrying a large M3U payload would move megabytes per favorite click over Wi-Fi. | `GET` answers `304` on a matching ETag; an upsert whose payload object is the one the client received sends `keepPayload=1` without the payload. |
 | Xtream PWA user data is four localStorage maps keyed by playlist id (`xtream-favorites`, `xtream-recent-items`, `xtream-collection-items`, `xtream-playback-positions`); `xtream-playlists` is a derived cache. | Server table `server_user_state(namespace, playlist_id, value)`. The client keeps a write-through cache under its own key prefix and sends only changed playlist entries. |
@@ -69,9 +69,9 @@ on the server. Adding a playlist stays the ordinary "Add playlist" flow.
 
 1. In server mode the server is the authority for playlists and the synced
    user data. There is no per-playlist "local or server" choice.
-2. Server storage is opt-in on the backend: `IPTVNATOR_STORAGE=server`. The
+2. Server storage is opt-in on the backend: `ECHO_TV_STORAGE=server`. The
    bare `web-backend` defaults to `none`; the Docker image sets `server`.
-3. Optional `IPTVNATOR_ACCESS_TOKEN`. When set, every route except
+3. Optional `ECHO_TV_ACCESS_TOKEN`. When set, every route except
    `/`, `/health`, `/config.js` and `GET /v1/instance` requires
    `Authorization: Bearer <token>`, including the provider proxy routes.
 4. Migration:
@@ -106,7 +106,7 @@ Browser (PWA)                                       Docker container
 │   └ USER_DATA_STORAGE                    │         │            └ user-state               │
 │       ├ localStorage                     │         │ ServerDatabase: initDatabase()        │
 │       └ ServerUserDataStorage (cache)    │         │   + server_user_state                 │
-│ ServerStorageStatusService (signals)     │         │   /data/databases/iptvnator.db (WAL)  │
+│ ServerStorageStatusService (signals)     │         │   /data/databases/echo-tv.db (WAL)  │
 └─────────────────────────────────────────┘         └───────────────────────────────────────┘
 ```
 
@@ -116,7 +116,7 @@ All JSON. Errors: `{ message, status, code? }`.
 
 | Route | Purpose |
 | --- | --- |
-| `GET /v1/instance` | Public. `{ service: 'iptvnator', apiVersion: 1, instanceId, storage: 'server' \| 'none', auth: 'none' \| 'token' }`. The frontend and backend ship in one image, so the PWA shows its own version. |
+| `GET /v1/instance` | Public. `{ service: 'echo-tv', apiVersion: 1, instanceId, storage: 'server' \| 'none', auth: 'none' \| 'token' }`. The frontend and backend ship in one image, so the PWA shows its own version. |
 | `GET /v1/instance/status` | `{ playlists, databaseBytes, databasePath, startedAt }`. Also the token check. |
 | `GET /v1/playlists?view=meta` | Metadata documents (no payload). |
 | `GET /v1/playlists` | Full documents (backup export, global favorites). |
@@ -145,7 +145,7 @@ closes it on `SIGTERM`. Storage errors are logged by name and route only.
   server store in server mode, Electron bridge when `supportsSqlite`, else
   IndexedDB. It can switch to browser storage temporarily for the migration
   export.
-- `@iptvnator/services/server-storage` (sub-entry, kept out of the eager
+- `@echo-tv/services/server-storage` (sub-entry, kept out of the eager
   barrel): API client, document store, user-data storage, session, migration.
 - `ServerStorageStatusService` (main barrel, tiny): connection state for the
   rail, banner and Settings.
@@ -195,7 +195,7 @@ https://claude.ai/artifact/3WheJAgeNL5ag6kmtPrJcD
 
 | Phase | Content | Closes |
 | --- | --- | --- |
-| 1 | Seams, no behavior change: shared codec, `IPTVNATOR_DATA_DIR`, `PlaylistStorageBackend`, `USER_DATA_STORAGE`. | — |
+| 1 | Seams, no behavior change: shared codec, `ECHO_TV_DATA_DIR`, `PlaylistStorageBackend`, `USER_DATA_STORAGE`. | — |
 | 2a | Server storage in `web-backend`, Docker volume, nginx limits, docs. | — |
 | 2b | PWA server mode, migration, Settings → Server, rail/banner, sign-in, i18n, E2E, release note. | #305, #514 |
 | 3 | Server-side EPG for the PWA. | PWA EPG gap |

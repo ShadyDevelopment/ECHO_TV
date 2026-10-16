@@ -1,10 +1,10 @@
-import { createPlaybackSessionKey } from '@iptvnator/playback/util';
+import { createPlaybackSessionKey } from '@echo-tv/playback/util';
 import {
     normalizeStalkerEntityId,
     type StalkerMappedEpisode,
-} from '@iptvnator/portal/stalker/data-access';
-import type { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
-import type { SeriesPlaybackEpisodeState } from '@iptvnator/ui/playback';
+} from '@echo-tv/portal/stalker/data-access';
+import type { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
+import type { SeriesPlaybackEpisodeState } from '@echo-tv/ui/playback';
 import {
     STALKER_SERIES_DOWNLOAD_MODES,
     type StalkerSeriesDownloadMode,

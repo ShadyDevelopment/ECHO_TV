@@ -5,12 +5,12 @@ import {
     XtreamUrlService,
     type IXtreamDataSource,
     type XtreamCredentials,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import type {
     ResolvedPortalPlayback,
     VodSourceCandidate,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     applyApiMetadata,
     type ProviderVodMetadata,

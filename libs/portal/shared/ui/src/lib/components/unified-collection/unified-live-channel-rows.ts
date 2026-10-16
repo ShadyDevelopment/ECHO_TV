@@ -6,7 +6,7 @@ import {
     resolveStalkerProviderId,
     UnifiedCollectionItem,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 export interface UnifiedLiveChannelRows {
     /** Every collection row, as the shared list renders them. */

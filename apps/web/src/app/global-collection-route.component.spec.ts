@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import {
     SeriesResumeTarget,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import { GlobalCollectionDetailHostComponent } from './global-collection-route.component';
 
 @Component({
@@ -27,10 +27,10 @@ class MockStalkerCollectionDetailComponent {
     readonly closeRequested = output<void>();
 }
 
-jest.unstable_mockModule('@iptvnator/portal/xtream/feature', () => ({
+jest.unstable_mockModule('@echo-tv/portal/xtream/feature', () => ({
     XtreamCollectionDetailComponent: MockXtreamCollectionDetailComponent,
 }));
-jest.unstable_mockModule('@iptvnator/portal/stalker/feature', () => ({
+jest.unstable_mockModule('@echo-tv/portal/stalker/feature', () => ({
     StalkerCollectionDetailComponent: MockStalkerCollectionDetailComponent,
 }));
 
@@ -92,7 +92,7 @@ describe('GlobalCollectionDetailHostComponent', () => {
     }
 
     it('mocks the xtream feature barrel', async () => {
-        const mod = await import('@iptvnator/portal/xtream/feature');
+        const mod = await import('@echo-tv/portal/xtream/feature');
         expect(mod.XtreamCollectionDetailComponent).toBe(
             MockXtreamCollectionDetailComponent as never
         );

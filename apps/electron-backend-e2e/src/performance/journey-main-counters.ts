@@ -5,7 +5,7 @@ import type { JourneyRendererGateState } from '../journeys/journey-renderer-gate
 /**
  * Test-side reader for the main-process performance counters
  * (`apps/electron-backend/src/app/services/performance-counters.ts`). The app
- * registers `performance:read-counters` only with IPTVNATOR_PERF_CAPTURE=1
+ * registers `performance:read-counters` only with ECHO_TV_PERF_CAPTURE=1
  * and the preload does not expose it, so the journey calls the registered
  * handler from the main process through the gate's `ipcMain.handle` tap
  * (`journey-renderer-gate.cjs`).

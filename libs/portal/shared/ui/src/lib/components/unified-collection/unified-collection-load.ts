@@ -10,12 +10,12 @@ import { Store } from '@ngrx/store';
 import {
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import {
     CollectionLoadRequest,
     CollectionMode,
-} from '@iptvnator/portal/shared/data-access';
-import { CollectionScope } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/data-access';
+import { CollectionScope } from '@echo-tv/portal/shared/util';
 
 /**
  * Re-load the collection whenever what it should contain changes: its mode,

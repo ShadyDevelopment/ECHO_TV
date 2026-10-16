@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import type {
     PlaybackPositionData,
     VodSourceDescriptor,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createPrimaryActionPosition,
     formatPlaybackPosition,

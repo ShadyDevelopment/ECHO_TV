@@ -15,26 +15,26 @@ import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { DatabaseService } from '@iptvnator/services';
-import { ContentCardComponent } from '@iptvnator/portal/shared/ui';
-import { SearchLayoutComponent } from '@iptvnator/portal/shared/ui';
-import { WorkspaceBackNavigationService } from '@iptvnator/portal/shared/data-access';
+import { DatabaseService } from '@echo-tv/services';
+import { ContentCardComponent } from '@echo-tv/portal/shared/ui';
+import { SearchLayoutComponent } from '@echo-tv/portal/shared/ui';
+import { WorkspaceBackNavigationService } from '@echo-tv/portal/shared/data-access';
 import {
     buildXtreamNavigationTarget,
     queryParamSignal,
     workspacePortalCommands,
-} from '@iptvnator/portal/shared/util';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { SearchFilters } from '@iptvnator/portal/xtream/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { createLogger } from '@echo-tv/portal/shared/util';
+import { SearchFilters } from '@echo-tv/portal/xtream/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     ContentType,
     XtreamSearchResultItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     GlobalSearchResult,
     isM3uGlobalSearchResult,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 interface GlobalSearchResultGroup {
     playlistId: string;

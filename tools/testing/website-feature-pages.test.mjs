@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
  */
 
 const distRoot = new URL('../../dist/apps/website/', import.meta.url);
-const SITE = 'https://4gray.github.io/iptvnator';
+const SITE = 'https://4gray.github.io/echo-tv';
 const FEATURES = ['m3u-player', 'xtream-codes-player', 'stalker-portal-player', 'epg', 'remote-control'];
 
 const readDist = (relativePath) => readFile(new URL(relativePath, distRoot), 'utf8');
@@ -35,11 +35,11 @@ for (const slug of FEATURES) {
     const crumbs = schema.find((entry) => entry['@type'] === 'BreadcrumbList');
     assert.equal(crumbs.itemListElement.at(-1).item, `${SITE}/features/${slug}/`);
 
-    assert.match(html, /href="\/iptvnator\/download\/"/);
-    assert.match(html, /href="\/iptvnator\/blog\/[a-z0-9-]+-setup-guide\/"/);
-    assert.match(html, /href="\/iptvnator\/features\/"/);
+    assert.match(html, /href="\/echo-tv\/download\/"/);
+    assert.match(html, /href="\/echo-tv\/blog\/[a-z0-9-]+-setup-guide\/"/);
+    assert.match(html, /href="\/echo-tv\/features\/"/);
     for (const other of FEATURES.filter((candidate) => candidate !== slug)) {
-      assert.match(html, new RegExp(`href="/iptvnator/features/${other}/"`));
+      assert.match(html, new RegExp(`href="/echo-tv/features/${other}/"`));
     }
   });
 }
@@ -48,16 +48,16 @@ test('features hub links to every feature page and the download hub', async () =
   const html = await readDist('features/index.html');
   assert.match(html, new RegExp(`<link rel="canonical" href="${SITE}/features/"`));
   for (const slug of FEATURES) {
-    assert.match(html, new RegExp(`href="/iptvnator/features/${slug}/"`));
+    assert.match(html, new RegExp(`href="/echo-tv/features/${slug}/"`));
   }
-  assert.match(html, /href="\/iptvnator\/download\/"/);
+  assert.match(html, /href="\/echo-tv\/download\/"/);
 });
 
 test('homepage feature cards and the header link into the feature pages', async () => {
   const html = await readDist('index.html');
-  assert.match(html, /href="\/iptvnator\/features\/"/);
+  assert.match(html, /href="\/echo-tv\/features\/"/);
   for (const slug of ['m3u-player', 'xtream-codes-player', 'epg', 'stalker-portal-player', 'remote-control']) {
-    assert.match(html, new RegExp(`href="/iptvnator/features/${slug}/"`));
+    assert.match(html, new RegExp(`href="/echo-tv/features/${slug}/"`));
   }
 });
 

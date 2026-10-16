@@ -141,11 +141,11 @@ export function parseXtreamMockServerEnvironment(
         throw new Error('Xtream mock port must be an integer');
     }
     const port = Number(rawPort);
-    const controlEnabled = environment['IPTVNATOR_XTREAM_MOCK_CONTROL'] === '1';
+    const controlEnabled = environment['ECHO_TV_XTREAM_MOCK_CONTROL'] === '1';
     const host =
         environment['HOST'] ??
         (controlEnabled ? DEFAULT_CONTROL_HOST : DEFAULT_NORMAL_HOST);
-    const token = environment['IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN'] ?? '';
+    const token = environment['ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN'] ?? '';
     const options: XtreamMockServerOptions = {
         ...(controlEnabled
             ? { control: { enabled: true, token } as const }

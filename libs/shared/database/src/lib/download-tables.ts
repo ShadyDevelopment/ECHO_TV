@@ -1,4 +1,4 @@
-import type { CatchupDownloadMetadata } from '@iptvnator/shared/interfaces';
+import type { CatchupDownloadMetadata } from '@echo-tv/shared/interfaces';
 import { sql } from 'drizzle-orm';
 import {
     index,

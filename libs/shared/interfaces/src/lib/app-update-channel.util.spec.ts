@@ -22,28 +22,28 @@ describe('app update channel util', () => {
 
     it('maps each channel to its repository and pages', () => {
         expect(appUpdateRepository('stable')).toEqual({
-            owner: '4gray',
-            repo: 'iptvnator',
+            owner: 'ShadyDevelopment',
+            repo: 'ECHO_TV',
         });
         expect(appUpdateRepository('nightly')).toEqual({
-            owner: '4gray',
-            repo: 'iptvnator-nightly',
+            owner: 'ShadyDevelopment',
+            repo: 'ECHO_TV',
         });
         // /releases/latest never resolves to a prerelease.
         expect(appUpdateReleasesPageUrl('stable')).toBe(
-            'https://github.com/4gray/iptvnator/releases/latest'
+            'https://github.com/ShadyDevelopment/ECHO_TV/releases/latest'
         );
         expect(appUpdateReleasesPageUrl('nightly')).toBe(
-            'https://github.com/4gray/iptvnator-nightly/releases'
+            'https://github.com/ShadyDevelopment/ECHO_TV/releases'
         );
         expect(appUpdateReleasesApiUrl('nightly')).toBe(
-            'https://api.github.com/repos/4gray/iptvnator-nightly/releases'
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases'
         );
         expect(appUpdateReleasesListUrl('stable')).toBe(
-            'https://github.com/4gray/iptvnator/releases'
+            'https://github.com/ShadyDevelopment/ECHO_TV/releases'
         );
         expect(appUpdateReleasesListUrl('nightly')).toBe(
-            'https://github.com/4gray/iptvnator-nightly/releases'
+            'https://github.com/ShadyDevelopment/ECHO_TV/releases'
         );
     });
 

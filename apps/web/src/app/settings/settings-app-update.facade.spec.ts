@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { DataService } from '@iptvnator/services';
+import { DataService } from '@echo-tv/services';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MockProvider } from 'ng-mocks';
 import { NEVER, of, throwError } from 'rxjs';

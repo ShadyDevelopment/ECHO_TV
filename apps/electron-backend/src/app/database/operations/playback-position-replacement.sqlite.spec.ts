@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import { getTableColumns } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import type { AppDatabase } from '../database.types';
 import {
     getAllPlaybackPositions,

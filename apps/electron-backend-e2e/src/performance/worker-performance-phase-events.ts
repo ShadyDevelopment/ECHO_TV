@@ -5,7 +5,7 @@ import {
     type DatabaseWorkerPerformancePhase,
     type PerformancePhaseEvent,
     type PerformancePhaseMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { fitsPerformanceDurationEnvelope } from './performance-phase-duration-envelope';
 import { parseXtreamWorkerPerformancePhaseEvents } from './xtream-worker-phase-events';
 

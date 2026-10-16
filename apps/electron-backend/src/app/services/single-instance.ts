@@ -38,7 +38,7 @@ export interface SingleInstanceWindow {
     show(): void;
 }
 
-export const ALLOW_MULTIPLE_INSTANCES_ENV = 'IPTVNATOR_ALLOW_MULTIPLE_INSTANCES';
+export const ALLOW_MULTIPLE_INSTANCES_ENV = 'ECHO_TV_ALLOW_MULTIPLE_INSTANCES';
 
 const TRUTHY_VALUES = new Set(['1', 'true', 'yes', 'on']);
 

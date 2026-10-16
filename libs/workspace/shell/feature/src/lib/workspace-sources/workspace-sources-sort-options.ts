@@ -1,4 +1,4 @@
-import { SortBy, SortOptions, SortOrder } from '@iptvnator/services';
+import { SortBy, SortOptions, SortOrder } from '@echo-tv/services';
 
 export interface SourceSortOption {
     by: SortBy;

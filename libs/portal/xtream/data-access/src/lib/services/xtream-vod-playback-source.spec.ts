@@ -1,4 +1,4 @@
-import { XtreamVodDetails } from '@iptvnator/shared/interfaces';
+import { XtreamVodDetails } from '@echo-tv/shared/interfaces';
 import {
     resolveXtreamVodPlaybackSource,
     XtreamVodPlaybackItem,

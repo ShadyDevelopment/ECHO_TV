@@ -1,9 +1,9 @@
-import type { StalkerMappedEpisode } from '@iptvnator/portal/stalker/data-access';
-import type { PortalPlaybackPositions } from '@iptvnator/portal/shared/util';
+import type { StalkerMappedEpisode } from '@echo-tv/portal/stalker/data-access';
+import type { PortalPlaybackPositions } from '@echo-tv/portal/shared/util';
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface ReconciledStalkerSeriesPositions {
     positionsByTrackingId: Map<number, PlaybackPositionData>;

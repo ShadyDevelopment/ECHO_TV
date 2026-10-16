@@ -1,9 +1,9 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { SettingsStore } from '@iptvnator/services';
-import { TrailerDialogService } from '@iptvnator/ui/components';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { SettingsStore } from '@echo-tv/services';
+import { TrailerDialogService } from '@echo-tv/ui/components';
 import { VodDetailsHeroPresenter } from './vod-details-hero.presenter';
 
 describe('VodDetailsHeroPresenter', () => {

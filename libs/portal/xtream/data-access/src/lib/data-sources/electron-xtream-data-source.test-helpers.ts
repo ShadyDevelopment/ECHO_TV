@@ -4,7 +4,7 @@ import {
     PlaybackPositionService,
     VodSourcePinService,
     XtreamPendingRestoreService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     XtreamApiService,
     XtreamCredentials,

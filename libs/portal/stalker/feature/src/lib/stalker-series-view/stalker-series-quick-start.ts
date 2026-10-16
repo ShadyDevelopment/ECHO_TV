@@ -4,17 +4,17 @@ import {
     getSeriesQuickStartAction,
     isExtrasSeason,
     type SeriesQuickStartAction,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     getVodSeriesSeasonKey,
     getVodSeriesSeasonNumber,
     isVodSeasonHydrationPending,
     type VodSeriesSeasonVm,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface StalkerQuickStartButton {
     labelKey: string;

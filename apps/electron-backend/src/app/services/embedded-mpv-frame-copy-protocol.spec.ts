@@ -1,4 +1,4 @@
-import { ResolvedPortalPlayback } from '@iptvnator/shared/interfaces';
+import { ResolvedPortalPlayback } from '@echo-tv/shared/interfaces';
 import { buildLoadPlaybackCommand } from './embedded-mpv-frame-copy-protocol';
 
 describe('buildLoadPlaybackCommand', () => {

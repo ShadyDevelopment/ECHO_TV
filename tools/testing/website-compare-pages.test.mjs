@@ -9,19 +9,19 @@ import assert from 'node:assert/strict';
  */
 
 const distRoot = new URL('../../dist/apps/website/', import.meta.url);
-const SITE = 'https://4gray.github.io/iptvnator';
+const SITE = 'https://4gray.github.io/echo-tv';
 const COMPARISONS = [
   'm3u-vs-xtream-vs-stalker',
   'playback-engines',
   'desktop-vs-browser',
-  'iptvnator-vs-vlc',
-  'iptvnator-vs-kodi',
+  'echo-tv-vs-vlc',
+  'echo-tv-vs-kodi',
   'computer-vs-tv-box',
 ];
 /** Pages that name other software must say they are not affiliated with it, and date their claims. */
 const NAMES_THIRD_PARTY_SOFTWARE = new Set([
-  'iptvnator-vs-vlc',
-  'iptvnator-vs-kodi',
+  'echo-tv-vs-vlc',
+  'echo-tv-vs-kodi',
   'computer-vs-tv-box',
 ]);
 
@@ -66,11 +66,11 @@ for (const slug of COMPARISONS) {
 
   test(`comparison page ${slug}: links to the hub and the other comparisons`, async () => {
     const html = await readDist(`compare/${slug}/index.html`);
-    assert.match(html, /href="\/iptvnator\/compare\/"/);
+    assert.match(html, /href="\/echo-tv\/compare\/"/);
     for (const other of COMPARISONS.filter((candidate) => candidate !== slug)) {
-      assert.match(html, new RegExp(`href="/iptvnator/compare/${other}/"`));
+      assert.match(html, new RegExp(`href="/echo-tv/compare/${other}/"`));
     }
-    assert.match(html, /href="\/iptvnator\/blog\/[a-z0-9-]+\/"/, 'Expected a link into the guides.');
+    assert.match(html, /href="\/echo-tv\/blog\/[a-z0-9-]+\/"/, 'Expected a link into the guides.');
   });
 }
 
@@ -78,16 +78,16 @@ test('compare hub links to every comparison and to the feature pages', async () 
   const html = await readDist('compare/index.html');
   assert.match(html, new RegExp(`<link rel="canonical" href="${SITE}/compare/"`));
   for (const slug of COMPARISONS) {
-    assert.match(html, new RegExp(`href="/iptvnator/compare/${slug}/"`));
+    assert.match(html, new RegExp(`href="/echo-tv/compare/${slug}/"`));
   }
-  assert.match(html, /href="\/iptvnator\/features\/[a-z0-9-]+\/"/);
+  assert.match(html, /href="\/echo-tv\/features\/[a-z0-9-]+\/"/);
 });
 
 test('the header and the features hub link into the comparisons', async () => {
   const home = await readDist('index.html');
-  assert.match(home, /href="\/iptvnator\/compare\/"/);
+  assert.match(home, /href="\/echo-tv\/compare\/"/);
   const features = await readDist('features/index.html');
-  assert.match(features, /href="\/iptvnator\/compare\/"/);
+  assert.match(features, /href="\/echo-tv\/compare\/"/);
 });
 
 test('sitemap lists the comparison pages', async () => {

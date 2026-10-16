@@ -1,4 +1,4 @@
 export {
     type EnrichedUnifiedFavorite,
     GlobalFavoritesListComponent,
-} from '@iptvnator/portal/shared/ui';
+} from '@echo-tv/portal/shared/ui';

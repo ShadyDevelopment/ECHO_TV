@@ -3,23 +3,23 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { PlaylistActions } from '@echo-tv/m3u-state';
 import {
     PlaylistContextFacade,
     sourceDisplayName,
-} from '@iptvnator/playlist/shared/util';
+} from '@echo-tv/playlist/shared/util';
 import {
     PlaylistDeleteActionService,
     RuntimeCapabilitiesService,
     SourceActivityService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { SourceDeleteProgressService } from './source-delete-progress.service';
 import { SourceRemovalToastComponent } from './source-removal-toast.component';
 import {
     measureRendererPerformancePhase,
     RENDERER_PERFORMANCE_PHASE,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 
 /** How long Undo stays available before the delete is committed. */
 export const SOURCE_REMOVAL_UNDO_MS = 4000;

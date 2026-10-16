@@ -5,13 +5,13 @@ import {
     mergeSerieInfoWithTmdb,
     mergeVodInfoWithTmdb,
     tmdbSeasonPosterUrl,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     XtreamSerieDetails,
     XtreamVodDetails,
     getXtreamVodInfo,
     resolveEnrichmentSeasonNumber,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Async TMDB enrichment of the currently selected Xtream detail item.

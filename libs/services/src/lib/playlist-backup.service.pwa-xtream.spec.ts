@@ -4,7 +4,7 @@ import {
     Playlist,
     PlaylistBackupManifestV1,
     XtreamPlaylistBackupEntry,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createPlaylistBackupService,
     createPwaXtreamBackupState,

@@ -1,10 +1,10 @@
 import { and, eq } from 'drizzle-orm';
-import type { DatabaseInstance } from '@iptvnator/shared/database';
+import type { DatabaseInstance } from '@echo-tv/shared/database';
 import {
     SERVER_USER_STATE_NAMESPACES,
     type ServerUserStateNamespace,
     type ServerUserStateResponse,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { serverUserState } from './server-user-state.table';
 
 /** Xtream PWA user data, one JSON value per namespace and playlist. */

@@ -14,7 +14,7 @@ import { buildComparisonPageSchema } from '../../lib/comparison-schema';
 import { comparisonBySlug } from '../../lib/comparisons';
 import { absoluteUrl } from '../../lib/site';
 
-const comparison = comparisonBySlug('iptvnator-vs-kodi');
+const comparison = comparisonBySlug('echo-tv-vs-kodi');
 const pageUrl = absoluteUrl('/compare/ECHO_TV-vs-kodi/');
 const title = 'ECHO TV vs Kodi – A Media Center or a Dedicated IPTV Player';
 const description =
@@ -164,5 +164,5 @@ const jsonLd = buildComparisonPageSchema({ comparison, pageUrl, description, faq
     </div>
   </DownloadSection>
 
-  <CompareSwitcher current="iptvnator-vs-kodi" />
+  <CompareSwitcher current="echo-tv-vs-kodi" />
 </BaseLayout>

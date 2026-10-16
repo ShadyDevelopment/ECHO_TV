@@ -63,9 +63,9 @@ describe('reconcileStaleRecordings', () => {
     beforeEach(() => {
         jest.clearAllMocks();
         mockActiveRowIds.mockResolvedValue(new Set<number>());
-        // A live peer pid resolves to an IPTVnator-looking process name
+        // A live peer pid resolves to an ECHO TV-looking process name
         // unless a test says otherwise.
-        mockExecFileSync.mockReturnValue('iptvnator');
+        mockExecFileSync.mockReturnValue('echo-tv');
     });
 
     it('repairs a playable partial as interrupted with its size', async () => {
@@ -143,7 +143,7 @@ describe('reconcileStaleRecordings', () => {
     });
 
     it('leaves rows owned by another live process alone', async () => {
-        // IPTVNATOR_ALLOW_MULTIPLE_INSTANCES: the other instance is still
+        // ECHO_TV_ALLOW_MULTIPLE_INSTANCES: the other instance is still
         // writing that file, and its own finalize is guarded on status
         // 'recording' — repairing here would strand the row.
         const { updateSet } = mockDb([
@@ -241,7 +241,7 @@ describe('reconcileStaleRecordings', () => {
             if (joined.includes('Get-Process')) {
                 return new Date(Date.now() - 7_200_000).toISOString();
             }
-            return 'iptvnator';
+            return 'echo-tv';
         });
 
         await reconcileStaleRecordings();

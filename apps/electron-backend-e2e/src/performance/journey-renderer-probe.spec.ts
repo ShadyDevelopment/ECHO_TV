@@ -30,7 +30,7 @@ import {
 } from './journey-renderer-probe.test-helpers';
 
 const PAGE = `<!doctype html><html><head></head><body class="mat-app-background">
-<div id="initial-splash" role="status"><span>IPTVnator</span></div>
+<div id="initial-splash" role="status"><span>ECHO TV</span></div>
 <app-root><main class="workspace-content"></main></app-root></body></html>`;
 
 /** Short settle timers so the launch fixtures do not wait 500 ms each. */
@@ -579,7 +579,7 @@ test('launch options add the idle window only when asked', () => {
     );
     assert.equal(
         createLaunchJourneyProbeOptions(null).cdTickCounterKey,
-        '__iptvnatorCdTicks'
+        '__echo-tvCdTicks'
     );
 });
 

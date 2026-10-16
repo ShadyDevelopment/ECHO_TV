@@ -7,9 +7,9 @@ import {
     WORKSPACE_HISTORY_NAVIGATION,
     WorkspaceBackNavigationService,
     WorkspaceHistoryNavigation,
-} from '@iptvnator/portal/shared/data-access';
-import { WorkspaceStartupPreferencesService } from '@iptvnator/workspace/shell/util';
-import { SettingsContextService } from '@iptvnator/workspace/shell/util/settings-context';
+} from '@echo-tv/portal/shared/data-access';
+import { WorkspaceStartupPreferencesService } from '@echo-tv/workspace/shell/util';
+import { SettingsContextService } from '@echo-tv/workspace/shell/util/settings-context';
 import { WorkspaceSettingsContextPanelComponent } from './workspace-settings-context-panel.component';
 
 /** Navigation API state of a session that opened on the settings page. */

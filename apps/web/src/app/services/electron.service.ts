@@ -2,13 +2,13 @@ import { inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { DialogService } from '@iptvnator/ui/components/confirm-dialog';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { DialogService } from '@echo-tv/ui/components/confirm-dialog';
 import {
     DataService,
     SettingsStore,
     SourceActivityService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     AUTO_UPDATE_PLAYLISTS,
     AutoUpdatePlaylistsResult,
@@ -33,18 +33,18 @@ import {
     XTREAM_RESPONSE,
     XtreamCodeActions,
     SourceProbeContext,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     measureRendererPerformancePhase,
     RENDERER_PERFORMANCE_PHASE,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 import { AppConfig } from '../../environments/environment';
 import { buildAutoUpdatePlaylistsFeedback } from './auto-update-playlists-feedback';
 import {
     createLogger,
     createPortalDebugRequestContext,
     logPortalDebugEvent,
-} from '@iptvnator/portal/shared/util/logger';
+} from '@echo-tv/portal/shared/util/logger';
 
 interface PlayerLaunchPayload {
     readonly headers?: Record<string, string>;

@@ -3,7 +3,7 @@ import {
     normalizeTitleKeys,
     titleYearsCompatible,
     type VodSourceCandidateRow,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import { unlockedCategorySql } from '../parental-lock-state';
 import {

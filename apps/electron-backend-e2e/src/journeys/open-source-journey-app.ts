@@ -31,7 +31,7 @@ import type { LaunchJourneySession } from './launch-journey-app';
  * items are painted.
  */
 export const OPEN_SOURCE_JOURNEY_MAIN_IPC_STATE_KEY =
-    '__iptvnatorJourneyOpenSourceMainIpcCapture';
+    '__echo-tvJourneyOpenSourceMainIpcCapture';
 const ERROR_PREFIX = 'open-source-journey';
 /**
  * After the mock settled, the ledger is watched this much longer before it

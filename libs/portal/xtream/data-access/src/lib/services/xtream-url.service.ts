@@ -5,8 +5,8 @@ import {
     StreamFormat,
     XtreamSerieEpisode,
     XtreamVodDetails,
-} from '@iptvnator/shared/interfaces';
-import { DatabaseService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import { DatabaseService, SettingsStore } from '@echo-tv/services';
 import { XtreamCredentials } from './xtream-api.service';
 import { resolveXtreamVodPlaybackSource } from './xtream-vod-playback-source';
 

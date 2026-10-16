@@ -1,7 +1,7 @@
 import type {
     ExternalPlayerSession,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { isLiveExternalPlayerSession } from './external-playback-button-state';
 import { createLogger } from './logger';
 import type { PortalExternalPlayback } from './portal-external-playback';

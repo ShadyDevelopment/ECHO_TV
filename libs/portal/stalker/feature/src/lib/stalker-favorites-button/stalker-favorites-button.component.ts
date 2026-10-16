@@ -8,14 +8,14 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject, map, of, switchMap } from 'rxjs';
-import { PlaylistsService } from '@iptvnator/services';
-import { DetailIconButtonComponent } from '@iptvnator/ui/components';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+import { PlaylistsService } from '@echo-tv/services';
+import { DetailIconButtonComponent } from '@echo-tv/ui/components';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
 import {
     matchesFavoriteById,
     normalizeStalkerSeriesFlag,
     StalkerSelectedVodItem,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 
 type FavoriteButtonItem = StalkerSelectedVodItem & {
     name?: string;

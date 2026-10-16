@@ -10,19 +10,19 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import type { PlaybackFallbackRequest } from '@iptvnator/playback/util';
+import type { PlaybackFallbackRequest } from '@echo-tv/playback/util';
 import {
     enrichedCast,
     tmdbBackdropUrl,
     tmdbPosterUrl,
     topCast,
     injectTranslationTick,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     Channel,
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     CastCrewRowComponent,
     DetailActionButtonComponent,
@@ -33,9 +33,9 @@ import {
     MetaChipComponent,
     PortalDetailShellComponent,
     castMembersFromNames,
-} from '@iptvnator/ui/components';
-import { formatDurationLabel } from '@iptvnator/portal/shared/util';
-import { PortalInlinePlayerComponent } from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/components';
+import { formatDurationLabel } from '@echo-tv/portal/shared/util';
+import { PortalInlinePlayerComponent } from '@echo-tv/ui/playback';
 import {
     M3uVodMetadataService,
     m3uVodEntryKey,

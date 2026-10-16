@@ -4,14 +4,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { of, Subject } from 'rxjs';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { Playlist } from '@echo-tv/shared/interfaces';
 import { PlaylistInfoComponent } from './playlist-info.component';
 import { STALKER_PLAYLIST_CONNECTION_EDITOR } from './stalker-playlist-connection-editor.token';
 

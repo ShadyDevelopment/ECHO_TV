@@ -35,10 +35,10 @@ type PackageFixture = {
 
 function createPackageFixture(): PackageFixture {
     const packageRoot = mkdtempSync(
-        join(tmpdir(), 'iptvnator-packaged-fixture-source-')
+        join(tmpdir(), 'echo-tv-packaged-fixture-source-')
     );
     temporaryDirectories.add(packageRoot);
-    const executablePath = join(packageRoot, 'IPTVnator');
+    const executablePath = join(packageRoot, 'ECHO TV');
     const nativeDir = join(
         packageRoot,
         'resources',

@@ -5,14 +5,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     ResolvedLiveCollectionDetail,
     StreamResolverService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import {
     PORTAL_PLAYER,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
-import { SettingsStore } from '@iptvnator/services';
-import { Channel, EpgItem, EpgProgram } from '@iptvnator/shared/interfaces';
-import { EpgArchiveCopyService } from '@iptvnator/ui/epg';
+} from '@echo-tv/portal/shared/util';
+import { SettingsStore } from '@echo-tv/services';
+import { Channel, EpgItem, EpgProgram } from '@echo-tv/shared/interfaces';
+import { EpgArchiveCopyService } from '@echo-tv/ui/epg';
 import {
     createUnifiedLiveCatchup,
     UnifiedLiveTimeshift,

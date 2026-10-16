@@ -8,7 +8,7 @@ import type { ElectronApplication } from '@playwright/test';
  * moment on a runner with a different network. Contract:
  * docs/architecture/performance-journeys.md.
  */
-const EXTERNAL_ARTWORK_STATE_KEY = '__iptvnatorJourneyExternalArtwork';
+const EXTERNAL_ARTWORK_STATE_KEY = '__echo-tvJourneyExternalArtwork';
 const EXTERNAL_ARTWORK_URLS = ['*://picsum.photos/*', '*://*.picsum.photos/*'];
 
 export async function blockJourneyExternalArtwork(

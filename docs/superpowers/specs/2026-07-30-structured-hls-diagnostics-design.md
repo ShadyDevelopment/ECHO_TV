@@ -9,7 +9,7 @@ fragments such as `network`, `status`, and `codec`. This can misclassify a
 provider message, and serializing arbitrary values can retain URLs,
 credentials, response content, loader context, or other provider data.
 
-IPTVnator currently installs hls.js 1.6.16. Its public `ErrorData` supplies
+ECHO TV currently installs hls.js 1.6.16. Its public `ErrorData` supplies
 structured `type`, `details`, `fatal`, and an optional `response.code`.
 Specific `ErrorDetails` values also identify the manifest, level, segment, key,
 or media stage. The same payload contains unsafe or unbounded fields, including
@@ -163,7 +163,7 @@ HTML5 and ArtPlayer both use:
 
 The fatal gate therefore lives in the shared classifier rather than being
 duplicated in the two adapters. hls.js registers its final error-controller
-listener during construction, before IPTVnator subscribes, so the application
+listener during construction, before ECHO TV subscribes, so the application
 observes the final `fatal` value after retry/alternate handling has had a
 chance to update it.
 

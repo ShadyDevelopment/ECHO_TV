@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { DatabaseService, PlaylistsService } from '@iptvnator/services';
+import { DatabaseService, PlaylistsService } from '@echo-tv/services';
 import {
     Channel,
     M3uRecentlyViewedItem,
     Playlist,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
-import { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
-import { XTREAM_DATA_SOURCE } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/shared/interfaces';
+import { UnifiedCollectionItem } from '@echo-tv/portal/shared/util';
+import { XTREAM_DATA_SOURCE } from '@echo-tv/portal/xtream/data-access';
 import { UnifiedRecentDataService } from './unified-recent-data.service';
 
 describe('UnifiedRecentDataService', () => {

@@ -2,8 +2,8 @@ import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en';
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { normalizeDateLocale } from '@iptvnator/pipes/date-format';
-import { createDevLogger } from '@iptvnator/shared/interfaces';
+import { normalizeDateLocale } from '@echo-tv/pipes/date-format';
+import { createDevLogger } from '@echo-tv/shared/interfaces';
 
 type LocaleDataModule = { default: unknown };
 export type AppDateLocaleLoader = () => Promise<LocaleDataModule>;

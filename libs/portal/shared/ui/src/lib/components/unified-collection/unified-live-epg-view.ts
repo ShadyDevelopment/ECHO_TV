@@ -4,31 +4,31 @@ import {
     getM3uArchiveDays,
     getM3uCatchupWindowEndSeconds,
     isM3uCatchupPlaybackSupported,
-} from '@iptvnator/shared/m3u-utils';
-import { ResolvedLiveCollectionDetail } from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/shared/m3u-utils';
+import { ResolvedLiveCollectionDetail } from '@echo-tv/portal/shared/data-access';
 import {
     LiveEpgPanelState,
     persistLiveEpgPanelState,
     restoreLiveEpgPanelState,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     EpgDateNavigationDirection,
     getTodayEpgDateKey,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
-import { SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/ui/epg';
+import { SettingsStore } from '@echo-tv/services';
 import {
     Channel,
     EpgItem,
     EpgProgram,
     EpgViewMode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     buildCatchupTimelineSegments,
     type PlayerTimelineSegment,
-} from '@iptvnator/ui/playback';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
+} from '@echo-tv/ui/playback';
+import { LiveEpgPanelSummary } from '@echo-tv/ui/shared-portals';
 import {
     getLiveEpgPanelSummary,
     toEpgProgram,

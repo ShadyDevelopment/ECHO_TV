@@ -25,7 +25,7 @@ export function createAccessGuard(token: string): RequestHandler {
         }
 
         res.status(401).json({
-            message: 'This IPTVnator server requires an access token.',
+            message: 'This ECHO TV server requires an access token.',
             status: 401,
             code: 'unauthorized',
         });

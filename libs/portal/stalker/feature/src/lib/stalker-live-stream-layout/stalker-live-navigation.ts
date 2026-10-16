@@ -6,17 +6,17 @@ import {
     type Signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { LiveChannelPlaybackQueue } from '@iptvnator/portal/shared/data-access';
+import { LiveChannelPlaybackQueue } from '@echo-tv/portal/shared/data-access';
 import {
     getAdjacentChannelItem,
     getChannelItemByNumber,
     LiveLayoutSidebarStateService,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     StalkerItvChannel,
     StalkerStore,
     normalizeStalkerEntityId,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 
 type SelectionContext = Signal<string> | 'preserve' | undefined;
 interface LiveNavigationOptions {

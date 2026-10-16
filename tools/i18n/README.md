@@ -101,5 +101,5 @@ removes entries.
 - Preserve `{{interpolation}}` placeholders verbatim.
 - Preserve any inline HTML tags.
 - Match the locale's existing punctuation, casing, and terminology.
-- Keep brand names (IPTVnator, Xtream, Stalker, M3U, EPG, MPV, VLC) untranslated.
+- Keep brand names (ECHO TV, Xtream, Stalker, M3U, EPG, MPV, VLC) untranslated.
 - Short UI strings stay short — no length blow-up.

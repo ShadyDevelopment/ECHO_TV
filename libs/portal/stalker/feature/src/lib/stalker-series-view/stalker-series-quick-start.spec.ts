@@ -1,8 +1,8 @@
-import type { VodSeriesSeasonVm } from '@iptvnator/portal/stalker/data-access';
+import type { VodSeriesSeasonVm } from '@echo-tv/portal/stalker/data-access';
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { getStalkerSeriesQuickStartButton } from './stalker-series-quick-start';
 
 function season(

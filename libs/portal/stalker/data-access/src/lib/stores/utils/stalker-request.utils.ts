@@ -1,10 +1,10 @@
-import { DataService } from '@iptvnator/services';
+import { DataService } from '@echo-tv/services';
 import {
     isFullStalkerPortalPlaylist,
     Playlist,
     PlaylistMeta,
     STALKER_REQUEST,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { StalkerSessionService } from '../../stalker-session.service';
 
 /**

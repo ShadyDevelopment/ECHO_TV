@@ -7,7 +7,7 @@ import {
     XtreamBackupRecentlyViewedItem,
     XtreamPendingRestoreState,
     XtreamPlaylistBackupEntry,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { USER_DATA_STORAGE, XTREAM_USER_DATA_KEYS } from './user-data-storage';
 
 type StoredMap = Record<string, unknown>;

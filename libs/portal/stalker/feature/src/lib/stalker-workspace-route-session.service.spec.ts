@@ -7,10 +7,10 @@ import {
     Router,
 } from '@angular/router';
 import { EMPTY, Observable, Subject, of } from 'rxjs';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
+import { PlaylistsService } from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { StalkerWorkspaceRouteSession } from './stalker-workspace-route-session.service';
 
 const PLAYLIST_ID = 'stalker-1';

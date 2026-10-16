@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { DataService } from '@iptvnator/services';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
+import { DataService } from '@echo-tv/services';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
 import {
     EpgItem,
     XtreamCategory,
@@ -13,7 +13,7 @@ import {
     XTREAM_REQUEST,
     normalizeXtreamServerUrl,
     parseXtreamServerLocalDateTime,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { XtreamAccountInfo } from '../account-info/account-info.interface';
 
 /**

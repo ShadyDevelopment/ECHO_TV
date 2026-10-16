@@ -1,18 +1,18 @@
 # Database
 
-Shared database library for IPTVnator providing Drizzle ORM schema and connection utilities.
+Shared database library for ECHO TV providing Drizzle ORM schema and connection utilities.
 
 ## Usage
 
 ```typescript
 // Full access (electron-backend)
-import { getDatabase, initDatabase } from '@iptvnator/shared/database';
+import { getDatabase, initDatabase } from '@echo-tv/shared/database';
 
 // Read-only access (agent-backend)
-import { getReadOnlyDatabase } from '@iptvnator/shared/database';
+import { getReadOnlyDatabase } from '@echo-tv/shared/database';
 
 // Schema and types
-import { content, categories, playlists, type Content } from '@iptvnator/shared/database';
+import { content, categories, playlists, type Content } from '@echo-tv/shared/database';
 ```
 
 ## Exports
@@ -29,17 +29,17 @@ import { content, categories, playlists, type Content } from '@iptvnator/shared/
 - `getDatabasePath()` - Get database file path
 
 ### Connection observer (`connection-observer.ts`)
-- `setDatabaseConnectionObserver(observer | null)` - Called by `initDatabase` with each connection it opens, before any statement runs on it. The Electron main process registers one only with `IPTVNATOR_PERF_CAPTURE=1`, to count main-thread SQL statements. The module has no runtime dependencies and is also importable as `@iptvnator/shared/database/connection-observer`.
+- `setDatabaseConnectionObserver(observer | null)` - Called by `initDatabase` with each connection it opens, before any statement runs on it. The Electron main process registers one only with `ECHO_TV_PERF_CAPTURE=1`, to count main-thread SQL statements. The module has no runtime dependencies and is also importable as `@echo-tv/shared/database/connection-observer`.
 
 ## Database Location
 
-The SQLite database is stored at `<data root>/databases/iptvnator.db`. The data
+The SQLite database is stored at `<data root>/databases/echo-tv.db`. The data
 root is resolved in this order:
 
-1. `IPTVNATOR_E2E_DATA_DIR` (E2E runs only)
-2. `IPTVNATOR_DATA_DIR` (an operator-selected data root for deployments
+1. `ECHO_TV_E2E_DATA_DIR` (E2E runs only)
+2. `ECHO_TV_DATA_DIR` (an operator-selected data root for deployments
    with a mounted volume, for example `/data`)
-3. `~/.iptvnator`
+3. `~/.echo-tv`
 
 ## Upgrade Compatibility And Migrations
 

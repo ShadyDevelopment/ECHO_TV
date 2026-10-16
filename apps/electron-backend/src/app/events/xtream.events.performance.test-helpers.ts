@@ -98,9 +98,9 @@ export async function loadXtreamEvents(
     mockFinalizeTransform.mockClear();
     mockDefaultsReadCount = 0;
     if (captureValue === undefined) {
-        delete process.env['IPTVNATOR_PERF_CAPTURE'];
+        delete process.env['ECHO_TV_PERF_CAPTURE'];
     } else {
-        process.env['IPTVNATOR_PERF_CAPTURE'] = captureValue;
+        process.env['ECHO_TV_PERF_CAPTURE'] = captureValue;
     }
     await import('./xtream.events');
 }

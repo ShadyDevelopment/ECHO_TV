@@ -5,7 +5,7 @@ import {
     type XtreamPreloadPerformanceContentType,
     type XtreamPreloadPerformanceMarker,
     type XtreamPreloadPerformanceMethod,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const IDENTIFIER_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:-]*$/;
 const MAX_IDENTIFIER_LENGTH = 128;

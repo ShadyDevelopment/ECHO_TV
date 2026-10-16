@@ -89,7 +89,7 @@ async function withArtifacts(
     run: (directory: string) => Promise<void>
 ): Promise<void> {
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-content-')
+        join(tmpdir(), 'echo-tv-initial-import-content-')
     );
     try {
         await writeArtifacts(directory);

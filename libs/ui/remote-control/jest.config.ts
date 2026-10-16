@@ -1,5 +1,5 @@
 export default {
-    displayName: '@iptvnator/ui/remote-control',
+    displayName: '@echo-tv/ui/remote-control',
     preset: '../../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
     coverageDirectory: '../../../coverage/libs/ui/remote-control',

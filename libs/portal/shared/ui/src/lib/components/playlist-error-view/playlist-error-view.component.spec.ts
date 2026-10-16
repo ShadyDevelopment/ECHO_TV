@@ -6,16 +6,16 @@ import { provideRouter, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SourceActivityService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
-import { ConfirmDialogData, DialogService } from '@iptvnator/ui/components';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
+import { ConfirmDialogData, DialogService } from '@echo-tv/ui/components';
 import { PlaylistErrorViewComponent } from './playlist-error-view.component';
 
 const XTREAM_PLAYLIST = {

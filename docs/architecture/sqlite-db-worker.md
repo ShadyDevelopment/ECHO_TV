@@ -87,7 +87,7 @@ small:
 
 Worker operations use the shared table contract in
 `libs/shared/database/src/lib/schema.ts`, imported by worker code through
-`@iptvnator/shared/database/schema`.
+`@echo-tv/shared/database/schema`.
 
 ## Worker Architecture
 
@@ -158,7 +158,7 @@ The worker contract lives in
 
 ### Opt-in request performance capture
 
-`IPTVNATOR_PERF_WORKER_PROFILING=1` adds development/test-only performance
+`ECHO_TV_PERF_WORKER_PROFILING=1` adds development/test-only performance
 metadata to each database-worker response. It is disabled by default and must
 stay disabled for production launches.
 
@@ -340,7 +340,7 @@ main-process RSS together with native and SQLite memory.
 
 ### Opt-in post-GC heap capture
 
-The same `IPTVNATOR_PERF_WORKER_PROFILING=1` opt-in enables a development/test
+The same `ECHO_TV_PERF_WORKER_PROFILING=1` opt-in enables a development/test
 one-shot `performance:collect-post-gc-heap` request. The benchmark transfers a
 dedicated `MessagePort`; the database worker accepts the request only while no
 request performance capture is active, calls exposed `globalThis.gc()`, reads
@@ -435,7 +435,7 @@ lifecycle, only the terminal
 separate cancel-requested flag immediately so the cancel action cannot be
 clicked twice while it waits for the authoritative terminal event.
 
-With the exact `IPTVNATOR_PERF_WORKER_PROFILING=1` opt-in, receipt of a cancel
+With the exact `ECHO_TV_PERF_WORKER_PROFILING=1` opt-in, receipt of a cancel
 for a correlated active request also emits a
 `performance-cancel-received` worker diagnostic containing only safe
 operation/request IDs and its epoch. The functional cancellation flag is set
@@ -444,7 +444,7 @@ first, this receipt remains distinct from the later authoritative
 exposing the pending request. Disabled profiling performs no receipt clock or
 transport work, and `DatabaseWorkerClient.cancel()` remains fire-and-return.
 
-With `IPTVNATOR_PERF_CAPTURE=1` and `IPTVNATOR_PERF_COUNT_SQL=1`, the worker
+With `ECHO_TV_PERF_CAPTURE=1` and `ECHO_TV_PERF_COUNT_SQL=1`, the worker
 connection also counts the SQL statements it executes and posts `performance-sql-statements` messages that
 carry only a positive count, never SQL text or bound values. Counts are
 coalesced per microtask and flushed before every other worker message, so a
@@ -455,7 +455,7 @@ execution methods of better-sqlite3's `Statement` prototype and the
 connection's `exec`, not through the `verbose` callback: a callback makes
 better-sqlite3 expand every statement's SQL, which made bulk inserts two to
 four times slower. Counting still adds a JavaScript call per row of a bulk
-insert, so it needs `IPTVNATOR_PERF_COUNT_SQL` on top of the capture flag:
+insert, so it needs `ECHO_TV_PERF_COUNT_SQL` on top of the capture flag:
 only the launch journey sets it, and the import benchmarks that run with the
 capture flag measure unwrapped statements. A call that throws is not counted, which matches the SQL
 trace for statements that fail before execution. One `exec` call counts as
@@ -819,8 +819,8 @@ renderer can actually paint the loading state instead of freezing.
 
 The worker build also aliases:
 
-1. `@iptvnator/shared/database/schema`
-2. `@iptvnator/shared/database/path-utils`
+1. `@echo-tv/shared/database/schema`
+2. `@echo-tv/shared/database/path-utils`
 
 These aliases avoid importing the shared database barrel from inside the worker,
 which would otherwise pull in runtime code that assumes the main Electron
@@ -975,7 +975,7 @@ covers:
 For deterministic E2E timing, tests may set:
 
 ```bash
-IPTVNATOR_DB_WORKER_BATCH_DELAY_MS=20
+ECHO_TV_DB_WORKER_BATCH_DELAY_MS=20
 ```
 
 This artificial delay is test-only and disabled by default. At the default
@@ -988,7 +988,7 @@ few-thousand-row mock catalog still produces several commits — and therefore
 several checkpoints and progress events — to observe mid-import:
 
 ```bash
-IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION=100
+ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION=100
 ```
 
 Unset, or set to anything but a positive integer, it leaves the default
@@ -1034,31 +1034,31 @@ When a renderer route freezes before DevTools become usable, start Electron with
 one of these opt-in trace flags and inspect the terminal output:
 
 ```bash
-IPTVNATOR_TRACE_STARTUP=1 pnpm run serve:backend
+ECHO_TV_TRACE_STARTUP=1 pnpm run serve:backend
 ```
 
 Available trace flags:
 
-1. `IPTVNATOR_TRACE_STARTUP=1`
+1. `ECHO_TV_TRACE_STARTUP=1`
    Enables the broad startup trace set: BrowserWindow lifecycle, renderer
    bridge calls, DB worker requests/events, and SQL tracing.
-2. `IPTVNATOR_TRACE_IPC=1`
+2. `ECHO_TV_TRACE_IPC=1`
    Logs `window.electron.*` method calls crossing the preload bridge so you can
    see whether the renderer is still reaching Electron main.
-3. `IPTVNATOR_TRACE_DB=1`
+3. `ECHO_TV_TRACE_DB=1`
    Logs redacted `DatabaseWorkerClient` request dispatch, completion timing,
    and emitted `DB_OPERATION_EVENT` summaries. It also enables the safe SQL
    statement-type summaries described below.
-4. `IPTVNATOR_TRACE_SQL=1`
+4. `ECHO_TV_TRACE_SQL=1`
    Logs only a fixed allowlisted statement type such as `SELECT`, `INSERT`, or
    `UPDATE` for the shared main-process and worker connections. The verbose
    hook output passes through
    `libs/shared/logging/src/lib/sql-trace-summary.ts`; expanded SQL text and
    bound values are never emitted.
-5. `IPTVNATOR_TRACE_WINDOW=1`
+5. `ECHO_TV_TRACE_WINDOW=1`
    Logs BrowserWindow loading, navigation, `unresponsive`, and
    `render-process-gone` transitions.
-6. `IPTVNATOR_TRACE_RENDERER_CONSOLE=1`
+6. `ECHO_TV_TRACE_RENDERER_CONSOLE=1`
    Mirrors renderer console messages into the Electron terminal output when the
    renderer itself is the thing getting wedged.
 

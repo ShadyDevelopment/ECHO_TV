@@ -7,13 +7,13 @@ import {
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ChannelActions, selectActive } from '@iptvnator/m3u-state';
+import { ChannelActions, selectActive } from '@echo-tv/m3u-state';
 import {
     XTREAM_DATA_SOURCE,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { ParentalLockService } from '@iptvnator/services';
-import { toParentalLockXtreamCategoryType } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/xtream/data-access';
+import { ParentalLockService } from '@echo-tv/services';
+import { toParentalLockXtreamCategoryType } from '@echo-tv/shared/interfaces';
 import { PlaybackKeepAwakeService } from './playback-keep-awake.service';
 
 const XTREAM_ROUTE =

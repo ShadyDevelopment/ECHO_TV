@@ -3,13 +3,13 @@ import {
     CONNECTIVITY_GUARD_RESET,
     XTREAM_CANCEL_SESSION,
     buildHostConnectivityFastFailMessage,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const registeredHandlers = new Map<string, (...args: unknown[]) => unknown>();
 const axiosMock = Object.assign(jest.fn(), {
     isAxiosError: jest.fn(),
 });
-const PERF_CAPTURE_ENV = 'IPTVNATOR_PERF_CAPTURE';
+const PERF_CAPTURE_ENV = 'ECHO_TV_PERF_CAPTURE';
 const originalPerformanceCaptureValue = process.env[PERF_CAPTURE_ENV];
 
 function createDeferred<T>() {
@@ -45,8 +45,8 @@ jest.mock('./portal-debug.events', () => ({
 // The transport's connect observer, captured per request so a test can play
 // the panel that accepts the connection and then goes quiet.
 const mockConnectHooks: Array<() => void> = [];
-jest.mock('@iptvnator/shared/host-health', () => {
-    const actual = jest.requireActual('@iptvnator/shared/host-health');
+jest.mock('@echo-tv/shared/host-health', () => {
+    const actual = jest.requireActual('@echo-tv/shared/host-health');
     return {
         ...actual,
         observeAgentSocketConnections: jest.fn(
@@ -469,7 +469,7 @@ describe('XtreamEvents session cancellation', () => {
 });
 
 describe('XtreamEvents expected outcomes', () => {
-    const TRACE_IPC_ENV = 'IPTVNATOR_TRACE_IPC';
+    const TRACE_IPC_ENV = 'ECHO_TV_TRACE_IPC';
     const originalTraceIpc = process.env[TRACE_IPC_ENV];
     let consoleErrorSpy: jest.SpyInstance;
     let consoleWarnSpy: jest.SpyInstance;
@@ -676,7 +676,7 @@ describe('XtreamEvents expected outcomes', () => {
 });
 
 describe('XtreamEvents host connectivity guard', () => {
-    const GUARD_DISABLED_ENV = 'IPTVNATOR_DISABLE_CONNECTIVITY_GUARD';
+    const GUARD_DISABLED_ENV = 'ECHO_TV_DISABLE_CONNECTIVITY_GUARD';
     const SERVER_URL = 'http://dead-panel.example.com:8080';
     const SERVER_ENDPOINT = 'http://dead-panel.example.com:8080';
     let consoleErrorSpy: jest.SpyInstance;

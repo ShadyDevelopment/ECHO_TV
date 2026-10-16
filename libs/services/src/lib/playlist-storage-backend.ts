@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import type { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+import type { ElectronBridgeApi } from '@echo-tv/shared/interfaces';
 import { RuntimeCapabilitiesService } from './runtime-capabilities.service';
 
 /**

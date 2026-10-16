@@ -4,7 +4,7 @@ import type {
     VodSourceDescriptor,
     VodSourceMatchKind,
     VodSourceProbeResult,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { factualOnly } from './vod-source-metadata.util';
 
 /**

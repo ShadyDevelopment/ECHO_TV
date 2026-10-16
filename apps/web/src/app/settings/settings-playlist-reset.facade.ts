@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom, take } from 'rxjs';
-import { PlaylistActions, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+import { PlaylistActions, selectAllPlaylistsMeta } from '@echo-tv/m3u-state';
 import {
     ParentalLockService,
     DatabaseService,
@@ -11,7 +11,7 @@ import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     injectTranslationTick,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     SettingsDeleteAllPlaylistsDialogComponent,
     SettingsDeleteAllPlaylistsDialogData,

@@ -2,7 +2,7 @@ import {
     sourceHealthKey,
     type PlaylistMeta,
     type SourceHealthReason,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const SOURCE_HEALTH_REASONS: ReadonlySet<string> = new Set<SourceHealthReason>([
     'available',

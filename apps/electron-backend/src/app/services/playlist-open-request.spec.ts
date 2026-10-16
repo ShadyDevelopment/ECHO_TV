@@ -92,7 +92,7 @@ describe('extractPlaylistOpenRequestsFromArgv', () => {
     it('finds the playlist path in a packaged launch', () => {
         expect(
             extractPlaylistOpenRequestsFromArgv([
-                '/opt/iptvnator/iptvnator',
+                '/opt/echo-tv/echo-tv',
                 '/home/user/list.m3u',
             ])
         ).toMatchObject([
@@ -123,7 +123,7 @@ describe('extractPlaylistOpenRequestsFromArgv', () => {
     // `%U` hands over the whole selection, one argument per file.
     it('keeps every playlist of a multi-file selection, in order', () => {
         const requests = extractPlaylistOpenRequestsFromArgv([
-            '/opt/iptvnator/iptvnator',
+            '/opt/echo-tv/echo-tv',
             '--ozone-platform=x11',
             'file:///home/user/first.m3u',
             '/home/user/movie.mkv',
@@ -149,7 +149,7 @@ describe('extractPlaylistOpenRequestsFromArgv', () => {
     it('returns nothing when no playlist argument is present', () => {
         expect(
             extractPlaylistOpenRequestsFromArgv([
-                '/opt/iptvnator/iptvnator',
+                '/opt/echo-tv/echo-tv',
                 '--no-sandbox',
             ])
         ).toEqual([]);
@@ -158,7 +158,7 @@ describe('extractPlaylistOpenRequestsFromArgv', () => {
     it('resolves a relative argument against the forwarded working directory', () => {
         expect(
             extractPlaylistOpenRequestsFromArgv(
-                ['/opt/iptvnator/iptvnator', 'list.m3u'],
+                ['/opt/echo-tv/echo-tv', 'list.m3u'],
                 '/home/user/tv'
             )
         ).toMatchObject([

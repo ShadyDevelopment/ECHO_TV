@@ -2,7 +2,7 @@ import { and, eq, isNull, or } from 'drizzle-orm';
 import type {
     CatchupDownloadMetadata,
     ElectronBridgeEpisodeIdentityScope,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import * as schema from '../../database/schema';
 import type { DownloadsDatabase } from './download-task';
 

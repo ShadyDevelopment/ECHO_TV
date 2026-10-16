@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 
-const OPERATION_STATE_KEY = '__iptvnatorXtreamScenarioOperationWindow';
+const OPERATION_STATE_KEY = '__echo-tvXtreamScenarioOperationWindow';
 const DELETE_OPERATION = 'delete-xtream-content';
 /** A content delete before a refresh, or a whole playlist's delete. */
 export type XtreamObservedOperation =

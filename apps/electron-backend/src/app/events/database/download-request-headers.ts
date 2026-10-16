@@ -1,4 +1,4 @@
-import { XTREAM_CLIENT_USER_AGENT } from '@iptvnator/shared/interfaces';
+import { XTREAM_CLIENT_USER_AGENT } from '@echo-tv/shared/interfaces';
 import { eq } from 'drizzle-orm';
 import * as schema from '../../database/schema';
 import type { DownloadsDatabase } from './download-task';

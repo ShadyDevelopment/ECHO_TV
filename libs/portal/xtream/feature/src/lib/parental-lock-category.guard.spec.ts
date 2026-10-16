@@ -6,12 +6,12 @@ import {
     RouterStateSnapshot,
     UrlTree,
 } from '@angular/router';
-import { XTREAM_DATA_SOURCE } from '@iptvnator/portal/xtream/data-access';
+import { XTREAM_DATA_SOURCE } from '@echo-tv/portal/xtream/data-access';
 import {
     DatabaseService,
     ParentalLockService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { parentalLockXtreamCategoryGuard } from './parental-lock-category.guard';
 
 function createRoute(

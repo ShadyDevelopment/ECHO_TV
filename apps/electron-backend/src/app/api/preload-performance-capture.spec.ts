@@ -2,7 +2,7 @@ import {
     PRELOAD_PERFORMANCE_MARKER_CHANNEL,
     PRELOAD_PERFORMANCE_METHOD,
     type PreloadPerformanceMarker,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { createPreloadPerformanceCapture } from './preload-performance-capture';
 
 describe('preload performance capture timestamps', () => {

@@ -53,7 +53,7 @@ export function createSyntheticXmltvFixture(
         programmeCount / SYNTHETIC_XMLTV_PROGRAMMES_PER_CHANNEL;
     const lines: string[] = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<tv generator-info-name="iptvnator-synthetic">',
+        '<tv generator-info-name="echo-tv-synthetic">',
     ];
 
     for (let offset = 0; offset < channelCount; offset += 1) {

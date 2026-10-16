@@ -36,7 +36,7 @@ afterEach(async () => {
 test('rejects a schedule whose validated raw iterations reuse one persistence path', async () => {
     const { diagnosticEvidence, iterations } = await smokeReportFixture();
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-xtream-shared-raw-path-')
+        join(tmpdir(), 'echo-tv-xtream-shared-raw-path-')
     );
     directories.push(directory);
     const absolutePath = join(directory, 'raw.json');

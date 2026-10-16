@@ -3,7 +3,7 @@ import {
     RENDERER_PERFORMANCE_PHASE_HOOK_KEY,
     type RendererPerformancePhaseEvent,
     type RendererPerformancePhaseHook,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 
 import type { XtreamScenarioId } from './xtream-benchmark-contract';
 import {

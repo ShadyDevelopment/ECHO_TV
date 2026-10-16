@@ -84,7 +84,7 @@ describe('Xtream performance control client', () => {
             calls.every(
                 ({ headers, redirect }) =>
                     redirect === 'error' &&
-                    headers.get('x-iptvnator-performance-token') === TOKEN
+                    headers.get('x-echo-tv-performance-token') === TOKEN
             )
         );
         assert.equal(
@@ -127,7 +127,7 @@ describe('Xtream performance control client', () => {
             fetchImpl: async (_input, init) => {
                 if (init?.redirect !== 'error') {
                     forwardedToken = new Headers(init?.headers).has(
-                        'x-iptvnator-performance-token'
+                        'x-echo-tv-performance-token'
                     );
                 }
                 return responseAt(
@@ -287,7 +287,7 @@ describe('Xtream performance control client', () => {
         assert.equal(tokenReads, 1);
         assert.equal(calls[0]?.path, '/__control/prepare');
         assert.equal(
-            calls[0]?.headers.get('x-iptvnator-performance-token'),
+            calls[0]?.headers.get('x-echo-tv-performance-token'),
             TOKEN
         );
     });

@@ -1,20 +1,20 @@
-# Unofficial IPTVnator Websites Blog Cover Design
+# Unofficial ECHO TV Websites Blog Cover Design
 
 ## Goal
 
-Create one horizontal 16:9 cover image for the blog post “Beware of Unofficial IPTVnator Websites and IPTV Services.” The image should make the distinction between the authentic IPTVnator project and unofficial lookalike websites immediately understandable without repeating the article title inside the artwork.
+Create one horizontal 16:9 cover image for the blog post “Beware of Unofficial ECHO TV Websites and IPTV Services.” The image should make the distinction between the authentic ECHO TV project and unofficial lookalike websites immediately understandable without repeating the article title inside the artwork.
 
 ## Approved Direction
 
-The approved concept is **Official Signal**. A crisp IPTVnator screen-and-broadcast mark is the central artifact. Concentric signal rings establish authenticity and continuity, while two faint, fragmented browser-like panels recede beyond the left and right edges as unofficial copies. A small pale-red warning marker supplies the only caution color. The composition remains legible when cropped into an aspect-ratio blog card.
+The approved concept is **Official Signal**. A crisp ECHO TV screen-and-broadcast mark is the central artifact. Concentric signal rings establish authenticity and continuity, while two faint, fragmented browser-like panels recede beyond the left and right edges as unofficial copies. A small pale-red warning marker supplies the only caution color. The composition remains legible when cropped into an aspect-ratio blog card.
 
 ## Visual System
 
 - Canvas: 16:9 landscape, suitable for a 2200 × 1238 source image.
-- Background: matte IPTVnator graphite (`#0a0a08`) with a restrained technical grid and light grain.
-- Primary accent: IPTVnator teal (`#20a8a8`, `#38c4c4`, and `#5ee0e0`).
+- Background: matte ECHO TV graphite (`#0a0a08`) with a restrained technical grid and light grain.
+- Primary accent: ECHO TV teal (`#20a8a8`, `#38c4c4`, and `#5ee0e0`).
 - Warning accent: pale red (`#fdebec`) with muted red detail (`#9f2f2d`).
-- Main subject: a screen and broadcast-signal symbol derived from the established IPTVnator app-icon language, rendered as an original illustration rather than a pasted logo.
+- Main subject: a screen and broadcast-signal symbol derived from the established ECHO TV app-icon language, rendered as an original illustration rather than a pasted logo.
 - Supporting forms: two low-contrast browser silhouettes with broken or dashed edges, clearly secondary to the official signal.
 - Material character: flat, editorial, and lightly tactile; no gradients, glass effects, or heavy shadows.
 - Text: none inside the final image.
@@ -34,6 +34,6 @@ The official signal occupies the central safe area, with enough surrounding nega
 
 ## Deliverable and Integration
 
-Generate a single project-bound raster cover with the built-in image-generation tool. Save the selected asset under `apps/website/public/blog/` using a descriptive, non-versioned filename. Add its `/iptvnator/blog/...` URL as `heroImage` in `apps/website/src/content/blog/beware-unofficial-iptvnator-websites.mdx`.
+Generate a single project-bound raster cover with the built-in image-generation tool. Save the selected asset under `apps/website/public/blog/` using a descriptive, non-versioned filename. Add its `/echo-tv/blog/...` URL as `heroImage` in `apps/website/src/content/blog/beware-unofficial-echo-tv-websites.mdx`.
 
 Validate the saved dimensions and file type, inspect the final image at full size and as a small thumbnail, run the website build, and verify that the post’s social metadata resolves to the new cover. No release note is required because this is website content and is auto-exempt from the runtime release-note gate.

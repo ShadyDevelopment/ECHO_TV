@@ -1,4 +1,4 @@
-import type { VodSourceCandidate } from '@iptvnator/shared/interfaces';
+import type { VodSourceCandidate } from '@echo-tv/shared/interfaces';
 import {
     applyApiMetadata,
     audioDiffersFactually,

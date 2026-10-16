@@ -22,7 +22,7 @@ database snapshots.
 
 Top-level shape:
 
-- `kind: "iptvnator-playlist-backup"`
+- `kind: "echo-tv-playlist-backup"`
 - `version: 1`
 - `exportedAt`
 - `includeSecrets`
@@ -277,7 +277,7 @@ The settings page now exports/imports “playlist backups” instead of the old
 raw JSON application dump.
 
 - Export filename:
-  `iptvnator-playlist-backup-YYYY-MM-DD.json`
+  `echo-tv-playlist-backup-YYYY-MM-DD.json`
 - Import summary reports:
     - imported
     - merged

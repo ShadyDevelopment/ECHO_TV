@@ -3,8 +3,8 @@ import { posix, win32 } from 'node:path';
 import { resolveStaticFilePath } from './http-server';
 
 describe('resolveStaticFilePath', () => {
-    const POSIX_STATIC_ROOT = '/opt/iptvnator/remote-control';
-    const WINDOWS_STATIC_ROOT = 'C:\\iptvnator\\remote-control';
+    const POSIX_STATIC_ROOT = '/opt/echo-tv/remote-control';
+    const WINDOWS_STATIC_ROOT = 'C:\\echo-tv\\remote-control';
 
     it('rejects a Windows double-leading-slash traversal', () => {
         expect(
@@ -49,7 +49,7 @@ describe('resolveStaticFilePath', () => {
                 '/assets\\app.js?version=1',
                 win32
             )
-        ).toBe('C:\\iptvnator\\remote-control\\assets\\app.js');
+        ).toBe('C:\\echo-tv\\remote-control\\assets\\app.js');
     });
 
     it('ignores query and fragment data for filesystem resolution', () => {
@@ -59,7 +59,7 @@ describe('resolveStaticFilePath', () => {
                 '/data.json?cache=1#ignored',
                 posix
             )
-        ).toBe('/opt/iptvnator/remote-control/data.json');
+        ).toBe('/opt/echo-tv/remote-control/data.json');
     });
 
     it('decodes the URL pathname exactly once', () => {
@@ -69,6 +69,6 @@ describe('resolveStaticFilePath', () => {
                 '/%252e%252e/asset.js',
                 posix
             )
-        ).toBe('/opt/iptvnator/remote-control/%2e%2e/asset.js');
+        ).toBe('/opt/echo-tv/remote-control/%2e%2e/asset.js');
     });
 });

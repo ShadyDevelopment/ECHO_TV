@@ -6,14 +6,14 @@ import {
     flushMicrotasks,
 } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VIEW_IN_PORTAL_HANDOFF } from '@iptvnator/ui/components';
-import { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
+import { VIEW_IN_PORTAL_HANDOFF } from '@echo-tv/ui/components';
+import { UnifiedCollectionItem } from '@echo-tv/portal/shared/util';
 import {
     XtreamPlaylistData,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { PlaylistsService } from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/xtream/data-access';
+import { PlaylistsService } from '@echo-tv/services';
+import { Playlist } from '@echo-tv/shared/interfaces';
 import { Subject, firstValueFrom, of } from 'rxjs';
 import { SerialDetailsComponent } from './serial-details/serial-details.component';
 import { XTREAM_SERIES_RESUME_TARGET } from './serial-details/serial-details-resume-target.token';

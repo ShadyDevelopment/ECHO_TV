@@ -28,7 +28,7 @@ export function isServerUserStateNamespace(
 export const SERVER_PAYLOAD_FIELDS = ['playlist', 'items', 'header'] as const;
 
 export interface ServerInstanceInfo {
-    readonly service: 'iptvnator';
+    readonly service: 'echo-tv';
     readonly apiVersion: number;
     /** Stable per database; `null` without server storage. */
     readonly instanceId: string | null;

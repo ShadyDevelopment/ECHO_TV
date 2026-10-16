@@ -2,7 +2,7 @@ import {
     ACKNOWLEDGE_PLAYLIST_OPEN_REQUEST,
     ANNOUNCE_PLAYLIST_OPEN_LISTENER,
     OPEN_FILE,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 type IpcHandler = (event: MockIpcEvent, ...args: unknown[]) => unknown;
 

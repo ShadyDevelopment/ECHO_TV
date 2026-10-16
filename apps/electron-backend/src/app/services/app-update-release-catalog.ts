@@ -3,7 +3,7 @@ import {
     appUpdateReleasesApiUrl,
     appUpdateReleasesListUrl,
     appVersionChannel,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const GITHUB_RELEASES_PER_PAGE = 10;
 

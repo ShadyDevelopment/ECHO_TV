@@ -9,13 +9,13 @@ import { existsSync, mkdtempSync, rmSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import {
-    IPTVNATOR_DATA_DIR_ENV,
-    IPTVNATOR_E2E_DATA_DIR_ENV,
+    ECHO_TV_DATA_DIR_ENV,
+    ECHO_TV_E2E_DATA_DIR_ENV,
     getElectronConfigDirectory,
     getElectronUserDataPath,
-    getIptvnatorDataRoot,
-    getIptvnatorDatabaseDirectory,
-    getIptvnatorDatabasePath,
+    getEchoTvDataRoot,
+    getEchoTvDatabaseDirectory,
+    getEchoTvDatabasePath,
 } from './path-utils';
 
 describe('path-utils', () => {
@@ -24,82 +24,82 @@ describe('path-utils', () => {
     let originalDataDirValue: string | undefined;
 
     beforeEach(() => {
-        tempRoot = mkdtempSync(join(tmpdir(), 'iptvnator-path-utils-'));
+        tempRoot = mkdtempSync(join(tmpdir(), 'echo-tv-path-utils-'));
         homedirMock.mockReturnValue(join(tempRoot, 'home'));
-        originalEnvValue = process.env[IPTVNATOR_E2E_DATA_DIR_ENV];
-        delete process.env[IPTVNATOR_E2E_DATA_DIR_ENV];
-        originalDataDirValue = process.env[IPTVNATOR_DATA_DIR_ENV];
-        delete process.env[IPTVNATOR_DATA_DIR_ENV];
+        originalEnvValue = process.env[ECHO_TV_E2E_DATA_DIR_ENV];
+        delete process.env[ECHO_TV_E2E_DATA_DIR_ENV];
+        originalDataDirValue = process.env[ECHO_TV_DATA_DIR_ENV];
+        delete process.env[ECHO_TV_DATA_DIR_ENV];
     });
 
     afterEach(() => {
         if (originalEnvValue === undefined) {
-            delete process.env[IPTVNATOR_E2E_DATA_DIR_ENV];
+            delete process.env[ECHO_TV_E2E_DATA_DIR_ENV];
         } else {
-            process.env[IPTVNATOR_E2E_DATA_DIR_ENV] = originalEnvValue;
+            process.env[ECHO_TV_E2E_DATA_DIR_ENV] = originalEnvValue;
         }
         if (originalDataDirValue === undefined) {
-            delete process.env[IPTVNATOR_DATA_DIR_ENV];
+            delete process.env[ECHO_TV_DATA_DIR_ENV];
         } else {
-            process.env[IPTVNATOR_DATA_DIR_ENV] = originalDataDirValue;
+            process.env[ECHO_TV_DATA_DIR_ENV] = originalDataDirValue;
         }
         rmSync(tempRoot, { force: true, recursive: true });
     });
 
-    it('uses and creates IPTVNATOR_DATA_DIR as the data root', () => {
+    it('uses and creates ECHO_TV_DATA_DIR as the data root', () => {
         const dataDir = join(tempRoot, 'volume');
-        process.env[IPTVNATOR_DATA_DIR_ENV] = ` ${dataDir} `;
+        process.env[ECHO_TV_DATA_DIR_ENV] = ` ${dataDir} `;
 
-        expect(getIptvnatorDataRoot()).toBe(dataDir);
+        expect(getEchoTvDataRoot()).toBe(dataDir);
         expect(existsSync(dataDir)).toBe(true);
-        expect(getIptvnatorDatabasePath()).toBe(
-            join(dataDir, 'databases', 'iptvnator.db')
+        expect(getEchoTvDatabasePath()).toBe(
+            join(dataDir, 'databases', 'echo-tv.db')
         );
     });
 
-    it('lets the E2E override win over IPTVNATOR_DATA_DIR', () => {
+    it('lets the E2E override win over ECHO_TV_DATA_DIR', () => {
         const e2eDir = join(tempRoot, 'e2e');
-        process.env[IPTVNATOR_E2E_DATA_DIR_ENV] = e2eDir;
-        process.env[IPTVNATOR_DATA_DIR_ENV] = join(tempRoot, 'volume');
+        process.env[ECHO_TV_E2E_DATA_DIR_ENV] = e2eDir;
+        process.env[ECHO_TV_DATA_DIR_ENV] = join(tempRoot, 'volume');
 
-        expect(getIptvnatorDataRoot()).toBe(e2eDir);
+        expect(getEchoTvDataRoot()).toBe(e2eDir);
     });
 
-    it('ignores a blank IPTVNATOR_DATA_DIR', () => {
-        process.env[IPTVNATOR_DATA_DIR_ENV] = '   ';
+    it('ignores a blank ECHO_TV_DATA_DIR', () => {
+        process.env[ECHO_TV_DATA_DIR_ENV] = '   ';
 
-        expect(getIptvnatorDataRoot()).toBe(
-            join(tempRoot, 'home', '.iptvnator')
+        expect(getEchoTvDataRoot()).toBe(
+            join(tempRoot, 'home', '.echo-tv')
         );
     });
 
     it('uses and creates the E2E data dir override when the env variable is set', () => {
         const e2eDataDir = join(tempRoot, 'e2e-data');
-        process.env[IPTVNATOR_E2E_DATA_DIR_ENV] = e2eDataDir;
+        process.env[ECHO_TV_E2E_DATA_DIR_ENV] = e2eDataDir;
 
-        expect(getIptvnatorDataRoot()).toBe(e2eDataDir);
+        expect(getEchoTvDataRoot()).toBe(e2eDataDir);
         expect(existsSync(e2eDataDir)).toBe(true);
     });
 
-    it('falls back to ~/.iptvnator when the env override is blank', () => {
-        process.env[IPTVNATOR_E2E_DATA_DIR_ENV] = '   ';
+    it('falls back to ~/.echo-tv when the env override is blank', () => {
+        process.env[ECHO_TV_E2E_DATA_DIR_ENV] = '   ';
 
-        const expectedRoot = join(tempRoot, 'home', '.iptvnator');
+        const expectedRoot = join(tempRoot, 'home', '.echo-tv');
 
-        expect(getIptvnatorDataRoot()).toBe(expectedRoot);
+        expect(getEchoTvDataRoot()).toBe(expectedRoot);
         expect(existsSync(expectedRoot)).toBe(true);
     });
 
     it('places the databases directory and database file under the data root', () => {
         const e2eDataDir = join(tempRoot, 'e2e-data');
-        process.env[IPTVNATOR_E2E_DATA_DIR_ENV] = e2eDataDir;
+        process.env[ECHO_TV_E2E_DATA_DIR_ENV] = e2eDataDir;
 
-        const databaseDirectory = getIptvnatorDatabaseDirectory();
+        const databaseDirectory = getEchoTvDatabaseDirectory();
 
         expect(databaseDirectory).toBe(join(e2eDataDir, 'databases'));
         expect(existsSync(databaseDirectory)).toBe(true);
-        expect(getIptvnatorDatabasePath()).toBe(
-            join(e2eDataDir, 'databases', 'iptvnator.db')
+        expect(getEchoTvDatabasePath()).toBe(
+            join(e2eDataDir, 'databases', 'echo-tv.db')
         );
     });
 
@@ -110,7 +110,7 @@ describe('path-utils', () => {
 
     it('creates Electron user-data and config directories under the E2E root', () => {
         const e2eDataDir = join(tempRoot, 'e2e-data');
-        process.env[IPTVNATOR_E2E_DATA_DIR_ENV] = e2eDataDir;
+        process.env[ECHO_TV_E2E_DATA_DIR_ENV] = e2eDataDir;
 
         const userDataPath = getElectronUserDataPath();
         const configDirectory = getElectronConfigDirectory();

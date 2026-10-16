@@ -1,7 +1,7 @@
 import {
     PRELOAD_PERFORMANCE_CORRELATION_STATE,
     PRELOAD_PERFORMANCE_METHOD,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createPlaylist,
     createPreloadPerformanceHarness,

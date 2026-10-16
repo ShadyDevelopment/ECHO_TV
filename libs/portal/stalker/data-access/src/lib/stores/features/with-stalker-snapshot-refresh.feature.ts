@@ -5,12 +5,12 @@ import {
     type,
     withMethods,
 } from '@ngrx/signals';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService } from '@iptvnator/services';
+import { createLogger } from '@echo-tv/portal/shared/util';
+import { DataService } from '@echo-tv/services';
 import {
     PlaylistMeta,
     StalkerPortalActions,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { StalkerVodSource } from '../../models';
 import { StalkerPortalRepairService } from '../../stalker-portal-repair.service';
 import { StalkerSessionService } from '../../stalker-session.service';

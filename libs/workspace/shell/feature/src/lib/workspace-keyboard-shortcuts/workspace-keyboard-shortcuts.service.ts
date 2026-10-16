@@ -6,13 +6,13 @@ import {
     isKeyboardShortcutHelpTrigger,
     isTypingInInput,
     resolveZoomShortcutAction,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/util';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import {
     WorkspaceKeyboardShortcutsDialogComponent,
     WorkspaceKeyboardShortcutsDialogData,
 } from './workspace-keyboard-shortcuts-dialog.component';
-import { WorkspaceShellContextDrawerService } from '@iptvnator/workspace/shell/util';
+import { WorkspaceShellContextDrawerService } from '@echo-tv/workspace/shell/util';
 
 @Injectable()
 export class WorkspaceKeyboardShortcutsService {

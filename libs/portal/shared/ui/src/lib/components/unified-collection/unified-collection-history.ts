@@ -15,7 +15,7 @@ import {
     getCollectionViewState,
     OPEN_COLLECTION_DETAIL_STATE_KEY,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 /**
  * The collection's selected tab and scope live in `window.history.state`, so

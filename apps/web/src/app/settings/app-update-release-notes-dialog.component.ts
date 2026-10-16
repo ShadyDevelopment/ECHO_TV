@@ -27,7 +27,7 @@ import {
     ElectronBridgeAppUpdateReleaseNotesDirection,
     ElectronBridgeAppUpdateReleaseNotesRequest,
     isAppUpdateReleaseNotesNotFoundMessage,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const RELEASE_NOTES_IMAGE_CLASS = 'release-notes-dialog__image';
 

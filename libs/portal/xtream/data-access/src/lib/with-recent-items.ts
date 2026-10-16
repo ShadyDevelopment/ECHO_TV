@@ -11,15 +11,15 @@ import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     buildPlaylistRecentItems,
     ContentMetadataPatch,
     normalizeContentMetadataPatch,
     Playlist,
     PortalRecentItem,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
+} from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
 import { XTREAM_DATA_SOURCE } from './data-sources/xtream-data-source.interface';
 
 export interface RecentlyViewedItem extends PortalRecentItem {

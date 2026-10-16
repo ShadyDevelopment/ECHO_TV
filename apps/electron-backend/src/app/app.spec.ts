@@ -140,8 +140,8 @@ describe('Electron app security helpers', () => {
     beforeEach(() => {
         jest.clearAllMocks();
         delete process.env.ELECTRON_IS_DEV;
-        delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
-        delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+        delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+        delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
         mockIsEmbeddedMpvFeatureEnabled.mockReturnValue(false);
         mockIsFrameCopyRuntimeUsable.mockReturnValue(false);
         const appInternals = getAppInternals();
@@ -172,7 +172,7 @@ describe('Electron app security helpers', () => {
     });
 
     it('keeps the renderer sandboxed when frame-copy is requested without a usable runtime', () => {
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
         mockIsEmbeddedMpvFeatureEnabled.mockReturnValue(true);
 
         expect(getMainWindowWebPreferences()?.sandbox).toBe(true);
@@ -184,9 +184,9 @@ describe('Electron app security helpers', () => {
         (explicitFrameCopy) => {
             mockIsEmbeddedMpvFeatureEnabled.mockReturnValue(true);
             if (explicitFrameCopy === undefined) {
-                delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+                delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
             } else {
-                process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY =
+                process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY =
                     explicitFrameCopy;
             }
 
@@ -196,7 +196,7 @@ describe('Electron app security helpers', () => {
     );
 
     it('probes frame-copy runtime for an explicit opt-in', () => {
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
         mockIsEmbeddedMpvFeatureEnabled.mockReturnValue(true);
 
         expect(getMainWindowWebPreferences()?.sandbox).toBe(true);
@@ -204,14 +204,14 @@ describe('Electron app security helpers', () => {
     });
 
     it('keeps the renderer sandboxed when frame-copy is requested but embedded MPV is disabled', () => {
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
         mockIsFrameCopyRuntimeUsable.mockReturnValue(true);
 
         expect(getMainWindowWebPreferences()?.sandbox).toBe(true);
     });
 
     it('relaxes the renderer sandbox only when embedded MPV and a usable frame-copy runtime are enabled', () => {
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
         mockIsEmbeddedMpvFeatureEnabled.mockReturnValue(true);
         mockIsFrameCopyRuntimeUsable.mockReturnValue(true);
 
@@ -250,7 +250,7 @@ describe('Electron app security helpers', () => {
     it('allows only the packaged renderer file in packaged navigation', () => {
         // Resolve to host-native absolute paths: POSIX-style file URLs such
         // as file:///tmp/... are not valid win32 file URLs (no drive letter).
-        const packagedIndexPath = path.resolve('/tmp/iptvnator/index.html');
+        const packagedIndexPath = path.resolve('/tmp/echo-tv/index.html');
         const otherIndexPath = path.resolve('/tmp/other/index.html');
 
         expect(

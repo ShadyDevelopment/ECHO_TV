@@ -3,12 +3,12 @@ import { TestBed } from '@angular/core/testing';
 import type {
     EpgProgram,
     PortalActivityItem,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
 import {
     DashboardPortalLiveEpgService,
     type DashboardPortalLiveEpgEntry,
-} from '@iptvnator/workspace/dashboard/data-access';
+} from '@echo-tv/workspace/dashboard/data-access';
 import { DashboardLiveEpgClock } from './dashboard-live-epg-clock';
 import { DashboardPortalLiveEpgPresenter } from './dashboard-portal-live-epg.presenter';
 

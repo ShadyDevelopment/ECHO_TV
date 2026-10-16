@@ -3,13 +3,13 @@ import {
     isPortalPlaybackWatched,
     type SeriesEpisodeEntry,
     type SeriesNextUp,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     resolvePortalActivityWatchKind,
     type PlaybackPositionData,
     type PortalRecentItem,
     type XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { DashboardSeriesEpisodes } from './dashboard-series-episodes.service';
 
 /**

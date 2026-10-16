@@ -84,7 +84,7 @@ it.each(['EEXIST', 'ENOTSUP'])(
                 'cannot restore'
             );
             const quarantine = (await readdir(directory)).find((entry) =>
-                entry.startsWith('.iptvnator-cleanup-')
+                entry.startsWith('.echo-tv-cleanup-')
             );
             if (!quarantine)
                 throw new Error('Expected a retained recovery directory');

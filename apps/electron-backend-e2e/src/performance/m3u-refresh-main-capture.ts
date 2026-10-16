@@ -9,7 +9,7 @@ import {
     XTREAM_PRELOAD_PERFORMANCE_METHOD,
     XTREAM_PRELOAD_PERFORMANCE_SCHEMA_VERSION,
     XtreamCodeActions,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import {
     DATABASE_REQUEST_IDENTITY_CAPTURE_STATE_KEY,
@@ -84,7 +84,7 @@ import type {
 import { createXtreamIpcMarkerProtocol } from './xtream-ipc-marker-protocol';
 import { createXtreamMainLifecycleValidator } from './xtream-main-lifecycle';
 
-const MAIN_CAPTURE_STATE_KEY = '__iptvnatorM3uRefreshMainCapture';
+const MAIN_CAPTURE_STATE_KEY = '__echo-tvM3uRefreshMainCapture';
 
 export interface MainCaptureStartOptions {
     readonly deferMeasurement?: boolean;

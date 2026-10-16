@@ -2,7 +2,7 @@ import { computed, signal } from '@angular/core';
 import type {
     PlaybackPositionData,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { ownsContent } from './vod-details-external-session';
 import { isResumablePosition } from './vod-primary-action-position';
 

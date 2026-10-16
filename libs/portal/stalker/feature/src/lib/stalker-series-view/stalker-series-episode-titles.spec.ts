@@ -1,4 +1,4 @@
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 import { withEpisodeTitleFallback } from './stalker-series-episode-titles';
 
 const episode = (

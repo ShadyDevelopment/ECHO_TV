@@ -10,15 +10,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     PlaybackDiagnosticCode,
     PlaybackDiagnosticSource,
-} from '@iptvnator/playback/util';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
+} from '@echo-tv/playback/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
 import {
     STORE_KEY,
     VideoPlayer,
     type ExternalPlayerSession,
-} from '@iptvnator/shared/interfaces';
-import { PORTAL_EXTERNAL_PLAYBACK } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/shared/interfaces';
+import { PORTAL_EXTERNAL_PLAYBACK } from '@echo-tv/portal/shared/util';
 import { of } from 'rxjs';
 import {
     StubArtPlayerComponent,

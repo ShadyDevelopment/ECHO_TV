@@ -1,11 +1,11 @@
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistRefreshActionService } from '@iptvnator/playlist/shared/ui';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+import { PlaylistRefreshActionService } from '@echo-tv/playlist/shared/ui';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     RuntimeCapabilitiesService,
     injectTranslationTick,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     XTREAM_LOCAL_LOAD_OVERLAY_DELAY_MS,
     type XtreamImportPhaseTone,

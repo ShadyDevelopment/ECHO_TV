@@ -3,7 +3,7 @@ import {
     type DatabaseWorkerPerformancePhase,
     type PerformancePhaseEvent,
     type PerformancePhaseMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { DatabaseOperationPerformancePhaseCapture } from '../database/operations/performance-phase-capture';
 import type { WorkerPerformanceCapture } from './worker-performance-capture.model';
 import { safeReadEpochMs } from './worker-performance-capture.runtime';

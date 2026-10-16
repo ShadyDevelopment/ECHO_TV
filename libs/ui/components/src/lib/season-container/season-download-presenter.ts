@@ -12,10 +12,10 @@ import {
     SeasonDownloadCoordinator,
     type EpisodeDownloadCandidate,
     type SeasonEpisodeDownloadAdapter,
-} from '@iptvnator/portal/shared/data-access';
-import { isEpisodeDownloadEligible } from '@iptvnator/portal/shared/util';
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
-import { DownloadsService, type DownloadItem } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/data-access';
+import { isEpisodeDownloadEligible } from '@echo-tv/portal/shared/util';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
+import { DownloadsService, type DownloadItem } from '@echo-tv/services';
 
 const EPISODE_DOWNLOAD_ACTIONS = {
     Blocked: 'blocked',

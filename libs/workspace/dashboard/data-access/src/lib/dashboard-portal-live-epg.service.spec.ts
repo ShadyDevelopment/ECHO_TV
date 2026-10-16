@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
-import type { EpgProgram } from '@iptvnator/shared/interfaces';
+import type { EpgProgram } from '@echo-tv/shared/interfaces';
 import {
     EpgSourceSettingsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { StreamResolverService } from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/services';
+import { StreamResolverService } from '@echo-tv/portal/shared/data-access';
 import {
     DASHBOARD_PORTAL_LIVE_EPG_TIMING,
     DashboardPortalLiveEpgService,

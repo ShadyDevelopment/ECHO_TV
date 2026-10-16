@@ -31,7 +31,7 @@ int trapX11Error(Display*, XErrorEvent* event)
 
 bool isTraceEnabled()
 {
-    return std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV") != nullptr;
+    return std::getenv("ECHO_TV_TRACE_EMBEDDED_MPV") != nullptr;
 }
 
 void trace(const std::string& message)

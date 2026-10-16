@@ -1,7 +1,7 @@
 import {
     ExternalPlayerSession,
     readExternalPlayerErrorCode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { externalPlayerProcessTeardownGate } from './external-player-process';
 import { externalPlayerSessions } from './external-player-runtime';
 

@@ -1,6 +1,6 @@
 # Repository guidance
 
-IPTVnator is an Angular/Electron IPTV player with a browser/PWA runtime.
+ECHO TV is an Angular/Electron IPTV player with a browser/PWA runtime.
 These are the common instructions for all coding agents. Read the relevant
 contracts below before changing a subsystem; do not load every document.
 
@@ -22,7 +22,7 @@ contracts below before changing a subsystem; do not load every document.
 
 ## Implementation invariants
 
-- Use scoped aliases from `tsconfig.base.json`, such as `@iptvnator/services`.
+- Use scoped aliases from `tsconfig.base.json`, such as `@echo-tv/services`.
   Do not introduce legacy bare aliases or bypass public project boundaries.
 - Nx projects keep `scope:*`, `domain:*` and `type:*` tags. Shared cross-project
   files must belong to a project. SCSS imports need explicit hash dependencies.
@@ -98,7 +98,7 @@ contracts below before changing a subsystem; do not load every document.
 | Xtream / Stalker | [Xtream compatibility](docs/architecture/xtream-portal-compatibility.md), [Stalker contracts](docs/architecture/stalker-portal.md) (affected provider only) |
 | Player controls, diagnostics, radio, keep-awake | [Controls contract](docs/architecture/player-controls-contract.md) |
 | Embedded MPV, native runtime and packaging | [Embedded MPV](docs/architecture/embedded-mpv-native.md) |
-| UI, keyboard, detail navigation, remote control | [UI guidelines](docs/architecture/iptvnator-ui-guidelines.md), then matching topic in context map |
+| UI, keyboard, detail navigation, remote control | [UI guidelines](docs/architecture/echo-tv-ui-guidelines.md), then matching topic in context map |
 | PWA, backend networking, connectivity guard | [PWA contract](docs/architecture/pwa-self-hosted.md), [host connectivity](docs/architecture/host-connectivity-guard.md) |
 | Downloads, TMDB, multi-source, workspace, backup, website | [Context map](docs/maintenance/agent-context-map.md) |
 | Release or packaging metadata | [Release pipeline](docs/architecture/release-pipeline.md), release-cut skill |

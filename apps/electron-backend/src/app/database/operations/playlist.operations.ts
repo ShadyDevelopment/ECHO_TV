@@ -1,6 +1,6 @@
 import { eq, sql } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
-import type { Channel, M3uFavoriteChannel } from '@iptvnator/shared/interfaces';
+import * as schema from '@echo-tv/shared/database/schema';
+import type { Channel, M3uFavoriteChannel } from '@echo-tv/shared/interfaces';
 import {
     APP_PLAYLIST_GET_PERFORMANCE_PHASE,
     APP_PLAYLIST_UPSERT_PERFORMANCE_PHASE,
@@ -8,7 +8,7 @@ import {
     type AppPlaylistGetPerformancePhase,
     type AppPlaylistUpsertPerformancePhase,
     type PerformancePhaseMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import {
     type CategoryRowCount,
@@ -35,13 +35,13 @@ import {
     parseJsonValue,
     PLAYLIST_TYPES,
     type AppPlaylistType,
-} from '@iptvnator/shared/database/app-playlist';
+} from '@echo-tv/shared/database/app-playlist';
 
 // Kept for existing importers (specs, playlist-migration.operations.ts).
 export {
     buildPlaylistRow,
     parseAppPlaylist,
-} from '@iptvnator/shared/database/app-playlist';
+} from '@echo-tv/shared/database/app-playlist';
 
 export interface AppPlaylistUpsertPhaseCapture {
     captureAsync: <TResult>(

@@ -7,7 +7,7 @@ import {
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 
 export interface EpisodeInfoDialogData {
     /** e.g. "S01E05" */

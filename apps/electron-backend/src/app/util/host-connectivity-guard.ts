@@ -1,7 +1,7 @@
 /**
  * Main-process ownership of the shared host connectivity guard.
  *
- * The breaker itself lives in `@iptvnator/shared/host-health` so the web
+ * The breaker itself lives in `@echo-tv/shared/host-health` so the web
  * backend can run the same rules; what stays here is the part that is
  * genuinely main-process-specific: a single guard for the whole process (both
  * portal IPC handlers must see each other's evidence, or a dead endpoint would
@@ -16,7 +16,7 @@ import {
     HostRequestToken,
     OPEN_DURATION_MS,
     portalEndpointKeyOf,
-} from '@iptvnator/shared/host-health';
+} from '@echo-tv/shared/host-health';
 
 export { HostConnectivityGuardError };
 export type { HostRequestToken };

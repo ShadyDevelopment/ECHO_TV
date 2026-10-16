@@ -1,5 +1,5 @@
 name: 🐞 Bug report
-description: Something in IPTVnator doesn't work as expected.
+description: Something in ECHO TV doesn't work as expected.
 title: '[Bug]: '
 labels: ['bug :bug:']
 body:
@@ -9,7 +9,7 @@ body:
               Thanks for taking the time to report a bug! The details below help us reproduce it on the first try.
 
               - **A channel, movie or episode doesn't play or stops?** The **Playback problem** form asks the right questions for that.
-              - **A question or an idea?** Please use [Discussions](https://github.com/4gray/iptvnator/discussions) or the **Feature request** form.
+              - **A question or an idea?** Please use [Discussions](https://github.com/ShadyDevelopment/ECHO_TV/discussions) or the **Feature request** form.
     - type: checkboxes
       id: checks
       attributes:
@@ -17,14 +17,14 @@ body:
           options:
               - label: I'm on the latest release (or a nightly build) and the problem still happens there.
                 required: true
-              - label: I searched the [existing issues](https://github.com/4gray/iptvnator/issues?q=is%3Aissue) and this hasn't been reported yet.
+              - label: I searched the [existing issues](https://github.com/ShadyDevelopment/ECHO_TV/issues?q=is%3Aissue) and this hasn't been reported yet.
                 required: true
               - label: I removed usernames, passwords, MAC addresses, tokens and private URLs from everything I paste below.
                 required: true
     - type: input
       id: version
       attributes:
-          label: IPTVnator version
+          label: ECHO TV version
           description: Shown in **Settings → About**. For a nightly build, add the commit shown there too.
           placeholder: 0.24.0
       validations:
@@ -32,7 +32,7 @@ body:
     - type: dropdown
       id: install
       attributes:
-          label: How do you run IPTVnator?
+          label: How do you run ECHO TV?
           options:
               - Windows installer (.exe)
               - macOS app (.dmg or .zip)
@@ -41,7 +41,7 @@ body:
               - Linux .deb, .rpm or pacman package
               - Linux Snap
               - Linux Flatpak
-              - Arch Linux AUR (iptvnator-bin)
+              - Arch Linux AUR (echo-tv-bin)
               - Self-hosted web app (Docker)
               - Built from source
       validations:

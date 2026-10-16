@@ -1,4 +1,4 @@
-import { getPlaybackMediaExtensionFromUrl } from '@iptvnator/playback/util';
+import { getPlaybackMediaExtensionFromUrl } from '@echo-tv/playback/util';
 
 /** Helpers for driving the native `<video>` element source list. */
 

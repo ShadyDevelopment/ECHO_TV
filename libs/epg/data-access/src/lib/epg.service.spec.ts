@@ -6,8 +6,8 @@ import {
     EpgSourceSettingsService,
     PlaylistsService,
     SettingsStore,
-} from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { EpgRuntimeBridgeService } from './epg-runtime-bridge.service';
 import { EpgService } from './epg.service';
 

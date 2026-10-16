@@ -1,4 +1,4 @@
-import type { ExternalPlayerSession } from '@iptvnator/shared/interfaces';
+import type { ExternalPlayerSession } from '@echo-tv/shared/interfaces';
 import {
     EXTERNAL_RECOVERY_LAUNCH_TIMEOUT_MS,
     ExternalPlaybackRecovery,

@@ -13,14 +13,14 @@ import {
     XtreamAccountInfo,
     XtreamApiService,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService, resetHostConnectivityGuard } from '@iptvnator/services';
+} from '@echo-tv/portal/xtream/data-access';
+import { createLogger } from '@echo-tv/portal/shared/util';
+import { DataService, resetHostConnectivityGuard } from '@echo-tv/services';
 import {
     isHostConnectivityFastFailMessage,
     resolveXtreamPortalStatus,
     type XtreamAccountInfoDialogData,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 type AccountLoadState = 'loading' | 'ready' | 'error';
 

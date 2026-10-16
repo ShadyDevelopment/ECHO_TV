@@ -5,13 +5,13 @@ import {
     Router,
     UrlTree,
 } from '@angular/router';
-import { XTREAM_DATA_SOURCE } from '@iptvnator/portal/xtream/data-access';
+import { XTREAM_DATA_SOURCE } from '@echo-tv/portal/xtream/data-access';
 import {
     DatabaseService,
     ParentalLockService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
-import { ParentalLockXtreamCategoryType } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { ParentalLockXtreamCategoryType } from '@echo-tv/shared/interfaces';
 
 type XtreamCategorySection = 'live' | 'vod' | 'series';
 

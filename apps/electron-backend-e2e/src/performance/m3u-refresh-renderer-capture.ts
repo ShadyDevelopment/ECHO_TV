@@ -11,7 +11,7 @@ import type {
 } from './m3u-refresh-cancellation-contract';
 import { summarizeNumbers } from './performance-statistics';
 
-const RENDERER_CAPTURE_STATE_KEY = '__iptvnatorM3uRefreshRendererCapture';
+const RENDERER_CAPTURE_STATE_KEY = '__echo-tvM3uRefreshRendererCapture';
 const HEARTBEAT_INTERVAL_MS = 50;
 
 export interface RendererCaptureStartOptions {

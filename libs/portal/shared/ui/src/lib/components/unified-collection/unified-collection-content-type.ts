@@ -2,7 +2,7 @@ import { computed, Signal, signal, WritableSignal } from '@angular/core';
 import {
     CollectionContentType,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 /**
  * The Live / Movies / Series tab of a unified collection, plus the item

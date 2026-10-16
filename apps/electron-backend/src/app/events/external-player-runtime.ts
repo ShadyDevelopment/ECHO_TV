@@ -5,7 +5,7 @@ import {
     ExternalPlayerSession,
     PlayerContentInfo,
     tagExternalPlayerError,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import App from '../app';
 import { isExternalPlayerTraceEnabled, trace } from '../services/debug-trace';
 import { ExternalPlayerLaunchContext } from './external-player-launch-context';

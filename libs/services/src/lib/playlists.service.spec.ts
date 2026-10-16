@@ -1,5 +1,5 @@
 import { EMPTY, firstValueFrom, from, of } from 'rxjs';
-import { DbStores, Playlist, PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { DbStores, Playlist, PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { PlaylistsService, resolvePlaylistParser } from './playlists.service';
 
 const SQLITE_PLAYLIST_MIGRATION_FLAG = 'm3u-playlists-indexeddb-to-sqlite-v1';
@@ -483,14 +483,14 @@ describe('PlaylistsService', () => {
         expect(
             request.mock.calls.map(([name, options]) => [name, options])
         ).toEqual([
-            ['iptvnator:playlist-authority', { mode: 'shared' }],
+            ['echo-tv:playlist-authority', { mode: 'shared' }],
             [
-                `iptvnator:playlist-authority:${playlist._id}`,
+                `echo-tv:playlist-authority:${playlist._id}`,
                 { mode: 'exclusive' },
             ],
-            ['iptvnator:playlist-authority', { mode: 'shared' }],
+            ['echo-tv:playlist-authority', { mode: 'shared' }],
             [
-                `iptvnator:playlist-authority:${playlist._id}`,
+                `echo-tv:playlist-authority:${playlist._id}`,
                 { mode: 'exclusive' },
             ],
         ]);
@@ -1478,7 +1478,7 @@ describe('PlaylistsService', () => {
         await firstValueFrom(service.removeAll());
 
         expect(request).toHaveBeenCalledWith(
-            'iptvnator:playlist-authority',
+            'echo-tv:playlist-authority',
             { mode: 'exclusive' },
             expect.any(Function)
         );

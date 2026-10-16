@@ -2,7 +2,7 @@ import { ChildProcess } from 'child_process';
 import {
     ExternalPlayerSession,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { externalPlayerProcessTeardownGate } from './external-player-process';
 import {
     ExternalPlaybackSnapshot,

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { PARENTAL_LOCK_STORE_KEY } from '@iptvnator/shared/interfaces';
+import { PARENTAL_LOCK_STORE_KEY } from '@echo-tv/shared/interfaces';
 import { DatabaseService } from '../database-electron.service';
 import { RuntimeCapabilitiesService } from '../runtime-capabilities.service';
 import { ParentalLockStorageService } from './parental-lock-storage';

@@ -251,10 +251,10 @@
                 "e2eTags": ["@epg"]
             },
             {
-                "name": "@iptvnator/pipes",
+                "name": "@echo-tv/pipes",
                 "root": "libs/ui/pipes",
                 "sourceRoot": "libs/ui/pipes/src",
-                "validationCommand": "pnpm nx test @iptvnator/pipes",
+                "validationCommand": "pnpm nx test @echo-tv/pipes",
                 "e2eTags": ["@epg", "@settings"]
             },
             {

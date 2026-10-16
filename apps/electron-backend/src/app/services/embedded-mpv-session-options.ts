@@ -1,4 +1,4 @@
-import { resolveEmbeddedMpvSessionOptionArguments } from '@iptvnator/shared/interfaces';
+import { resolveEmbeddedMpvSessionOptionArguments } from '@echo-tv/shared/interfaces';
 import {
     EMBEDDED_MPV_AUTO_RECONNECT,
     EMBEDDED_MPV_EXTRA_OPTIONS,

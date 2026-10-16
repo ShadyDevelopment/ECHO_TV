@@ -1,4 +1,4 @@
-import type { XtreamPreloadPerformanceMarker } from '@iptvnator/shared/interfaces';
+import type { XtreamPreloadPerformanceMarker } from '@echo-tv/shared/interfaces';
 import { createXtreamPreloadPerformanceCapture } from './xtream-preload-performance-capture';
 
 describe('Xtream preload performance capture runtime', () => {

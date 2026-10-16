@@ -110,7 +110,7 @@ import { lstatSync, type Stats } from 'node:fs';
 import type {
     ElectronBridgeDownloadStatus,
     ElectronDownloadFileAvailability,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 interface DownloadAvailabilityRow {
     readonly filePath?: string | null;

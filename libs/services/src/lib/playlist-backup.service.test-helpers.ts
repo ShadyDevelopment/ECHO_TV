@@ -6,7 +6,7 @@ import {
     XtreamBackupFavoriteItem,
     XtreamBackupRecentlyViewedItem,
     XtreamPendingRestoreState,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { PlaylistBackupService } from './playlist-backup.service';
 import { PwaXtreamBackupStateService } from './pwa-xtream-backup-state.service';
 import {

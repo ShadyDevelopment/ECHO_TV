@@ -14,7 +14,7 @@ import { buildComparisonPageSchema } from '../../lib/comparison-schema';
 import { comparisonBySlug } from '../../lib/comparisons';
 import { absoluteUrl } from '../../lib/site';
 
-const comparison = comparisonBySlug('iptvnator-vs-vlc');
+const comparison = comparisonBySlug('echo-tv-vs-vlc');
 const pageUrl = absoluteUrl('/compare/ECHO_TV-vs-vlc/');
 const title = 'ECHO TV vs VLC – When a Media Player Is Enough for IPTV';
 const description =
@@ -171,5 +171,5 @@ const jsonLd = buildComparisonPageSchema({ comparison, pageUrl, description, faq
     </div>
   </DownloadSection>
 
-  <CompareSwitcher current="iptvnator-vs-vlc" />
+  <CompareSwitcher current="echo-tv-vs-vlc" />
 </BaseLayout>

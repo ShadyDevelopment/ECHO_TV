@@ -17,7 +17,7 @@ jest.mock('@faker-js/faker', () => ({
 
 const TOKEN = 'validation-token';
 const AUTH_HEADERS = {
-    'x-iptvnator-performance-token': TOKEN,
+    'x-echo-tv-performance-token': TOKEN,
 };
 jest.setTimeout(60_000);
 

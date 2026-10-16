@@ -5,13 +5,13 @@ import { of } from 'rxjs';
 import {
     WorkspaceBackNavigationService,
     WorkspaceBackParent,
-} from '@iptvnator/portal/shared/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     CatalogTitleMatchService,
     DiscoverTitle,
     TmdbEnrichmentService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { XtreamDiscoverRouteComponent } from './xtream-discover-route.component';
 
 /**

@@ -1,6 +1,6 @@
 import { isAbsolute, resolve } from 'path';
 import { fileURLToPath } from 'url';
-import { classifyEpgSourceReference } from '@iptvnator/shared/interfaces';
+import { classifyEpgSourceReference } from '@echo-tv/shared/interfaces';
 
 /**
  * The filesystem path behind an EPG source reference, or null when the

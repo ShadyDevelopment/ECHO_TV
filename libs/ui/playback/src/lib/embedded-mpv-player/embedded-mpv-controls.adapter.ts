@@ -14,9 +14,9 @@ import {
     RecordingStartMetadata,
     RecordingStoppedEvent,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { TranslateService } from '@ngx-translate/core';
-import { injectTranslationTick } from '@iptvnator/services';
+import { injectTranslationTick } from '@echo-tv/services';
 import {
     DEFAULT_ASPECT_PRESETS,
     DEFAULT_PLAYER_CAPABILITIES,

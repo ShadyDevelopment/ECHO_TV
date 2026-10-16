@@ -6,22 +6,22 @@
 
 **Architecture:** `libs/ui/epg/src/lib/epg-guide/` holds the grid and a data contract (`EPG_GUIDE_SOURCE`). The M3U host (`VideoPlayerComponent`) provides an adapter for that contract, owns a `guideOpen` layout mode that CSS-reflows the player into a docked strip, and exposes four entry points. Two new Electron IPCs (`EPG_GET_PROGRAMS_FOR_CHANNELS`, `EPG_GET_PROGRAM_COVERAGE`) replace `EPG_GET_CHANNELS_BY_RANGE`. Spec: `docs/superpowers/specs/2026-09-06-epg-guide-m3u-design.md`.
 
-**Tech Stack:** Angular 20 signals + CDK virtual scroll, NgRx (`@iptvnator/m3u-state`), Electron IPC + Drizzle/SQLite, Jest (`run-web-esm-lib-tests.mjs` for web libs, `@nx/jest` for `electron-backend`), Playwright (`electron-backend-e2e`).
+**Tech Stack:** Angular 20 signals + CDK virtual scroll, NgRx (`@echo-tv/m3u-state`), Electron IPC + Drizzle/SQLite, Jest (`run-web-esm-lib-tests.mjs` for web libs, `@nx/jest` for `electron-backend`), Playwright (`electron-backend-e2e`).
 
 ---
 
 ## Conventions for every task
 
-- Run all commands from the worktree root: `/Users/4gray/Code/iptvnator/.claude/worktrees/multi-epg-view-feature-1efd4d`.
+- Run all commands from the worktree root: `/Users/4gray/Code/echo-tv/.claude/worktrees/multi-epg-view-feature-1efd4d`.
 - **Running one web-lib spec.** `pnpm nx test <project>` on `ui-epg`, `playlist-m3u-feature-player`, `epg-data-access` and `services` always runs the whole project (the runner passes `--runTestsByPath` for every spec). To run one file:
   ```bash
   NODE_OPTIONS=--experimental-vm-modules node node_modules/jest/bin/jest.js --config jest.web-esm.workspace.ts --runTestsByPath <path/to/file.spec.ts>
   ```
 - **Running one backend spec:** `pnpm nx test electron-backend --testPathPatterns=<file-basename>`.
 - Production TypeScript files stay under 300 lines (hard limit 400, blank lines and comments not counted). Never add a file to `tools/eslint/max-lines-baseline.mjs`.
-- Use `@iptvnator/...` scoped aliases only. Signal-based inputs/outputs, `@if`/`@for` control flow.
+- Use `@echo-tv/...` scoped aliases only. Signal-based inputs/outputs, `@if`/`@for` control flow.
 - Commit after every task with the trailer `Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>`.
-- Existing helpers referenced below (do not re-implement): `getProgramTimeMs` (`libs/ui/epg/src/lib/epg-program.utils.ts`), `buildTimelineBlocks`/`buildTimelineAxis`/`classifyTimelineWhen` (`epg-timeline.utils.ts`), `buildTimelineRenderItems`/`tierFor` (`epg-timeline-render.util.ts`), `epgProviderClockMs`/`epgDisplayTimeMs` (`@iptvnator/shared/interfaces`), `getTodayEpgDateKey`/`parseEpgDateKey`/`shiftEpgDateKey` (`libs/ui/epg/src/lib/epg-date.ts`), `isTypingInInput` (`@iptvnator/portal/shared/util`), `resolveChannelEpgLookupKey` (`@iptvnator/m3u-state`), `EpgProgrammeDialogService` (`libs/ui/epg`), `queryByResolvedChannelIds`/`resolveChannelIds` (`apps/electron-backend/src/app/events/epg-mapping.service.ts`).
+- Existing helpers referenced below (do not re-implement): `getProgramTimeMs` (`libs/ui/epg/src/lib/epg-program.utils.ts`), `buildTimelineBlocks`/`buildTimelineAxis`/`classifyTimelineWhen` (`epg-timeline.utils.ts`), `buildTimelineRenderItems`/`tierFor` (`epg-timeline-render.util.ts`), `epgProviderClockMs`/`epgDisplayTimeMs` (`@echo-tv/shared/interfaces`), `getTodayEpgDateKey`/`parseEpgDateKey`/`shiftEpgDateKey` (`libs/ui/epg/src/lib/epg-date.ts`), `isTypingInInput` (`@echo-tv/portal/shared/util`), `resolveChannelEpgLookupKey` (`@echo-tv/m3u-state`), `EpgProgrammeDialogService` (`libs/ui/epg`), `queryByResolvedChannelIds`/`resolveChannelIds` (`apps/electron-backend/src/app/events/epg-mapping.service.ts`).
 
 ## File structure
 
@@ -363,7 +363,7 @@ Expected: FAIL — `Cannot find module './epg-guide-query.service'`.
 ```ts
 // apps/electron-backend/src/app/events/epg-guide-query.service.ts
 import { and, inArray, sql, type SQL } from 'drizzle-orm';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 import { epgLogger } from '../util/epg-logger';
@@ -698,7 +698,7 @@ In `apps/electron-backend/src/app/api/main.preload.ts` replace the
         ipcRenderer.invoke('EPG_GET_PROGRAM_COVERAGE', window),
 ```
 
-and add `ElectronBridgeEpgGuideWindow` to the `@iptvnator/shared/interfaces` import list at the top of the file.
+and add `ElectronBridgeEpgGuideWindow` to the `@echo-tv/shared/interfaces` import list at the top of the file.
 
 In `main.preload.spec-data.ts` replace the `getEpgChannelsByRange` case with:
 
@@ -721,7 +721,7 @@ In `main.preload.spec-data.ts` replace the `getEpgChannelsByRange` case with:
 
 In `apps/electron-backend/src/app/events/epg.events.ts`:
 
-Imports — add `ElectronBridgeEpgGuideWindow` to the `@iptvnator/shared/interfaces` import, add
+Imports — add `ElectronBridgeEpgGuideWindow` to the `@echo-tv/shared/interfaces` import, add
 `import { epgGuideQueryService } from './epg-guide-query.service';`, and add
 `resolveChannelIds` to the `./epg-mapping.service` import list.
 
@@ -942,7 +942,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```ts
 // libs/ui/epg/src/lib/epg-guide/epg-guide-source.ts
 import { InjectionToken, Signal } from '@angular/core';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 
 /** One row of the guide. `id` is host-stable (M3U: `Channel.id`). */
 export interface EpgGuideChannel {
@@ -1012,7 +1012,7 @@ export const EPG_GUIDE_SOURCE = new InjectionToken<EpgGuideSource>(
 
 ```ts
 // libs/ui/epg/src/lib/epg-guide/epg-guide-layout.util.spec.ts
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import {
     buildGuideDayAxis,
     buildGuideRowBlocks,
@@ -1105,7 +1105,7 @@ Expected: FAIL — cannot find module `./epg-guide-layout.util`.
 
 ```ts
 // libs/ui/epg/src/lib/epg-guide/epg-guide-layout.util.ts
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { addDays, addMinutes } from 'date-fns';
 import { parseEpgDateKey } from '../epg-date';
 import {
@@ -1427,7 +1427,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 // libs/ui/epg/src/lib/epg-guide/epg-guide-programs.service.spec.ts
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import {
     EPG_GUIDE_SOURCE,
     EpgGuideChannel,
@@ -1581,7 +1581,7 @@ Expected: FAIL — cannot find module.
 ```ts
 // libs/ui/epg/src/lib/epg-guide/epg-guide-programs.service.ts
 import { computed, effect, inject, Injectable, signal } from '@angular/core';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import {
     EPG_GUIDE_SOURCE,
     EpgGuideChannel,
@@ -2131,7 +2131,7 @@ import {
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { TranslatePipe } from '@ngx-translate/core';
 import { getProgramTimeMs } from '../epg-program.utils';
 
@@ -2543,7 +2543,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TimelineRenderBlock } from '../epg-timeline/epg-timeline-render.util';
 import {
@@ -2808,8 +2808,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { ListRange } from '@angular/cdk/collections';
-import { SettingsStore } from '@iptvnator/services';
-import { EpgProgram, epgProviderClockMs } from '@iptvnator/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
+import { EpgProgram, epgProviderClockMs } from '@echo-tv/shared/interfaces';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { startWith } from 'rxjs';
 import {
@@ -3363,8 +3363,8 @@ import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
-import { SettingsStore } from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { EpgProgrammeDialogService } from '../epg-programme-dialog.service';
@@ -3680,10 +3680,10 @@ no dependency on the 1600-line host component and can be unit-tested alone.
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { ChannelActions } from '@iptvnator/m3u-state';
-import { SettingsStore } from '@iptvnator/services';
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { ChannelActions } from '@echo-tv/m3u-state';
+import { SettingsStore } from '@echo-tv/services';
+import { Channel, EpgProgram } from '@echo-tv/shared/interfaces';
 import { M3uEpgGuideSourceService } from './m3u-epg-guide-source.service';
 
 function makeChannel(
@@ -3840,17 +3840,17 @@ Expected: FAIL — cannot find module.
 // libs/playlist/m3u/feature-player/src/lib/epg-guide/m3u-epg-guide-source.service.ts
 import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
-import { SettingsStore } from '@iptvnator/services';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { resolveChannelEpgLookupKey } from '@echo-tv/m3u-state';
+import { SettingsStore } from '@echo-tv/services';
+import { applyChannelNameStrip } from '@echo-tv/shared/m3u-utils';
+import { Channel, EpgProgram } from '@echo-tv/shared/interfaces';
 import {
     EpgGuideChannel,
     EpgGuideScope,
     EpgGuideSource,
     EpgGuideWindow,
-} from '@iptvnator/ui/epg';
+} from '@echo-tv/ui/epg';
 import { createM3uChannelPlaybackRequest } from '../video-player/m3u-channel-playback-actions';
 
 export interface M3uEpgGuideInputs {
@@ -4239,7 +4239,7 @@ Expected: FAIL on `openGuide` / `guideOpen` not existing.
 
 `video-player.component.ts`:
 
-Imports — remove `Overlay, OverlayRef`, `ComponentPortal`, `Injector`, and from `@iptvnator/ui/epg` remove `COMPONENT_OVERLAY_REF`, `MultiEpgContainerComponent`; add:
+Imports — remove `Overlay, OverlayRef`, `ComponentPortal`, `Injector`, and from `@echo-tv/ui/epg` remove `COMPONENT_OVERLAY_REF`, `MultiEpgContainerComponent`; add:
 
 ```ts
 import {
@@ -4248,8 +4248,8 @@ import {
     EpgGuideNowPlayingComponent,
     persistEpgGuideDockCollapsed,
     restoreEpgGuideDockCollapsed,
-} from '@iptvnator/ui/epg';
-import { selectFavorites } from '@iptvnator/m3u-state'; // add to the existing m3u-state import list
+} from '@echo-tv/ui/epg';
+import { selectFavorites } from '@echo-tv/m3u-state'; // add to the existing m3u-state import list
 import { M3uEpgGuideSourceService } from '../epg-guide/m3u-epg-guide-source.service';
 ```
 

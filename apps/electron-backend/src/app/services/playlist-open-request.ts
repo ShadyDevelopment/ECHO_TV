@@ -2,7 +2,7 @@
  * Playlist files handed to the app by the operating system.
  *
  * Three entry points converge here:
- *  - a first launch with a path argument (`iptvnator playlist.m3u`, which is
+ *  - a first launch with a path argument (`echo-tv playlist.m3u`, which is
  *    also what the Windows file association does; the Linux one passes a
  *    `file://` URI instead),
  *  - a second launch while the app is already running, whose argv the

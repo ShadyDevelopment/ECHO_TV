@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { SettingsStore } from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { XtreamXmltvFallbackService } from './xtream-xmltv-fallback.service';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@echo-tv/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

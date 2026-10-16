@@ -14,7 +14,7 @@ import { selectLegacyProfile, copyLegacyIndexedDb } from './legacy-profile';
 describe('packaged legacy profile compatibility', () => {
     let root: string;
     beforeEach(() => {
-        root = mkdtempSync(join(tmpdir(), 'iptvnator-profile-test-'));
+        root = mkdtempSync(join(tmpdir(), 'echo-tv-profile-test-'));
     });
     afterEach(() => rmSync(root, { recursive: true, force: true }));
     it('finds v0.19 storage before a fresh packaged renderer creates an empty database', () => {
@@ -22,7 +22,7 @@ describe('packaged legacy profile compatibility', () => {
         mkdirSync(join(legacy, 'IndexedDB', 'file__0.indexeddb.leveldb'), {
             recursive: true,
         });
-        expect(selectLegacyProfile(root, join(root, 'IPTVnator'))).toBe(legacy);
+        expect(selectLegacyProfile(root, join(root, 'ECHO TV'))).toBe(legacy);
     });
     it('preserves an already used current profile, even when it contains no playlists', () => {
         mkdirSync(
@@ -34,12 +34,12 @@ describe('packaged legacy profile compatibility', () => {
             ),
             { recursive: true }
         );
-        const current = join(root, 'IPTVnator');
+        const current = join(root, 'ECHO TV');
         mkdirSync(join(current, 'IndexedDB'), { recursive: true });
         expect(selectLegacyProfile(root, current)).toBeNull();
     });
     it('does not select an unrelated or absent profile', () => {
-        expect(selectLegacyProfile(root, join(root, 'IPTVnator'))).toBeNull();
+        expect(selectLegacyProfile(root, join(root, 'ECHO TV'))).toBeNull();
     });
     it('copies symlinked legacy storage into independent regular files', async () => {
         const legacy = join(root, 'legacy'),
@@ -71,7 +71,7 @@ describe('packaged legacy profile compatibility', () => {
             ),
             { recursive: true }
         );
-        const current = join(root, 'IPTVnator');
+        const current = join(root, 'ECHO TV');
         mkdirSync(current);
         writeFileSync(join(current, 'config.json'), '{}');
         expect(selectLegacyProfile(root, current)).toBeNull();

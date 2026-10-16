@@ -6,21 +6,21 @@ import {
     shortCountryList,
     shortCountryName,
     type RemainingTimeLabel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import type {
     NormalizedVodMeta,
     TmdbCountryFacet,
     TmdbEnrichedCastMember,
     TmdbGenreFacet,
-} from '@iptvnator/shared/interfaces';
-import type { CrossPortalSimilarItem } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import type { CrossPortalSimilarItem } from '@echo-tv/services';
 import {
     castMembersFromNames,
     splitPeopleNames,
     type DetailActionButtonState,
     type SimilarRailItem,
     type VodMoreMenuSection,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 
 /** Pure view-model helpers of the shared VOD details page. */
 

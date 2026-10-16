@@ -2,8 +2,8 @@ import {
     PortalDebugEvent,
     PortalDebugProvider,
     PortalDebugTransport,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 
 export interface Logger {
     debug: (...args: unknown[]) => void;

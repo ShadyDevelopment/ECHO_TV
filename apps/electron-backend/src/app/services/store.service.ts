@@ -1,9 +1,9 @@
 import { Conf } from 'electron-conf/main';
-import { getElectronConfigDirectory } from '@iptvnator/shared/database';
+import { getElectronConfigDirectory } from '@echo-tv/shared/database';
 import type {
     AppUpdateChannel,
     StartupWindowMode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export const WINDOW_BOUNDS = 'WINDOW_BOUNDS';
 /** App-wide zoom, as the raw Electron zoom level (0 is default). */

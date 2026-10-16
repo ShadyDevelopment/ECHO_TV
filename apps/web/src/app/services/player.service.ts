@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { DataService } from '@iptvnator/services';
+import { DataService } from '@echo-tv/services';
 import {
     ExternalPlayerSession,
     OPEN_MPV_PLAYER,
@@ -7,9 +7,9 @@ import {
     PlayerContentInfo,
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
-import { LazyMatDialog } from '@iptvnator/ui/components/lazy-dialog';
+} from '@echo-tv/shared/interfaces';
+import type { ExternalPlayerName } from '@echo-tv/shared/interfaces';
+import { LazyMatDialog } from '@echo-tv/ui/components/lazy-dialog';
 import { SettingsStore } from './settings-store.service';
 
 @Injectable({

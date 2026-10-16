@@ -11,7 +11,7 @@
  * navigation commits, so the gate makes the first `loadFile`/`loadURL`
  * navigate to `about:blank` first. That gives Playwright a page object the
  * test can attach `addInitScript` to; the real load proceeds only after the
- * test calls `globalThis.__iptvnatorJourneyGate.release()`. A safety timeout
+ * test calls `globalThis.__echo-tvJourneyGate.release()`. A safety timeout
  * releases the gate on its own and records that it did, so a broken test
  * cannot hang the app; the journey treats a timed-out gate as invalid.
  *
@@ -33,7 +33,7 @@
  * main-process handler that the preload does not expose (the renderer
  * bridge stays unchanged). The registration itself is passed through.
  */
-const GATE_KEY = '__iptvnatorJourneyGate';
+const GATE_KEY = '__echo-tvJourneyGate';
 const DEFAULT_TIMEOUT_MS = 15000;
 const BLANK_URL = 'about:blank';
 const TAPPED_IPC_CHANNELS = ['performance:read-counters'];
@@ -187,7 +187,7 @@ module.exports = { GATE_KEY, installJourneyRendererGate, TAPPED_IPC_CHANNELS };
 if (
     process.versions &&
     process.versions.electron &&
-    !process.env['IPTVNATOR_JOURNEY_GATE_MANUAL']
+    !process.env['ECHO_TV_JOURNEY_GATE_MANUAL']
 ) {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { BrowserWindow, ipcMain } = require('electron');

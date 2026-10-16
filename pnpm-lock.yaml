@@ -149,7 +149,7 @@ importers:
         specifier: 1.7.3
         version: 1.7.3
       iptv-playlist-parser:
-        specifier: github:4gray/iptv-playlist-parser#v0.15.2-iptvnator.2
+        specifier: github:4gray/iptv-playlist-parser#v0.15.2-echo-tv.2
         version: https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/d547b6be8a44431c85fbcbcdefb41f28c0dadf6d
       marked:
         specifier: 18.1.0
@@ -6951,7 +6951,7 @@ packages:
 
   iptv-playlist-parser@https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/d547b6be8a44431c85fbcbcdefb41f28c0dadf6d:
     resolution: {tarball: https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/d547b6be8a44431c85fbcbcdefb41f28c0dadf6d}
-    version: 0.15.2-iptvnator.2
+    version: 0.15.2-echo-tv.2
     engines: {node: '>=18'}
 
   iron-webcrypto@1.2.1:

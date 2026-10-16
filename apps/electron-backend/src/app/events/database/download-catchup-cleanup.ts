@@ -13,7 +13,7 @@ export async function cleanupCatchupFile(
 ): Promise<void> {
     // mkdtemp creates an unpredictable, private directory on the same volume.
     // Other writers of the public .part/final path cannot race this entry.
-    const directory = await mkdtemp(join(dirname(path), '.iptvnator-cleanup-'));
+    const directory = await mkdtemp(join(dirname(path), '.echo-tv-cleanup-'));
     const captured = join(directory, 'entry');
     try {
         await rename(path, captured);

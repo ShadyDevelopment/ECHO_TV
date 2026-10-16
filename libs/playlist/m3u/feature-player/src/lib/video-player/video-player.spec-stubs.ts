@@ -5,9 +5,9 @@ import {
     RecordingStartMetadata,
     RecordingStoppedEvent,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
+} from '@echo-tv/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@echo-tv/ui/playback';
+import { LiveEpgPanelSummary } from '@echo-tv/ui/shared-portals';
 
 /**
  * Stand-in for the live EPG panel. Matches both selectors so the host's

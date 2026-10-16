@@ -1,4 +1,4 @@
-import { Channel } from '@iptvnator/shared/interfaces';
+import { Channel } from '@echo-tv/shared/interfaces';
 import { resolveChannelEpgLookupKey } from './channel-epg-lookup.util';
 
 function buildChannel(overrides: Partial<Channel> = {}): Channel {

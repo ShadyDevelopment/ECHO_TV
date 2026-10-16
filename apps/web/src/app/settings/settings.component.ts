@@ -17,19 +17,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SettingsContextService } from '@iptvnator/workspace/shell/util/settings-context';
+import { SettingsContextService } from '@echo-tv/workspace/shell/util/settings-context';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
     EpgSourceReconciliationError,
     RuntimeCapabilitiesService,
     injectTranslationTick,
-} from '@iptvnator/services';
-import { VodSourceDiscoveryService } from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/services';
+import { VodSourceDiscoveryService } from '@echo-tv/portal/shared/data-access';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     Language,
     StreamFormat,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { firstValueFrom, map } from 'rxjs';
 import { BUILD_COMMIT } from '../../environments/build-commit';
 import { SettingsAboutSectionComponent } from './settings-about-section.component';

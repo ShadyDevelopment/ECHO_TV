@@ -24,7 +24,7 @@ import {
     ChannelListSkeletonComponent,
     MenuItemRadioCheckDirective,
     MenuItemRadioDirective,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import {
     clearNavigationStateKeys,
     CollectionContentType,
@@ -37,14 +37,14 @@ import {
     queryParamSignal,
     routeParamSignal,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     CollectionLoadRequest,
     CollectionMode,
     UnifiedCollectionDataService,
-} from '@iptvnator/portal/shared/data-access';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
-import { EmptyStateComponent } from '@iptvnator/playlist/shared/ui';
+} from '@echo-tv/portal/shared/data-access';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
+import { EmptyStateComponent } from '@echo-tv/playlist/shared/ui';
 import { UnifiedLiveTabComponent } from './unified-live-tab.component';
 import { UnifiedGridTabComponent } from './unified-grid-tab.component';
 import {

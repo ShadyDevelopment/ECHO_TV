@@ -3,11 +3,11 @@ import { signalStore, withState } from '@ngrx/signals';
 import {
     RENDERER_PERFORMANCE_PHASE_HOOK_KEY,
     type RendererPerformancePhaseEvent,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 import { XTREAM_DATA_SOURCE } from '../../data-sources/xtream-data-source.interface';
 import { withSearch } from './with-search.feature';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@echo-tv/portal/shared/util', () => ({
     createLogger: () => ({ error: jest.fn() }),
 }));
 

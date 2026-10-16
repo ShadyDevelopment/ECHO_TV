@@ -16,9 +16,9 @@ import {
     createLogger,
     getSeriesQuickStartAction,
     inlineProgressPosition,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@echo-tv/services';
 import {
     ExternalPlayerName,
     ExternalPlayerSession,
@@ -26,18 +26,18 @@ import {
     ResolvedPortalPlayback,
     XtreamSerieDetails,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     SeasonContainerPlaybackToggleRequest,
     SeasonContainerSeriesPlaybackToggleRequest,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import {
     getSeriesEpisodeMetadata,
     getSeriesPlaybackNavigation,
     inlineSeriesEpisodeState,
     type PlaybackFallbackRequest,
     type SeriesPlaybackEpisodeState,
-} from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/playback';
 import { injectXtreamRecentHistory } from '../xtream-recent-history';
 import { XTREAM_SERIES_RESUME_TARGET } from './serial-details-resume-target.token';
 import {

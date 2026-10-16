@@ -51,7 +51,7 @@ async function sql(
             }
         },
         {
-            file: join(dataDir, 'databases/iptvnator.db'),
+            file: join(dataDir, 'databases/echo-tv.db'),
             dependency: join(workspaceRoot, 'node_modules/better-sqlite3'),
             statement,
         }
@@ -449,7 +449,7 @@ test.describe('v0.19 profile migration', () => {
                     await page.evaluate(
                         () =>
                             new Promise<number>((resolve, reject) => {
-                                const r = indexedDB.open('iptvnator', 1);
+                                const r = indexedDB.open('echo-tv', 1);
                                 r.onerror = () => reject(r.error);
                                 r.onsuccess = () => {
                                     const db = r.result,

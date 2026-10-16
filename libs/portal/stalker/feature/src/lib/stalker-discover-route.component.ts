@@ -14,13 +14,13 @@ import {
     TmdbEnrichmentService,
     groupTitleMatchesByKey,
     pickTitleMatch,
-} from '@iptvnator/services';
-import { CatalogTitleMatch } from '@iptvnator/shared/interfaces';
-import { WorkspaceBackNavigationService } from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/services';
+import { CatalogTitleMatch } from '@echo-tv/shared/interfaces';
+import { WorkspaceBackNavigationService } from '@echo-tv/portal/shared/data-access';
 import {
     createLatestRequestGuard,
     workspacePortalCommands,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     DiscoverViewComponent,
     TitleResultsScope,
@@ -28,7 +28,7 @@ import {
     discoverFacetKey,
     hasDiscoverFacet,
     parseDiscoverParams,
-} from '@iptvnator/ui/shared-portals';
+} from '@echo-tv/ui/shared-portals';
 
 /** One Discover result annotated with catalog availability */
 interface DiscoverItem extends DiscoverTitle {

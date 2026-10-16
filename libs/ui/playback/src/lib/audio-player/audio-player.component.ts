@@ -21,8 +21,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Store } from '@ngrx/store';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ChannelActions } from '@iptvnator/m3u-state';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
+import { ChannelActions } from '@echo-tv/m3u-state';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
 import { PlaybackHistoryConfirmation } from '../playback-history/playback-history-confirmation';
 
 @Component({

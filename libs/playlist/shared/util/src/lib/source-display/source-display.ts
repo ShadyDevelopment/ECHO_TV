@@ -3,8 +3,8 @@ import {
     playlistDisplayLabel,
     playlistNameHasCredentials,
     resolvePlaylistSourceKind,
-} from '@iptvnator/shared/interfaces';
-import { decodeFully, findXtreamAccount } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { decodeFully, findXtreamAccount } from '@echo-tv/shared/logging';
 import {
     isDisplaySensitiveKey,
     stripUrlCredentials,

@@ -3,17 +3,17 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     formatSeriesEpisodeCode,
     type SeriesQuickStartAction,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { SettingsStore, injectTranslationTick } from '@iptvnator/services';
-import type { CrossPortalSimilarItem } from '@iptvnator/services';
-import { youtubeEmbedUrl } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { SettingsStore, injectTranslationTick } from '@echo-tv/services';
+import type { CrossPortalSimilarItem } from '@echo-tv/services';
+import { youtubeEmbedUrl } from '@echo-tv/shared/interfaces';
 import {
     createSeriesHeroState,
     TrailerDialogService,
     type SeriesHeroQuickStart,
     type SimilarRailItem,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import type { SimilarCatalogItem } from '../tmdb-similar.util';
 import type { XtreamSerieDetailsView } from './serial-details-playback.service';
 

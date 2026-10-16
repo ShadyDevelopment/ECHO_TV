@@ -44,9 +44,9 @@ test('@playback @electron @embedded-mpv frame-copy draws file chapters on the ti
     try {
         const launched = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT: '1',
-                IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY: '1',
-                IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW: '1',
+                ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT: '1',
+                ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY: '1',
+                ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW: '1',
             },
         });
         app = launched;

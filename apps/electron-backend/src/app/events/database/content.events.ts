@@ -12,7 +12,7 @@ import type {
     ContentMetadataPatch,
     GlobalSearchPaginationOptions,
     GlobalSearchResultSource,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 handleWorkerRequest(
     'DB_HAS_CONTENT',

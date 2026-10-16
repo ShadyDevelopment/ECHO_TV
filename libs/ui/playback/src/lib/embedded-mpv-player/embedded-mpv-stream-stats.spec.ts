@@ -1,4 +1,4 @@
-import type { EmbeddedMpvSession } from '@iptvnator/shared/interfaces';
+import type { EmbeddedMpvSession } from '@echo-tv/shared/interfaces';
 import { toPlayerStreamStats } from './embedded-mpv-stream-stats';
 
 function createSession(

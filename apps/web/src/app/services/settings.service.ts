@@ -2,17 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { catchError, map, Observable } from 'rxjs';
-import { STORE_KEY, Theme } from '@iptvnator/shared/interfaces';
-
-const PRERELEASE_KEYWORDS = [
-    'beta',
-    'alpha',
-    'rc',
-    'preview',
-    'dev',
-    'canary',
-    'nightly',
-] as const;
+import { STORE_KEY, Theme } from '@echo-tv/shared/interfaces';
 
 interface ParsedVersion {
     major: number;
@@ -42,11 +32,6 @@ function parseVersion(input: string): ParsedVersion | null {
         patch: Number(match[3] ?? 0),
         prerelease: Boolean(match[4]),
     };
-}
-
-function hasPrereleaseKeyword(value: string): boolean {
-    const normalized = value.toLowerCase();
-    return PRERELEASE_KEYWORDS.some((keyword) => normalized.includes(keyword));
 }
 
 function compareVersions(a: ParsedVersion, b: ParsedVersion): number {
@@ -172,39 +157,22 @@ export class SettingsService {
         this.storage.set(key, value).subscribe();
     }
 
-    /**
-     * Returns the version of the released app
-     * Filters out pre-release versions (beta, alpha, rc)
-     */
-    getAppVersion() {
+    /** Returns the latest stable ECHO TV release tag from GitHub. */
+    getAppVersion(): Observable<string> {
         return this.http
-            .get<
-                { created_at: string; name: string }[]
-            >('https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases')
+            .get<{ tag_name?: string; name?: string }>(
+                'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases/latest'
+            )
             .pipe(
-                map((response) => {
-                    // Filter out pre-release versions (beta, alpha, rc, etc.)
-                    const stableReleases = response.filter((release) => {
-                        if (hasPrereleaseKeyword(release.name)) {
-                            return false;
-                        }
-
-                        const version = parseVersion(release.name);
-                        if (!version) return false;
-
-                        return !version.prerelease;
-                    });
-
-                    // Sort stable releases by creation date
-                    const sortedReleases = stableReleases.sort(
-                        (a, b) =>
-                            new Date(b.created_at).getTime() -
-                            new Date(a.created_at).getTime()
-                    );
-
-                    return sortedReleases[0];
+                map((release) => {
+                    const version = release.tag_name || release.name;
+                    if (!version) {
+                        throw new Error(
+                            'The latest ECHO TV release has no version tag.'
+                        );
+                    }
+                    return version;
                 }),
-                map((response) => response.name),
                 catchError((err) => {
                     console.error(err);
                     throw new Error(err);

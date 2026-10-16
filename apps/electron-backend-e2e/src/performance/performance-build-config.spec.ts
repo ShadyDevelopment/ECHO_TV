@@ -383,7 +383,7 @@ test('the cancellation benchmark enables preload performance capture', () => {
         'utf8'
     );
 
-    assert.match(source, /IPTVNATOR_PERF_CAPTURE:\s*'1'/);
+    assert.match(source, /ECHO_TV_PERF_CAPTURE:\s*'1'/);
 });
 
 test('the cancellation benchmark exposes GC to Electron worker isolates', () => {
@@ -424,8 +424,8 @@ test('the initial M3U import benchmark enables opt-in capture and worker GC', ()
         'utf8'
     );
 
-    assert.match(source, /IPTVNATOR_PERF_CAPTURE:\s*'1'/);
-    assert.match(source, /IPTVNATOR_PERF_WORKER_PROFILING:\s*'1'/);
+    assert.match(source, /ECHO_TV_PERF_CAPTURE:\s*'1'/);
+    assert.match(source, /ECHO_TV_PERF_WORKER_PROFILING:\s*'1'/);
     assert.match(source, /'--js-flags=--expose-gc'/);
     assert.doesNotMatch(source, /execArgv/);
 });

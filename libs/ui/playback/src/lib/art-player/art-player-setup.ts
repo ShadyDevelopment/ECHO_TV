@@ -2,7 +2,7 @@ import {
     PlaybackSourceKind,
     getPlaybackMediaExtensionFromUrl,
     resolvePlaybackUrlSourceKind,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 
 /**
  * ArtPlayer `type` under which every container that is not an HLS/DASH

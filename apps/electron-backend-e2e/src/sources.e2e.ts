@@ -641,14 +641,14 @@ https://streams.example.test/url-omega.m3u8
                 })
             ).toHaveCount(0);
             await app.mainWindow.screenshot({
-                path: '/tmp/iptvnator-source-cleanup-light.png',
+                path: '/tmp/echo-tv-source-cleanup-light.png',
                 animations: 'disabled',
             });
             await app.mainWindow.evaluate(() =>
                 document.body.classList.add('dark-theme')
             );
             await app.mainWindow.screenshot({
-                path: '/tmp/iptvnator-source-cleanup-dark.png',
+                path: '/tmp/echo-tv-source-cleanup-dark.png',
                 animations: 'disabled',
             });
             await dialog

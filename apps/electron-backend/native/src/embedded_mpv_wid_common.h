@@ -9,35 +9,35 @@
 
 #include "embedded_mpv_extra_options.h"
 
-#ifdef IPTVNATOR_DYNAMIC_LIBMPV
-#ifndef IPTVNATOR_MPV_SELECTANY
+#ifdef ECHO_TV_DYNAMIC_LIBMPV
+#ifndef ECHO_TV_MPV_SELECTANY
 #ifdef MPV_SELECTANY
-#define IPTVNATOR_MPV_SELECTANY MPV_SELECTANY
+#define ECHO_TV_MPV_SELECTANY MPV_SELECTANY
 #elif defined(_WIN32)
-#define IPTVNATOR_MPV_SELECTANY __declspec(selectany)
+#define ECHO_TV_MPV_SELECTANY __declspec(selectany)
 #else
-#define IPTVNATOR_MPV_SELECTANY
+#define ECHO_TV_MPV_SELECTANY
 #endif
 #endif
 
-#define IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(name) \
-    IPTVNATOR_MPV_SELECTANY decltype(&name) pfn_##name = nullptr;
+#define ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(name) \
+    ECHO_TV_MPV_SELECTANY decltype(&name) pfn_##name = nullptr;
 
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_async)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_node_async)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_create)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_error_string)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_initialize)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_observe_property)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_request_log_messages)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_option_string)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property_async)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_terminate_destroy)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wait_event)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wakeup)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_async)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_node_async)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_create)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_error_string)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_initialize)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_observe_property)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_request_log_messages)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_option_string)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property_async)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_terminate_destroy)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wait_event)
+ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wakeup)
 
-#undef IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL
+#undef ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL
 
 #define mpv_command_async pfn_mpv_command_async
 #define mpv_command_node_async pfn_mpv_command_node_async
@@ -204,7 +204,7 @@ struct Session {
     std::string pendingRecordingStopStartedAt;
     uint64_t pendingPlaybackLoadRequestId = 0;
     /** Session options from Settings (network defaults + user lines). */
-    std::vector<iptvnator::EmbeddedMpvExtraOption> extraOptions;
+    std::vector<echo-tv::EmbeddedMpvExtraOption> extraOptions;
 #ifdef __linux__
     pid_t mpvProcessId = -1;
     std::string mpvIpcSocketPath;
@@ -222,7 +222,7 @@ std::unordered_map<std::string, std::shared_ptr<Session>> gSessions;
 
 void traceMpvCommon(const std::string& message)
 {
-    if (!std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV")) {
+    if (!std::getenv("ECHO_TV_TRACE_EMBEDDED_MPV")) {
         return;
     }
 
@@ -663,9 +663,9 @@ std::vector<std::string> buildLinuxMpvArguments(
         );
     }
 
-    if (std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV")) {
+    if (std::getenv("ECHO_TV_TRACE_EMBEDDED_MPV")) {
         arguments.push_back("--msg-level=all=trace");
-        arguments.push_back("--log-file=/tmp/iptvnator-embedded-mpv.log");
+        arguments.push_back("--log-file=/tmp/echo-tv-embedded-mpv.log");
     } else {
         arguments.push_back("--really-quiet");
     }
@@ -744,7 +744,7 @@ std::string buildLinuxIpcSocketPath(const std::shared_ptr<Session>& session)
         }
     }
 
-    return "/tmp/iptvnator-embedded-mpv-" +
+    return "/tmp/echo-tv-embedded-mpv-" +
         std::to_string(static_cast<long>(getpid())) +
         "-" + safeSessionId +
         "-" + std::to_string(gNextLinuxIpcSocketId.fetch_add(1)) + ".sock";
@@ -1179,7 +1179,7 @@ pid_t spawnLinuxMpvProcess(
     }
     envp.push_back(nullptr);
 
-    const bool traceEnabled = std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV");
+    const bool traceEnabled = std::getenv("ECHO_TV_TRACE_EMBEDDED_MPV");
     const pid_t processId = fork();
     if (processId != 0) {
         return processId;
@@ -1865,7 +1865,7 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
         throw Napi::Error::New(env, NativeVideoHost::lastError());
     }
     traceMpvCommon("native video host created");
-    session->extraOptions = iptvnator::readEmbeddedMpvExtraOptions(info, 4);
+    session->extraOptions = echo-tv::readEmbeddedMpvExtraOptions(info, 4);
 
 #ifdef __linux__
     session->host.setBounds(bounds);
@@ -1904,12 +1904,12 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
     mpv_set_option_string(session->handle, "vo", "gpu");
     mpv_set_option_string(session->handle, "hwdec", "auto-safe");
 #endif
-    if (std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV")) {
+    if (std::getenv("ECHO_TV_TRACE_EMBEDDED_MPV")) {
         mpv_set_option_string(session->handle, "msg-level", "all=trace");
         mpv_set_option_string(
             session->handle,
             "log-file",
-            "/tmp/iptvnator-embedded-mpv.log"
+            "/tmp/echo-tv-embedded-mpv.log"
         );
     }
 

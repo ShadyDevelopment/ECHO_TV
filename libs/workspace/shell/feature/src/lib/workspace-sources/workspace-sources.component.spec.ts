@@ -1,7 +1,7 @@
-import { PORTAL_EXTERNAL_PLAYBACK } from '@iptvnator/portal/shared/util';
-import { SourceActivityService } from '@iptvnator/services';
+import { PORTAL_EXTERNAL_PLAYBACK } from '@echo-tv/portal/shared/util';
+import { SourceActivityService } from '@echo-tv/services';
 import { MatDialog } from '@angular/material/dialog';
-import { PlaylistRefreshActionService } from '@iptvnator/playlist/shared/ui';
+import { PlaylistRefreshActionService } from '@echo-tv/playlist/shared/ui';
 import {
     Component,
     input,
@@ -19,22 +19,22 @@ import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { provideMockStore } from '@ngrx/store/testing';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { of, Subject } from 'rxjs';
-import { selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
-import { SourceStatusService } from '@iptvnator/portal/shared/data-access';
-import { SourceRemovalService } from '@iptvnator/playlist/shared/ui';
-import { SourcesViewStateService } from '@iptvnator/playlist/shared/util';
+import { selectAllPlaylistsMeta } from '@echo-tv/m3u-state';
+import { SourceStatusService } from '@echo-tv/portal/shared/data-access';
+import { SourceRemovalService } from '@echo-tv/playlist/shared/ui';
+import { SourcesViewStateService } from '@echo-tv/playlist/shared/util';
 import {
     RuntimeCapabilitiesService,
     SortBy,
     SortOrder,
     SortService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import {
     MenuItemRadioCheckDirective,
     MenuItemRadioDirective,
-} from '@iptvnator/ui/components';
-import { WORKSPACE_SHELL_ACTIONS } from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/ui/components';
+import { WORKSPACE_SHELL_ACTIONS } from '@echo-tv/workspace/shell/util';
 import { WorkspaceSourcesComponent } from './workspace-sources.component';
 
 @Component({

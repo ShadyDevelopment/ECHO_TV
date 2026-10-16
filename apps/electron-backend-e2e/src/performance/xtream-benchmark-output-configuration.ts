@@ -50,11 +50,11 @@ export function resolveXtreamBenchmarkOutputLayout(
     try {
         assertXtreamSafePathIdentifier(variant, 'variant');
     } catch {
-        throw new Error('IPTVNATOR_PERF_VARIANT must be a safe Xtream variant');
+        throw new Error('ECHO_TV_PERF_VARIANT must be a safe Xtream variant');
     }
     const outputDirectory = join(outputRoot, variant);
     if (!isStrictDescendant(outputRoot, outputDirectory)) {
-        throw new Error('IPTVNATOR_PERF_VARIANT must be a safe Xtream variant');
+        throw new Error('ECHO_TV_PERF_VARIANT must be a safe Xtream variant');
     }
     return Object.freeze({ outputDirectory, outputRoot, performanceRoot });
 }
@@ -73,7 +73,7 @@ export function resolveXtreamBenchmarkCdpPort(
         port < 1024 ||
         port > 65_535
     ) {
-        throw new Error('IPTVNATOR_PERF_CDP_PORT is invalid');
+        throw new Error('ECHO_TV_PERF_CDP_PORT is invalid');
     }
     if (mode === 'formal' && port !== XTREAM_BENCHMARK_FORMAL_CDP_PORT) {
         throw new Error(

@@ -1,7 +1,7 @@
 import type {
     PortalProvider,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 export type WorkspaceShellPageKind =
     | 'dashboard'

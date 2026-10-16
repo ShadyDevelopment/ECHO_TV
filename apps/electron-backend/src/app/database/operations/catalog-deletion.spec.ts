@@ -2,7 +2,7 @@ import { mockDrizzle, mockDrizzleOrmModule } from './operations.test-helpers';
 
 jest.mock('drizzle-orm', () => mockDrizzleOrmModule());
 
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import type { AppDatabase } from '../database.types';
 import {
     countContentRowsByCategory,

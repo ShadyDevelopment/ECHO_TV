@@ -5,7 +5,7 @@ import type { JourneyIpcTimelineEvent } from './journey-ipc-serial-depth';
 /**
  * Main-process side of the journey IPC counter.
  *
- * With `IPTVNATOR_TRACE_IPC=1` the preload wraps every bridge method (except
+ * With `ECHO_TV_TRACE_IPC=1` the preload wraps every bridge method (except
  * `on*` / `remove*` listener registrations) and sends one trace event per
  * invocation on the renderer-API trace channel before forwarding the call
  * (see `apps/electron-backend/src/app/api/main.preload.ts`). This capture
@@ -21,8 +21,8 @@ import type { JourneyIpcTimelineEvent } from './journey-ipc-serial-depth';
  */
 
 /** Literal of `DEBUG_TRACE_EVENT_CHANNEL` in `services/debug-trace.ts`. */
-export const JOURNEY_RENDERER_API_TRACE_CHANNEL = 'IPTVNATOR_DEBUG_TRACE_EVENT';
-export const JOURNEY_MAIN_IPC_STATE_KEY = '__iptvnatorJourneyMainIpcCapture';
+export const JOURNEY_RENDERER_API_TRACE_CHANNEL = 'ECHO_TV_DEBUG_TRACE_EVENT';
+export const JOURNEY_MAIN_IPC_STATE_KEY = '__echo-tvJourneyMainIpcCapture';
 
 export interface JourneyMainIpcCaptureOptions {
     readonly channel: string;

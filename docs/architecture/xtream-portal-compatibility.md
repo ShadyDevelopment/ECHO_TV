@@ -92,7 +92,7 @@ collection load.
 ## Connection Input
 
 Xtream server URLs are normalized through
-`normalizeXtreamServerUrl` from `@iptvnator/shared/interfaces`.
+`normalizeXtreamServerUrl` from `@echo-tv/shared/interfaces`.
 
 Rules:
 
@@ -113,7 +113,7 @@ the normalized `serverUrl` plus trimmed credentials.
 ### Explicit protocol discovery
 
 Add and Edit source share `XtreamConnectionTestService` and form-owned
-`createXtreamConnectionTestState` (`@iptvnator/services`). The explicit
+`createXtreamConnectionTestState` (`@echo-tv/services`). The explicit
 **Test HTTPS and HTTP** button has a visible, accessible pre-request notice
 that credentials may be sent over unencrypted HTTP. Clicking that action supplies
 `allowHttpFallback`; the service defaults it to false, so an ordinary programmatic
@@ -165,7 +165,7 @@ carrying `status`; catalog calls get the usual `{ type: ERROR, status, message }
 result — status 499 and no snackbar for a cancellation, the real 401/403
 (previously lost as `[object Object]`) for a refusal. The main process logs a
 refusal as one credential-free `console.warn` (unless `suppressErrorLog`), a
-cancellation only under `IPTVNATOR_TRACE_IPC`, and everything else as before
+cancellation only under `ECHO_TV_TRACE_IPC`, and everything else as before
 at error level with a rejection.
 
 The saved base drives catalog refresh, provider EPG, live/VOD/series/catch-up URL
@@ -352,7 +352,7 @@ therefore counts as sparse and gets the fallback page above.
 
 ## Catch-Up Playback URLs
 
-Xtream-compatible portals differ on archive playback URL shape. IPTVnator
+Xtream-compatible portals differ on archive playback URL shape. ECHO TV
 supports these catch-up variants:
 
 1. REST-style `/timeshift/{username}/{password}/{duration}/{start}/{streamId}.ts`

@@ -3,13 +3,13 @@ import {
     groupTitleMatchesByKey,
     pickTitleMatch,
     tmdbPosterUrl,
-} from '@iptvnator/services';
-import type { CatalogTitleLookup, TmdbSearchResult } from '@iptvnator/services';
+} from '@echo-tv/services';
+import type { CatalogTitleLookup, TmdbSearchResult } from '@echo-tv/services';
 import {
     CatalogTitleMatch,
     normalizeTitleKeys,
     titleYearsCompatible,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     DashboardTmdbLookupItem,
     dashboardTmdbLookupKey,
@@ -125,7 +125,7 @@ function candidateKeySets(candidate: RecommendationCandidate): CandidateKeys[] {
  *
  * The grouping and ranking themselves are the shared
  * `groupTitleMatchesByKey()` / `pickTitleMatch()`
- * (`@iptvnator/services`) — the Trending rail, the cross-portal Similar
+ * (`@echo-tv/services`) — the Trending rail, the cross-portal Similar
  * rail and the actor pages resolve a batched `DB_MATCH_TITLES` result the
  * same way, and this rail is just the one that also carries an alias.
  * `pickTitleMatch` folds aliases that normalize to one key, so passing

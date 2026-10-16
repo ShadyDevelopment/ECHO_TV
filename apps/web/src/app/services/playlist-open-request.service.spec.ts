@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistFileImportService } from '@iptvnator/playlist/shared/util';
-import type { ElectronBridgePlaylistOpenRequest } from '@iptvnator/shared/interfaces';
+import { PlaylistFileImportService } from '@echo-tv/playlist/shared/util';
+import type { ElectronBridgePlaylistOpenRequest } from '@echo-tv/shared/interfaces';
 import { PlaylistOpenRequestService } from './playlist-open-request.service';
 
 type BridgeMock = {

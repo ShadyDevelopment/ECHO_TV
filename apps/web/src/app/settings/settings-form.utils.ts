@@ -29,7 +29,7 @@ import {
     validateEmbeddedMpvExtraOptions,
     validateEpgSourceReferenceControl,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Rejects malformed lines and the option keys the embed depends on, so a
@@ -49,7 +49,7 @@ export function embeddedMpvExtraOptionsValidator(
 
 /**
  * An EPG source is a remote XMLTV link or a local file (absolute path or
- * `file:` URL); the accepted shapes live in `@iptvnator/shared/interfaces`
+ * `file:` URL); the accepted shapes live in `@echo-tv/shared/interfaces`
  * so the playlist dialog validates identically.
  */
 export function createEpgUrlControl(value = ''): FormControl<string | null> {

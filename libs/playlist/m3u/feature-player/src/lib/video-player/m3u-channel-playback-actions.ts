@@ -1,5 +1,5 @@
-import { ChannelActions } from '@iptvnator/m3u-state';
-import { Channel } from '@iptvnator/shared/interfaces';
+import { ChannelActions } from '@echo-tv/m3u-state';
+import { Channel } from '@echo-tv/shared/interfaces';
 
 export function createM3uChannelPlaybackRequest(channel: Channel) {
     return ChannelActions.setActiveChannel({

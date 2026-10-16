@@ -1,10 +1,10 @@
-import { createDevLogger } from '@iptvnator/shared/interfaces';
+import { createDevLogger } from '@echo-tv/shared/interfaces';
 import {
     InlinePlaybackPlayer,
     type PlaybackDiagnostic,
     classifyNativePlaybackIssue,
     createPlaybackSourceMetadata,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import type { PlayerTimeUpdate } from '../playback-history/player-time-update';
 
 const debugHtmlPlayer = createDevLogger('HtmlVideoPlayer');

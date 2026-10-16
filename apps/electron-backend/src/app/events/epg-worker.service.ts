@@ -17,7 +17,7 @@ import { Worker } from 'worker_threads';
 import {
     ElectronBridgeSecurityErrorCode,
     ElectronBridgeTrustOptions,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export type EpgProgressStatus =
     'queued' | 'loading' | 'complete' | 'error' | 'cancelled';

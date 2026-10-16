@@ -1,12 +1,12 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { VodSourceDiscoveryService } from '@iptvnator/portal/shared/data-access';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { VodSourceDiscoveryService } from '@echo-tv/portal/shared/data-access';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import {
     EmbeddedMpvSupport,
     watchEmbeddedMpvSupport,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SETTINGS_SEARCH_ENTRIES } from './settings-search-entries';
 import { rankSearchMatch, tokenizeSearchQuery } from './settings-search-rank';
 import {

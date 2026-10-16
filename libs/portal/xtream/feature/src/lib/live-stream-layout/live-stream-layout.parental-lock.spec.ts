@@ -8,26 +8,26 @@ import { Subject, of } from 'rxjs';
 import {
     LiveLayoutSidebarStateService,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     FavoritesService,
     XtreamStore,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     EpgArchiveCopyService,
     EpgArchiveDownloadService,
     EpgListViewComponent,
     EpgTimelineComponent,
-} from '@iptvnator/ui/epg';
-import { WebPlayerViewComponent } from '@iptvnator/ui/playback';
-import { GridListComponent } from '@iptvnator/portal/shared/ui';
+} from '@echo-tv/ui/epg';
+import { WebPlayerViewComponent } from '@echo-tv/ui/playback';
+import { GridListComponent } from '@echo-tv/portal/shared/ui';
 import {
     DatabaseService,
     ParentalLockService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { PortalChannelsListComponent } from '../portal-channels-list/portal-channels-list.component';
 import { LiveStreamLayoutComponent } from './live-stream-layout.component';
 import {

@@ -1,4 +1,4 @@
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import {
     getPortalPlaybackProgressPercent,
     PORTAL_WATCHED_PROGRESS_PERCENT,

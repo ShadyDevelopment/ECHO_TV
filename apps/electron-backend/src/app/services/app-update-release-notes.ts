@@ -4,7 +4,7 @@ import {
     buildAppUpdateReleaseNotesNotFoundMessage,
     ElectronBridgeAppUpdateReleaseNotes,
     ElectronBridgeAppUpdateReleaseNotesRequest,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     AppUpdateReleaseCatalog,
     CachedGitHubRelease,

@@ -4,19 +4,19 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { By } from '@angular/platform-browser';
 import { provideRouter, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { PORTAL_PLAYER } from '@iptvnator/portal/shared/util';
+import { PORTAL_PLAYER } from '@echo-tv/portal/shared/util';
 import {
     StreamResolverService,
     UnifiedRecentDataService,
-} from '@iptvnator/portal/shared/data-access';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { ResizableDirective } from '@iptvnator/ui/components';
-import { EpgListViewComponent, EpgTimelineComponent } from '@iptvnator/ui/epg';
+} from '@echo-tv/portal/shared/data-access';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { ResizableDirective } from '@echo-tv/ui/components';
+import { EpgListViewComponent, EpgTimelineComponent } from '@echo-tv/ui/epg';
 import {
     AudioPlayerComponent,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { VideoPlayer } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/ui/playback';
+import { VideoPlayer } from '@echo-tv/shared/interfaces';
 import { GlobalFavoritesListComponent } from '../global-favorites-list/global-favorites-list.component';
 import { OpenInPlaylistChipComponent } from '../open-in-playlist-chip/open-in-playlist-chip.component';
 import {

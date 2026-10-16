@@ -14,12 +14,12 @@
  */
 import { join } from 'node:path';
 
-export const COMPILE_CACHE_DISABLE_ENV = 'IPTVNATOR_DISABLE_COMPILE_CACHE';
-export const COMPILE_CACHE_DIR_ENV = 'IPTVNATOR_COMPILE_CACHE_DIR';
+export const COMPILE_CACHE_DISABLE_ENV = 'ECHO_TV_DISABLE_COMPILE_CACHE';
+export const COMPILE_CACHE_DIR_ENV = 'ECHO_TV_COMPILE_CACHE_DIR';
 export const COMPILE_CACHE_DIR_NAME = 'v8-compile-cache';
 
 const TRUE_VALUES = new Set(['1', 'true', 'yes', 'on']);
-const OUTCOME_KEY = Symbol.for('iptvnator.compileCacheOutcome');
+const OUTCOME_KEY = Symbol.for('echo-tv.compileCacheOutcome');
 
 /** `module.constants.compileCacheStatus` of Node 22.1+, by value. */
 const NODE_STATUS = {
@@ -72,10 +72,10 @@ export function resolveCompileCacheDirectory(
         return explicit;
     }
 
-    // Mirrors getElectronUserDataPath() in @iptvnator/shared/database, which
+    // Mirrors getElectronUserDataPath() in @echo-tv/shared/database, which
     // profile bootstrap applies later. The entry cannot import that library
     // without loading the database stack ahead of the cache.
-    const e2eDataDir = env.IPTVNATOR_E2E_DATA_DIR?.trim();
+    const e2eDataDir = env.ECHO_TV_E2E_DATA_DIR?.trim();
     const userData = e2eDataDir
         ? join(e2eDataDir, 'user-data')
         : userDataPath();

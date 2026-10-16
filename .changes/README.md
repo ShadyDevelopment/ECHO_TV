@@ -138,7 +138,7 @@ release therefore edits the existing post rather than generating a new one, so
 
 `pnpm run release:screenshots` captures every manifest shot in dark and light
 against the built app plus the Xtream mock server — never a real account.
-The run is fail-closed: it proves the real `~/.iptvnator/databases` directory
+The run is fail-closed: it proves the real `~/.echo-tv/databases` directory
 (including the SQLite WAL sidecars, checked after Electron exits) was not
 touched, launches the app with an allowlisted environment, records and blocks
 all non-localhost traffic, scans every frame for external resources and

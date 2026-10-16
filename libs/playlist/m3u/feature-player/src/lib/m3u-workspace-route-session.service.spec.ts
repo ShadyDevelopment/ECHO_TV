@@ -5,10 +5,10 @@ import {
     ChannelActions,
     FavoritesActions,
     PlaylistActions,
-} from '@iptvnator/m3u-state';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { PlaylistsService } from '@iptvnator/services';
-import { Channel, Playlist, PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/m3u-state';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { PlaylistsService } from '@echo-tv/services';
+import { Channel, Playlist, PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { Store } from '@ngrx/store';
 import { M3uWorkspaceRouteSession } from './m3u-workspace-route-session.service';
 

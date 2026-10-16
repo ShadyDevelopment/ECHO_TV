@@ -4,14 +4,14 @@ import {
     formatDurationLabel,
     playbackProgressPercent,
     type ExternalPlaybackButtonLabel,
-} from '@iptvnator/portal/shared/util';
-import type { CrossPortalSimilarItem } from '@iptvnator/services';
+} from '@echo-tv/portal/shared/util';
+import type { CrossPortalSimilarItem } from '@echo-tv/services';
 import {
     VideoPlayer,
     type ExternalPlayerName,
     type NormalizedVodMeta,
-} from '@iptvnator/shared/interfaces';
-import type { DetailActionButtonState } from '@iptvnator/ui/components';
+} from '@echo-tv/shared/interfaces';
+import type { DetailActionButtonState } from '@echo-tv/ui/components';
 import {
     buildCastMembers,
     buildCountryChips,

@@ -23,11 +23,11 @@ import {
     VideoPlayer,
     type VodSourceDescriptor,
     type VodSourceMatchKind,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/playback/util';
-import type { PlaybackDiagnosticCode } from '@iptvnator/playback/util';
-import { SettingsStore } from '@iptvnator/services';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
+} from '@echo-tv/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@echo-tv/playback/util';
+import type { PlaybackDiagnosticCode } from '@echo-tv/playback/util';
+import { SettingsStore } from '@echo-tv/services';
+import { applyChannelNameStrip } from '@echo-tv/shared/m3u-utils';
 import type { PlayerMediaTitle, PlayerUpNextItem } from '../player-controls';
 import {
     FULLSCREEN_CHANNEL_PANEL,
@@ -44,7 +44,7 @@ import type {
     SeriesEpisodeMetadata,
     SeriesPlaybackNavigation,
 } from './series-playback-navigation';
-import { VodSourcesChipComponent } from '@iptvnator/ui/components';
+import { VodSourcesChipComponent } from '@echo-tv/ui/components';
 import {
     ambientImageStyle as toAmbientImageStyle,
     observeStageSize,

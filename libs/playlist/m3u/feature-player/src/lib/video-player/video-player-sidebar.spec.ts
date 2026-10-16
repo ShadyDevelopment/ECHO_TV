@@ -20,27 +20,27 @@ import {
     selectChannels,
     selectChannelsLoading,
     selectCurrentEpgProgram,
-} from '@iptvnator/m3u-state';
-import { EpgService } from '@iptvnator/epg/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@echo-tv/m3u-state';
+import { EpgService } from '@echo-tv/epg/data-access';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
 import {
     LiveLayoutSidebarStateService,
     liveSidebarStateStorageKey,
     PORTAL_EXTERNAL_PLAYBACK,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     DataService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
     TmdbEnrichmentService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     Channel,
     EpgProgram,
     Settings,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { VideoPlayerComponent as VideoPlayerComponentInstance } from './video-player.component';
 import { translateServiceProvider } from './video-player.spec-harness';
 import { StubSidebarComponent } from './video-player.spec-stubs';

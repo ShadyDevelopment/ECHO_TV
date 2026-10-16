@@ -9,7 +9,7 @@ import {
     sql,
     type SQL,
 } from 'drizzle-orm';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 import { epgLogger } from '../util/epg-logger';

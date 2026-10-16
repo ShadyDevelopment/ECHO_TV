@@ -7,14 +7,14 @@ import {
     withProps,
     withState,
 } from '@ngrx/signals';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     DataService,
     ParentalLockService,
     resetHostConnectivityGuard,
-} from '@iptvnator/services';
-import type { PlaylistMeta } from '@iptvnator/shared/interfaces';
-import { ALL_CATEGORIES_WITHHELD } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import type { PlaylistMeta } from '@echo-tv/shared/interfaces';
+import { ALL_CATEGORIES_WITHHELD } from '@echo-tv/shared/interfaces';
 import {
     StalkerCategoryItem,
     StalkerContentItem,

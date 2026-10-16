@@ -1,7 +1,7 @@
 import {
     ExternalPlayerSession,
     tagExternalPlayerError,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { ExternalPlayerSessionRegistry } from './external-player-session-registry';
 
 describe('ExternalPlayerSessionRegistry', () => {

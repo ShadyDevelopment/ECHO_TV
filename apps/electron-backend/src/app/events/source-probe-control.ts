@@ -2,7 +2,7 @@ import { ipcMain } from 'electron';
 import {
     SOURCE_HEALTH_CANCEL,
     SourceProbeContext,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const requests = new Map<string, AbortController>();
 export function sourceProbeControl(

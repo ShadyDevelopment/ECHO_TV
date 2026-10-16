@@ -1,11 +1,11 @@
 import { inject, Injector, signal } from '@angular/core';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import {
     type IXtreamDataSource,
     XTREAM_DATA_SOURCE,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 
 export interface XtreamRecentItemRequest {
     readonly xtreamId: number | string;

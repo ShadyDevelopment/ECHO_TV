@@ -3,13 +3,13 @@ import {
     ResolvedLiveCollectionDetail,
     StreamResolverService,
     UnifiedRecentDataService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import {
     PORTAL_PLAYER,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
-import { ElectronStreamHeadersService } from '@iptvnator/ui/playback';
+} from '@echo-tv/portal/shared/util';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
+import { ElectronStreamHeadersService } from '@echo-tv/ui/playback';
 import { UnifiedLiveTimeshift } from './unified-live-catchup';
 import { createUnifiedLivePlaybackSessionKey } from './unified-live-playback-session-key';
 import { UnifiedLiveSelectionGeneration } from './unified-live-selection-generation';

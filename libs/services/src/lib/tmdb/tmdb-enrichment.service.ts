@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { TmdbMediaType } from '@iptvnator/shared/interfaces';
+import { TmdbMediaType } from '@echo-tv/shared/interfaces';
 import { TmdbApiService, isTmdbNotFound } from './tmdb-api.service';
 import { trimDetailsForCache } from './tmdb-cache-payload';
 import { TmdbCacheService } from './tmdb-cache.service';

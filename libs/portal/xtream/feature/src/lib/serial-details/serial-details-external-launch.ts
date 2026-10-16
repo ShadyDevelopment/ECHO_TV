@@ -2,16 +2,16 @@ import { signal } from '@angular/core';
 import type {
     PortalExternalPlayback,
     PortalPlayer,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import type {
     ExternalPlayerName,
     ExternalPlayerSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createLogger,
     isLiveExternalPlayerSession,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import { closeRunningExternalSession } from '../vod-details/vod-details-external-session';
 
 const logger = createLogger('SerialDetailsPlayback');

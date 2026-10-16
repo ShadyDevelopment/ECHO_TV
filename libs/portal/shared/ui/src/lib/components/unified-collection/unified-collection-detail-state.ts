@@ -15,8 +15,8 @@ import {
     OPEN_COLLECTION_DETAIL_STATE_KEY,
     SeriesResumeTarget,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
-import { CollectionMode } from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/util';
+import { CollectionMode } from '@echo-tv/portal/shared/data-access';
 import {
     buildCollectionDetailNavigation,
     canRenderCollectionDetailOnRoute,

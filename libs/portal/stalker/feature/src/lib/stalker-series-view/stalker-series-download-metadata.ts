@@ -4,12 +4,12 @@ import type {
     TmdbEnrichedCastMember,
     XtreamSerieEpisode,
     XtreamSerieEpisodeInfo,
-} from '@iptvnator/shared/interfaces';
-import type { StalkerSelectedVodItem } from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/shared/interfaces';
+import type { StalkerSelectedVodItem } from '@echo-tv/portal/stalker/data-access';
 import {
     createMovieDownloadSnapshot,
     createSeriesEpisodeDownloadSnapshot,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 interface StalkerSeriesDownloadSnapshotInput {
     item: StalkerSelectedVodItem;

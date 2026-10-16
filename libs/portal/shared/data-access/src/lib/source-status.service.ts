@@ -3,13 +3,13 @@ import {
     PortalStatus,
     PortalStatusService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     PlaylistMeta,
     SourceHealthReason,
     sourceHealthType,
     SourceStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { sourceHealthFingerprint } from './source-health-identity';
 import { SourceHealthHistoryService } from './source-health-history.service';
 import { SourceHealthService } from './source-health.service';

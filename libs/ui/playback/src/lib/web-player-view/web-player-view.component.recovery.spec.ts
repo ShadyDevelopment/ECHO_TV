@@ -17,16 +17,16 @@ import {
     PlaybackDiagnosticSource,
     type PlaybackDiagnostic,
     type PlaybackFallbackRequest,
-} from '@iptvnator/playback/util';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/playback/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
 import {
     type ExternalPlayerSession,
     STORE_KEY,
     VideoPlayer,
     type ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
-import { PORTAL_EXTERNAL_PLAYBACK } from '@iptvnator/portal/shared/util';
-import { VodSourceRowComponent } from '@iptvnator/ui/components';
+} from '@echo-tv/shared/interfaces';
+import { PORTAL_EXTERNAL_PLAYBACK } from '@echo-tv/portal/shared/util';
+import { VodSourceRowComponent } from '@echo-tv/ui/components';
 import { of } from 'rxjs';
 import { PlaybackDiagnosticPanelComponent } from '../playback-diagnostic-panel/playback-diagnostic-panel.component';
 import {

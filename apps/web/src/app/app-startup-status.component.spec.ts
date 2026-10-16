@@ -5,7 +5,7 @@ import {
     PlaylistActions,
     selectPlaylistsLoadFailed,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import { AppStartupStatusComponent } from './app-startup-status.component';
 
 describe('AppStartupStatusComponent', () => {

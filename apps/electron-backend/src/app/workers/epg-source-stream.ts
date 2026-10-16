@@ -1,7 +1,7 @@
 import { createReadStream } from 'fs';
 import { stat } from 'fs/promises';
 import { PassThrough, Readable, pipeline } from 'stream';
-import { ElectronBridgeTrustOptions } from '@iptvnator/shared/interfaces';
+import { ElectronBridgeTrustOptions } from '@echo-tv/shared/interfaces';
 import { isPrivateNetworkUrlAccessAllowed } from '../events/url-safety';
 import { epgLogger } from '../util/epg-logger';
 import { resolveLocalEpgSourcePath } from '../util/epg-local-source-path';

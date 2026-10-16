@@ -2,7 +2,7 @@ import {
     STALKER_REQUEST,
     buildHostConnectivityFastFailMessage,
     readPortalRequestFailure,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const registeredHandlers = new Map<string, (...args: unknown[]) => unknown>();
 const axiosMock = Object.assign(jest.fn(), {
@@ -304,7 +304,7 @@ describe('StalkerEvents host connectivity guard', () => {
 });
 
 describe('StalkerEvents expected outcomes', () => {
-    const TRACE_IPC_ENV = 'IPTVNATOR_TRACE_IPC';
+    const TRACE_IPC_ENV = 'ECHO_TV_TRACE_IPC';
     const originalTraceIpc = process.env[TRACE_IPC_ENV];
     let consoleErrorSpy: jest.SpyInstance;
     let consoleWarnSpy: jest.SpyInstance;

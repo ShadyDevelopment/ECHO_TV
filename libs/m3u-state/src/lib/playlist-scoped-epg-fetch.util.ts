@@ -1,5 +1,5 @@
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
-import { filterPlaylistEpgUrlsForFetch } from '@iptvnator/shared/m3u-utils';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
+import { filterPlaylistEpgUrlsForFetch } from '@echo-tv/shared/m3u-utils';
 
 export interface PlaylistScopedEpgFetchPlan {
     key: string;

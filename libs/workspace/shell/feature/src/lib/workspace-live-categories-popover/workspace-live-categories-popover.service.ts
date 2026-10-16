@@ -14,8 +14,8 @@ import { filter } from 'rxjs';
 import {
     LiveCategoriesPopover,
     LiveLayoutSidebarStateService,
-} from '@iptvnator/portal/shared/util';
-import { WorkspaceShellContextDrawerService } from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/portal/shared/util';
+import { WorkspaceShellContextDrawerService } from '@echo-tv/workspace/shell/util';
 import { WorkspaceLiveCategoriesPopoverComponent } from './workspace-live-categories-popover.component';
 
 /**

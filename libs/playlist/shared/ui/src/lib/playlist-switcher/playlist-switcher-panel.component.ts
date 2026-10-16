@@ -24,7 +24,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     SourceStatusService,
     sourceStatusBucket,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import {
     countSourcesByType,
     orderFailingFirst,
@@ -34,13 +34,13 @@ import {
     SourceBucketOf,
     sourceSortName,
     SourcesTypeFilter,
-} from '@iptvnator/playlist/shared/util';
+} from '@echo-tv/playlist/shared/util';
 import {
     SortBy,
     SortService,
     SourceActivityService,
-} from '@iptvnator/services';
-import { PlaylistMeta, PlaylistSourceKind } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta, PlaylistSourceKind } from '@echo-tv/shared/interfaces';
 import { PlaylistRefreshActionService } from '../playlist-refresh-action.service';
 import { PlaylistInfoComponent } from '../recent-playlists/playlist-info/playlist-info.component';
 import { SourceRemovalService } from '../source-removal/source-removal.service';

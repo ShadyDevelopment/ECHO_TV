@@ -1,5 +1,5 @@
-import type { PortalExternalPlayback } from '@iptvnator/portal/shared/util';
-import type { ExternalPlayerSession } from '@iptvnator/shared/interfaces';
+import type { PortalExternalPlayback } from '@echo-tv/portal/shared/util';
+import type { ExternalPlayerSession } from '@echo-tv/shared/interfaces';
 import {
     type ExternalRecoveryIntent,
     ExternalPlaybackRecovery,

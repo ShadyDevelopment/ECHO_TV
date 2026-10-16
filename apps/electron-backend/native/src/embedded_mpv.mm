@@ -275,7 +275,7 @@ void updateSessionError(
 
 bool isEmbeddedMpvTraceEnabled()
 {
-    const char* value = std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV");
+    const char* value = std::getenv("ECHO_TV_TRACE_EMBEDDED_MPV");
     return value && value[0] != '\0' && std::string(value) != "0";
 }
 
@@ -300,7 +300,7 @@ std::string normalizeEnvValue(const char* value)
 RenderBackend requestedRenderBackend()
 {
     const std::string renderer =
-        normalizeEnvValue(std::getenv("IPTVNATOR_EMBEDDED_MPV_RENDERER"));
+        normalizeEnvValue(std::getenv("ECHO_TV_EMBEDDED_MPV_RENDERER"));
     return renderer == "sw"
         ? RenderBackend::Software
         : RenderBackend::OpenGL;
@@ -1819,7 +1819,7 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
         ? [[parentView window] contentView]
         : parentView;
     session->renderQueue = dispatch_queue_create(
-        "dev.iptvnator.embedded-mpv.render",
+        "dev.echo-tv.embedded-mpv.render",
         DISPATCH_QUEUE_SERIAL
     );
     session->snapshot.volumePercent =
@@ -1877,7 +1877,7 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
     // Session options from Settings (network defaults first, then the
     // user's lines). Applied last so a user value overrides a built-in one,
     // and before mpv_initialize because most of them are init-only.
-    for (const auto& option : iptvnator::readEmbeddedMpvExtraOptions(info, 4)) {
+    for (const auto& option : echo-tv::readEmbeddedMpvExtraOptions(info, 4)) {
         const int optionResult = mpv_set_option_string(
             session->handle,
             option.first.c_str(),

@@ -563,7 +563,7 @@ function inspectLibplaceboSourceSnapshot(
         );
     }
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-libplacebo-source-verifier-')
+        path.join(os.tmpdir(), 'echo-tv-libplacebo-source-verifier-')
     );
     try {
         const memberListPath = path.join(
@@ -743,7 +743,7 @@ function assertExactSourceArchiveLayout(members, archiveFiles, compliance) {
             ({ path: relativePath }) => `license-inputs/${relativePath}`
         ),
         'metadata/archive-sha256.txt',
-        'metadata/iptvnator-git-revision.txt',
+        'metadata/echo-tv-git-revision.txt',
         'metadata/local-changes.patch',
         'metadata/runtime-manifest.json',
         'metadata/source-index.json',
@@ -852,7 +852,7 @@ function inspectSourceArchive(
         'metadata/source-index.json'
     );
     const repositoryRevision = readMetadata(
-        'metadata/iptvnator-git-revision.txt'
+        'metadata/echo-tv-git-revision.txt'
     )
         .toString('utf8')
         .trim();
@@ -1106,7 +1106,7 @@ function inspectSnapPayload(
     }
     inspectSquashfsListing(snapPath, runCommand);
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-source-verifier-')
+        path.join(os.tmpdir(), 'echo-tv-snap-source-verifier-')
     );
     try {
         const extractionRoot = path.join(temporaryRoot, 'payload');
@@ -1152,7 +1152,7 @@ function inspectSnapPayload(
         }
         const payloadPath = canonicalPayloads[0];
         const resourcesDirectory = path.join(extractionRoot, 'resources');
-        const electronPath = path.join(extractionRoot, 'iptvnator.bin');
+        const electronPath = path.join(extractionRoot, 'echo-tv.bin');
         const electronStat = fs.lstatSync(electronPath);
         if (
             !electronStat.isFile() ||
@@ -1179,7 +1179,7 @@ function inspectSnapPayload(
         }
         const staticErrors = validatePackaged(resourcesDirectory, {
             artifactFormat: 'snap',
-            executableName: 'iptvnator',
+            executableName: 'echo-tv',
             foreignArch: architecture !== 'x64',
             hostPlatform: 'linux',
             platform: 'linux',

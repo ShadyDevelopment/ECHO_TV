@@ -1,5 +1,5 @@
 /* eslint-disable playwright/expect-expect -- This is a Node assertion-based lifecycle test. */
-import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@iptvnator/shared/logging';
+import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@echo-tv/shared/logging';
 import assert from 'node:assert/strict';
 import { EventEmitter } from 'node:events';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
@@ -13,7 +13,7 @@ import { M3U_IMPORT_RENDERER_STATE_KEY } from './m3u-import-renderer-probe';
 test('idempotently disposes failed-iteration timers, probe, trace stream, listeners, and CDP session', async () => {
     const browser = installFakeProbeEnvironment();
     const outputDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-renderer-capture-dispose-')
+        join(tmpdir(), 'echo-tv-renderer-capture-dispose-')
     );
     const session = new FakeCdpSession();
     const control = {
@@ -76,7 +76,7 @@ test('idempotently disposes failed-iteration timers, probe, trace stream, listen
 test('failed-iteration disposal does not await a wedged renderer or CDP detach', async () => {
     const browser = installFakeProbeEnvironment();
     const outputDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-renderer-capture-wedged-')
+        join(tmpdir(), 'echo-tv-renderer-capture-wedged-')
     );
     const session = new FakeCdpSession({ hangDetach: true });
     let evaluateCalls = 0;
@@ -117,7 +117,7 @@ test('failed-iteration disposal does not await a wedged renderer or CDP detach',
 test('rolls back partially started capture when Chromium tracing rejects', async () => {
     const browser = installFakeProbeEnvironment();
     const outputDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-renderer-capture-startup-')
+        join(tmpdir(), 'echo-tv-renderer-capture-startup-')
     );
     const session = new FakeCdpSession({ failMethod: 'Tracing.start' });
     const intervalToken = Object.freeze({});

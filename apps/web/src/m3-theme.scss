@@ -24,8 +24,8 @@ $my-typography: mat.m2-define-typography-config(
 @include mat.typography-hierarchy($my-typography);
 
 // ─── M3 Themes ───────────────────────────────────────────────────────────────
-// ECHO TV green carries the primary action and selection states throughout
-// the app.
+// ECHO TV blue carries primary actions and selection states throughout the
+// app, complementing the cool metallic brand mark.
 //
 // Cyan stays on tertiary so the EPG "now" indicator (which uses Material
 // tertiary surfaces) keeps its existing visual role.
@@ -33,7 +33,7 @@ $light-theme: mat.define-theme(
     (
         color: (
             theme-type: light,
-            primary: mat.$green-palette,
+            primary: mat.$blue-palette,
             tertiary: mat.$cyan-palette,
         ),
         typography: (
@@ -47,7 +47,7 @@ $dark-theme: mat.define-theme(
     (
         color: (
             theme-type: dark,
-            primary: mat.$green-palette,
+            primary: mat.$blue-palette,
             tertiary: mat.$cyan-palette,
         ),
         typography: (
@@ -133,7 +133,7 @@ html {
     --app-hover-overlay: rgba(0, 0, 0, 0.06);
     --app-search-bg: rgba(255, 255, 255, 0.7);
     --app-search-border: rgba(0, 0, 0, 0.1);
-    --app-selection-color: #1e6b51;
+    --app-selection-color: #315f91;
     --app-selection-on-color: #ffffff;
     --app-selection-surface: color-mix(
         in srgb,
@@ -160,7 +160,7 @@ html {
     --app-progress-color: var(--app-selection-color);
     // Keyboard focus ring (`libs/ui/styles/_focus-ring.scss`), drawn 2px
     // outside the focused element and dark enough to contrast on light surfaces.
-    --app-focus-ring: #0f3d2e;
+    --app-focus-ring: #244e77;
 
     // Live / on-air accent (broadcast indicator)
     --app-live-color: #d12c2c;
@@ -203,10 +203,10 @@ html {
     // Hero
     --app-accent-gradient: linear-gradient(
         135deg,
-        rgba(30, 107, 81, 0.08) 0%,
-        rgba(58, 155, 116, 0.05) 100%
+        rgba(49, 95, 145, 0.08) 0%,
+        rgba(102, 184, 237, 0.05) 100%
     );
-    --app-hero-surface: rgba(30, 107, 81, 0.04);
+    --app-hero-surface: rgba(49, 95, 145, 0.04);
 
     // Detail / hero call to action. The dark theme's light primary (#f2f4f8
     // on #0a0e14) inverts to a dark button on the light theme, so it reads as
@@ -246,19 +246,19 @@ html {
         // ── Dark graphite theme ────────────────────────────────────────────
         // Inspired by both Slack (sidebar distinction) and GitButler (data density)
         // Key principle: clearly distinct surface layers using graphite steps
-        // Darkest → lightest: teal-deep → teal → echo-green.
+        // Darkest → lightest: graphite → slate → steel.
 
         // App shell & navigation
-        --app-shell-bg: #081c1d;
-        --app-rail-bg: #0b2b2a;
-        --app-header-bg: #0b2b2a;
-        --app-content-bg: #0a0a0a;
+        --app-shell-bg: #111820;
+        --app-rail-bg: #151d26;
+        --app-header-bg: #151d26;
+        --app-content-bg: #0e131a;
         --app-rail-border: transparent;
         --app-on-surface: #e6e1e5;
         --app-hover-overlay: rgba(255, 255, 255, 0.08);
         --app-search-bg: rgba(255, 255, 255, 0.05);
         --app-search-border: rgba(255, 255, 255, 0.09);
-        --app-selection-color: #3a9b74;
+        --app-selection-color: #66b8ed;
         --app-selection-on-color: #0a0a0a;
         --app-selection-surface: color-mix(
             in srgb,
@@ -285,7 +285,7 @@ html {
         --app-progress-color: var(--app-selection-color);
         // Keyboard focus ring: at least 4.1:1 on every dark surface and
         // selection tint.
-        --app-focus-ring: #58b48c;
+        --app-focus-ring: #66b8ed;
 
         // Live / on-air accent (broadcast indicator)
         --app-live-color: #ff8f8f;
@@ -298,12 +298,12 @@ html {
 
         // Widget surfaces — NO border, surface contrast does the work
         // Widgets sit on content-bg (#161a22), so widget-bg is notably lighter
-        --app-widget-bg: #0f3d2e;
-        --app-widget-header-bg: #123e32;
+        --app-widget-bg: #1a222d;
+        --app-widget-header-bg: #202a36;
         --app-widget-border: transparent;
         --app-widget-shadow: none;
         --app-widget-header-border: rgba(255, 255, 255, 0.05);
-        --app-card-hover-bg: #174a38;
+        --app-card-hover-bg: #253241;
         --app-separator: rgba(255, 255, 255, 0.14);
 
         // Typography — NOT pure white. Warm graphite-tinted whites
@@ -331,10 +331,10 @@ html {
         // Hero section
         --app-accent-gradient: linear-gradient(
             135deg,
-            rgba(58, 155, 116, 0.16) 0%,
-            rgba(30, 107, 81, 0.1) 100%
+            rgba(102, 184, 237, 0.16) 0%,
+            rgba(49, 95, 145, 0.1) 100%
         );
-        --app-hero-surface: rgba(11, 43, 42, 0.9);
+        --app-hero-surface: rgba(21, 29, 38, 0.9);
 
         // Detail / hero call to action (light primary) and rating accent
         --app-cta-bg: #f2f4f8;
@@ -361,7 +361,7 @@ html {
 // ─── Global refined outlined inputs ──────────────────────────────────────────
 // Applied app-wide AFTER the component themes so these overrides win the
 // cascade. Pairs with the outline + dynamic MAT_FORM_FIELD_DEFAULT_OPTIONS
-// that provideFormFieldDefaults() (@iptvnator/ui/components) sets on each
+// that provideFormFieldDefaults() (@echo-tv/ui/components) sets on each
 // component rendering a form field.
 $app-refined-input-density: mat.define-theme(
     (

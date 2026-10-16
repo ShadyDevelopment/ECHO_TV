@@ -17,9 +17,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { StalkerCategoryItem } from '@iptvnator/portal/stalker/data-access';
-import { ParentalLockService } from '@iptvnator/services';
-import { ParentalLockStalkerCategoryType } from '@iptvnator/shared/interfaces';
+import { StalkerCategoryItem } from '@echo-tv/portal/stalker/data-access';
+import { ParentalLockService } from '@echo-tv/services';
+import { ParentalLockStalkerCategoryType } from '@echo-tv/shared/interfaces';
 
 export interface StalkerCategoryLockDialogData {
     playlistId: string;

@@ -1,4 +1,4 @@
-export const SECURITY_ERROR_PREFIX = 'IPTVNATOR_SECURITY_ERROR:';
+export const SECURITY_ERROR_PREFIX = 'ECHO_TV_SECURITY_ERROR:';
 
 export interface SerializedSecurityError {
     readonly code: string;

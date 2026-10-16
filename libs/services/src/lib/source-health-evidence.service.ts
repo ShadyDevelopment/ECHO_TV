@@ -4,7 +4,7 @@ import {
     PlaylistMeta,
     SourceHealthResult,
     SourceProbeContext,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { DataService } from './data.service';
 
 @Injectable({ providedIn: 'root' })

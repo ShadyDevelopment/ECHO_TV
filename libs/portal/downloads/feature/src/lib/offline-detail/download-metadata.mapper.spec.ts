@@ -1,5 +1,5 @@
-import type { TmdbMovieDetails, TmdbTvDetails } from '@iptvnator/services';
-import type { DownloadMetadataSnapshot } from '@iptvnator/shared/interfaces';
+import type { TmdbMovieDetails, TmdbTvDetails } from '@echo-tv/services';
+import type { DownloadMetadataSnapshot } from '@echo-tv/shared/interfaces';
 import {
     mapProviderToDownloadSnapshot,
     mergeSnapshotWithTmdb,

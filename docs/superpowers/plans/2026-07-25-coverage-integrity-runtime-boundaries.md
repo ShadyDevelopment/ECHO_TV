@@ -85,7 +85,7 @@ test-driven-development
 electron-pro
 typescript
 angular-testing
-iptvnator-nx-architecture
+echo-tv-nx-architecture
 ```
 
 Use `systematic-debugging` before changing code in response to any unexpected
@@ -247,7 +247,7 @@ Istanbul entry:
 ```javascript
 function makeProjectFixture() {
     const workspaceRoot = mkdtempSync(
-        path.join(tmpdir(), 'iptvnator-coverage-integrity-')
+        path.join(tmpdir(), 'echo-tv-coverage-integrity-')
     );
     temporaryRoots.push(workspaceRoot);
     const sourceRoot = 'libs/example/src';

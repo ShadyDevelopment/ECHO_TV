@@ -31,7 +31,7 @@ const result = spawnSync(
         cwd: process.cwd(),
         env: {
             ...process.env,
-            IPTVNATOR_E2E_V8_COVERAGE: '1',
+            ECHO_TV_E2E_V8_COVERAGE: '1',
         },
         stdio: 'inherit',
     }

@@ -2,7 +2,7 @@ import type {
     EmbeddedMpvBounds,
     EmbeddedMpvSessionStatus,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'fs';
 import { tmpdir } from 'os';
 import path from 'path';
@@ -191,7 +191,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
         Object.defineProperty(process, 'arch', { value: 'arm64' });
         originalDisplay = process.env.DISPLAY;
         originalExperiment =
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT;
         originalOzonePlatformHint = process.env.ELECTRON_OZONE_PLATFORM_HINT;
         originalWaylandDisplay = process.env.WAYLAND_DISPLAY;
 
@@ -216,7 +216,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
         Object.defineProperty(process, 'arch', { value: originalArch });
         restoreEnv('DISPLAY', originalDisplay);
         restoreEnv(
-            'IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT',
+            'ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT',
             originalExperiment
         );
         restoreEnv('ELECTRON_OZONE_PLATFORM_HINT', originalOzonePlatformHint);
@@ -234,7 +234,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
 
     function createTempDir(): string {
         const tempDir = mkdtempSync(
-            path.join(tmpdir(), 'iptvnator-recording-')
+            path.join(tmpdir(), 'echo-tv-recording-')
         );
         tempDirs.push(tempDir);
         return tempDir;
@@ -264,7 +264,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
         // A stale opt-in (cleaned native build) must not brick embedded MPV:
         // no helper on disk => the engine env flag is ignored, native keeps
         // working, and support does not advertise frame-copy.
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
         try {
             expect(service.getActiveEngine()).toBe('native');
             expect(mockIsFrameCopyRuntimeUsable).toHaveBeenCalledWith();
@@ -273,19 +273,19 @@ describe('EmbeddedMpvNativeService power blocker', () => {
             startSession('s-fallback', snapshot('loading'));
             expect(addon.createSession).toHaveBeenCalled();
         } finally {
-            delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+            delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
         }
     });
 
     it('requires the base embedded-MPV opt-in for unpackaged runs', () => {
         appMock.isPackaged = false;
-        delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+        delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT;
 
         expect(service.getSupport()).toEqual(
             expect.objectContaining({ supported: false })
         );
 
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT = '1';
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT = '1';
         expect(service.getSupport()).toEqual(
             expect.objectContaining({ supported: true })
         );
@@ -294,7 +294,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
     (process.platform === 'win32' ? it.skip : it)(
         'falls back to the native engine when the frame-copy runtime probe fails',
         () => {
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
 
             try {
                 expect(service.getActiveEngine()).toBe('native');
@@ -308,7 +308,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
                     })
                 );
             } finally {
-                delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+                delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
             }
         }
     );
@@ -325,7 +325,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
 
         afterEach(() => {
             Object.defineProperty(process, 'arch', { value: originalArch });
-            delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+            delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
         });
 
         it('activates the frame-copy engine on Linux, even under native Wayland', () => {
@@ -335,7 +335,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
             // and must stay available.
             process.env.DISPLAY = ':0';
             process.env.WAYLAND_DISPLAY = 'wayland-0';
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             mockRuntimeUsable();
 
             expect(service.getActiveEngine()).toBe('frame-copy');
@@ -474,7 +474,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
             expect(service.willProbeLinuxMpvExecutable()).toBe(false);
 
             delete process.env.WAYLAND_DISPLAY;
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             expect(service.willProbeLinuxMpvExecutable()).toBe(false);
             service.getSupport();
             expect(mockSpawnSync).not.toHaveBeenCalled();
@@ -486,7 +486,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
             Object.defineProperty(process, 'platform', { value: 'linux' });
             process.env.DISPLAY = ':0';
             delete process.env.WAYLAND_DISPLAY;
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             mockSpawnSync.mockReturnValue({ status: 1 });
             mockRuntimeUsable();
 
@@ -500,7 +500,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
 
         it('activates the frame-copy engine on macOS arm64', () => {
             Object.defineProperty(process, 'arch', { value: 'arm64' });
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             mockRuntimeUsable();
 
             expect(service.getActiveEngine()).toBe('frame-copy');
@@ -528,7 +528,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
 
         it('keeps the frame-copy engine Apple-Silicon-only on macOS', () => {
             Object.defineProperty(process, 'arch', { value: 'x64' });
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             mockIsFrameCopyRuntimeUsable.mockReturnValue(false);
 
             expect(service.getActiveEngine()).toBe('native');
@@ -537,7 +537,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
 
         it('skips the native window handle when creating a frame-copy session', () => {
             Object.defineProperty(process, 'platform', { value: 'linux' });
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             mockRuntimeUsable();
             const frameCopyAddon = createMockAddon();
             frameCopyAddon.createSession.mockReturnValueOnce('s-fc');
@@ -569,7 +569,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
 
     describe('native view bounds scaling', () => {
         afterEach(() => {
-            delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+            delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
         });
 
         it('converts CSS bounds to physical pixels for the native engine on scaled displays', () => {
@@ -628,7 +628,7 @@ describe('EmbeddedMpvNativeService power blocker', () => {
             // pixels; its adapter applies the display scale to the render
             // size itself, so a second scaling pass here would double it.
             Object.defineProperty(process, 'platform', { value: 'linux' });
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
             mockIsFrameCopyRuntimeUsable.mockReturnValue(true);
             mockGetFrameCopyRuntimeAvailability.mockReturnValue({
                 usable: true,
@@ -1020,8 +1020,8 @@ describe('EmbeddedMpvNativeService power blocker', () => {
     });
 
     it.each([
-        ['Flatpak', 'FLATPAK_ID', 'com.fourgray.iptvnator'],
-        ['Snap', 'SNAP', '/snap/iptvnator/1'],
+        ['Flatpak', 'FLATPAK_ID', 'com.fourgray.echo-tv'],
+        ['Snap', 'SNAP', '/snap/echo-tv/1'],
     ])(
         'explains that %s sandboxes cannot use a system mpv instead of asking to install it',
         (_label, envKey, envValue) => {

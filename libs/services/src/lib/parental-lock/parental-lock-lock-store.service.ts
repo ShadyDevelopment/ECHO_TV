@@ -9,7 +9,7 @@ import {
     ParentalLockStalkerCategoryType,
     ParentalLockStore,
     ParentalLockXtreamCategoryType,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { DatabaseService } from '../database-electron.service';
 import { RuntimeCapabilitiesService } from '../runtime-capabilities.service';
 import { ParentalLockStaleIndex } from './parental-lock-stale-index';

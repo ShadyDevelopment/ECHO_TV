@@ -3,14 +3,14 @@ import {
     RENDERER_PERFORMANCE_PHASE_HOOK_KEY,
     type RendererPerformancePhaseEvent,
     type RendererPerformancePhaseHook,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 
 import {
     recordFixedGridRendererHeartbeats,
 } from './renderer-heartbeat-fixed-grid';
 
 export const M3U_IMPORT_RENDERER_STATE_KEY =
-    '__iptvnatorM3uImportRendererCapture';
+    '__echo-tvM3uImportRendererCapture';
 
 export interface M3uImportDialogOptions {
     readonly playlistTitle: string;

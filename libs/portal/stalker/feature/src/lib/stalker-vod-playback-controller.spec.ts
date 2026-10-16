@@ -5,11 +5,11 @@ import type {
     Logger,
     PortalPlaybackPositions,
     PortalPlayer,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import type {
     PlaybackPositionData,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { StalkerVodPlaybackController } from './stalker-vod-playback-controller';
 
 interface Deferred<T> {

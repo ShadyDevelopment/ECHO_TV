@@ -1,15 +1,15 @@
 import { inject, Injectable, Provider } from '@angular/core';
 import type { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { PORTAL_SHELL_ACTIONS } from '@iptvnator/portal/shared/util/tokens';
-import { LazyMatDialog } from '@iptvnator/ui/components/lazy-dialog';
+import { PORTAL_SHELL_ACTIONS } from '@echo-tv/portal/shared/util/tokens';
+import { LazyMatDialog } from '@echo-tv/ui/components/lazy-dialog';
 import {
     WORKSPACE_SHELL_ACTIONS,
     WorkspaceAccountInfoData,
     WorkspacePlaylistType,
     WorkspaceShellActions,
     WorkspaceStalkerAccountInfoData,
-} from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/workspace/shell/util';
 
 /**
  * Created with the app (the shell's keyboard shortcuts reach it from the
@@ -23,7 +23,7 @@ export class AppWorkspaceShellActionsService implements WorkspaceShellActions {
 
     openAddPlaylistDialog(type?: WorkspacePlaylistType): void {
         this.openDialog(
-            import('@iptvnator/playlist/import/feature'),
+            import('@echo-tv/playlist/import/feature'),
             (dialog, { AddPlaylistDialogComponent }) => {
                 dialog.open(AddPlaylistDialogComponent, {
                     // Width sized for the 5-card method picker plus the
@@ -52,7 +52,7 @@ export class AppWorkspaceShellActionsService implements WorkspaceShellActions {
 
     openAccountInfo(data: WorkspaceAccountInfoData): void {
         this.openDialog(
-            import('@iptvnator/portal/xtream/feature'),
+            import('@echo-tv/portal/xtream/feature'),
             (dialog, { AccountInfoComponent }) => {
                 dialog.open(AccountInfoComponent, {
                     width: '80%',
@@ -66,7 +66,7 @@ export class AppWorkspaceShellActionsService implements WorkspaceShellActions {
 
     openStalkerAccountInfo(data: WorkspaceStalkerAccountInfoData): void {
         this.openDialog(
-            import('@iptvnator/portal/stalker/feature'),
+            import('@echo-tv/portal/stalker/feature'),
             (dialog, { StalkerAccountInfoComponent }) => {
                 dialog.open(StalkerAccountInfoComponent, {
                     width: '80%',

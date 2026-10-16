@@ -13,8 +13,8 @@ import type {
  * `increment` never ends up short of the rows that actually landed.
  */
 
-const BATCH_DELAY_ENV = 'IPTVNATOR_DB_WORKER_BATCH_DELAY_MS';
-const WORKER_PROFILING_ENV = 'IPTVNATOR_PERF_WORKER_PROFILING';
+const BATCH_DELAY_ENV = 'ECHO_TV_DB_WORKER_BATCH_DELAY_MS';
+const WORKER_PROFILING_ENV = 'ECHO_TV_PERF_WORKER_PROFILING';
 const originalBatchDelay = process.env[BATCH_DELAY_ENV];
 const originalWorkerProfiling = process.env[WORKER_PROFILING_ENV];
 

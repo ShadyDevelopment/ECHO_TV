@@ -1,4 +1,4 @@
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+import { Channel, EpgProgram } from '@echo-tv/shared/interfaces';
 import {
     buildChannelEpgMetadataMap,
     calculateEpgProgress,

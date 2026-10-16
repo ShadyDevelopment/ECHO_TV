@@ -3,7 +3,7 @@ import {
     ExternalPlayerSession,
     PlayerContentInfo,
     readExternalPlayerErrorCode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     MPV_PLAYER_ARGUMENTS,
     MPV_PLAYER_PATH,

@@ -55,9 +55,9 @@ const unavailableMarkerFile = path.join(
 const homebrewIncludeDir = '/opt/homebrew/include';
 const homebrewLibDir = '/opt/homebrew/lib';
 const targetPlatform =
-    process.env.IPTVNATOR_EMBEDDED_MPV_PLATFORM || process.platform;
+    process.env.ECHO_TV_EMBEDDED_MPV_PLATFORM || process.platform;
 const targetArch =
-    process.env.IPTVNATOR_EMBEDDED_MPV_ARCH ||
+    process.env.ECHO_TV_EMBEDDED_MPV_ARCH ||
     process.env.npm_config_arch ||
     process.arch;
 const vendoredRuntimeRoot = path.join(
@@ -70,9 +70,9 @@ const vendoredIncludeDir = path.join(vendoredRuntimeRoot, 'include');
 const vendoredLibDir = path.join(vendoredRuntimeRoot, 'lib');
 const vendoredBinDir = path.join(vendoredRuntimeRoot, 'bin');
 const homebrewFallbackEnabled =
-    process.env.IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW === '1';
+    process.env.ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW === '1';
 const embeddedMpvRequired = ['1', 'true', 'yes', 'on'].includes(
-    (process.env.IPTVNATOR_REQUIRE_EMBEDDED_MPV ?? '').trim().toLowerCase()
+    (process.env.ECHO_TV_REQUIRE_EMBEDDED_MPV ?? '').trim().toLowerCase()
 );
 
 function log(message) {
@@ -589,7 +589,7 @@ function writeLinuxFrameCopyBuildManifest(runtime) {
         artifacts: {
             addon: 'embedded_mpv.node',
             frameReader: 'embedded_mpv_frame_reader.node',
-            helper: 'iptvnator_mpv_helper',
+            helper: 'echo-tv_mpv_helper',
         },
         processIsolation: {
             addonLoadsLibmpv: false,
@@ -762,7 +762,7 @@ function main() {
             targetPlatform === 'linux'
                 ? 'Stage Linux MPV build inputs before requiring Embedded MPV on this platform.'
                 : targetPlatform === 'darwin'
-                  ? 'For local development only, set IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1 to use Homebrew libmpv.'
+                  ? 'For local development only, set ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1 to use Homebrew libmpv.'
                   : 'Stage a vendored LGPL-compatible runtime before requiring Embedded MPV on this platform.',
         ].join('\n');
         if (embeddedMpvRequired) {
@@ -856,7 +856,7 @@ function main() {
             // dependency-path rewrite + ad-hoc re-sign.
             const frameHelperFile = path.join(
                 outputDir,
-                'iptvnator_mpv_helper'
+                'echo-tv_mpv_helper'
             );
             if (fs.existsSync(frameHelperFile)) {
                 patchAddonForBundledRuntime(frameHelperFile, outputLibDir);

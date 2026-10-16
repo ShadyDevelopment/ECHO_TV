@@ -85,7 +85,7 @@ every merge to `main`.
 ## Runtime Configuration
 
 The container writes `/usr/share/nginx/html/assets/app-config.js` on startup.
-That file sets `window.__IPTVNATOR_CONFIG__.BACKEND_URL`, which the PWA reads
+That file sets `window.__ECHO_TV_CONFIG__.BACKEND_URL`, which the PWA reads
 before it creates `PwaService`.
 
 These variables are supported by the Docker image. The compose file sets the
@@ -96,20 +96,20 @@ safe local defaults shown below.
 | `BACKEND_URL`                            | `/api`                  | Browser-facing backend URL used by the PWA. Keep `/api` for the bundled nginx proxy.                                                         |
 | `CLIENT_URL`                             | `http://localhost:4333` | Allowed browser origin for backend CORS. Use the public URL when hosting behind a reverse proxy. Multiple origins can be comma-separated.    |
 | `PORT`                                   | `3000`                  | Internal Express backend port. nginx proxy config is rendered from the template to match it at startup.                                      |
-| `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS` | `0`                     | Set to `1` or `true` only for trusted local/LAN deployments that intentionally proxy private network IPTV or mock endpoints.                 |
+| `ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS` | `0`                     | Set to `1` or `true` only for trusted local/LAN deployments that intentionally proxy private network IPTV or mock endpoints.                 |
 | `NODE_EXTRA_CA_CERTS`                    | unset                   | Optional Node.js CA bundle path for providers using private certificate authorities. Mount the CA file into the container and set this path. |
-| `IPTVNATOR_STORAGE`                      | `server` in the image   | `server` opens the server storage database under `IPTVNATOR_DATA_DIR` and its `/api/v1` routes; `none` keeps the backend stateless.          |
-| `IPTVNATOR_DATA_DIR`                     | `/data` in the image    | Data root; the database is `<root>/databases/iptvnator.db`. Mount a volume here.                                                             |
-| `IPTVNATOR_ACCESS_TOKEN`                 | unset                   | When set, every route except `/`, `/health`, `/config.js` and `/v1/instance` requires `Authorization: Bearer <token>`, proxy routes included. The browser app cannot send a token yet: leave it unset until it can. |
-| `IPTVNATOR_MAX_DOCUMENT_MB`              | `64`                    | Largest playlist document the backend accepts. Keep the nginx `client_max_body_size` in step.                                                |
-| `IPTVNATOR_BACKEND_START_TIMEOUT`        | `300`                   | Seconds the entrypoint waits for the backend's `/health` before giving up. Database migrations run before the backend listens.              |
+| `ECHO_TV_STORAGE`                      | `server` in the image   | `server` opens the server storage database under `ECHO_TV_DATA_DIR` and its `/api/v1` routes; `none` keeps the backend stateless.          |
+| `ECHO_TV_DATA_DIR`                     | `/data` in the image    | Data root; the database is `<root>/databases/echo-tv.db`. Mount a volume here.                                                             |
+| `ECHO_TV_ACCESS_TOKEN`                 | unset                   | When set, every route except `/`, `/health`, `/config.js` and `/v1/instance` requires `Authorization: Bearer <token>`, proxy routes included. The browser app cannot send a token yet: leave it unset until it can. |
+| `ECHO_TV_MAX_DOCUMENT_MB`              | `64`                    | Largest playlist document the backend accepts. Keep the nginx `client_max_body_size` in step.                                                |
+| `ECHO_TV_BACKEND_START_TIMEOUT`        | `300`                   | Seconds the entrypoint waits for the backend's `/health` before giving up. Database migrations run before the backend listens.              |
 
 The web backend proxy accepts only `http` and `https` provider URLs. The PWA
 first registers provider URLs through `/provider-targets`, then uses the
 returned `targetId` for playlist, Xtream, and Stalker proxy calls. The backend
 blocks loopback, private, link-local, and reserved network targets by default so
 a publicly exposed instance cannot be used as a generic internal-network
-fetcher. If you enable `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=1`, keep the
+fetcher. If you enable `ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS=1`, keep the
 instance restricted to trusted users.
 
 For providers that use private certificate authorities, keep TLS validation
@@ -135,7 +135,7 @@ the `restart: unless-stopped` policy.
 ## Server Storage
 
 The image opens a server storage database on the `/data` volume
-(`IPTVNATOR_STORAGE=server`, `IPTVNATOR_DATA_DIR=/data`) and serves its API
+(`ECHO_TV_STORAGE=server`, `ECHO_TV_DATA_DIR=/data`) and serves its API
 under `/api/v1`. It is the backend half of keeping playlists, favorites,
 history and playback positions on the server for every device; the PWA
 starts using it in a follow-up change. Until then the volume holds an empty
@@ -144,16 +144,16 @@ database and each browser keeps its own data.
 Provider credentials will be stored unencrypted in that database, as the
 desktop app does. Do not expose an instance with server storage to the
 internet without authentication in your reverse proxy. The backend already
-supports `IPTVNATOR_ACCESS_TOKEN`, but the browser app cannot send the
+supports `ECHO_TV_ACCESS_TOKEN`, but the browser app cannot send the
 token yet, so setting it now makes the app unusable. Back up the volume like any database: stop the container, or copy
-`databases/iptvnator.db` together with its `-wal` file.
+`databases/echo-tv.db` together with its `-wal` file.
 
 ## IPv6, VPNs, And Connection Fallback
 
 Node races IPv6 and IPv4 addresses when a provider hostname has both ("happy
 eyeballs"), and its stock per-attempt budget of 250 ms is too short for many
 VPN and container networks. The classic symptom is a provider that answers
-`wget` from inside the container but fails in IPTVnator with
+`wget` from inside the container but fails in ECHO TV with
 `Bad Gateway (ETIMEDOUT)` — typically behind an IPv4-only VPN namespace such
 as Gluetun/WireGuard, where the IPv6 route is unreachable and the working
 IPv4 handshake needs more than 250 ms.

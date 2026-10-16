@@ -5,19 +5,19 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
 import {
     DatabaseService,
     PlaylistDeleteActionService,
     RuntimeCapabilitiesService,
     SourceActivityService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import {
     RENDERER_PERFORMANCE_PHASE_HOOK_KEY,
     type RendererPerformancePhaseEvent,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 import {
     SOURCE_REMOVAL_UNDO_MS,
     SourceRemovalService,

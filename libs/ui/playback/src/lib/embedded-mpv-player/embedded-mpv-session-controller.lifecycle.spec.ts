@@ -4,7 +4,7 @@ import {
     EmbeddedMpvEngine,
     EmbeddedMpvSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { EmbeddedMpvSessionController } from './embedded-mpv-session-controller';
 

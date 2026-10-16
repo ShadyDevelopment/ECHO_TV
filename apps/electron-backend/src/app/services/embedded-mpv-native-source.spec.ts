@@ -694,16 +694,16 @@ describe('Embedded MPV native source recording invariants', () => {
 
     it('keeps dynamic libmpv symbol declarations compatible with distro headers', () => {
         expect(widCommonSource).not.toContain('MPV_CPLUGIN_DYNAMIC_SYM');
-        expect(widCommonSource).toContain('#ifdef IPTVNATOR_DYNAMIC_LIBMPV');
+        expect(widCommonSource).toContain('#ifdef ECHO_TV_DYNAMIC_LIBMPV');
         expect(widCommonSource).toContain('#ifdef MPV_SELECTANY');
         expect(widCommonSource).toContain(
-            '#define IPTVNATOR_MPV_SELECTANY MPV_SELECTANY'
+            '#define ECHO_TV_MPV_SELECTANY MPV_SELECTANY'
         );
         expect(widCommonSource).toContain(
-            'IPTVNATOR_MPV_SELECTANY decltype(&name) pfn_##name = nullptr;'
+            'ECHO_TV_MPV_SELECTANY decltype(&name) pfn_##name = nullptr;'
         );
         expect(widCommonSource).toContain(
-            'IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_async)'
+            'ECHO_TV_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_async)'
         );
         expect(widCommonSource).toContain(
             '#define mpv_command_async pfn_mpv_command_async'
@@ -881,7 +881,7 @@ describe('Embedded MPV native source recording invariants', () => {
             'Linux embedded MPV addon must not link directly to libmpv'
         );
         expect(buildAndMakeWorkflowSource).toContain(
-            'test -f dist/apps/electron-backend/native/iptvnator_mpv_helper'
+            'test -f dist/apps/electron-backend/native/echo-tv_mpv_helper'
         );
         expect(buildAndMakeWorkflowSource).toContain(
             'Linux frame-copy helper must need libmpv.so.2'
@@ -1162,7 +1162,7 @@ describe('Embedded MPV native build configuration', () => {
     );
     const helperTarget = bindingGyp.targets.find(
         (candidate: { target_name?: string }) =>
-            candidate.target_name === 'iptvnator_mpv_helper'
+            candidate.target_name === 'echo-tv_mpv_helper'
     );
 
     it('declares platform-specific native sources for macOS, Windows, and Linux', () => {

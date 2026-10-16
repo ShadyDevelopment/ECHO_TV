@@ -3,7 +3,7 @@ import { stat, unlink } from 'node:fs/promises';
 import {
     EmbeddedMpvSession,
     RecordingStartMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 import { broadcastRecordingsUpdate } from '../events/database/recording-broadcast';

@@ -1,24 +1,24 @@
 ---
-name: iptvnator-ui-design
-description: Use when changing user-visible Angular UI in IPTVnator, especially channel rows or lists, EPG views, settings and playlist surfaces, selection states, shared portal components, or light/dark styling.
+name: echo-tv-ui-design
+description: Use when changing user-visible Angular UI in ECHO TV, especially channel rows or lists, EPG views, settings and playlist surfaces, selection states, shared portal components, or light/dark styling.
 ---
 
-# IPTVnator UI Design
+# ECHO TV UI Design
 
 ## Inspect First
 
-- Policy: `docs/architecture/iptvnator-ui-guidelines.md`
+- Policy: `docs/architecture/echo-tv-ui-guidelines.md`
 - Theme and navigation: `apps/web/src/m3-theme.scss`,
   `libs/ui/styles/_nav-list.scss`
 - Channel row: `libs/ui/components/src/lib/channel-list-container/channel-list-item/`
 - Shared EPG timeline/list: `libs/ui/epg/src/lib/epg-timeline/`,
   `libs/ui/epg/src/lib/epg-list-view/`
 
-Before adding local markup, inspect `@iptvnator/ui/components`,
-`@iptvnator/ui/epg`, `@iptvnator/ui/playback`,
-`@iptvnator/ui/shared-portals`, `@iptvnator/portal/shared/ui`, and
-`@iptvnator/playlist/shared/ui`. Stateful collection loading, persistence, and
-cross-provider orchestration belong in `@iptvnator/portal/shared/data-access`,
+Before adding local markup, inspect `@echo-tv/ui/components`,
+`@echo-tv/ui/epg`, `@echo-tv/ui/playback`,
+`@echo-tv/ui/shared-portals`, `@echo-tv/portal/shared/ui`, and
+`@echo-tv/playlist/shared/ui`. Stateful collection loading, persistence, and
+cross-provider orchestration belong in `@echo-tv/portal/shared/data-access`,
 not UI or util.
 
 ## Design Contract

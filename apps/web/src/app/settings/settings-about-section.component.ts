@@ -17,10 +17,10 @@ import {
     APP_UPDATE_CHANNELS,
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { UpdateChannelOption } from './settings.models';
 import { markSectionForCheckOnFormEvents } from './settings-section-form-render';
-import { provideFormFieldDefaults } from '@iptvnator/ui/components/form-field-defaults';
+import { provideFormFieldDefaults } from '@echo-tv/ui/components/form-field-defaults';
 
 interface SettingsUpdateStatusChip {
     readonly labelKey: string;

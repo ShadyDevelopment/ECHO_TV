@@ -8,10 +8,10 @@ import {
     type DownloadItem,
     DownloadsService,
     SettingsStore,
-} from '@iptvnator/services';
-import type { DownloadMetadataSnapshot } from '@iptvnator/shared/interfaces';
-import { WorkspaceBackNavigationService } from '@iptvnator/portal/shared/data-access';
-import type { WorkspaceNavigationTarget } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/services';
+import type { DownloadMetadataSnapshot } from '@echo-tv/shared/interfaces';
+import { WorkspaceBackNavigationService } from '@echo-tv/portal/shared/data-access';
+import type { WorkspaceNavigationTarget } from '@echo-tv/portal/shared/util';
 import { BehaviorSubject } from 'rxjs';
 import type {
     DownloadActionResult,

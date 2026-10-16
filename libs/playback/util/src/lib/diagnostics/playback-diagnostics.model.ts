@@ -2,7 +2,7 @@ import type {
     ExternalPlayerName,
     ExternalPlayerSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { ErrorDetails, ErrorTypes } from 'hls.js';
 import type { PlaybackDrmSystem } from './playback-stream-metadata';
 import type { MpegTsPlaybackEvidence } from './mpegts-playback-evidence.model';

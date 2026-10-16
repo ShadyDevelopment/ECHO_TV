@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { DataService } from '@iptvnator/services';
-import { PlaylistMeta, STALKER_REQUEST } from '@iptvnator/shared/interfaces';
+import { DataService } from '@echo-tv/services';
+import { PlaylistMeta, STALKER_REQUEST } from '@echo-tv/shared/interfaces';
 import {
     normalizeStoredStalkerAccountInfo,
     parseStalkerDate,

@@ -1,14 +1,14 @@
-import { formatWithIntl } from '@iptvnator/pipes/date-format';
+import { formatWithIntl } from '@echo-tv/pipes/date-format';
 import {
     formatDurationLabel,
     formatRemainingLabel,
     isPortalPlaybackInProgress,
     type RemainingTimeLabel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     PlaybackPositionData,
     XtreamSerieEpisodeInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { episodeRuntimeSeconds } from './episode-progress.util';
 
 /** An i18n key with its parameters, as the meta line's time part. */

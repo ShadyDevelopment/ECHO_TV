@@ -363,7 +363,7 @@ helpers instead of unconditional `console.log`. Electron external-player traces
 are gated by:
 
 ```bash
-IPTVNATOR_TRACE_PLAYER=1 pnpm run serve:backend
+ECHO_TV_TRACE_PLAYER=1 pnpm run serve:backend
 ```
 
 ## Test impact and completion

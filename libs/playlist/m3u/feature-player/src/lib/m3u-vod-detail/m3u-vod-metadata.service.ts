@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { TmdbEnrichmentService, TmdbMovieDetails } from '@iptvnator/services';
-import { Channel, releaseTagYear } from '@iptvnator/shared/interfaces';
+import { TmdbEnrichmentService, TmdbMovieDetails } from '@echo-tv/services';
+import { Channel, releaseTagYear } from '@echo-tv/shared/interfaces';
 
 export type M3uVodMetadataStatus = 'idle' | 'loading' | 'matched' | 'none';
 

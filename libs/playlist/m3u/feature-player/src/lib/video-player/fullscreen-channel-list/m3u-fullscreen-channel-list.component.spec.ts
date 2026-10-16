@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     Channel,
     PlaylistRecentlyViewedItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { M3uFullscreenChannelListComponent } from './m3u-fullscreen-channel-list.component';
 
 @Component({

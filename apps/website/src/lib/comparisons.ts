@@ -14,8 +14,8 @@ export type ComparisonSlug =
   | 'm3u-vs-xtream-vs-stalker'
   | 'playback-engines'
   | 'desktop-vs-browser'
-  | 'iptvnator-vs-vlc'
-  | 'iptvnator-vs-kodi'
+  | 'echo-tv-vs-vlc'
+  | 'echo-tv-vs-kodi'
   | 'computer-vs-tv-box';
 
 export interface ComparisonEntry {
@@ -61,7 +61,7 @@ export const COMPARISONS: readonly ComparisonEntry[] = [
     icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
   },
   {
-    slug: 'iptvnator-vs-vlc',
+    slug: 'echo-tv-vs-vlc',
     label: 'ECHO TV vs VLC',
     eyebrow: 'Compare · Other players',
     question:
@@ -70,7 +70,7 @@ export const COMPARISONS: readonly ComparisonEntry[] = [
     icon: 'M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5',
   },
   {
-    slug: 'iptvnator-vs-kodi',
+    slug: 'echo-tv-vs-kodi',
     label: 'ECHO TV vs Kodi',
     eyebrow: 'Compare · Other players',
     question:

@@ -1,4 +1,4 @@
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 
 /**
  * Portals often send episodes without a name. Data access leaves those titles

@@ -2,7 +2,7 @@ import {
     AutoUpdatePlaylistsResult,
     AutoUpdatePlaylistsSummary,
     summarizeAutoUpdateOutcomes,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export const AUTO_UPDATE_PLAYLISTS_MESSAGE_KEYS = {
     failed: 'HOME.PLAYLISTS.AUTO_REFRESH_UPDATE_FAILED',

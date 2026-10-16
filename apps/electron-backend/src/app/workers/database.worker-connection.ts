@@ -1,6 +1,6 @@
 import type BetterSqlite3 from 'better-sqlite3';
-import * as schema from '@iptvnator/shared/database/schema';
-import { getIptvnatorDatabasePath } from '@iptvnator/shared/database/path-utils';
+import * as schema from '@echo-tv/shared/database/schema';
+import { getEchoTvDatabasePath } from '@echo-tv/shared/database/path-utils';
 import { parentPort, workerData } from 'worker_threads';
 import type { AppDatabase } from '../database/database.types';
 import {
@@ -64,7 +64,7 @@ const Database = loadBetterSqlite3();
 let db: AppDatabase | null = null;
 let sqlite: BetterSqlite3.Database | null = null;
 
-// IPTVNATOR_PERF_CAPTURE=1 with IPTVNATOR_PERF_COUNT_SQL=1 only: the main
+// ECHO_TV_PERF_CAPTURE=1 with ECHO_TV_PERF_COUNT_SQL=1 only: the main
 // process keeps the running total.
 const sqlStatementCount = isSqlStatementCountEnabled()
     ? createSqlStatementCountReporter((message) =>
@@ -85,7 +85,7 @@ export async function getWorkerDatabase(): Promise<AppDatabase> {
         return db;
     }
 
-    const filePath = getIptvnatorDatabasePath();
+    const filePath = getEchoTvDatabasePath();
     sqlite = new Database(filePath, {
         verbose: isSqlTraceEnabled()
             ? (sql: string) => traceSqlStatement('sql-worker', sql)

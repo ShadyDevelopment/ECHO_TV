@@ -1,4 +1,4 @@
-import { type PlaybackDiagnostic } from '@iptvnator/playback/util';
+import { type PlaybackDiagnostic } from '@echo-tv/playback/util';
 import { createDiagnosticReport } from './playback-diagnostic-report.util';
 
 const issue: PlaybackDiagnostic = {
@@ -32,7 +32,7 @@ describe('safe diagnostic report', () => {
             'Mozilla/5.0 (Macintosh) Electron/42 secret'
         );
         expect(JSON.parse(report)).toMatchObject({
-            app: 'IPTVnator',
+            app: 'ECHO TV',
             appVersion: '1.0.0',
             os: 'macOS',
             runtime: 'electron',

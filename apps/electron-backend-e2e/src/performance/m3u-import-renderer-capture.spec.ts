@@ -1,5 +1,5 @@
 /* eslint-disable playwright/expect-expect -- These are Node assertion-based performance contract tests. */
-import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@iptvnator/shared/logging';
+import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@echo-tv/shared/logging';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
@@ -141,7 +141,7 @@ function installFakeBrowserEnvironment() {
                     location: { pathname: string };
                 }
             ).location.pathname =
-                '/Users/test/iptvnator/dist/apps/web/workspace/playlists/synthetic-id/all';
+                '/Users/test/echo-tv/dist/apps/web/workspace/playlists/synthetic-id/all';
             Object.defineProperty(globalThis, 'document', {
                 configurable: true,
                 value: { querySelector: () => ({}) },

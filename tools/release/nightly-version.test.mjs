@@ -150,11 +150,11 @@ describe('buildNightlyVersion', () => {
 describe('applyNightlyVersion', () => {
     it('replaces only the version line and keeps the file formatting', () => {
         const source =
-            '{\n    "name": "iptvnator",\n    "version": "0.23.0",\n    "engines": {\n        "node": "22"\n    }\n}\n';
+            '{\n    "name": "echo-tv",\n    "version": "0.23.0",\n    "engines": {\n        "node": "22"\n    }\n}\n';
 
         assert.equal(
             applyNightlyVersion(source, '0.23.1-nightly.20260915.7'),
-            '{\n    "name": "iptvnator",\n    "version": "0.23.1-nightly.20260915.7",\n    "engines": {\n        "node": "22"\n    }\n}\n'
+            '{\n    "name": "echo-tv",\n    "version": "0.23.1-nightly.20260915.7",\n    "engines": {\n        "node": "22"\n    }\n}\n'
         );
     });
 
@@ -171,7 +171,13 @@ describe('applyNightlyPublishChannel', () => {
         const source = JSON.stringify(
             {
                 appId: 'x',
-                publish: [{ provider: 'github', owner: '4gray', repo: 'iptvnator' }],
+                publish: [
+                    {
+                        provider: 'github',
+                        owner: 'ShadyDevelopment',
+                        repo: 'ECHO_TV',
+                    },
+                ],
                 mac: { target: ['dmg'] },
             },
             null,
@@ -185,8 +191,8 @@ describe('applyNightlyPublishChannel', () => {
             publish: [
                 {
                     provider: 'github',
-                    owner: '4gray',
-                    repo: 'iptvnator',
+                    owner: 'ShadyDevelopment',
+                    repo: 'ECHO_TV',
                     channel: 'nightly',
                 },
             ],

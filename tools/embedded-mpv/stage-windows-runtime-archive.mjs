@@ -225,13 +225,13 @@ function writeGeneratedManifest(destinationPath, archiveSha256) {
             : {}),
         ffmpeg: {
             licensePolicy:
-                'The upstream archive describes statically linked FFmpeg as LGPLv3; IPTVnator does not independently certify its complete static dependency closure.',
+                'The upstream archive describes statically linked FFmpeg as LGPLv3; ECHO TV does not independently certify its complete static dependency closure.',
             configureFlags:
                 'Not embedded in the upstream binary archive; consult the pinned upstream build run.',
         },
         mpv: {
             licensePolicy:
-                'The upstream archive describes libmpv as LGPLv2.1+ with GPL-only features disabled; IPTVnator verifies only the checksum and required files.',
+                'The upstream archive describes libmpv as LGPLv2.1+ with GPL-only features disabled; ECHO TV verifies only the checksum and required files.',
             mesonFlags:
                 'Not embedded in the upstream binary archive; consult the pinned upstream build run.',
         },
@@ -319,7 +319,7 @@ function extractArchive(archivePath, extractRoot) {
 async function main() {
     const expectedSha256 = normalizeSha256(rawExpectedSha256);
     const tempRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-windows-embedded-mpv-')
+        path.join(os.tmpdir(), 'echo-tv-windows-embedded-mpv-')
     );
     const archivePath = isHttpsUrl(archiveSource)
         ? path.join(tempRoot, archiveNameForSource(archiveSource))

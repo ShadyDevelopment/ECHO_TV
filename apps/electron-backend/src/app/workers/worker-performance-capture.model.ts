@@ -2,7 +2,7 @@ import type { EventLoopUtilization } from 'node:perf_hooks';
 import type {
     DatabaseWorkerPerformancePhase,
     PerformancePhaseEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export const WORKER_PERFORMANCE_INVALID_REASON = {
     OVERLAPPING_DATABASE_WORKER_REQUESTS:

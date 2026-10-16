@@ -3,7 +3,7 @@ import type { Worker } from 'worker_threads';
 import type {
     ElectronBridgeSecurityErrorCode,
     ElectronBridgeTrustOptions,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { epgSourceGeneration } from './epg-source-generation';
 import type { EpgWorkerRuntime } from './epg-worker-runtime';
 import type { EpgProgressStats, EpgWorkerService } from './epg-worker.service';

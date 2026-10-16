@@ -9,7 +9,7 @@ import { defineConfig } from '@playwright/test';
  * port from `XTREAM_MOCK_PORT`, which this config sets for the worker.
  */
 const xtreamMockPort =
-    process.env['IPTVNATOR_COMPOSITING_XTREAM_MOCK_PORT'] ?? '3233';
+    process.env['ECHO_TV_COMPOSITING_XTREAM_MOCK_PORT'] ?? '3233';
 process.env['XTREAM_MOCK_PORT'] = xtreamMockPort;
 
 export default defineConfig({

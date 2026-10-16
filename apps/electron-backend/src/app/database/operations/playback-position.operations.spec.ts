@@ -7,7 +7,7 @@ import {
 
 jest.mock('drizzle-orm', () => mockDrizzleOrmModule());
 
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import {
     clearAllPlaybackPositions,
     clearPlaybackPosition,

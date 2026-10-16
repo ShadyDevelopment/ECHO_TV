@@ -16,32 +16,32 @@ import {
     liveSidebarStateStorageKey,
     LiveLayoutSidebarStateService,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     FavoritesService,
     XtreamStore,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     EpgArchiveDownloadService,
     EpgArchiveCopyService,
     EpgListViewComponent,
     EpgTimelineComponent,
-} from '@iptvnator/ui/epg';
+} from '@echo-tv/ui/epg';
 import {
     type PlaybackFallbackRequest,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/playback';
 import {
     EpgItem,
     EpgProgram,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
-import { GridListComponent } from '@iptvnator/portal/shared/ui';
+} from '@echo-tv/shared/interfaces';
+import { GridListComponent } from '@echo-tv/portal/shared/ui';
 import { PortalChannelsListComponent } from '../portal-channels-list/portal-channels-list.component';
 import { LiveStreamLayoutComponent } from './live-stream-layout.component';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { createPlaybackSessionKey } from '@iptvnator/playback/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { createPlaybackSessionKey } from '@echo-tv/playback/util';
 import { liveHistoryTestCases } from './live-stream-layout-history.spec-data';
 
 import {

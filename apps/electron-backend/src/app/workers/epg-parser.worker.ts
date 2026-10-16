@@ -4,7 +4,7 @@ import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     ElectronBridgeSecurityErrorCode,
     ElectronBridgeTrustOptions,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { parentPort, workerData } from 'worker_threads';
 import {
     EpgDatabase,

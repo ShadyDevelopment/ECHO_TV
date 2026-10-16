@@ -6,7 +6,7 @@
 
 **Architecture:** Keep `DownloadsService.downloads` global and derive route scope, filters, search, queue partitions, and completed-series groups in a pure view-model module. Split the Angular page into a small smart container, queue and library presentational components, a downloaded-series dialog, and an isolated navigation service; all mutations continue through the existing service and Electron broadcasts remain authoritative.
 
-**Tech Stack:** Angular 21.2 standalone components, signals and signal inputs/outputs, Angular Material, ngx-translate, Jest 30 with jest-preset-angular, Nx 22.7, Electron Playwright E2E, SCSS with IPTVnator theme tokens.
+**Tech Stack:** Angular 21.2 standalone components, signals and signal inputs/outputs, Angular Material, ngx-translate, Jest 30 with jest-preset-angular, Nx 22.7, Electron Playwright E2E, SCSS with ECHO TV theme tokens.
 
 ---
 
@@ -1063,7 +1063,7 @@ Add consistent keys under `DOWNLOADS` in every locale:
     "REMOVE_FROM_MANAGER": "Remove from manager",
     "REMOVE_COMPLETED_DIALOG": {
         "TITLE": "Remove from manager?",
-        "MESSAGE": "This removes the entry from IPTVnator. The downloaded media file remains on disk."
+        "MESSAGE": "This removes the entry from ECHO TV. The downloaded media file remains on disk."
     },
     "REMOVE_PARTIAL_DIALOG": {
         "TITLE": "Remove partial download?",

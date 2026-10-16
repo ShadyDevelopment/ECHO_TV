@@ -13,7 +13,7 @@ async function fixture(t, overrides = {}) {
     for (const [path, body] of Object.entries({
         'AGENTS.md': '# Guidance\n',
         'tsconfig.base.json': JSON.stringify({
-            compilerOptions: { paths: { '@iptvnator/*': ['libs/*'] } },
+            compilerOptions: { paths: { '@echo-tv/*': ['libs/*'] } },
         }),
         'CLAUDE.md': '@AGENTS.md\n',
         [map]: '# Context\n',
@@ -36,7 +36,7 @@ test('valid guidance and remote links pass', async (t) => {
     assert.deepEqual(
         await diagnostics(t, {
             'AGENTS.md':
-                '[Doc](docs/example.md#hello-world) and `@iptvnator/services`\n',
+                '[Doc](docs/example.md#hello-world) and `@echo-tv/services`\n',
             [map]: '[Repeat](../example.md#repeat-1)\n',
             [migration]:
                 '[Original](https://github.com/example/repo/blob/main/AGENTS.md#old)\n',
@@ -137,7 +137,7 @@ test('AGENTS forbids imports while aliases in prose stay valid', async (t) => {
     assert.deepEqual(
         await diagnostics(t, {
             'AGENTS.md':
-                'Use @iptvnator/services and `@iptvnator/ui/components`.\n',
+                'Use @echo-tv/services and `@echo-tv/ui/components`.\n',
         }),
         []
     );
@@ -241,7 +241,7 @@ test('literal detection excludes commands, templates, URLs, aliases and code exp
         'docs/.../example.md',
         'https://example.com/guide.md',
         'file:///tmp/example.md',
-        '@iptvnator/services',
+        '@echo-tv/services',
         '@angular/core',
         'node:fs/promises',
         'window.electron',

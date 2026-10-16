@@ -4,20 +4,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { EMPTY, of } from 'rxjs';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { createPlaybackSessionKey } from '@iptvnator/playback/util';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { createPlaybackSessionKey } from '@echo-tv/playback/util';
 import {
     LiveLayoutSidebarStateService,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/shared/util';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
 import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import type { ResolvedPortalPlayback } from '@iptvnator/shared/interfaces';
-import { ElectronStreamHeadersService } from '@iptvnator/ui/playback';
+} from '@echo-tv/services';
+import type { ResolvedPortalPlayback } from '@echo-tv/shared/interfaces';
+import { ElectronStreamHeadersService } from '@echo-tv/ui/playback';
 import { StalkerLiveStreamLayoutComponent } from './stalker-live-stream-layout.component';
 
 function deferred<T>() {

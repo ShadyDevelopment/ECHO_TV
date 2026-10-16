@@ -128,7 +128,7 @@ faker.seed(config.seed)   // scenario seed; unknown MACs: macToSeed(mac)
 │           └── embedded series[] items (fraction)
 │
 ├── marketingFixture?             → shared curated VOD catalog
-│     ├── @iptvnator/shared/marketing-fixtures
+│     ├── @echo-tv/shared/marketing-fixtures
 │     ├── vod Map<categoryId, item[]>
 │     └── vodOrder[] preserves screenshot catalog order
 │
@@ -325,7 +325,7 @@ slots independent per-MAC auth state.
 
 The `marketing-demo` scenario (`00:1A:79:00:00:07`) replaces faker-generated
 VOD with the 35-movie provider-neutral showcase catalog from
-`@iptvnator/shared/marketing-fixtures`. Its newest 20 movies are returned first
+`@echo-tv/shared/marketing-fixtures`. Its newest 20 movies are returned first
 for the wildcard VOD listing. Fixtures keep deployment-neutral poster paths,
 then the JSON middleware resolves them against the request origin (including
 forwarded host/protocol) as

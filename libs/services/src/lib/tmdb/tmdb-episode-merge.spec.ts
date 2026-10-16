@@ -1,4 +1,4 @@
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 import { mergeEpisodesWithTmdb } from './tmdb-episode-merge';
 import { TmdbEpisode } from './tmdb.types';
 

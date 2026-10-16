@@ -1118,7 +1118,7 @@ export function validateExtractedSnapMetadata(extractionRoot) {
     const apps = singleYamlMappingEntry(lines, 'apps', 0, 0, lines.length);
     const app =
         apps &&
-        singleYamlMappingEntry(lines, 'iptvnator', 2, apps.index + 1, apps.end);
+        singleYamlMappingEntry(lines, 'echo-tv', 2, apps.index + 1, apps.end);
     const appPlugs =
         app &&
         singleYamlMappingEntry(lines, 'plugs', 4, app.index + 1, app.end);
@@ -1143,7 +1143,7 @@ export function validateExtractedSnapMetadata(extractionRoot) {
         !yamlSequenceIncludes(lines, appPlugs, 'shared-memory')
     ) {
         errors.push(
-            'Extracted Snap iptvnator app scalar sequence must contain the shared-memory plug.'
+            'Extracted Snap echo-tv app scalar sequence must contain the shared-memory plug.'
         );
     }
     if (
@@ -1155,7 +1155,7 @@ export function validateExtractedSnapMetadata(extractionRoot) {
         !yamlSequenceIncludes(lines, appPlugs, 'graphics-core22')
     ) {
         errors.push(
-            'Extracted Snap iptvnator app scalar sequence must contain the graphics-core22 plug.'
+            'Extracted Snap echo-tv app scalar sequence must contain the graphics-core22 plug.'
         );
     }
     if (
@@ -1165,7 +1165,7 @@ export function validateExtractedSnapMetadata(extractionRoot) {
         !yamlScalarEquals(snapDesktopRuntime.value, '$SNAP/gnome-platform')
     ) {
         errors.push(
-            'Extracted Snap iptvnator app environment must declare SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform.'
+            'Extracted Snap echo-tv app environment must declare SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform.'
         );
     }
     return errors;
@@ -1689,7 +1689,7 @@ export function verifyExtractedLinuxFrameCopyRuntime({
             targetNames: profile.targets,
             artifactFormat,
             hostPlatform: 'linux',
-            executableName: 'iptvnator',
+            executableName: 'echo-tv',
             elfInspector,
         })
     );
@@ -1713,7 +1713,7 @@ export function verifyExtractedLinuxFrameCopyRuntime({
     });
     const probeResult = runBoundedRuntimeProbe({
         probeRunner,
-        helperPath: path.join(nativeDir, 'iptvnator_mpv_helper'),
+        helperPath: path.join(nativeDir, 'echo-tv_mpv_helper'),
         probeEnvironment,
         warn,
     });
@@ -1748,7 +1748,7 @@ export function verifyLinuxFrameCopyArtifact({
     }
 
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-package-verifier-')
+        path.join(os.tmpdir(), 'echo-tv-linux-package-verifier-')
     );
     try {
         const extractionDestination = path.join(temporaryRoot, 'payload');

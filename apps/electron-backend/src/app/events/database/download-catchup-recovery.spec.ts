@@ -321,7 +321,7 @@ it.each([0, 1])(
         const database = {
             update: () => ({ set }),
         } as unknown as DownloadsDatabase;
-        const capturePath = join(directory, '.iptvnator-cleanup-test/entry');
+        const capturePath = join(directory, '.echo-tv-cleanup-test/entry');
         const record = () =>
             recordArchiveCleanupPath(database, 1, proof, capturePath);
         if (changes === 0) expect(record).toThrow('ownership');

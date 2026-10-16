@@ -1,4 +1,4 @@
-import { StalkerPortalActions } from '@iptvnator/shared/interfaces';
+import { StalkerPortalActions } from '@echo-tv/shared/interfaces';
 
 export const StalkerContentTypes = {
     stb: {

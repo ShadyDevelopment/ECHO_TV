@@ -1,11 +1,11 @@
 import { Injectable, Injector, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { PlaylistsService } from '@iptvnator/services';
+import { PlaylistsService } from '@echo-tv/services';
 import {
     isFullStalkerPortalPlaylist,
     type PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import { StalkerPortalDiscoveryService } from './stalker-portal-discovery.service';
 import {
     getStalkerRequestErrorStatus,

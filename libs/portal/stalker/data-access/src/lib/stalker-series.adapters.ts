@@ -1,7 +1,7 @@
 import {
     XtreamSerieEpisode,
     resolveEnrichmentSeasonNumber,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     StalkerSeason,
     StalkerVodSeriesEpisode,

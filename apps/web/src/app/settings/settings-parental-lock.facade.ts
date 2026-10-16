@@ -1,10 +1,10 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ParentalLockService } from '@iptvnator/services';
+import { ParentalLockService } from '@echo-tv/services';
 import {
     PARENTAL_LOCK_RELOCK_MINUTES_OPTIONS,
     ParentalLockRelockMinutes,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SettingsSnackbarService } from './settings-snackbar.service';
 
 /**

@@ -219,7 +219,7 @@ describe('Xtream benchmark build identity', () => {
 });
 
 async function buildFixture(): Promise<string> {
-    const root = await mkdtemp(join(tmpdir(), 'iptvnator-xtream-build-'));
+    const root = await mkdtemp(join(tmpdir(), 'echo-tv-xtream-build-'));
     directories.push(root);
     const backend = join(root, 'dist/apps/electron-backend');
     const workers = join(backend, 'workers');

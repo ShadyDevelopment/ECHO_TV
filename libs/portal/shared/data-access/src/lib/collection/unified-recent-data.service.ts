@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { PlaylistActions, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+import { PlaylistActions, selectAllPlaylistsMeta } from '@echo-tv/m3u-state';
 import { firstValueFrom, map } from 'rxjs';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     Channel,
     extractStalkerItemId,
@@ -22,18 +22,18 @@ import {
     PlaylistRecentlyViewedItem,
     PlaylistUpdateState,
     StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     buildCollectionUid,
     buildXtreamCollectionUid,
     CollectionScope,
     UnifiedCollectionItem,
     xtreamContentType,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     XTREAM_DATA_SOURCE,
     XtreamContentItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 
 type PlaylistWithChannels = Omit<Playlist, 'playlist'> & {
     readonly playlist?: { readonly items?: Channel[] };

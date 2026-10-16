@@ -25,9 +25,9 @@ test('captures the exact database worker post-GC heap in built Electron', async 
         const app = await launchElectronApp(dataDir, {
             args: ['--js-flags=--expose-gc'],
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: '0',
-                IPTVNATOR_PERF_CAPTURE: '1',
-                IPTVNATOR_PERF_WORKER_PROFILING: '1',
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: '0',
+                ECHO_TV_PERF_CAPTURE: '1',
+                ECHO_TV_PERF_WORKER_PROFILING: '1',
             },
         });
         launchedApps.push(app);

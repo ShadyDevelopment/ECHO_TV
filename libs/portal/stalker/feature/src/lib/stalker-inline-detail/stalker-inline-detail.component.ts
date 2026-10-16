@@ -4,17 +4,17 @@ import {
     input,
     output,
 } from '@angular/core';
-import { StalkerSelectedVodItem } from '@iptvnator/portal/stalker/data-access';
+import { StalkerSelectedVodItem } from '@echo-tv/portal/stalker/data-access';
 import {
     type PlaybackFallbackRequest,
     VodDetailsComponent,
-} from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/playback';
 import {
     ExternalPlayerName,
     ExternalPlayerSession,
     ResolvedPortalPlayback,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { StalkerSeriesViewComponent } from '../stalker-series-view/stalker-series-view.component';
 
 @Component({

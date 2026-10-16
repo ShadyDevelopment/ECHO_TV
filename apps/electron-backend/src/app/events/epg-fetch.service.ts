@@ -1,7 +1,7 @@
 import { epgLogger } from '../util/epg-logger';
 import { epgSourceGeneration, requestEpgSource } from './epg-source-generation';
 import { eq } from 'drizzle-orm';
-import { ElectronBridgeTrustOptions } from '@iptvnator/shared/interfaces';
+import { ElectronBridgeTrustOptions } from '@echo-tv/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 import { epgWorkerService } from './epg-worker.service';

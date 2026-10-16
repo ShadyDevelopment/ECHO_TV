@@ -53,7 +53,7 @@ async function fetchJson(url: string): Promise<unknown> {
     const headers: Record<string, string> = {
       Accept: 'application/vnd.github+json',
       'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'iptvnator-website-build',
+      'User-Agent': 'echo-tv-website-build',
     };
     const token = process.env.GITHUB_TOKEN;
     if (token) {

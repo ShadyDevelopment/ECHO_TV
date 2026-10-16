@@ -18,14 +18,14 @@ import { MatIcon } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { PlaylistType } from '@iptvnator/playlist/shared/ui';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { DataService } from '@iptvnator/services';
+import { PlaylistType } from '@echo-tv/playlist/shared/ui';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { DataService } from '@echo-tv/services';
 import {
     PLAYLIST_PARSE_BY_URL,
     ProviderImportCandidate,
     SOURCE_TYPE_ICONS,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { AutoImportComponent } from '../auto-import/auto-import.component';
 import { FileUploadComponent } from '../file-upload/file-upload.component';
 import { StalkerPortalImportComponent } from '../stalker-portal-import/stalker-portal-import.component';

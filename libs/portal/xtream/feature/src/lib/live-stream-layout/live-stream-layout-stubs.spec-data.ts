@@ -9,12 +9,12 @@ import {
     EpgProgram,
     RecordingStartMetadata,
     RecordingStoppedEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     EpgProgramActivationEvent,
     EpgTimelineSummary,
-} from '@iptvnator/ui/epg';
-import { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/epg';
+import { PlaybackFallbackRequest } from '@echo-tv/ui/playback';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.Eager,

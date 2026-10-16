@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
-import type { PortalExternalPlayback } from '@iptvnator/portal/shared/util';
-import type { ExternalPlayerSession } from '@iptvnator/shared/interfaces';
+import type { PortalExternalPlayback } from '@echo-tv/portal/shared/util';
+import type { ExternalPlayerSession } from '@echo-tv/shared/interfaces';
 import { ExternalPlaybackRecoveryCoordinator } from './external-playback-recovery-coordinator';
 
 describe('ExternalPlaybackRecoveryCoordinator', () => {

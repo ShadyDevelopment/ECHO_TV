@@ -5,11 +5,11 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
     type StalkerCategoryLabel,
     StalkerStore,
-} from '@iptvnator/portal/stalker/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
-import { parseWorkspaceShellRoute } from '@iptvnator/workspace/shell/util';
-import { SettingsSearchService } from '@iptvnator/workspace/shell/util/settings-search';
+} from '@echo-tv/portal/stalker/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
+import { parseWorkspaceShellRoute } from '@echo-tv/workspace/shell/util';
+import { SettingsSearchService } from '@echo-tv/workspace/shell/util/settings-search';
 import { WorkspaceShellRouteStateService } from './workspace-shell-route-state.service';
 import { WorkspaceShellSearchSyncService } from './workspace-shell-search-sync.service';
 import { WorkspaceShellSearchService } from './workspace-shell-search.service';

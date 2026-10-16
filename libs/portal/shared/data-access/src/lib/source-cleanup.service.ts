@@ -1,12 +1,12 @@
 import { Injectable, inject, signal } from '@angular/core';
-import { PlaylistDeleteActionService } from '@iptvnator/services';
+import { PlaylistDeleteActionService } from '@echo-tv/services';
 import {
     PlaylistMeta,
     SourceHealthSnapshot,
     sourceHealthKey,
     sourceHealthType,
     sourceHealthError,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SourceHealthService } from './source-health.service';
 
 export interface SourceCleanupEntry {

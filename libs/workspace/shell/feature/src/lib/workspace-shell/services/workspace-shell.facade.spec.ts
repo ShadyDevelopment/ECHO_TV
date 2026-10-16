@@ -1,4 +1,4 @@
-import { PlaylistSwitcherOpenService } from '@iptvnator/playlist/shared/ui';
+import { PlaylistSwitcherOpenService } from '@echo-tv/playlist/shared/ui';
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,26 +9,26 @@ import { Observable, of } from 'rxjs';
 import {
     PlaylistRefreshActionService,
     type XtreamRefreshPreparationState,
-} from '@iptvnator/playlist/shared/ui';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@echo-tv/playlist/shared/ui';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     WorkspaceHeaderContextService,
     WorkspaceViewCommandService,
-} from '@iptvnator/portal/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     DownloadsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import {
     WorkspaceShellContextDrawerService,
     WorkspaceStartupPreferencesService,
     WORKSPACE_SHELL_ACTIONS,
-} from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/workspace/shell/util';
 import { RecentCommandsService } from '../../recent-commands';
 import { WorkspacePlayerCommandsContributor } from '../../workspace-player-commands';
 import { XTREAM_LOCAL_LOAD_OVERLAY_DELAY_MS } from './helpers/workspace-shell-constants';

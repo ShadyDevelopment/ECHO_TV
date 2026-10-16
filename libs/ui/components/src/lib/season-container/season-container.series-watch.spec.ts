@@ -8,9 +8,9 @@ import {
     TranslateModule,
     TranslateService,
 } from '@ngx-translate/core';
-import { SeasonDownloadCoordinator } from '@iptvnator/portal/shared/data-access';
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
-import { DownloadsService } from '@iptvnator/services';
+import { SeasonDownloadCoordinator } from '@echo-tv/portal/shared/data-access';
+import { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
+import { DownloadsService } from '@echo-tv/services';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { of } from 'rxjs';

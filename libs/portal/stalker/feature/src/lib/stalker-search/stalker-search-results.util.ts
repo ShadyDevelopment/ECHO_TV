@@ -2,9 +2,9 @@ import {
     StalkerContentTypes,
     type StalkerVodSource,
     stalkerWithheldRowKey,
-} from '@iptvnator/portal/stalker/data-access';
-import type { ParentalLockService } from '@iptvnator/services';
-import { ALL_CATEGORIES_WITHHELD } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/stalker/data-access';
+import type { ParentalLockService } from '@echo-tv/services';
+import { ALL_CATEGORIES_WITHHELD } from '@echo-tv/shared/interfaces';
 
 export type StalkerSearchContentType = 'vod' | 'series';
 

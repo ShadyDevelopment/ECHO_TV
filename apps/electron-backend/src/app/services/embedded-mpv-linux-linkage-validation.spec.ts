@@ -35,7 +35,7 @@ describe('Linux Embedded MPV linkage validation', () => {
         const { validateLinuxFrameCopyLinkage } = loadLinkageModule();
         const fixture = createArtifactFixture();
 
-        fixture.outputs.iptvnator_mpv_helper = readelfDynamic([
+        fixture.outputs['echo-tv_mpv_helper'] = readelfDynamic([
             ['NEEDED', 'libmpv.so.3'],
             ['RUNPATH', '$ORIGIN/lib'],
         ]);
@@ -52,7 +52,7 @@ describe('Linux Embedded MPV linkage validation', () => {
     it('rejects helper RPATH and any RUNPATH other than $ORIGIN/lib', () => {
         const { validateLinuxFrameCopyLinkage } = loadLinkageModule();
         const rpathFixture = createArtifactFixture();
-        rpathFixture.outputs.iptvnator_mpv_helper = readelfDynamic([
+        rpathFixture.outputs['echo-tv_mpv_helper'] = readelfDynamic([
             ['NEEDED', 'libmpv.so.2'],
             ['RPATH', '/host/lib'],
             ['RUNPATH', '$ORIGIN/lib'],
@@ -67,7 +67,7 @@ describe('Linux Embedded MPV linkage validation', () => {
         ).toThrow(/helper must not contain RPATH/i);
 
         const runpathFixture = createArtifactFixture();
-        runpathFixture.outputs.iptvnator_mpv_helper = readelfDynamic([
+        runpathFixture.outputs['echo-tv_mpv_helper'] = readelfDynamic([
             ['NEEDED', 'libmpv.so.2'],
             ['RUNPATH', '$ORIGIN'],
         ]);

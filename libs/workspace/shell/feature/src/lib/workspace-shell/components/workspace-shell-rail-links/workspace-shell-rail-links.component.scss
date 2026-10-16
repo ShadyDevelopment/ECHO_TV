@@ -45,6 +45,24 @@
         width: 20px;
         height: 20px;
     }
+
+    &__brand-mark {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    &:hover &__brand-mark {
+        transform: scale(1.06);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+    }
 }
 
 @for $i from 1 through 8 {
@@ -82,6 +100,14 @@
     mat-icon {
         color: var(--rail-link-active-icon, var(--app-selection-color));
     }
+}
+
+.portal-rail-link.is-active .portal-rail-link__brand-mark,
+.portal-rail-link.active .portal-rail-link__brand-mark {
+    border-color: var(--rail-link-active-border, var(--app-selection-border));
+    box-shadow:
+        0 0 0 2px var(--rail-link-active-bg, var(--app-selection-surface)),
+        0 5px 14px -5px var(--rail-link-active-glow, var(--app-selection-glow));
 }
 
 .portal-rail-link.is-active::after,

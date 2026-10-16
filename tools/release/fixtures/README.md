@@ -10,7 +10,7 @@ To regenerate on macOS with FFmpeg (Helvetica is a system font):
 
 ```sh
 ffmpeg -f lavfi -i 'gradients=s=1280x720:r=25:c0=0x14243e:c1=0x507f9f:n=2:d=20:speed=0.01:seed=24' \
-  -vf "drawtext=fontfile=/System/Library/Fonts/Helvetica.ttc:text='IPTVnator':fontcolor=white:fontsize=52:x=(w-text_w)/2:y=(h-text_h)/2-30,drawtext=fontfile=/System/Library/Fonts/Helvetica.ttc:text='DEMO STREAM':fontcolor=white@0.6:fontsize=20:x=(w-text_w)/2:y=(h-text_h)/2+35" \
+  -vf "drawtext=fontfile=/System/Library/Fonts/Helvetica.ttc:text='ECHO TV':fontcolor=white:fontsize=52:x=(w-text_w)/2:y=(h-text_h)/2-30,drawtext=fontfile=/System/Library/Fonts/Helvetica.ttc:text='DEMO STREAM':fontcolor=white@0.6:fontsize=20:x=(w-text_w)/2:y=(h-text_h)/2+35" \
   -c:v libx264 -preset fast -crf 28 -pix_fmt yuv420p -g 50 -an \
   -f mpegts tools/release/fixtures/guide-demo.mpegts
 ```

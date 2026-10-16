@@ -1,4 +1,4 @@
-import { CONNECTIVITY_GUARD_RESET } from '@iptvnator/shared/interfaces';
+import { CONNECTIVITY_GUARD_RESET } from '@echo-tv/shared/interfaces';
 import type { DataService } from './data.service';
 
 /**

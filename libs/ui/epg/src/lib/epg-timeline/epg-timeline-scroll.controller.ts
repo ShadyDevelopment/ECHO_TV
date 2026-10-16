@@ -1,4 +1,4 @@
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { getTodayEpgDateKey, parseEpgDateKey } from '../epg-date';
 import {
     dayKeyAtOffset,

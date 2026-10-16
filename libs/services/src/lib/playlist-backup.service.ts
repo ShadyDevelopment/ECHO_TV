@@ -39,7 +39,7 @@ import {
     ParentalLockPlaylistLocks,
     StalkerBackupLockedCategory,
     XtreamBackupHiddenCategory,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface PlaylistBackupExportPayload {
     defaultFileName: string;
@@ -109,7 +109,7 @@ export class PlaylistBackupService {
         };
 
         return {
-            defaultFileName: `iptvnator-playlist-backup-${exportedAt.slice(
+            defaultFileName: `echo-tv-playlist-backup-${exportedAt.slice(
                 0,
                 10
             )}.json`,

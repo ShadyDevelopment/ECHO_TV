@@ -2,7 +2,7 @@ import {
     APP_PLAYLIST_UPSERT_PERFORMANCE_PHASE,
     type AppPlaylistUpsertPerformancePhase,
     type PerformancePhaseMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import type { AppDatabase } from '../database.types';
 import {

@@ -4,12 +4,12 @@ import type {
     PlaylistRefreshPayload,
     PreloadPerformanceMarker,
     XtreamPreloadPerformanceMarker,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export const PRELOAD_ENVIRONMENT = {
-    PERF_CAPTURE: 'IPTVNATOR_PERF_CAPTURE',
-    TRACE_IPC: 'IPTVNATOR_TRACE_IPC',
-    TRACE_STARTUP: 'IPTVNATOR_TRACE_STARTUP',
+    PERF_CAPTURE: 'ECHO_TV_PERF_CAPTURE',
+    TRACE_IPC: 'ECHO_TV_TRACE_IPC',
+    TRACE_STARTUP: 'ECHO_TV_TRACE_STARTUP',
 } as const;
 
 type PreloadEnvironmentName =
@@ -129,12 +129,12 @@ export function createPreloadPerformanceHarness(): PreloadPerformanceHarness {
         },
         getMarkers: () =>
             getSentPayloads<PreloadPerformanceMarker>(
-                'IPTVNATOR_PERF_CAPTURE_MARKER'
+                'ECHO_TV_PERF_CAPTURE_MARKER'
             ),
         getSentPayloads,
         getXtreamMarkers: () =>
             getSentPayloads<XtreamPreloadPerformanceMarker>(
-                'IPTVNATOR_XTREAM_PERF_CAPTURE_MARKER'
+                'ECHO_TV_XTREAM_PERF_CAPTURE_MARKER'
             ),
         ipcRenderer,
         load: async (environment = {}) => {

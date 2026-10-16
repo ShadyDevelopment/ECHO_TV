@@ -180,7 +180,7 @@ export async function persist(
 ): Promise<XtreamValidatedIterationResult> {
     return persistWith(raw, async (serialized) => {
         const directory = await mkdtemp(
-            join(tmpdir(), `iptvnator-xtream-raw-${id}-`)
+            join(tmpdir(), `echo-tv-xtream-raw-${id}-`)
         );
         directories.push(directory);
         const absolutePath = join(directory, 'raw.json');

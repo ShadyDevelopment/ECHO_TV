@@ -1,6 +1,6 @@
-import type { DownloadStartInput } from '@iptvnator/services';
-import type { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
-import type { EpisodeDownloadIdentity } from '@iptvnator/portal/shared/util';
+import type { DownloadStartInput } from '@echo-tv/services';
+import type { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
+import type { EpisodeDownloadIdentity } from '@echo-tv/portal/shared/util';
 
 export const EPISODE_DOWNLOAD_SUBMISSIONS = {
     Added: 'added',

@@ -92,8 +92,8 @@ if (!validArchitectures.has(arch) || !rawPrefix) {
 
 const prefix = path.resolve(rawPrefix);
 const buildRoot = path.resolve(
-    process.env.IPTVNATOR_EMBEDDED_MPV_BUILD_ROOT ??
-        path.join(os.tmpdir(), 'iptvnator-embedded-mpv-runtime', arch)
+    process.env.ECHO_TV_EMBEDDED_MPV_BUILD_ROOT ??
+        path.join(os.tmpdir(), 'echo-tv-embedded-mpv-runtime', arch)
 );
 const archiveRoot = path.join(buildRoot, 'archives');
 const sourceRoot = path.join(buildRoot, 'sources');
@@ -368,7 +368,7 @@ function configureMakeInstall(packageId, configureArgs) {
 
 function mesonInstall(packageId, mesonArgs) {
     const packageSourcePath = sourcePathFor(packageId);
-    const buildDir = path.join(packageSourcePath, 'build-iptvnator');
+    const buildDir = path.join(packageSourcePath, 'build-echo-tv');
     fs.rmSync(buildDir, { recursive: true, force: true });
     run(
         'meson',

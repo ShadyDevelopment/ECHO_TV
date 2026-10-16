@@ -1,10 +1,10 @@
 import { and, eq, sql } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import type {
     TmdbCacheEntry,
     TmdbCacheMediaType,
     TmdbCacheStats,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 
 export async function getTmdbMetadata(

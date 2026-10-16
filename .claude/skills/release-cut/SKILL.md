@@ -1,6 +1,6 @@
 ---
 name: release-cut
-description: Use when preparing, cutting, tagging, publishing, or verifying an IPTVnator release or its release assets.
+description: Use when preparing, cutting, tagging, publishing, or verifying an ECHO TV release or its release assets.
 ---
 
 # Release Cut
@@ -11,7 +11,7 @@ For imagegen announcement covers, reuse [the approved artwork prompt](../../../d
 
 The tag workflow authors the public GitHub body with
 `node tools/release/extract-changelog-section.mjs --public "${VERSION}"`.
-Keep the full changelog, including internal notes, committed before tagging.
+Keep the changelog, including internal notes, committed before tagging.
 
 ## Preflight
 

@@ -1,9 +1,9 @@
 import type {
     VodMultiSourceController,
     VodSourceResolverService,
-} from '@iptvnator/portal/shared/data-access';
-import type { StreamProbeService } from '@iptvnator/services';
-import type { VodSourceProbeResult } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/data-access';
+import type { StreamProbeService } from '@echo-tv/services';
+import type { VodSourceProbeResult } from '@echo-tv/shared/interfaces';
 
 /**
  * The on-demand availability check for a single row.

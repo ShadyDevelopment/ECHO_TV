@@ -10,9 +10,9 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     CollectionContentType,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import { ContentCardComponent } from '../content-card/content-card.component';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 @Component({
     selector: 'app-unified-grid-tab',

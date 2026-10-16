@@ -1,4 +1,4 @@
-import { XtreamVodDetails } from '@iptvnator/shared/interfaces';
+import { XtreamVodDetails } from '@echo-tv/shared/interfaces';
 
 export type XtreamVodPlaybackItem = XtreamVodDetails & {
     readonly stream_id?: number | string | null;

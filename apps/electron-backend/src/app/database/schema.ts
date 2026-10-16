@@ -42,4 +42,4 @@ export {
     type NewDownload,
     type Recording,
     type NewRecording,
-} from '@iptvnator/shared/database';
+} from '@echo-tv/shared/database';

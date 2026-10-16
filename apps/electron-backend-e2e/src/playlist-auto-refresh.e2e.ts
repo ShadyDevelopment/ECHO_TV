@@ -47,7 +47,7 @@ test.describe('Electron startup playlist auto-refresh', () => {
     test('imports a protected URL with User-Agent and reuses it for manual and startup refresh', async ({
         dataDir,
     }) => {
-        const userAgent = 'IPTVnator-Test/1.0';
+        const userAgent = 'ECHO TV-Test/1.0';
         const urlServer = await createMutableTextServer(
             buildAutoRefreshM3u('Original UA Channel'),
             {

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { Channel } from '@iptvnator/shared/interfaces';
+import { Channel } from '@echo-tv/shared/interfaces';
 import { ChannelDetailsDialogComponent } from './channel-details-dialog.component';
 
 describe('ChannelDetailsDialogComponent', () => {
@@ -17,7 +17,7 @@ describe('ChannelDetailsDialogComponent', () => {
         http: {
             origin: 'https://provider.example.com',
             referrer: 'https://provider.example.com/list',
-            'user-agent': 'IPTVnator Test',
+            'user-agent': 'ECHO TV Test',
         },
         id: 'channel-1',
         name: 'News One',

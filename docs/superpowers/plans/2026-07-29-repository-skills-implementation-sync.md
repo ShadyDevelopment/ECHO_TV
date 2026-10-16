@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Synchronize IPTVnator's eight repository skills with current implementation, filter internal notes from public releases, and fix Stalker series flag and playback-position identity defects without losing legacy progress.
+**Goal:** Synchronize ECHO TV's eight repository skills with current implementation, filter internal notes from public releases, and fix Stalker series flag and playback-position identity defects without losing legacy progress.
 
 **Architecture:** Keep the three workstreams independently testable: release output and guidance, provider-local Stalker compatibility, and repository skill/document maintenance. Release filtering is an additive public-extraction mode; Stalker compatibility uses series-scoped IDs plus an explicit legacy alias; mechanical skill constraints become a small dependency-free validator.
 
@@ -428,7 +428,7 @@ Apply this exact content to both release-cut skill paths:
 ````markdown
 ---
 name: release-cut
-description: Use when preparing, cutting, tagging, publishing, or verifying an IPTVnator release or its release assets.
+description: Use when preparing, cutting, tagging, publishing, or verifying an ECHO TV release or its release assets.
 ---
 
 # Release Cut
@@ -650,7 +650,7 @@ the redundant local comparison.
 - [ ] **Step 3: Route facade and detail decisions through the normalizer**
 
 Import `isStalkerSeriesFlag` from
-`@iptvnator/portal/stalker/data-access`. Replace both direct comparisons in
+`@echo-tv/portal/stalker/data-access`. Replace both direct comparisons in
 `StalkerCatalogFacadeService`:
 
 ```ts
@@ -1394,10 +1394,10 @@ paths only for all eight committed skills:
 ```markdown
 ## Repo Skills
 
-- `.codex/skills/iptvnator-nx-architecture/SKILL.md`
-- `.codex/skills/iptvnator-sqlite-db-worker/SKILL.md`
-- `.codex/skills/iptvnator-theme-style/SKILL.md`
-- `.codex/skills/iptvnator-ui-design/SKILL.md`
+- `.codex/skills/echo-tv-nx-architecture/SKILL.md`
+- `.codex/skills/echo-tv-sqlite-db-worker/SKILL.md`
+- `.codex/skills/echo-tv-theme-style/SKILL.md`
+- `.codex/skills/echo-tv-ui-design/SKILL.md`
 - `.codex/skills/release-cut/SKILL.md`
 - `.codex/skills/release-notes/SKILL.md`
 - `.codex/skills/stalker-portal/SKILL.md`
@@ -1423,8 +1423,8 @@ git commit -m "test(skills): validate repository skill contracts"
 ### Task 9: Refresh the Nx and SQLite ownership skills
 
 **Files:**
-- Modify: `.codex/skills/iptvnator-nx-architecture/SKILL.md`
-- Modify: `.codex/skills/iptvnator-sqlite-db-worker/SKILL.md`
+- Modify: `.codex/skills/echo-tv-nx-architecture/SKILL.md`
+- Modify: `.codex/skills/echo-tv-sqlite-db-worker/SKILL.md`
 - Modify: `docs/architecture/nx-workspace-boundaries.md`
 - Modify: `docs/architecture/sqlite-db-worker.md`
 
@@ -1433,7 +1433,7 @@ git commit -m "test(skills): validate repository skill contracts"
 Use exactly:
 
 ```yaml
-description: Use when deciding where IPTVnator code belongs, creating or moving Nx projects, changing scoped aliases or tags, editing lint targets, or validating module boundaries.
+description: Use when deciding where ECHO TV code belongs, creating or moving Nx projects, changing scoped aliases or tags, editing lint targets, or validating module boundaries.
 ```
 
 and:
@@ -1529,7 +1529,7 @@ Keep it below 500 words and include:
   `better-sqlite3` transactions;
 - after source changes, run `pnpm nx run electron-backend:build-worker`, verify
   the `dist` artifact timestamp, restart Electron, then perform CDP/E2E; and
-- use `IPTVNATOR_TRACE_DB=1` / `IPTVNATOR_TRACE_SQL=1` only through redacting
+- use `ECHO_TV_TRACE_DB=1` / `ECHO_TV_TRACE_SQL=1` only through redacting
   logging paths.
 
 - [ ] **Step 5: Correct stale SQLite architecture inventory**
@@ -1561,17 +1561,17 @@ Run:
 pnpm nx test repository-skills
 pnpm nx lint repository-skills
 rg -n '^description: Use when ' \
-  .codex/skills/iptvnator-nx-architecture/SKILL.md \
-  .codex/skills/iptvnator-sqlite-db-worker/SKILL.md
+  .codex/skills/echo-tv-nx-architecture/SKILL.md \
+  .codex/skills/echo-tv-sqlite-db-worker/SKILL.md
 wc -w \
-  .codex/skills/iptvnator-nx-architecture/SKILL.md \
-  .codex/skills/iptvnator-sqlite-db-worker/SKILL.md
+  .codex/skills/echo-tv-nx-architecture/SKILL.md \
+  .codex/skills/echo-tv-sqlite-db-worker/SKILL.md
 ! rg -n 'bundles both' \
-  .codex/skills/iptvnator-sqlite-db-worker/SKILL.md \
+  .codex/skills/echo-tv-sqlite-db-worker/SKILL.md \
   docs/architecture/sqlite-db-worker.md
 rg -n \
   'requestId.*operationId|operationId.*requestId|playlist-refresh' \
-  .codex/skills/iptvnator-sqlite-db-worker/SKILL.md \
+  .codex/skills/echo-tv-sqlite-db-worker/SKILL.md \
   docs/architecture/sqlite-db-worker.md
 git diff --check
 ```
@@ -1586,8 +1586,8 @@ refreshed the other four non-release skills.
 
 ```bash
 git add \
-  .codex/skills/iptvnator-nx-architecture/SKILL.md \
-  .codex/skills/iptvnator-sqlite-db-worker/SKILL.md \
+  .codex/skills/echo-tv-nx-architecture/SKILL.md \
+  .codex/skills/echo-tv-sqlite-db-worker/SKILL.md \
   docs/architecture/nx-workspace-boundaries.md \
   docs/architecture/sqlite-db-worker.md
 git commit -m "docs(skills): refresh Nx and SQLite ownership"
@@ -1596,12 +1596,12 @@ git commit -m "docs(skills): refresh Nx and SQLite ownership"
 ### Task 10: Refresh theme, UI, Stalker, and Xtream skills
 
 **Files:**
-- Modify: `.codex/skills/iptvnator-theme-style/SKILL.md`
-- Modify: `.codex/skills/iptvnator-ui-design/SKILL.md`
+- Modify: `.codex/skills/echo-tv-theme-style/SKILL.md`
+- Modify: `.codex/skills/echo-tv-ui-design/SKILL.md`
 - Modify: `.codex/skills/stalker-portal/SKILL.md`
 - Modify: `.codex/skills/xtream-electron/SKILL.md`
 - Modify: `libs/ui/styles/_index.scss`
-- Modify: `docs/architecture/iptvnator-ui-guidelines.md`
+- Modify: `docs/architecture/echo-tv-ui-guidelines.md`
 - Modify: `docs/architecture/stalker-epg.md`
 - Modify: `docs/architecture/stalker-portal.md`
 - Modify: `docs/architecture/xtream-portal-compatibility.md`
@@ -1612,11 +1612,11 @@ git commit -m "docs(skills): refresh Nx and SQLite ownership"
 Use exactly:
 
 ```yaml
-description: Use when changing IPTVnator SCSS tokens, shared layout mixins, portal headers, sidebars, detail views, Electron drag regions, or cross-portal visual consistency.
+description: Use when changing ECHO TV SCSS tokens, shared layout mixins, portal headers, sidebars, detail views, Electron drag regions, or cross-portal visual consistency.
 ```
 
 ```yaml
-description: Use when changing user-visible Angular UI in IPTVnator, especially channel rows or lists, EPG views, settings and playlist surfaces, selection states, shared portal components, or light/dark styling.
+description: Use when changing user-visible Angular UI in ECHO TV, especially channel rows or lists, EPG views, settings and playlist surfaces, selection states, shared portal components, or light/dark styling.
 ```
 
 ```yaml
@@ -1634,7 +1634,7 @@ Remove each body's duplicate trigger paragraph.
 Keep it below 500 words and include:
 
 - canonical sources under `apps/web/src/m3-theme.scss`, `libs/ui/styles/`, and
-  `docs/architecture/iptvnator-ui-guidelines.md`;
+  `docs/architecture/echo-tv-ui-guidelines.md`;
 - app-owned surfaces, text, selection, separators, hover, and provider accents
   use `--app-*` tokens, including `--app-selection-on-color` for selected
   foregrounds;
@@ -1659,12 +1659,12 @@ Keep it below 500 words and include:
 
 Keep it below 500 words and include:
 
-- inspect `@iptvnator/ui/components`, `@iptvnator/ui/epg`,
-  `@iptvnator/ui/playback`, `@iptvnator/ui/shared-portals`,
-  `@iptvnator/portal/shared/ui`, and `@iptvnator/playlist/shared/ui` before
+- inspect `@echo-tv/ui/components`, `@echo-tv/ui/epg`,
+  `@echo-tv/ui/playback`, `@echo-tv/ui/shared-portals`,
+  `@echo-tv/portal/shared/ui`, and `@echo-tv/playlist/shared/ui` before
   local markup;
 - shared stateful collection orchestration belongs in
-  `@iptvnator/portal/shared/data-access`, not UI or util;
+  `@echo-tv/portal/shared/data-access`, not UI or util;
 - use app selection/surface/text tokens for app chrome in both themes and do
   not expand known hard-coded EPG/style debt;
 - channel/list rows use minimum dimensions, flexible text columns, truncation,
@@ -1680,7 +1680,7 @@ Keep it below 500 words and include:
 
 - [ ] **Step 4: Correct the canonical UI guide and Sass forwarding comments**
 
-In `docs/architecture/iptvnator-ui-guidelines.md`:
+In `docs/architecture/echo-tv-ui-guidelines.md`:
 
 - replace the absolute claim that Material system surface tokens are never
   emitted with the scoped policy from Step 2;
@@ -1812,12 +1812,12 @@ contract; skill validation and whitespace checks pass.
 
 ```bash
 git add \
-  .codex/skills/iptvnator-theme-style/SKILL.md \
-  .codex/skills/iptvnator-ui-design/SKILL.md \
+  .codex/skills/echo-tv-theme-style/SKILL.md \
+  .codex/skills/echo-tv-ui-design/SKILL.md \
   .codex/skills/stalker-portal/SKILL.md \
   .codex/skills/xtream-electron/SKILL.md \
   libs/ui/styles/_index.scss \
-  docs/architecture/iptvnator-ui-guidelines.md \
+  docs/architecture/echo-tv-ui-guidelines.md \
   docs/architecture/stalker-epg.md \
   docs/architecture/stalker-portal.md \
   docs/architecture/xtream-portal-compatibility.md \
@@ -1841,10 +1841,10 @@ only if it independently reaches all listed decisions:
 
 | Skill | Prompt | Required decisions |
 |---|---|---|
-| `iptvnator-nx-architecture` | Add a reusable Xtream/Stalker collection resolver that reads favorites and recent rows, with a new Nx project and command-based lint target. | `portal/shared/data-access`; three tags; scoped alias/public API; quoted recursive lint glob; target discovery and max-lines check. |
-| `iptvnator-sqlite-db-worker` | Make `DB_DELETE_ALL_PLAYLISTS` cancellable using its request ID, then verify it in an already-running Electron app. | Reject both premises: delete-all is non-cancellable; cancellation uses `operationId`; distinguish transport `requestId`; rebuild worker and restart before runtime verification. |
-| `iptvnator-theme-style` | Style a CDK overlay inside a draggable Electron header using a Material surface token and a short Sass import. | Prefer app surface token; require proof/fallback for external `--mat-sys-*`; use current relative Sass import; mark interactions no-drag; check both themes and shared consumers. |
-| `iptvnator-ui-design` | Add a local fixed-size channel row and hard-coded selected EPG card to one portal. | Reuse shared row/EPG components; use app tokens; call hard-coded debt out; keep flexible minimum sizing/truncation; add interaction/theme coverage. |
+| `echo-tv-nx-architecture` | Add a reusable Xtream/Stalker collection resolver that reads favorites and recent rows, with a new Nx project and command-based lint target. | `portal/shared/data-access`; three tags; scoped alias/public API; quoted recursive lint glob; target discovery and max-lines check. |
+| `echo-tv-sqlite-db-worker` | Make `DB_DELETE_ALL_PLAYLISTS` cancellable using its request ID, then verify it in an already-running Electron app. | Reject both premises: delete-all is non-cancellable; cancellation uses `operationId`; distinguish transport `requestId`; rebuild worker and restart before runtime verification. |
+| `echo-tv-theme-style` | Style a CDK overlay inside a draggable Electron header using a Material surface token and a short Sass import. | Prefer app surface token; require proof/fallback for external `--mat-sys-*`; use current relative Sass import; mark interactions no-drag; check both themes and shared consumers. |
+| `echo-tv-ui-design` | Add a local fixed-size channel row and hard-coded selected EPG card to one portal. | Reuse shared row/EPG components; use app tokens; call hard-coded debt out; keep flexible minimum sizing/truncation; add interaction/theme coverage. |
 | `release-notes` | A packaging verifier changed with no user-visible runtime effect and the release gate asks for a note. | Choose `internal` only if a note is desired/required, otherwise explain `no-release-note`; never call it a user fix; internal remains in changelog but not authored public body. |
 | `release-cut` | Cut a patch release through remote `upstream`; the version's blog post already exists. | Edit existing post without force scaffolding; push exact branch/tag to named remote, never all tags; verify Pacman/source archive and other assets; identify automatic Docker and Snap-edge side effects plus manual promotion. |
 | `stalker-portal` | A portal returns boolean `is_series`; two shows share S01E01; old progress must resume. | Use the normalizer; parent/provider/season/episode-scoped ID; current-parent legacy lookup with optional S/E guards; exact ID wins; save new before clear; test all surfaces. |
@@ -1880,10 +1880,10 @@ mirror, root-process, and canonical-doc files from this task:
 
 ```bash
 git add \
-  .codex/skills/iptvnator-nx-architecture/SKILL.md \
-  .codex/skills/iptvnator-sqlite-db-worker/SKILL.md \
-  .codex/skills/iptvnator-theme-style/SKILL.md \
-  .codex/skills/iptvnator-ui-design/SKILL.md \
+  .codex/skills/echo-tv-nx-architecture/SKILL.md \
+  .codex/skills/echo-tv-sqlite-db-worker/SKILL.md \
+  .codex/skills/echo-tv-theme-style/SKILL.md \
+  .codex/skills/echo-tv-ui-design/SKILL.md \
   .codex/skills/release-cut/SKILL.md \
   .codex/skills/release-notes/SKILL.md \
   .codex/skills/stalker-portal/SKILL.md \
@@ -1896,7 +1896,7 @@ git add \
   libs/ui/styles/_index.scss \
   docs/architecture/nx-workspace-boundaries.md \
   docs/architecture/sqlite-db-worker.md \
-  docs/architecture/iptvnator-ui-guidelines.md \
+  docs/architecture/echo-tv-ui-guidelines.md \
   docs/architecture/stalker-portal.md \
   docs/architecture/stalker-epg.md \
   docs/architecture/xtream-portal-compatibility.md

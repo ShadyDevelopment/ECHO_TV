@@ -2,7 +2,7 @@ import { computed, type Signal } from '@angular/core';
 import type {
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     resolveWebPlayerIsLive,
     resolveWebPlayerPlayback,

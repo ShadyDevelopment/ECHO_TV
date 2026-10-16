@@ -11,32 +11,32 @@ when automating the desktop app. These commands assume a bootstrapped worktree.
 - Connect Chrome DevTools Protocol tools to: `127.0.0.1:9222`
 - For Electron automation/debugging tasks, use the `electron` skill
 - Do not auto-open DevTools during normal CDP automation. In development, DevTools is opt-in via `ELECTRON_OPEN_DEVTOOLS=1`.
-- If DevTools is open, `agent-browser --cdp 9222 ...` may attach to the DevTools page instead of the IPTVnator window. Symptoms: `tab list` shows `about:blank`, snapshots are empty, and screenshots are black.
-- If that happens, inspect targets with `curl http://127.0.0.1:9222/json/list` and connect directly to the IPTVnator page websocket from the `webSocketDebuggerUrl` field.
-- The app holds a single-instance lock (`acquireSingleInstanceLock` in `apps/electron-backend/src/app/services/single-instance.ts`): a second launch against the same `userData` quits immediately and focuses the running window. To attach a second CDP-enabled instance to the same profile, set `IPTVNATOR_ALLOW_MULTIPLE_INSTANCES=1` — knowing that only one of the two processes will own the renderer's IndexedDB, so settings written by the other are lost. Before focusing, the guard forwards the second launch's argv to `onSecondInstance`, which is how a playlist path handed to an already-running app reaches the open queue.
+- If DevTools is open, `agent-browser --cdp 9222 ...` may attach to the DevTools page instead of the ECHO TV window. Symptoms: `tab list` shows `about:blank`, snapshots are empty, and screenshots are black.
+- If that happens, inspect targets with `curl http://127.0.0.1:9222/json/list` and connect directly to the ECHO TV page websocket from the `webSocketDebuggerUrl` field.
+- The app holds a single-instance lock (`acquireSingleInstanceLock` in `apps/electron-backend/src/app/services/single-instance.ts`): a second launch against the same `userData` quits immediately and focuses the running window. To attach a second CDP-enabled instance to the same profile, set `ECHO_TV_ALLOW_MULTIPLE_INSTANCES=1` — knowing that only one of the two processes will own the renderer's IndexedDB, so settings written by the other are lost. Before focusing, the guard forwards the second launch's argv to `onSecondInstance`, which is how a playlist path handed to an already-running app reaches the open queue.
 
 ### Trace / Debug Startup
 
 - Full startup tracing:
 
 ```bash
-IPTVNATOR_TRACE_STARTUP=1 pnpm nx serve electron-backend
+ECHO_TV_TRACE_STARTUP=1 pnpm nx serve electron-backend
 ```
 
 - Narrower trace flags:
-    - `IPTVNATOR_TRACE_IPC=1` traces renderer `window.electron.*` bridge calls and reports cancelled Stalker/Xtream portal requests, which are otherwise not logged (an HTTP 401/403 is always one `Refused` warning; other failures stay errors)
-    - `IPTVNATOR_TRACE_DB=1` traces DB worker requests and request-scoped DB events
-    - `IPTVNATOR_TRACE_SQL=1` traces SQLite statements in the main process and DB worker
-    - `IPTVNATOR_TRACE_WINDOW=1` traces BrowserWindow lifecycle and unresponsive events
-    - `IPTVNATOR_TRACE_PLAYER=1` traces external-player activity and bounded Embedded MPV runtime-probe stderr
-    - `IPTVNATOR_TRACE_RENDERER_CONSOLE=1` mirrors renderer console output into the Electron terminal
-    - `IPTVNATOR_PERF_CAPTURE=1` enables development/test-only, redacted M3U and Xtream preload IPC request/completion markers plus count-only M3U acquire/parse/normalize, Xtream main network/JSON-transform/success-response-ready/cancel-dispatch, and renderer store phase capture; renderer wrappers emit only while the benchmark installs its Symbol hook, benchmark tooling sets the flag explicitly, and production launches must leave it unset. It also keeps count-only main-process counters (startup phases, database worker SQL statements, and their values at main-window creation and `ready-to-show`) and registers the main-only `performance:read-counters` IPC handler, which the preload does not expose; see [performance journeys](../architecture/performance-journeys.md)
-    - `IPTVNATOR_PERF_COUNT_SQL=1`, together with `IPTVNATOR_PERF_CAPTURE=1`, also counts every SQL statement of the main-process and database-worker connections for `main.sqlStatementsBeforeReadyToShow`; it wraps each statement execution, including every row of a bulk insert, so only the launch journey sets it and the import benchmarks leave it unset
-    - `IPTVNATOR_PERF_WORKER_PROFILING=1` enables development/test-only, request-scoped worker receive/work/response-post timestamps, thread CPU, event-loop utilization/delay, count-only playlist serialization/SQLite write/read/deserialization plus Xtream category/content/cache-clear/delete/in-source-search phase events, profiling-only worker cancel-receipt acknowledgements, valid-sample-counted isolate peak memory, and the database worker's idle-only one-shot post-GC heap probe; overlapping database requests are explicitly invalidated instead of misattributed, the performance benchmark sets the flag automatically, and production launches must leave it unset
-    - `IPTVNATOR_DISABLE_COMPILE_CACHE=1` disables the main-process V8 compile cache; `IPTVNATOR_COMPILE_CACHE_DIR=<dir>` relocates it. The startup trace reports the outcome as `compile-cache`
+    - `ECHO_TV_TRACE_IPC=1` traces renderer `window.electron.*` bridge calls and reports cancelled Stalker/Xtream portal requests, which are otherwise not logged (an HTTP 401/403 is always one `Refused` warning; other failures stay errors)
+    - `ECHO_TV_TRACE_DB=1` traces DB worker requests and request-scoped DB events
+    - `ECHO_TV_TRACE_SQL=1` traces SQLite statements in the main process and DB worker
+    - `ECHO_TV_TRACE_WINDOW=1` traces BrowserWindow lifecycle and unresponsive events
+    - `ECHO_TV_TRACE_PLAYER=1` traces external-player activity and bounded Embedded MPV runtime-probe stderr
+    - `ECHO_TV_TRACE_RENDERER_CONSOLE=1` mirrors renderer console output into the Electron terminal
+    - `ECHO_TV_PERF_CAPTURE=1` enables development/test-only, redacted M3U and Xtream preload IPC request/completion markers plus count-only M3U acquire/parse/normalize, Xtream main network/JSON-transform/success-response-ready/cancel-dispatch, and renderer store phase capture; renderer wrappers emit only while the benchmark installs its Symbol hook, benchmark tooling sets the flag explicitly, and production launches must leave it unset. It also keeps count-only main-process counters (startup phases, database worker SQL statements, and their values at main-window creation and `ready-to-show`) and registers the main-only `performance:read-counters` IPC handler, which the preload does not expose; see [performance journeys](../architecture/performance-journeys.md)
+    - `ECHO_TV_PERF_COUNT_SQL=1`, together with `ECHO_TV_PERF_CAPTURE=1`, also counts every SQL statement of the main-process and database-worker connections for `main.sqlStatementsBeforeReadyToShow`; it wraps each statement execution, including every row of a bulk insert, so only the launch journey sets it and the import benchmarks leave it unset
+    - `ECHO_TV_PERF_WORKER_PROFILING=1` enables development/test-only, request-scoped worker receive/work/response-post timestamps, thread CPU, event-loop utilization/delay, count-only playlist serialization/SQLite write/read/deserialization plus Xtream category/content/cache-clear/delete/in-source-search phase events, profiling-only worker cancel-receipt acknowledgements, valid-sample-counted isolate peak memory, and the database worker's idle-only one-shot post-GC heap probe; overlapping database requests are explicitly invalidated instead of misattributed, the performance benchmark sets the flag automatically, and production launches must leave it unset
+    - `ECHO_TV_DISABLE_COMPILE_CACHE=1` disables the main-process V8 compile cache; `ECHO_TV_COMPILE_CACHE_DIR=<dir>` relocates it. The startup trace reports the outcome as `compile-cache`
 
 - Settings, portal request/response, and trace payloads must use
-  `@iptvnator/shared/logging` or the redacting portal logger before reaching
+  `@echo-tv/shared/logging` or the redacting portal logger before reaching
   `console.*`; never log raw credentials while debugging.
 
 - If local Nx state gets weird before a rerun:
@@ -51,7 +51,7 @@ pnpm nx reset
 agent-browser --cdp 9222 tab list
 agent-browser --cdp 9222 tab 1
 agent-browser --cdp 9222 snapshot -i -c -d 4
-agent-browser --cdp 9222 screenshot /tmp/iptvnator-cdp.png
+agent-browser --cdp 9222 screenshot /tmp/echo-tv-cdp.png
 ```
 
 ### Fallback
@@ -65,8 +65,8 @@ npx --yes agent-browser --cdp 9222 tab list
 ```bash
 ELECTRON_OPEN_DEVTOOLS=1 pnpm nx serve electron-backend
 curl http://127.0.0.1:9222/json/list
-agent-browser connect ws://127.0.0.1:9222/devtools/page/<iptvnator-page-id>
-agent-browser screenshot /tmp/iptvnator-cdp.png
+agent-browser connect ws://127.0.0.1:9222/devtools/page/<echo-tv-page-id>
+agent-browser screenshot /tmp/echo-tv-cdp.png
 ```
 
 ## E2E process cleanup and packaged diagnostics
@@ -76,7 +76,7 @@ shutdown times out, terminate that process tree with `taskkill /T /F`; killing
 only `electronApp.process()` can leave Electron holding the temporary profile
 and make the next launch exit on the single-instance lock. The E2E workflow
 checks this against a real Windows shell and child process. Test cleanup must
-target only its own launch PID, never all Electron or IPTVnator processes.
+target only its own launch PID, never all Electron or ECHO TV processes.
 Cleanup confirms process exit even if Playwright's close promise fails or
 never settles. If termination fails, it retries and then throws instead of
 allowing a relaunch against a potentially locked profile.
@@ -130,9 +130,9 @@ listener. That import and its registrations finish within the same task, so no
 renderer `invoke` can find a missing handler (`app/startup/deferred-bootstrap.ts`
 holds the scheduler and its test); the startup trace reports it as
 `deferred-events:start` and `deferred-events:done`. The cache is
-disposable; `IPTVNATOR_DISABLE_COMPILE_CACHE=1` turns it off and
-`IPTVNATOR_COMPILE_CACHE_DIR` relocates it (E2E runs keep it inside
-`IPTVNATOR_E2E_DATA_DIR`). nx-electron packages the backend through an
+disposable; `ECHO_TV_DISABLE_COMPILE_CACHE=1` turns it off and
+`ECHO_TV_COMPILE_CACHE_DIR` relocates it (E2E runs keep it inside
+`ECHO_TV_E2E_DATA_DIR`). nx-electron packages the backend through an
 allowlist, so `apps/electron-backend/project.json` lists `main.app.js` and
 `deferred-events.js` under the `files` option of the `package` and `make`
 targets, and `verify:package-layout` fails when any of the entry files is missing

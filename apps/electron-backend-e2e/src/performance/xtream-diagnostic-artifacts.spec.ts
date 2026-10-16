@@ -349,7 +349,7 @@ function capture(
 
 async function createDirectory(label: string): Promise<string> {
     const directory = await mkdtemp(
-        join(tmpdir(), `iptvnator-xtream-diagnostic-${label}-`)
+        join(tmpdir(), `echo-tv-xtream-diagnostic-${label}-`)
     );
     directories.push(directory);
     return directory;

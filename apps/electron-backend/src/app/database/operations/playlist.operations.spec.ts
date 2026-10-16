@@ -45,7 +45,7 @@ function runPlaylistUpdateScenario(scenario: string): unknown {
     const script = `
         const { default: Database } = await import('better-sqlite3');
         const { drizzle } = await import('drizzle-orm/better-sqlite3');
-        const schema = await import('@iptvnator/shared/database/schema');
+        const schema = await import('@echo-tv/shared/database/schema');
         const { getAppPlaylist, getAppPlaylistMetas, updatePlaylist, upsertAppPlaylist, upsertAppPlaylists } = await import(${JSON.stringify(operationsUrl)});
         const { setPlaylistServerTimezone } = await import(${JSON.stringify(timezoneOperationsUrl)});
         const { __databaseConnectionTestHooks } = await import(${JSON.stringify(connectionUrl)});

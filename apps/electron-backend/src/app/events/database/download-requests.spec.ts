@@ -8,7 +8,7 @@ import {
 } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import type { DownloadMetadataSnapshot } from '@iptvnator/shared/interfaces';
+import type { DownloadMetadataSnapshot } from '@echo-tv/shared/interfaces';
 import type { Download } from '../../database/schema';
 import type { DownloadDirectoryAuthorizer } from './download-directory-authorization';
 
@@ -720,7 +720,7 @@ describe('download requests resume', () => {
         const row = {
             filePath: '/downloads/movie.mp4',
             id: 42,
-            requestHeaders: JSON.stringify({ 'User-Agent': 'IPTVnator' }),
+            requestHeaders: JSON.stringify({ 'User-Agent': 'ECHO TV' }),
             resumeValidator: '"etag-9"',
             status: 'paused',
             title: 'Movie',
@@ -767,7 +767,7 @@ describe('download requests resume', () => {
             directory: '/downloads',
             fileName: 'movie.mp4',
             filePath: '/downloads/movie.mp4',
-            headers: { 'User-Agent': 'IPTVnator' },
+            headers: { 'User-Agent': 'ECHO TV' },
             id: 42,
             resumeValidator: '"etag-9"',
             totalBytes: 100,
@@ -834,7 +834,7 @@ describe('download requests resume', () => {
         const row = {
             filePath: '/downloads/movie.mp4',
             id: 42,
-            requestHeaders: JSON.stringify({ 'User-Agent': 'IPTVnator' }),
+            requestHeaders: JSON.stringify({ 'User-Agent': 'ECHO TV' }),
             resumeValidator: '"etag-9"',
             status: 'failed',
             title: 'Movie',
@@ -892,7 +892,7 @@ describe('download requests resume', () => {
             directory: '/downloads',
             fileName: 'movie.mp4',
             filePath: '/downloads/movie.mp4',
-            headers: { 'User-Agent': 'IPTVnator' },
+            headers: { 'User-Agent': 'ECHO TV' },
             id: 42,
             resumeValidator: '"etag-9"',
             totalBytes: 100,

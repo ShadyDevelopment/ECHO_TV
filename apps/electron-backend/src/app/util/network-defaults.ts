@@ -1,7 +1,7 @@
 import {
     applyDefaultAutoSelectFamilyAttemptTimeout,
     AUTO_SELECT_FAMILY_ATTEMPT_TIMEOUT_FLAG,
-} from '@iptvnator/shared/host-health';
+} from '@echo-tv/shared/host-health';
 
 /**
  * Raises Node's happy-eyeballs per-attempt connection budget from 250 ms to

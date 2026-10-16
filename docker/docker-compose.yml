@@ -12,12 +12,12 @@ services:
       BACKEND_URL: /api
       CLIENT_URL: http://localhost:4333
       PORT: "3000"
-      IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS: "0"
+      ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS: "0"
       # Server storage database on the /data volume. Set to "none" to keep
       # the backend stateless.
-      IPTVNATOR_STORAGE: server
+      ECHO_TV_STORAGE: server
     volumes:
-      - iptvnator-data:/data
+      - echo-tv-data:/data
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/api/health >/dev/null || exit 1"]
       interval: 30s
@@ -26,4 +26,4 @@ services:
       start_period: 10s
 
 volumes:
-  iptvnator-data: {}
+  echo-tv-data: {}

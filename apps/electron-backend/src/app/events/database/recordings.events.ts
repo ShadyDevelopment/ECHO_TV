@@ -1,7 +1,7 @@
 import type {
     ElectronRecordingItem,
     RecordingProgramSnapshot,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { desc, eq } from 'drizzle-orm';
 import { ipcMain, shell } from 'electron';
 import { stat, unlink } from 'node:fs/promises';
@@ -186,7 +186,7 @@ ipcMain.handle('RECORDINGS_STOP', async (_event, recordingId: number) => {
             return { error: 'Recording is not active', success: false };
         }
         // Session ids restart per process, so under
-        // IPTVNATOR_ALLOW_MULTIPLE_INSTANCES another instance's row can name
+        // ECHO_TV_ALLOW_MULTIPLE_INSTANCES another instance's row can name
         // a session id that exists locally as an unrelated recording. Only
         // the owning process may stop it.
         if (

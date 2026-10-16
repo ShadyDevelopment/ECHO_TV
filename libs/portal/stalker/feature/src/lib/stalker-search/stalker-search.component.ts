@@ -17,37 +17,37 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
     StalkerPortalRepairService,
     StalkerSessionService,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import {
     DataService,
     ParentalLockService,
     PlaylistsService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     ALL_CATEGORIES_WITHHELD,
     PlaybackPositionData,
     ResolvedPortalPlayback,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
-import { ContentCardComponent } from '@iptvnator/portal/shared/ui';
-import { SearchLayoutComponent } from '@iptvnator/portal/shared/ui';
+} from '@echo-tv/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@echo-tv/ui/playback';
+import { ContentCardComponent } from '@echo-tv/portal/shared/ui';
+import { SearchLayoutComponent } from '@echo-tv/portal/shared/ui';
 import { StalkerInlineDetailComponent } from '../stalker-inline-detail/stalker-inline-detail.component';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { WorkspaceBackNavigationService } from '@iptvnator/portal/shared/data-access';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { WorkspaceBackNavigationService } from '@echo-tv/portal/shared/data-access';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     queryParamSignal,
     workspacePortalCommands,
-} from '@iptvnator/portal/shared/util';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     StalkerSelectedVodItem,
     StalkerVodSource,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import {
     buildStalkerSelectedVodItem,
     clearStalkerDetailViewState,
@@ -59,9 +59,9 @@ import {
     isStalkerSeriesFlag,
     normalizeStalkerEntityId,
     toggleStalkerVodFavorite,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import { StalkerVodPlaybackController } from '../stalker-vod-playback-controller';
-import { createPlaybackSessionKey } from '@iptvnator/playback/util';
+import { createPlaybackSessionKey } from '@echo-tv/playback/util';
 import { createStalkerVodDetailActions } from '../stalker-vod-detail-actions';
 import { StalkerSearchPagingController } from './stalker-search-paging.controller';
 import type { StalkerSearchContentType } from './stalker-search-results.util';

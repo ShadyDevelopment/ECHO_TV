@@ -3,7 +3,7 @@ import {
     AppUpdateChannel,
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { AppUpdateReleaseCatalog } from './app-update-release-catalog';
 import { AppUpdateService } from './app-update.service';
 
@@ -23,7 +23,7 @@ class FakeUpdater extends EventEmitter {
 
 const nightlyReleases = [
     {
-        body: '## Nightly\n\nNewest master build\n\n<!-- iptvnator-commit: abc -->',
+        body: '## Nightly\n\nNewest master build\n\n<!-- echo-tv-commit: abc -->',
         draft: false,
         html_url:
             'https://github.com/ShadyDevelopment/ECHO_TV/releases/tag/v0.23.1-nightly.20260915.7',
@@ -31,16 +31,6 @@ const nightlyReleases = [
         prerelease: true,
         published_at: '2026-09-15T00:00:00.000Z',
         tag_name: 'v0.23.1-nightly.20260915.7',
-    },
-    {
-        body: 'not a nightly',
-        draft: false,
-        html_url:
-            'https://github.com/ShadyDevelopment/ECHO_TV/releases/tag/v9.9.9',
-        name: 'stray tag',
-        prerelease: false,
-        published_at: '2026-09-14T12:00:00.000Z',
-        tag_name: 'v9.9.9',
     },
     {
         body: '## Nightly\n\nOlder master build',
@@ -54,12 +44,25 @@ const nightlyReleases = [
     },
 ];
 
-/** Answers the stable and nightly repositories with their own lists. */
-function createChannelReleaseFetcher() {
-    return jest.fn(async (url: string) => {
-        const releases = url.includes('/iptvnator-nightly/')
-            ? nightlyReleases
-            : githubReleases;
+const nonNightlyRelease = {
+    body: 'not a nightly',
+    draft: false,
+    html_url: 'https://github.com/ShadyDevelopment/ECHO_TV/releases/tag/v9.9.9',
+    name: 'stray tag',
+    prerelease: false,
+    published_at: '2026-09-14T12:00:00.000Z',
+    tag_name: 'v9.9.9',
+};
+
+/** Both channels share a repository; each channel filters its own releases. */
+function createChannelReleaseFetcher(
+    releaseList = [...nightlyReleases, ...githubReleases]
+) {
+    return jest.fn(async (_url: string) => {
+        const releases = [...releaseList].sort(
+            (left, right) =>
+                Date.parse(right.published_at) - Date.parse(left.published_at)
+        );
 
         return {
             json: jest.fn().mockResolvedValue(releases),
@@ -249,7 +252,7 @@ describe('AppUpdateService', () => {
 
         expect(updaterFactory).not.toHaveBeenCalled();
         expect(fetcher).toHaveBeenCalledWith(
-            'https://api.github.com/repos/4gray/iptvnator/releases?per_page=10&page=1',
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases?per_page=10&page=1',
             expect.any(Object)
         );
         expect(service.getStatus()).toEqual(
@@ -268,7 +271,7 @@ describe('AppUpdateService', () => {
         }).service.getStatus();
         const appImage = createService({
             platform: 'linux',
-            env: { APPIMAGE: '/Applications/IPTVnator.AppImage' },
+            env: { APPIMAGE: '/Applications/ECHO TV.AppImage' },
         }).service.getStatus();
 
         expect(unsupported.supportedSelfUpdate).toBe(false);
@@ -332,11 +335,11 @@ describe('AppUpdateService', () => {
 
         expect(updater.checkForUpdates).not.toHaveBeenCalled();
         expect(fetcher).toHaveBeenCalledWith(
-            'https://api.github.com/repos/4gray/iptvnator/releases?per_page=10&page=1',
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases?per_page=10&page=1',
             expect.objectContaining({
                 headers: expect.objectContaining({
                     Accept: 'application/vnd.github+json',
-                    'User-Agent': 'iptvnator/0.22.0',
+                    'User-Agent': 'echo-tv/0.22.0',
                 }),
             })
         );
@@ -615,8 +618,8 @@ describe('AppUpdateService', () => {
 
         expect(updater.setFeedURL).toHaveBeenCalledWith({
             provider: 'github',
-            owner: '4gray',
-            repo: 'iptvnator',
+            owner: 'ShadyDevelopment',
+            repo: 'ECHO_TV',
         });
         expect(updater.allowPrerelease).toBe(false);
         expect(updater.channel).toBe('latest');
@@ -640,8 +643,8 @@ describe('AppUpdateService', () => {
 
         expect(updater.setFeedURL).toHaveBeenCalledWith({
             provider: 'github',
-            owner: '4gray',
-            repo: 'iptvnator-nightly',
+            owner: 'ShadyDevelopment',
+            repo: 'ECHO_TV',
         });
         expect(updater.allowPrerelease).toBe(true);
         expect(updater.channel).toBe('nightly');
@@ -674,7 +677,7 @@ describe('AppUpdateService', () => {
 
         expect(updater.checkForUpdates).toHaveBeenCalledTimes(1);
         expect(updater.setFeedURL).toHaveBeenLastCalledWith(
-            expect.objectContaining({ repo: 'iptvnator-nightly' })
+            expect.objectContaining({ repo: 'ECHO_TV' })
         );
         const pushed = (
             win.webContents.send.mock.calls as [
@@ -736,7 +739,11 @@ describe('AppUpdateService', () => {
     });
 
     it('offers newer nightlies through the manual fallback using prerelease-aware ordering', async () => {
-        const fetcher = createChannelReleaseFetcher();
+        const fetcher = createChannelReleaseFetcher([
+            ...nightlyReleases,
+            nonNightlyRelease,
+            ...githubReleases,
+        ]);
         const { service, updater } = createService({
             appVersion: '0.23.1-nightly.20260914.5',
             channel: 'nightly',
@@ -749,7 +756,7 @@ describe('AppUpdateService', () => {
 
         expect(updater.checkForUpdates).not.toHaveBeenCalled();
         expect(fetcher).toHaveBeenCalledWith(
-            'https://api.github.com/repos/4gray/iptvnator-nightly/releases?per_page=10&page=1',
+            'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases?per_page=10&page=1',
             expect.any(Object)
         );
         // v9.9.9 is not a nightly and must not win the list.
@@ -782,7 +789,7 @@ describe('AppUpdateService', () => {
         // A snapshot taken before the newest nightly was published: only the
         // older one exists, and it fits in one page, so the catalog believes
         // it has read everything.
-        const published: unknown[] = [nightlyReleases[2]];
+        const published: unknown[] = [nightlyReleases[1]];
         const fetcher = jest.fn(async (_url: string) => ({
             json: jest.fn().mockResolvedValue([...published]),
             ok: true,
@@ -879,7 +886,7 @@ describe('AppUpdateService', () => {
         const catalog = new AppUpdateReleaseCatalog(
             'stable',
             createReleaseFetcher(),
-            'iptvnator/test'
+            'echo-tv/test'
         );
         const order: string[] = [];
         let finishFirst: () => void = () => undefined;
@@ -951,8 +958,8 @@ describe('AppUpdateService', () => {
         expect(
             fetcher.mock.calls.map(([url]) => new URL(url).pathname)
         ).toEqual([
-            '/repos/4gray/iptvnator-nightly/releases',
-            '/repos/4gray/iptvnator/releases',
+            '/repos/ShadyDevelopment/ECHO_TV/releases',
+            '/repos/ShadyDevelopment/ECHO_TV/releases',
         ]);
     });
 });

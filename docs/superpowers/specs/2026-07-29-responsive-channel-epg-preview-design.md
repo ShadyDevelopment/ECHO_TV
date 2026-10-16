@@ -108,7 +108,7 @@ separate follow-up work and must not be implied as fixed here.
 
 ## Documentation and Release Notes
 
-Update `docs/architecture/iptvnator-ui-guidelines.md` with the responsive
+Update `docs/architecture/echo-tv-ui-guidelines.md` with the responsive
 information-priority contract. Add a user-facing fix note under `.changes/`.
 
 ## Follow-up PRs

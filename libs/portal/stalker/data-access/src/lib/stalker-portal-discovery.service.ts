@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { DataService, resetHostConnectivityGuard } from '@iptvnator/services';
-import { STALKER_REQUEST } from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { DataService, resetHostConnectivityGuard } from '@echo-tv/services';
+import { STALKER_REQUEST } from '@echo-tv/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     StalkerPortalCredentials,
     StalkerProfileResponse,

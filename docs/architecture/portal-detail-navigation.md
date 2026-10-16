@@ -27,7 +27,7 @@ The shell owns the page's Back action, but the workspace header renders it
 (the general contract, other pages and the history fallback are in
 [Header Back](./workspace-shell.md#header-back)). While `backAvailable()` is
 true, the shell registers a target through `registerWorkspaceBack()`
-(`@iptvnator/portal/shared/data-access`). It carries the host's `backLabel`
+(`@echo-tv/portal/shared/data-access`). It carries the host's `backLabel`
 (else the translated "Back"), whether Escape currently runs it, and `run()`,
 which emits `backClicked`. The newest registration wins and each release
 removes only its own target, so a loading shell replaced by the loaded one

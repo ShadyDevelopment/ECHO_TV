@@ -1,6 +1,6 @@
-import type { Logger } from '@iptvnator/portal/shared/util';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
-import type { SeasonContainerSeriesPlaybackToggleRequest } from '@iptvnator/ui/components';
+import type { Logger } from '@echo-tv/portal/shared/util';
+import type { PlaybackPositionData } from '@echo-tv/shared/interfaces';
+import type { SeasonContainerSeriesPlaybackToggleRequest } from '@echo-tv/ui/components';
 import { StalkerSeriesPositionPartialSaveError } from './stalker-series-position-compatibility';
 
 export interface StalkerWatchToggleFeedback {

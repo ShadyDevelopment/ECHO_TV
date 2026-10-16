@@ -1,5 +1,5 @@
 /**
- * Drizzle ORM schema for IPTVnator database
+ * Drizzle ORM schema for ECHO TV database
  * This schema defines the structure for Xtream Codes API data storage
  *
  * Single source of truth for database schema - used by:
@@ -112,7 +112,7 @@ export const content = sqliteTable(
         backdropUrl: text('backdrop_url'),
         // Identity a detail view resolved for this item, so anything reading
         // it later can repeat that lookup instead of re-deriving one from the
-        // display title. See ContentMetadataPatch in @iptvnator/shared/interfaces.
+        // display title. See ContentMetadataPatch in @echo-tv/shared/interfaces.
         tmdbId: integer('tmdb_id'),
         releaseYear: integer('release_year'),
         originalTitle: text('original_title'),
@@ -356,7 +356,7 @@ export const recordings = sqliteTable(
         sessionId: text('session_id'),
         // PID of the process that opened the recording. Startup recovery uses
         // it to leave rows owned by another live instance alone
-        // (IPTVNATOR_ALLOW_MULTIPLE_INSTANCES).
+        // (ECHO_TV_ALLOW_MULTIPLE_INSTANCES).
         ownerPid: integer('owner_pid'),
         status: text('status', {
             enum: ['recording', 'completed', 'interrupted', 'failed'],

@@ -7,9 +7,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     XtreamApiService,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { DataService } from '@iptvnator/services';
-import { CONNECTIVITY_GUARD_RESET } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/xtream/data-access';
+import { DataService } from '@echo-tv/services';
+import { CONNECTIVITY_GUARD_RESET } from '@echo-tv/shared/interfaces';
 import { AccountInfoComponent } from './account-info.component';
 
 describe('AccountInfoComponent', () => {

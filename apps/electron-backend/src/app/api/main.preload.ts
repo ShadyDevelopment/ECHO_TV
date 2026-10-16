@@ -1,4 +1,4 @@
-import type { SourceProbeContext } from '@iptvnator/shared/interfaces';
+import type { SourceProbeContext } from '@echo-tv/shared/interfaces';
 import { contextBridge, ipcRenderer, webFrame, webUtils } from 'electron';
 import {
     APP_UPDATE_CHECK,
@@ -12,7 +12,7 @@ import {
     OPEN_FILE,
     WINDOW_GET_ZOOM_LEVEL,
     WINDOW_ZOOM_LEVEL_APPLIED,
-} from '@iptvnator/shared/interfaces/ipc-commands';
+} from '@echo-tv/shared/interfaces/ipc-commands';
 import {
     attachEmbeddedMpvFrameView,
     detachEmbeddedMpvFrameView,
@@ -75,7 +75,7 @@ import type {
     StreamProbeHeaders,
     VodSourcePin,
     XtreamCategory,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     DEBUG_TRACE_EVENT_CHANNEL,
     isPerformanceCaptureEnabled,

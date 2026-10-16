@@ -5,7 +5,7 @@ import {
     PlaylistActions,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import { firstValueFrom } from 'rxjs';
 import {
     DatabaseService,
@@ -13,11 +13,11 @@ import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     injectTranslationTick,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     XTREAM_DATA_SOURCE,
     XtreamContentItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     buildPlaylistRecentItems,
     Channel,
@@ -31,7 +31,7 @@ import {
     PortalRecentItem,
     resolvePortalActivityWatchKind,
     stalkerItemMatchesId,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     buildStalkerFavoriteItems,
     mapDbFavoriteToItem,
@@ -43,8 +43,8 @@ import {
 import {
     PORTAL_PLAYBACK_POSITIONS,
     WorkspaceNavigationTarget,
-} from '@iptvnator/portal/shared/util';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import type { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import {
     getGlobalFavoriteLink as getGlobalFavoriteLinkUtil,
     getGlobalFavoriteNavigationState as getGlobalFavoriteNavigationStateUtil,
@@ -69,11 +69,11 @@ import {
 
 export type { DashboardContentKind };
 
-/** @deprecated Use {@link PortalRecentItem} from `@iptvnator/shared/interfaces` instead. */
+/** @deprecated Use {@link PortalRecentItem} from `@echo-tv/shared/interfaces` instead. */
 export type GlobalRecentItem = PortalRecentItem;
-/** @deprecated Use {@link PortalFavoriteItem} from `@iptvnator/shared/interfaces` instead. */
+/** @deprecated Use {@link PortalFavoriteItem} from `@echo-tv/shared/interfaces` instead. */
 export type DashboardFavoriteItem = PortalFavoriteItem;
-/** @deprecated Use {@link PortalAddedItem} from `@iptvnator/shared/interfaces` instead. */
+/** @deprecated Use {@link PortalAddedItem} from `@echo-tv/shared/interfaces` instead. */
 export type DashboardRecentlyAddedItem = PortalAddedItem;
 export type DashboardRecentlyAddedFilterKind = GlobalRecentlyAddedKind;
 

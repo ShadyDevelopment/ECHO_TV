@@ -11,7 +11,7 @@ jest.mock('./content-metadata.operations', () => ({
     persistContentMetadataIfMissing: jest.fn().mockResolvedValue(undefined),
 }));
 
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import { persistContentMetadataIfMissing } from './content-metadata.operations';
 import {
     addRecentItem,

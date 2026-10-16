@@ -23,7 +23,7 @@
 import {
     stepZoomLevel,
     type ZoomLevelAction,
-} from '@iptvnator/shared/interfaces/zoom-level';
+} from '@echo-tv/shared/interfaces/zoom-level';
 
 export interface PreloadZoomLevelPorts {
     /** `ipcRenderer.sendSync(WINDOW_GET_ZOOM_LEVEL)` — the stored level or null. */

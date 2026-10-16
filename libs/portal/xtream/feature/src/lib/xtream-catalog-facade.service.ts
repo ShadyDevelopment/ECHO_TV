@@ -7,8 +7,8 @@ import {
     PORTAL_CATALOG_FACADE,
     resolvePortalSeriesWatchState,
     watchStateFromProgressPercent,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 
 const SORT_STORAGE_KEY = 'xtream-category-sort-mode';
 

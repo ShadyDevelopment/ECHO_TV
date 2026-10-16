@@ -1,10 +1,10 @@
-import type { ChannelDrm } from '@iptvnator/shared/interfaces';
+import type { ChannelDrm } from '@echo-tv/shared/interfaces';
 import {
     InlinePlaybackPlayer,
     type PlaybackDiagnostic,
     PlaybackDiagnosticCode,
     PlaybackDiagnosticSource,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import {
     createFakeShakaEnvironment,
     flushShakaMicrotasks,

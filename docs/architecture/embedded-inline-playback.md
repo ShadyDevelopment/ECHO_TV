@@ -9,7 +9,7 @@ This document records the current contract for embedded playback in portal detai
 - Controlled external players are `mpv` and `vlc`.
 - macOS `.app` bundle paths are resolved only for real MPV/VLC apps. IINA may
   launch through the MPV path field when the user supplies an executable path
-  such as `/Applications/IINA.app/Contents/MacOS/iina-cli`, but IPTVnator
+  such as `/Applications/IINA.app/Contents/MacOS/iina-cli`, but ECHO TV
   controls, position polling, and instance reuse are not guaranteed for IINA.
 - Flatpak launches external players on the host via `flatpak-spawn --host`.
 - Live playback stays inline in dedicated live layouts.
@@ -76,7 +76,7 @@ UIDs continue to use stream URLs so saved favorites ordering remains compatible.
 Temporary portal URLs, catch-up URLs, headers, DRM data, and alternative source
 payloads are transport details and must not change this logical identity. A
 content or episode change must produce a different key. The serialized key is
-created with `createPlaybackSessionKey()` from `@iptvnator/playback/util` so
+created with `createPlaybackSessionKey()` from `@echo-tv/playback/util` so
 delimiter-bearing provider IDs remain unambiguous.
 
 The key is host-owned and stable only for the logical selection represented by
@@ -96,29 +96,29 @@ replacing an already committed session.
 The repository now contains a first-pass native embedded MPV harness for Electron:
 
 - shared setting id: `embedded-mpv`
-- native addon owner: `/Users/4gray/Code/iptvnator/apps/electron-backend/src/app/services/embedded-mpv-native.service.ts`
-- IPC bridge: `/Users/4gray/Code/iptvnator/apps/electron-backend/src/app/events/embedded-mpv.events.ts`
-- renderer host: `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/embedded-mpv-player/embedded-mpv-player.component.ts`
-- native architecture and release-readiness details: `/Users/4gray/Code/iptvnator/docs/architecture/embedded-mpv-native.md`
+- native addon owner: `/Users/4gray/Code/echo-tv/apps/electron-backend/src/app/services/embedded-mpv-native.service.ts`
+- IPC bridge: `/Users/4gray/Code/echo-tv/apps/electron-backend/src/app/events/embedded-mpv.events.ts`
+- renderer host: `/Users/4gray/Code/echo-tv/libs/ui/playback/src/lib/embedded-mpv-player/embedded-mpv-player.component.ts`
+- native architecture and release-readiness details: `/Users/4gray/Code/echo-tv/docs/architecture/embedded-mpv-native.md`
 
 Current contract:
 
 - desktop only: macOS, Windows x64, and Linux x64 under X11/Xwayland
 - experimental opt-in
-- enabled in local development only when `IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT=1`
-- Linux Wayland sessions must start Electron through Xwayland, for example with `pnpm nx run electron-backend:serve-electron --args=--ozone-platform=x11` during local development or `iptvnator --ozone-platform=x11` for a packaged app
+- enabled in local development only when `ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT=1`
+- Linux Wayland sessions must start Electron through Xwayland, for example with `pnpm nx run electron-backend:serve-electron --args=--ozone-platform=x11` during local development or `echo-tv --ozone-platform=x11` for a packaged app
 - enabled in packaged desktop builds only when the bundled native addon/runtime prerequisites are present; Linux additionally requires an `mpv` executable on `PATH`
-- uses IPTVnator-owned controls and `ResolvedPortalPlayback` payloads
-- uses the libmpv render API on macOS and renders through an IPTVnator-owned native `NSView`
-- uses mpv `wid` embedding on Windows and Linux through IPTVnator-owned native child windows
+- uses ECHO TV-owned controls and `ResolvedPortalPlayback` payloads
+- uses the libmpv render API on macOS and renders through an ECHO TV-owned native `NSView`
+- uses mpv `wid` embedding on Windows and Linux through ECHO TV-owned native child windows
 - Linux starts `mpv --wid=<x11-window>` out of process so MPV does not share Electron's FFmpeg or graphics symbols
 - Linux controls that out-of-process MPV instance through a private JSON IPC socket so duration, position, pause, volume, and seek state come from MPV instead of renderer guesses
 - Linux starts that MPV process with `WAYLAND_DISPLAY` removed, `XDG_SESSION_TYPE=x11`, and X11 video output options; otherwise MPV can pick Wayland inside a Wayland desktop session, ignore `--wid`, and open a separate window instead of embedding
 - macOS/Windows default to libmpv's OpenGL render backend with `hwdec=auto-safe`
-- keeps the previous software renderer as a debug fallback via `IPTVNATOR_EMBEDDED_MPV_RENDERER=sw`
-- emits lightweight native diagnostics when `IPTVNATOR_TRACE_EMBEDDED_MPV=1` is set; Linux also writes MPV's own trace log to `/tmp/iptvnator-embedded-mpv.log`
-- exposes an IPTVnator-owned fullscreen button that uses the renderer fullscreen API and resyncs the native MPV view bounds after fullscreen transitions
-- auto-hides IPTVnator-owned controls while playback is active and restores them on pointer/focus interaction
+- keeps the previous software renderer as a debug fallback via `ECHO_TV_EMBEDDED_MPV_RENDERER=sw`
+- emits lightweight native diagnostics when `ECHO_TV_TRACE_EMBEDDED_MPV=1` is set; Linux also writes MPV's own trace log to `/tmp/echo-tv-embedded-mpv.log`
+- exposes an ECHO TV-owned fullscreen button that uses the renderer fullscreen API and resyncs the native MPV view bounds after fullscreen transitions
+- auto-hides ECHO TV-owned controls while playback is active and restores them on pointer/focus interaction
 - exposes audio-track metadata from MPV and switches tracks through the `aid` property without reloading the stream
 - passes VOD/episode resume offsets to MPV through the `loadfile` options map; live catchup URLs are treated as already-positioned streams
 - applies the initial volume during session creation and uses async libmpv control calls after startup where the in-process libmpv backend is active
@@ -331,7 +331,7 @@ Favorite (`vod-details-watched.service.ts`), Stalker a labelled button
 inside the shared `app-vod-details` component, wired by the routed
 catalog detail and by the collection inline detail (Favorites / Recent).
 Both hosts delegate to `createVodWatchedToggle()` in
-`@iptvnator/portal/shared/util`:
+`@echo-tv/portal/shared/util`:
 
 - **Marking** writes a full-progress `vod` position row — the same shape
   playback leaves behind, so catalog badges, the dashboard and the
@@ -437,23 +437,23 @@ honest count-0 success if hydration reveals nothing left to mark.
 
 Shared detail layout shell:
 
-- `/Users/4gray/Code/iptvnator/libs/ui/components/src/lib/portal-detail-shell/portal-detail-shell.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/ui/components/src/lib/portal-detail-shell/portal-detail-shell.component.ts`
 
 Shared inline player shell:
 
-- `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/portal-inline-player/portal-inline-player.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/ui/playback/src/lib/portal-inline-player/portal-inline-player.component.ts`
 
 Xtream detail hosts:
 
-- `/Users/4gray/Code/iptvnator/libs/portal/xtream/feature/src/lib/vod-details/vod-details-route.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/xtream/feature/src/lib/serial-details/serial-details.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/portal/xtream/feature/src/lib/vod-details/vod-details-route.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/portal/xtream/feature/src/lib/serial-details/serial-details.component.ts`
 
 Stalker detail hosts:
 
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-catalog-detail/stalker-catalog-detail.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-series-view/stalker-series-view.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-collection-detail.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-search/stalker-search.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/portal/stalker/feature/src/lib/stalker-catalog-detail/stalker-catalog-detail.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/portal/stalker/feature/src/lib/stalker-series-view/stalker-series-view.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/portal/stalker/feature/src/lib/stalker-collection-detail.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/portal/stalker/feature/src/lib/stalker-search/stalker-search.component.ts`
 
 Embedded playback does not have a fallback dialog path.
 `PlayerService.openResolvedPlayback(...)` remains the MPV/VLC external launch
@@ -461,8 +461,8 @@ entry point; for embedded players it returns without creating UI.
 
 Diagnostics, recovery policy, and recovery UI:
 
-- `/Users/4gray/Code/iptvnator/libs/playback/util/src/index.ts`
-- `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`
+- `/Users/4gray/Code/echo-tv/libs/playback/util/src/index.ts`
+- `/Users/4gray/Code/echo-tv/libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`
 
 ## Playback Decision Rule
 
@@ -498,7 +498,7 @@ Every detail host therefore keeps these rules:
   own are left alone. With instance reuse off, a second detached player would
   otherwise start beside the first. Stalker hosts use
   `replaceOwnedExternalSession` from
-  `@iptvnator/portal/shared/util`; the Xtream pages use
+  `@echo-tv/portal/shared/util`; the Xtream pages use
   `closeRunningExternalSession` with the same outcome rules.
 - **Unconfirmed teardown cancels the launch.** A live session without a
   closer, or a close that rejects, leaves the running player in place and
@@ -515,7 +515,7 @@ Every detail host therefore keeps these rules:
 - **Pending starts are owner-scoped.** A start still resolving holds the
   actions of its own title only: another title shown by the reused page is
   not blocked by it. Movie hosts track starts with
-  `createPendingPlaybackStart` (`@iptvnator/portal/shared/util`): only the
+  `createPendingPlaybackStart` (`@echo-tv/portal/shared/util`): only the
   latest start may clear the flag, and `isPendingFor(owner)` answers for one
   owner. The Stalker movie hosts, whose starts wait on a portal round trip,
   also `retire(owner)` when the selection leaves it, so a start that never
@@ -623,13 +623,13 @@ applies when the host starts the next playback.
 Video.js, HTML5, and ArtPlayer
 report native media errors, hls.js errors, Video.js/VHS errors, Shaka errors,
 mpegts.js errors, and HLS manifest codec metadata into the DOM-free classifiers
-exported by `@iptvnator/playback/util`.
+exported by `@echo-tv/playback/util`.
 
 The canonical recovery flow is:
 
 ```text
 engine public error
-  -> sanitized PlaybackDiagnostic (@iptvnator/playback/util)
+  -> sanitized PlaybackDiagnostic (@echo-tv/playback/util)
   -> recommendPlaybackRecovery(context)
   -> ranked maximum-three action model
   -> WebPlayerView session-local user action
@@ -683,10 +683,10 @@ objects and strings that do not establish a decode cause. Non-VHS native code
 VHS stage evidence is derived only where the public engine identifier names
 the operation: HLS playlist parsing is `playlist`, DASH manifest parsing is
 `manifest`, and select/decrypt/transmux/append segment errors are `segment`;
-everything else is `unknown`. In particular, IPTVnator does not read internal
+everything else is `unknown`. In particular, ECHO TV does not read internal
 `requestType` values to guess manifest, playlist, segment, or key stages. VHS
 handles retries, rendition exclusions/re-inclusions, segment timeout recovery,
-and request aborts before a final player error; IPTVnator observes only the
+and request aborts before a final player error; ECHO TV observes only the
 public terminal event and does not subscribe to undocumented recovery events
 or private loaders.
 
@@ -826,7 +826,7 @@ truncated label or clipped content.
 URL extension metadata is filtered before diagnostics and player selection use it. Web script extensions such as `.php` are not shown as stream containers; explicit media query metadata such as `extension=ts` or `format=m3u8` is preferred when present.
 
 The HTML5 player and ArtPlayer choose their source engine from one URL rule,
-`resolvePlaybackUrlSourceKind()` in `@iptvnator/playback/util`, which maps the
+`resolvePlaybackUrlSourceKind()` in `@echo-tv/playback/util`, which maps the
 normalized media extension to `dash` (`mpd`), `hls` (`m3u8`/`m3u`), `mpegts`
 (`ts`, `m2ts`, and extension-less proxy/script URLs) or `native` (every other
 container: `mkv`, `webm`, `mp4`, `avi`, `mov`, `m4v`, audio files). hls.js
@@ -1172,11 +1172,11 @@ path-only setting; extra flags are stored separately as `mpvPlayerArguments` and
 `vlcPlayerArguments`.
 
 Argument fields are line-oriented: one non-empty trimmed line becomes one argv
-entry. IPTVnator prepends those custom entries before its stream-specific runtime
+entry. ECHO TV prepends those custom entries before its stream-specific runtime
 arguments. This avoids shell parsing, keeps paths with spaces safe, and preserves
 existing settings for users who never configured extra arguments.
 
-The arguments apply only when IPTVnator spawns a new external player process. If
+The arguments apply only when ECHO TV spawns a new external player process. If
 MPV or VLC instance reuse is active and an existing process is reused, subsequent
 streams are loaded through MPV IPC or VLC RC commands and new process arguments
 are not re-applied until a fresh process starts.
@@ -1240,7 +1240,7 @@ This keeps non-Flatpak behavior unchanged while allowing Flatpak builds to open 
 
 Shared playback payloads live in:
 
-- `/Users/4gray/Code/iptvnator/libs/shared/interfaces/src/lib/portal-playback.interface.ts`
+- `/Users/4gray/Code/echo-tv/libs/shared/interfaces/src/lib/portal-playback.interface.ts`
 
 Types introduced:
 
@@ -1290,7 +1290,7 @@ its stream has really played, so a stream that fails straight away never
 reaches history.
 
 - Writers do not persist on selection. They hand the write to
-  `PlaybackHistoryGate` (`@iptvnator/playback/data-access`) with
+  `PlaybackHistoryGate` (`@echo-tv/playback/data-access`) with
   `defer(target, commit)`, where the target is what the playback will be
   known by: the host's `playbackSessionKey` (M3U) and/or stream URLs. The Stalker resolver defers
   by the resolved (possibly temporary) link; the persisted row still stores

@@ -1,7 +1,7 @@
 import type {
     DatabaseWorkerPerformancePhase,
     PerformancePhaseEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import {
     expectedXtreamWorkerRequestInventory,

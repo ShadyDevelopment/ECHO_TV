@@ -6,7 +6,7 @@ import {
     type XtreamPreloadPerformanceMarker,
     type XtreamPreloadPerformanceMethod,
     type XtreamPreloadPerformanceOutcome,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     extractXtreamPreloadPerformanceMetadata,
     type XtreamPreloadMarkerMetadata,
@@ -62,7 +62,7 @@ export function toXtreamPreloadPerformanceTargetMethod(
 }
 
 export function isXtreamPreloadPerformanceCaptureEnabled(): boolean {
-    return process.env['IPTVNATOR_PERF_CAPTURE'] === '1';
+    return process.env['ECHO_TV_PERF_CAPTURE'] === '1';
 }
 
 function readHighResolutionEpochMs(): number {

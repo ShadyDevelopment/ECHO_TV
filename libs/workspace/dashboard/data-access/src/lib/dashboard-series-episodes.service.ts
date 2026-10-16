@@ -1,10 +1,10 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { createLogger } from '@iptvnator/portal/shared/util/logger';
+import { createLogger } from '@echo-tv/portal/shared/util/logger';
 import {
     XtreamApiService,
     type XtreamCredentials,
-} from '@iptvnator/portal/xtream/data-access';
-import type { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/xtream/data-access';
+import type { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 
 /** The episode list of one Xtream series, as far as the dashboard knows it. */
 export type DashboardSeriesEpisodes =

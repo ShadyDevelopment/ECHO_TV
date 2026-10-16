@@ -5,7 +5,7 @@ import {
     SourceProbeContext,
     SourceHealthResult,
     sourceHealthUnknown,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { createPlaylistAgentFactory } from '../util/secure-https';
 import { requestWithValidatedRedirects } from '../util/validated-axios';
 import { sourceProbeControl } from './source-probe-control';

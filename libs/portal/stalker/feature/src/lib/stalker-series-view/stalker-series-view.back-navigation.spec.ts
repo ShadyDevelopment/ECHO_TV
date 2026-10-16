@@ -8,12 +8,12 @@ import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     buildStalkerSelectedVodItem,
     StalkerStore,
-} from '@iptvnator/portal/stalker/data-access';
-import { TmdbEnrichmentService } from '@iptvnator/services';
+} from '@echo-tv/portal/stalker/data-access';
+import { TmdbEnrichmentService } from '@echo-tv/services';
 import { EMPTY, of } from 'rxjs';
 import { StalkerSeriesViewComponent } from './stalker-series-view.component';
 

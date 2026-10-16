@@ -1,7 +1,7 @@
-import { Channel } from '@iptvnator/shared/interfaces';
+import { Channel } from '@echo-tv/shared/interfaces';
 import { initialPlaylistMetaState, PlaylistMetaState } from './playlists.state';
 
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 
 export interface PlaylistState {
     active: Channel | undefined;

@@ -1,4 +1,4 @@
-import type { EmbeddedMpvChapter } from '@iptvnator/shared/interfaces';
+import type { EmbeddedMpvChapter } from '@echo-tv/shared/interfaces';
 
 /**
  * Every session update repeats the list, so a chapter-heavy file must not

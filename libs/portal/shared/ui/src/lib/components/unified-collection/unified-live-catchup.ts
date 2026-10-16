@@ -1,20 +1,20 @@
 import { computed, inject, Signal, WritableSignal } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { resolveM3uCatchupUrl } from '@iptvnator/shared/m3u-utils';
+import { resolveM3uCatchupUrl } from '@echo-tv/shared/m3u-utils';
 import {
     ResolvedLiveCollectionDetail,
     StreamResolverService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import {
     PORTAL_PLAYER,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     EpgArchiveCopyService,
     EpgProgramActivationEvent,
-} from '@iptvnator/ui/epg';
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/ui/epg';
+import { Channel, EpgProgram } from '@echo-tv/shared/interfaces';
 import { toEpochSeconds } from './unified-live-epg-summary.util';
 import { UnifiedLiveSelectionGeneration } from './unified-live-selection-generation';
 

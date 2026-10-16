@@ -3,7 +3,7 @@ import {
     type PerformancePhaseEvent,
     type PerformancePhaseMetadata,
     type XtreamDatabasePerformancePhase,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { fitsPerformanceDurationEnvelope } from './performance-phase-duration-envelope';
 
 const PHASE_SEQUENCES = {

@@ -1,4 +1,4 @@
-import type { CollectionContentType } from '@iptvnator/portal/shared/util';
+import type { CollectionContentType } from '@echo-tv/portal/shared/util';
 import type { DashboardRemainingLabel } from './dashboard-playback.utils';
 import type { DashboardHeroSlideKind } from './dashboard-hero-slides.utils';
 

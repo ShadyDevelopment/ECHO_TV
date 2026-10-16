@@ -7,9 +7,9 @@ import {
     StalkerSessionService,
     StalkerStore,
     stalkerSessionFingerprint,
-} from '@iptvnator/portal/stalker/data-access';
-import { STALKER_PLAYLIST_CONNECTION_EDITOR_STATUS } from '@iptvnator/playlist/shared/ui';
-import type { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/stalker/data-access';
+import { STALKER_PLAYLIST_CONNECTION_EDITOR_STATUS } from '@echo-tv/playlist/shared/ui';
+import type { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { AppStalkerPlaylistConnectionEditorService } from './stalker-playlist-connection-editor.service';
 
 describe('AppStalkerPlaylistConnectionEditorService', () => {

@@ -16,28 +16,28 @@ import { UnifiedLiveTabComponent } from './unified-live-tab.component';
 import {
     AudioPlayerComponent,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
+} from '@echo-tv/ui/playback';
 import {
     EpgListViewComponent,
     EpgProgramActivationEvent,
     EpgTimelineComponent,
     getTodayEpgDateKey,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
+} from '@echo-tv/ui/epg';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ResizableDirective } from '@iptvnator/ui/components';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
-import { EpgItem, EpgProgram, VideoPlayer } from '@iptvnator/shared/interfaces';
+import { ResizableDirective } from '@echo-tv/ui/components';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
+import { EpgItem, EpgProgram, VideoPlayer } from '@echo-tv/shared/interfaces';
 import {
     PORTAL_PLAYER,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     StreamResolverService,
     UnifiedRecentDataService,
-} from '@iptvnator/portal/shared/data-access';
-import { createPlaybackSessionKey as sessionKey } from '@iptvnator/playback/util';
+} from '@echo-tv/portal/shared/data-access';
+import { createPlaybackSessionKey as sessionKey } from '@echo-tv/playback/util';
 import {
     StubAudioPlayerComponent,
     StubEpgTimelineComponent,

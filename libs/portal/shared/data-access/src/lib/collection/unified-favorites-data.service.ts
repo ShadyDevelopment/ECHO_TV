@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+import { PlaylistActions, selectAllPlaylistsMeta } from '@echo-tv/m3u-state';
 import { firstValueFrom, map } from 'rxjs';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     Channel,
     extractStalkerItemId,
@@ -19,7 +19,7 @@ import {
     Playlist,
     PlaylistMeta,
     StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     buildCollectionUid,
     buildXtreamCollectionUid,
@@ -28,11 +28,11 @@ import {
     UnifiedCollectionItem,
     xtreamContentType,
     XtreamFavoriteRow,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     XTREAM_DATA_SOURCE,
     XtreamContentItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 
 const GLOBAL_FAVORITES_ORDER_KEY = 'global-favorites-channel-order-v1';
 

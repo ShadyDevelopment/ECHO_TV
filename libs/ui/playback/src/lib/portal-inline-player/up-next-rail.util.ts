@@ -1,5 +1,5 @@
-import { getPortalPlaybackProgressPercent } from '@iptvnator/portal/shared/util';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { getPortalPlaybackProgressPercent } from '@echo-tv/portal/shared/util';
+import type { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import {
     formatSeriesEpisodeLabel,
     type SeriesPlaybackEpisodeLike,

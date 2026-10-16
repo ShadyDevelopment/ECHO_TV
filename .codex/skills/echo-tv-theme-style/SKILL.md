@@ -1,9 +1,9 @@
 ---
-name: iptvnator-theme-style
-description: Use when changing IPTVnator SCSS tokens, shared layout mixins, portal headers, sidebars, detail views, Electron drag regions, or cross-portal visual consistency.
+name: echo-tv-theme-style
+description: Use when changing ECHO TV SCSS tokens, shared layout mixins, portal headers, sidebars, detail views, Electron drag regions, or cross-portal visual consistency.
 ---
 
-# IPTVnator Theme Style
+# ECHO TV Theme Style
 
 ## Canonical Sources
 
@@ -13,7 +13,7 @@ description: Use when changing IPTVnator SCSS tokens, shared layout mixins, port
   `libs/ui/styles/_content-grid.scss`, `libs/ui/styles/_portal-sidebar.scss`,
   `libs/ui/styles/_panel-header.scss`, `libs/ui/styles/_detail-view.scss`, and
   `libs/ui/styles/_detail-view-actions.scss`
-- UI policy and migration debt: `docs/architecture/iptvnator-ui-guidelines.md`
+- UI policy and migration debt: `docs/architecture/echo-tv-ui-guidelines.md`
 
 The index is a barrel, not a Sass include path: consumers `@use` each
 partial by relative path.
@@ -48,7 +48,7 @@ partial by relative path.
   this centrally. Shared live sidebars reserve 8 px between their scroll
   content and the edge so scrollbar and resize hit areas stay independent.
 - A shared change must be checked across M3U, Xtream, Stalker, workspace,
-  portal catalog/shared UI, and unified collections where relevant.
+  portal catalog/shared UI, and unified collections.
 
 ## Typography
 

@@ -200,13 +200,13 @@ export function resolveJourneySummaryPath(
  * before the worker starts, so every journey spec of the run writes to the
  * same file.
  */
-export const JOURNEY_RUN_STARTED_AT_ENV = 'IPTVNATOR_JOURNEY_RUN_STARTED_AT';
+export const JOURNEY_RUN_STARTED_AT_ENV = 'ECHO_TV_JOURNEY_RUN_STARTED_AT';
 /**
  * Unique id of the invocation, set next to the start time. Two invocations
  * that start in the same second resolve to the same directory; the id keeps
  * one from merging into the other's summary.
  */
-export const JOURNEY_RUN_ID_ENV = 'IPTVNATOR_JOURNEY_RUN_ID';
+export const JOURNEY_RUN_ID_ENV = 'ECHO_TV_JOURNEY_RUN_ID';
 
 export function resolveJourneyRunSummaryPath(
     repositoryRoot: string,

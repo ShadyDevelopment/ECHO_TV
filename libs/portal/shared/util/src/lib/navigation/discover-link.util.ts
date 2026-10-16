@@ -2,7 +2,7 @@ import {
     TmdbCountryFacet,
     TmdbGenreFacet,
     TmdbMediaType,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * One metadata chip click on a detail page (year, genre or country),

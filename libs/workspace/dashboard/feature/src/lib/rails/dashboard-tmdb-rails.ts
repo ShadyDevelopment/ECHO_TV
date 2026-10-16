@@ -1,5 +1,5 @@
 import { effect, untracked } from '@angular/core';
-import type { DashboardRailsSettings } from '@iptvnator/shared/interfaces';
+import type { DashboardRailsSettings } from '@echo-tv/shared/interfaces';
 
 /**
  * What the TMDB rails' loading reads from the dashboard; the rails

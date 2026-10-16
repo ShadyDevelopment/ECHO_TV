@@ -135,7 +135,7 @@ describe('Xtream benchmark integrity boundaries', () => {
         const definition = required(createXtreamIterationDefinitions(false), 1);
         const raw = iteration(definition, 1);
         const directory = await mkdtemp(
-            join(tmpdir(), 'iptvnator-xtream-receipt-accessor-')
+            join(tmpdir(), 'echo-tv-xtream-receipt-accessor-')
         );
         const regularPath = join(directory, 'raw.json');
         const symlinkPath = join(directory, 'raw-link.json');

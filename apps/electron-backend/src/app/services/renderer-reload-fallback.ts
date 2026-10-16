@@ -26,7 +26,7 @@
  * whose dev server already falls back to the index.
  */
 
-import { RENDERER_RESTORE_ROUTE_QUERY_PARAM } from '@iptvnator/shared/interfaces';
+import { RENDERER_RESTORE_ROUTE_QUERY_PARAM } from '@echo-tv/shared/interfaces';
 import { dirname, isAbsolute, relative, resolve, sep } from 'path';
 import { fileURLToPath } from 'url';
 import { isWindowTraceEnabled, trace } from './debug-trace';

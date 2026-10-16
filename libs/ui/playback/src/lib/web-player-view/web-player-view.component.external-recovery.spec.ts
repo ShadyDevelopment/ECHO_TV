@@ -11,20 +11,20 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { TranslateModule } from '@ngx-translate/core';
-import { PORTAL_EXTERNAL_PLAYBACK } from '@iptvnator/portal/shared/util';
+import { PORTAL_EXTERNAL_PLAYBACK } from '@echo-tv/portal/shared/util';
 import {
     PlaybackDiagnosticCode,
     PlaybackDiagnosticSource,
     type PlaybackDiagnostic,
     type PlaybackFallbackRequest,
-} from '@iptvnator/playback/util';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/playback/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
 import {
     type ExternalPlayerSession,
     type ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { VodSourceRowComponent } from '@iptvnator/ui/components';
+} from '@echo-tv/shared/interfaces';
+import { VodSourceRowComponent } from '@echo-tv/ui/components';
 import { of } from 'rxjs';
 import { PlaybackDiagnosticPanelComponent } from '../playback-diagnostic-panel/playback-diagnostic-panel.component';
 import { ElectronStreamHeadersService } from './electron-stream-headers.service';

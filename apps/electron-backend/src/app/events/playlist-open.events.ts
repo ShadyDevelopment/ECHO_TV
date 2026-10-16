@@ -14,7 +14,7 @@ import {
     ACKNOWLEDGE_PLAYLIST_OPEN_REQUEST,
     ANNOUNCE_PLAYLIST_OPEN_LISTENER,
     OPEN_FILE,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { playlistOpenRequests } from '../services/playlist-open-request';
 
 export default class PlaylistOpenEvents {

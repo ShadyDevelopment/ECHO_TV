@@ -98,7 +98,7 @@ Response: raw JSON (no envelope). Matches the real Xtream Codes API format.
 
 ### PWA proxy endpoint
 
-IPTVnator's PWA routes Xtream calls through:
+ECHO TV's PWA routes Xtream calls through:
 
 ```
 GET /xtream?url=<serverUrl>&action=<action>&username=<u>&password=<p>
@@ -112,10 +112,10 @@ Angular service code works in both environments.
 ### Performance control endpoint
 
 The control plane is absent by default. It is mounted only when
-`IPTVNATOR_XTREAM_MOCK_CONTROL=1`; startup then requires a non-empty
-`IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN` and a literal loopback `HOST`
+`ECHO_TV_XTREAM_MOCK_CONTROL=1`; startup then requires a non-empty
+`ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN` and a literal loopback `HOST`
 (`127.0.0.1` or `::1`). Every `/__control/*` request must carry that exact value
-in `x-iptvnator-performance-token`, including `OPTIONS` preflight requests.
+in `x-echo-tv-performance-token`, including `OPTIONS` preflight requests.
 Configuration is validated before the HTTP listener opens. Both modes now
 default to `127.0.0.1` when `HOST` is unset — the fixture serves fabricated but
 unauthenticated content, so it should not be reachable from other hosts by
@@ -131,8 +131,8 @@ Use a dedicated port rather than the normal `3211` E2E server:
 ```bash
 HOST=127.0.0.1 \
 PORT=3221 \
-IPTVNATOR_XTREAM_MOCK_CONTROL=1 \
-IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN=local-benchmark-token \
+ECHO_TV_XTREAM_MOCK_CONTROL=1 \
+ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN=local-benchmark-token \
 pnpm nx run xtream-mock-server:serve
 ```
 
@@ -451,7 +451,7 @@ This scenario is reserved for release screenshots and marketing materials:
   the deterministic SVG fallback for their missing backdrops; the newest 20
   appear first in the VOD catalog
 - showcase metadata comes from the provider-neutral
-  `@iptvnator/shared/marketing-fixtures` catalog shared with the Stalker mock
+  `@echo-tv/shared/marketing-fixtures` catalog shared with the Stalker mock
 - posters and backdrops are served from committed PNG files in
   `apps/xtream-mock-server/public/marketing/{poster,backdrop}/`
 - `tools/release/generate-marketing-artwork.ts` generates the PNGs with
@@ -487,8 +487,8 @@ available at `127.0.0.1:9222`:
 
 ```bash
 perf_output="$PWD/dist/performance/$(date -u +%Y%m%dT%H%M%SZ)-xtream"
-IPTVNATOR_PERF_OUTPUT_DIR="$perf_output" \
-IPTVNATOR_PERF_VARIANT=baseline \
+ECHO_TV_PERF_OUTPUT_DIR="$perf_output" \
+ECHO_TV_PERF_VARIANT=baseline \
 NX_TASKS_RUNNER_DYNAMIC_OUTPUT=false \
 pnpm nx run electron-backend-e2e:benchmark-xtream --skip-nx-cache
 ```
@@ -546,10 +546,10 @@ when the formal port is occupied:
 
 ```bash
 perf_output="$PWD/dist/performance/$(date -u +%Y%m%dT%H%M%SZ)-xtream-smoke"
-IPTVNATOR_PERF_OUTPUT_DIR="$perf_output" \
-IPTVNATOR_PERF_VARIANT=smoke \
-IPTVNATOR_PERF_SMOKE=1 \
-IPTVNATOR_PERF_CDP_PORT=9322 \
+ECHO_TV_PERF_OUTPUT_DIR="$perf_output" \
+ECHO_TV_PERF_VARIANT=smoke \
+ECHO_TV_PERF_SMOKE=1 \
+ECHO_TV_PERF_CDP_PORT=9322 \
 NX_TASKS_RUNNER_DYNAMIC_OUTPUT=false \
 pnpm nx run electron-backend-e2e:benchmark-xtream --skip-nx-cache
 ```
@@ -594,7 +594,7 @@ in a detached process group of its own. The kill therefore reached only
 the next run fail with "…/health is already used" or, with
 `reuseExistingServer`, silently reuse a stale server. `node --import tsx` keeps
 the server a single process in Playwright's group. `TSX_TSCONFIG_PATH` stands in
-for the serve target's `--tsconfig` flag and is required for the `@iptvnator/*`
+for the serve target's `--tsconfig` flag and is required for the `@echo-tv/*`
 path aliases. `project-config.spec.ts` pins which configs start which mock,
 and fails if any of them launches a mock through Nx or a new config starts one
 without being listed there. The `serve` targets remain the entry point

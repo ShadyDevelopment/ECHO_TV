@@ -39,7 +39,7 @@ import {
     EMBEDDED_MPV_PREPARE,
     EMBEDDED_MPV_SET_PAUSED,
     EMBEDDED_MPV_SUPPORT,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import './embedded-mpv.events';
 
 function getIpcMainHandler(

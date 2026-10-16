@@ -37,20 +37,20 @@ export interface M3uImportBenchmarkConfiguration extends M3uImportOutputLayout {
 }
 
 export async function resolveM3uImportBenchmarkConfiguration(): Promise<M3uImportBenchmarkConfiguration> {
-    const requestedRoot = process.env['IPTVNATOR_PERF_OUTPUT_DIR'];
+    const requestedRoot = process.env['ECHO_TV_PERF_OUTPUT_DIR'];
     if (!requestedRoot) {
-        throw new Error('IPTVNATOR_PERF_OUTPUT_DIR is required');
+        throw new Error('ECHO_TV_PERF_OUTPUT_DIR is required');
     }
-    const variant = process.env['IPTVNATOR_PERF_VARIANT'] ?? 'baseline';
+    const variant = process.env['ECHO_TV_PERF_VARIANT'] ?? 'baseline';
     const layout = resolveM3uImportOutputLayout(
         workspaceRoot,
         requestedRoot,
         variant
     );
-    const smoke = process.env['IPTVNATOR_PERF_SMOKE'] === '1';
+    const smoke = process.env['ECHO_TV_PERF_SMOKE'] === '1';
     const rendererCdpPort = resolveM3uImportRendererCdpPort(
         smoke,
-        process.env['IPTVNATOR_PERF_CDP_PORT']
+        process.env['ECHO_TV_PERF_CDP_PORT']
     );
     const sourceState = readGitSourceState(workspaceRoot);
     assertM3uImportSourceState(smoke, sourceState);
@@ -100,11 +100,11 @@ export function resolveM3uImportOutputLayout(
         );
     }
     if (!OUTPUT_VARIANT_PATTERN.test(variant)) {
-        throw new Error('IPTVNATOR_PERF_VARIANT is invalid');
+        throw new Error('ECHO_TV_PERF_VARIANT is invalid');
     }
     const variantDirectory = resolve(outputRoot, variant);
     if (!isStrictDescendant(outputRoot, variantDirectory)) {
-        throw new Error('IPTVNATOR_PERF_VARIANT is invalid');
+        throw new Error('ECHO_TV_PERF_VARIANT is invalid');
     }
     return Object.freeze({ outputRoot, variantDirectory });
 }
@@ -164,7 +164,7 @@ export function resolveM3uImportRendererCdpPort(
         port < 1024 ||
         port > 65_535
     ) {
-        throw new Error('IPTVNATOR_PERF_CDP_PORT is invalid');
+        throw new Error('ECHO_TV_PERF_CDP_PORT is invalid');
     }
     if (!smoke && port !== M3U_IMPORT_RENDERER_CDP_PORT) {
         throw new Error(

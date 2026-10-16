@@ -45,7 +45,7 @@ jest.mock('./services/store.service', () => ({
     ZOOM_LEVEL: 'zoomLevel',
 }));
 
-import { WINDOW_STATE_CHANGED } from '@iptvnator/shared/interfaces';
+import { WINDOW_STATE_CHANGED } from '@echo-tv/shared/interfaces';
 import App from './app';
 
 type MockStateWindow = {

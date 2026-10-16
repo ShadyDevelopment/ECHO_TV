@@ -1,4 +1,4 @@
-import { XTREAM_DATABASE_PERFORMANCE_PHASE } from '@iptvnator/shared/interfaces';
+import { XTREAM_DATABASE_PERFORMANCE_PHASE } from '@echo-tv/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import {
     clearXtreamImportCache,

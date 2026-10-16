@@ -7,12 +7,12 @@ import {
     signal,
     untracked,
 } from '@angular/core';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     CrossPortalSimilarItem,
     CrossPortalSimilarService,
-} from '@iptvnator/services';
-import { normalizeTitleKeys } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { normalizeTitleKeys } from '@echo-tv/shared/interfaces';
 import {
     SimilarCatalogItem,
     matchRecommendationsToCatalog,

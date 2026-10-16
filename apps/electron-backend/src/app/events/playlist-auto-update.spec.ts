@@ -1,4 +1,4 @@
-import type { Playlist } from '@iptvnator/shared/interfaces';
+import type { Playlist } from '@echo-tv/shared/interfaces';
 import {
     AUTO_UPDATE_CONCURRENCY,
     autoUpdatePlaylists,
@@ -221,7 +221,7 @@ describe('autoUpdatePlaylists', () => {
         mockFetchPlaylistFromUrl.mockResolvedValue(createPlaylist());
         const playlist = createPlaylist({
             url: 'https://example.test/list.m3u',
-            userAgent: 'IPTVnator-Test/1.0',
+            userAgent: 'ECHO TV-Test/1.0',
         });
         await autoUpdatePlaylists([playlist]);
         expect(mockFetchPlaylistFromUrl).toHaveBeenCalledWith(

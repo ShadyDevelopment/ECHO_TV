@@ -1,4 +1,4 @@
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import { episodeTimeLabel, formatEpisodeAirDate } from './episode-meta.util';
 
 const position = (

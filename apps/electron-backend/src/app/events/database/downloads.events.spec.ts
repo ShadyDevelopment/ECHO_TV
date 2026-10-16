@@ -34,7 +34,7 @@ describe('downloads events: partial-file cleanup', () => {
                 action === 'remove'
                     ? mockDownloadRow(row)
                     : mockTerminalRows([row]);
-            const recoveryPath = '/downloads/.iptvnator-cleanup-test/entry';
+            const recoveryPath = '/downloads/.echo-tv-cleanup-test/entry';
             mockRemoveJournaledPartial.mockImplementation(() => {
                 throw new ArchiveRecoveryRequiredError(recoveryPath);
             });
@@ -123,7 +123,7 @@ describe('downloads events: partial-file cleanup', () => {
             const proof = {
                 version: 1,
                 phase: 'transfer',
-                partialCleanupPath: '/downloads/.iptvnator-cleanup-test/entry',
+                partialCleanupPath: '/downloads/.echo-tv-cleanup-test/entry',
             };
             mockArchiveProofs.mockResolvedValue(new Map([[42, proof]]));
             if (locked)
@@ -212,7 +212,7 @@ describe('downloads events: partial-file cleanup', () => {
         });
         const proof = { version: 1, phase: 'transfer' };
         mockRemoveJournaledPartial.mockImplementation((_path, _proof, record) =>
-            record('/downloads/.iptvnator-cleanup-test/entry', 'partial')
+            record('/downloads/.echo-tv-cleanup-test/entry', 'partial')
         );
         mockArchiveProofs.mockResolvedValue(new Map([[42, proof]]));
         await expect(getHandler('DOWNLOADS_REMOVE')(null, 42)).resolves.toEqual(
@@ -229,7 +229,7 @@ describe('downloads events: partial-file cleanup', () => {
             expect.anything(),
             42,
             proof,
-            '/downloads/.iptvnator-cleanup-test/entry',
+            '/downloads/.echo-tv-cleanup-test/entry',
             'partial'
         );
         expect(deleteWhere).toHaveBeenCalled();
@@ -241,7 +241,7 @@ describe('downloads events: partial-file cleanup', () => {
         ]);
         const proof = { version: 1, phase: 'transfer' };
         mockRemoveJournaledPartial.mockImplementation((_path, _proof, record) =>
-            record('/downloads/.iptvnator-cleanup-test/entry', 'partial')
+            record('/downloads/.echo-tv-cleanup-test/entry', 'partial')
         );
         mockArchiveProofs.mockResolvedValue(new Map([[1, proof]]));
         await expect(
@@ -257,7 +257,7 @@ describe('downloads events: partial-file cleanup', () => {
             expect.anything(),
             1,
             proof,
-            '/downloads/.iptvnator-cleanup-test/entry',
+            '/downloads/.echo-tv-cleanup-test/entry',
             'partial'
         );
         expect(mockRemovePartialDownloadFile).not.toHaveBeenCalled();

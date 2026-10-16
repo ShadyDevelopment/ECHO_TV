@@ -52,7 +52,7 @@ function removeOwnedEntry(
         if ((error as NodeJS.ErrnoException).code === 'ENOENT') return;
         throw error;
     }
-    const directory = mkdtempSync(join(dirname(path), '.iptvnator-cleanup-'));
+    const directory = mkdtempSync(join(dirname(path), '.echo-tv-cleanup-'));
     const captured = join(directory, 'entry');
     try {
         recordCapture(captured);

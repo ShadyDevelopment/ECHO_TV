@@ -11,7 +11,7 @@ external-player session.
 
 `WebPlayerViewComponent` records MPV or VLC as attempted before emitting the
 fallback request. The recommendation policy then removes attempted targets, so
-each button disappears even though IPTVnator only knows that the action was
+each button disappears even though ECHO TV only knows that the action was
 requested. It does not yet know whether the external player started or played
 the stream.
 

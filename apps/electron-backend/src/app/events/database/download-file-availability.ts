@@ -2,7 +2,7 @@ import {
     type DownloadMetadataSnapshot,
     type ElectronBridgeDownloadStatus,
     type ElectronDownloadFileAvailability,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { lstatSync, type Stats } from 'node:fs';
 import { lstat } from 'node:fs/promises';
 import { decodeDownloadMetadataSnapshot } from './download-metadata-snapshot';

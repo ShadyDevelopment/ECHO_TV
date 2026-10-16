@@ -4,9 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     WorkspaceCommandContribution,
     WorkspaceViewCommandService,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { VideoPlayer } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { VideoPlayer } from '@echo-tv/shared/interfaces';
 
 type PlayerCommandRequirement = 'none' | 'managed-external' | 'embedded-mpv';
 

@@ -3,7 +3,7 @@ import type { IpcMain } from 'electron';
 /**
  * Named main-process counters for the performance journeys
  * (docs/architecture/performance-journeys.md). Everything here is inert
- * unless `IPTVNATOR_PERF_CAPTURE=1`: nothing is counted, no listener is
+ * unless `ECHO_TV_PERF_CAPTURE=1`: nothing is counted, no listener is
  * attached and no IPC handler is registered. Only type imports from
  * `electron`, so the database worker and the preload can load
  * `debug-trace.ts`, which owns the process-wide registry.
@@ -92,9 +92,9 @@ export function registerPerformanceCountersHandler(
 }
 
 export interface MainWindowPerformanceCounterFlags {
-    /** IPTVNATOR_PERF_CAPTURE=1. */
+    /** ECHO_TV_PERF_CAPTURE=1. */
     readonly capture: boolean;
-    /** IPTVNATOR_PERF_COUNT_SQL=1 as well; SQL is not counted otherwise. */
+    /** ECHO_TV_PERF_COUNT_SQL=1 as well; SQL is not counted otherwise. */
     readonly sqlStatements: boolean;
 }
 

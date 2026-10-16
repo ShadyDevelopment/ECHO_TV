@@ -1,7 +1,7 @@
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { isPortalPlaybackWatched } from './portal-playback-positions';
 
 export interface SeriesProgressRequest {

@@ -8,8 +8,8 @@ import {
     EpgChannelMetadata,
     EpgProgram,
     epgProviderClockMs,
-} from '@iptvnator/shared/interfaces';
-import { EpgSourceSettingsService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import { EpgSourceSettingsService, SettingsStore } from '@echo-tv/services';
 import {
     EpgLookupOptions,
     EpgRuntimeBridgeService,
@@ -25,7 +25,7 @@ import {
     normalizeLookupChannelIds,
     normalizeLookupSourceUrls,
 } from './epg-lookup-normalization.util';
-import { normalizeEpgUrls } from '@iptvnator/shared/m3u-utils';
+import { normalizeEpgUrls } from '@echo-tv/shared/m3u-utils';
 
 const debugEpgService = createDevLogger('EpgService');
 

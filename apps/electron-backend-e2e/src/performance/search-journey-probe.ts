@@ -28,12 +28,12 @@ import {
  * The script must stay self-contained: Playwright serializes it with
  * `toString()`, so it may only use its argument and browser globals.
  */
-export const SEARCH_JOURNEY_PROBE_STATE_KEY = '__iptvnatorJourneySearchProbe';
+export const SEARCH_JOURNEY_PROBE_STATE_KEY = '__echo-tvJourneySearchProbe';
 export const SEARCH_JOURNEY_PROBE_SCHEMA_VERSION = 1;
 export const SEARCH_JOURNEY_START_SENTINEL_ID =
-    '__iptvnator-journey-search-start__';
+    '__echo-tv-journey-search-start__';
 export const SEARCH_JOURNEY_END_SENTINEL_ID =
-    '__iptvnator-journey-search-end__';
+    '__echo-tv-journey-search-end__';
 /** The workspace shell header's search box. */
 export const SEARCH_JOURNEY_INPUT_SELECTOR =
     'app-workspace-shell-header .search-field input[type="search"]';

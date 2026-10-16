@@ -1,12 +1,12 @@
 import {
     EmbeddedMpvFrameSource,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { joinMpvHeaderFields } from '../util/mpv-string-list.util';
 import type { NativeEmbeddedMpvSessionSnapshot } from './embedded-mpv-native.service';
 
 /**
- * Wire protocol for the `iptvnator_mpv_helper` frame-copy process:
+ * Wire protocol for the `echo-tv_mpv_helper` frame-copy process:
  * tab-separated commands over stdin, JSON events over stdout.
  *
  * Kept separate from the adapter so the encoding rules and the event contract
@@ -157,7 +157,7 @@ export function applyHelperEvent(
                         event.prefix ?? ''
                     )}] ${String(event.text ?? '').trim()}`
                 );
-            } else if (event.level === 'warn' && event.prefix === 'iptvnator') {
+            } else if (event.level === 'warn' && event.prefix === 'echo-tv') {
                 // The helper's own warnings (a session option libmpv
                 // rejected) must reach the main-process log like the
                 // native-view trace does; mpv's warn-level chatter stays

@@ -1,7 +1,7 @@
 import {
     ParentalLockPinThrottle,
     verifyParentalLockPin,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { ParentalLockPromptRequest } from './parental-lock-prompt.token';
 
 type PromptLabels = Pick<

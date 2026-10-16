@@ -53,8 +53,8 @@ WORKDIR /opt/echo-tv
 ENV PORT=3000
 ENV BACKEND_URL=/api
 ENV CLIENT_URL=http://localhost:4333
-ENV IPTVNATOR_STORAGE=server
-ENV IPTVNATOR_DATA_DIR=/data
+ENV ECHO_TV_STORAGE=server
+ENV ECHO_TV_DATA_DIR=/data
 
 COPY --from=build /usr/src/app/dist/apps/web /usr/share/nginx/html
 COPY --from=build /usr/src/app/dist/apps/web-backend ./web-backend

@@ -7,8 +7,8 @@ import {
     stalkerSessionFingerprint,
     StalkerPortalDiscoveryService,
     StalkerPortalError,
-} from '@iptvnator/portal/stalker/data-access';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/stalker/data-access';
+import { Playlist } from '@echo-tv/shared/interfaces';
 import { StalkerPortalImportComponent } from './stalker-portal-import.component';
 
 describe('StalkerPortalImportComponent identity handling', () => {

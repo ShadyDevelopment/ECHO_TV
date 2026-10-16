@@ -71,7 +71,7 @@ async function runAgainstRefusingPortal(
     // A developer shell with the IPC trace on would make the handlers log
     // the cancellations on purpose; this test asserts the default silence.
     const app = await launchElectronApp(dataDir, {
-        omitEnvKeys: ['IPTVNATOR_TRACE_IPC', 'IPTVNATOR_TRACE_STARTUP'],
+        omitEnvKeys: ['ECHO_TV_TRACE_IPC', 'ECHO_TV_TRACE_STARTUP'],
     });
     let diagnostics = '';
     const capture = (chunk: Buffer) => {

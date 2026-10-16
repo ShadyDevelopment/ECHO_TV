@@ -18,7 +18,7 @@ import {
 const scriptPath = fileURLToPath(
     new URL('./tighten-baselines.mjs', import.meta.url)
 );
-const RUN_URL = 'https://github.com/4gray/iptvnator/actions/runs/1';
+const RUN_URL = 'https://github.com/4gray/echo-tv/actions/runs/1';
 
 const baselinesFile = (entries) => ({
     version: 1,

@@ -7,7 +7,7 @@ import {
     TmdbRecommendation,
     XtreamSerieInfo,
     XtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { tmdbBackdropUrl, tmdbPosterUrl } from './tmdb-config';
 import {
     castNames,

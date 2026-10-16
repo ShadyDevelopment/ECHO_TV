@@ -15,16 +15,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { type SeasonEpisodeDownloadAdapter } from '@iptvnator/portal/shared/data-access';
+import { type SeasonEpisodeDownloadAdapter } from '@echo-tv/portal/shared/data-access';
 import {
     createLogger,
     isPortalPlaybackInProgress,
     isPortalPlaybackWatched,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { DetailSectionHeaderComponent } from '../detail-ui/detail-section-header.component';
 import { ExpandableTextComponent } from '../expandable-text/expandable-text.component';
 import {
@@ -60,7 +60,7 @@ import {
     resolveEpisodeInfo,
 } from './season-watch-toggle.util';
 
-const EPISODE_VIEW_MODE_KEY = 'iptvnator_episode_view_mode';
+const EPISODE_VIEW_MODE_KEY = 'echo-tv_episode_view_mode';
 
 export type EpisodeViewMode = 'grid' | 'list';
 

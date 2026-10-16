@@ -7,7 +7,7 @@ import {
     createMpegTsPlaybackEvidence,
     createPlaybackSourceMetadata,
     getPlaybackMediaExtensionFromUrl,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 
 interface VjsDurationPlayer {
     duration(value?: number): unknown;

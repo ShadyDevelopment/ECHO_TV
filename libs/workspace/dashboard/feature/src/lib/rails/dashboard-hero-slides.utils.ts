@@ -3,7 +3,7 @@ import type {
     PortalAddedItem,
     PortalFavoriteItem,
     PortalRecentItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /** Slides the cinematic hero rotates through, at most. */
 export const HERO_SLIDE_LIMIT = 4;

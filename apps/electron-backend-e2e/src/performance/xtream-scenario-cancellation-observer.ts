@@ -1,6 +1,6 @@
 import type { Page } from '@playwright/test';
 
-const CANCELLATION_STATE_KEY = '__iptvnatorXtreamScenarioCancellationObserver';
+const CANCELLATION_STATE_KEY = '__echo-tvXtreamScenarioCancellationObserver';
 const OPERATION_TIMEOUT_MS = 120_000;
 
 export interface XtreamDbOperationEventLike {

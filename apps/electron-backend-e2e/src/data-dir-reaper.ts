@@ -9,7 +9,7 @@ import {
 import { tmpdir } from 'os';
 import { join } from 'path';
 
-export const dataDirPrefix = 'iptvnator-electron-e2e-';
+export const dataDirPrefix = 'echo-tv-electron-e2e-';
 export const dataDirOwnerMarker = '.e2e-owner-pid';
 /** Fallback cutoff, used only for leftovers whose owner cannot be determined. */
 export const orphanDataDirMaxAgeMs = 24 * 60 * 60 * 1000;

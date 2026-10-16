@@ -33,7 +33,7 @@ for (const player of ['html5', 'artplayer'] as const) {
             await openSources(page);
             const dialog = await openSourceEditor(page, 'Synthetic live');
             await updateSourceDialog(dialog, {
-                userAgent: 'IPTVnator-1513-fixture',
+                userAgent: 'ECHO TV-1513-fixture',
             });
             await saveSourceDialog(page, dialog);
             await sourceRowByTitle(page, 'Synthetic live').first().click();
@@ -50,7 +50,7 @@ for (const player of ['html5', 'artplayer'] as const) {
                 expectLiveFormatPlaying(page, player),
             ]);
             expect(await tsResponse.headerValue('x-fixture-user-agent')).toBe(
-                'IPTVnator-1513-fixture'
+                'ECHO TV-1513-fixture'
             );
 
             expect(media).toContainEqual({ file: '10000.m3u8', status: 200 });

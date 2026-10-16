@@ -28,23 +28,23 @@ import {
     ViewInPortalActionComponent,
     VodMoreMenuComponent,
     scrollToCastCrewRow,
-} from '@iptvnator/ui/components';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/ui/components';
+import { createLogger } from '@echo-tv/portal/shared/util';
 import {
     registerContentMetadataBackfill,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/xtream/data-access';
 import {
     type PlaybackFallbackRequest,
     PortalInlinePlayerComponent,
-} from '@iptvnator/ui/playback';
-import { DownloadsService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/ui/playback';
+import { DownloadsService, SettingsStore } from '@echo-tv/services';
 import {
     TmdbEnrichedCastMember,
     XtreamVodDetails,
     XtreamVodInfo,
     type ExternalPlayerName,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { injectXtreamDetailNavigation } from '../xtream-detail-navigation';
 import { VodDetailsPlaybackService } from './vod-details-playback.service';
 import { VodDetailsMultiSourceUiService } from './vod-details-multi-source-ui.service';

@@ -147,7 +147,7 @@ describe('main preload Xtream performance marker gates', () => {
         });
         harness.ipcRenderer.invoke.mockResolvedValueOnce(result);
         harness.ipcRenderer.send.mockImplementation((channel: string) => {
-            if (channel === 'IPTVNATOR_XTREAM_PERF_CAPTURE_MARKER') {
+            if (channel === 'ECHO_TV_XTREAM_PERF_CAPTURE_MARKER') {
                 throw new Error('marker sink failure');
             }
         });

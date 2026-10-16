@@ -2,17 +2,17 @@ import { TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { SettingsStore } from '@iptvnator/services';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { SettingsStore } from '@echo-tv/services';
 import {
     PLAYLIST_PARSE_BY_URL,
     type Playlist,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     RENDERER_PERFORMANCE_PHASE_HOOK_KEY,
     type RendererPerformancePhaseEvent,
-} from '@iptvnator/shared/logging';
-import { DialogService } from '@iptvnator/ui/components';
+} from '@echo-tv/shared/logging';
+import { DialogService } from '@echo-tv/ui/components';
 import { ElectronService } from './electron.service';
 
 describe('ElectronService performance phases', () => {

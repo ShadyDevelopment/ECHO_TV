@@ -7,8 +7,8 @@ import {
     TranslateService,
 } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
-import { SettingsStore } from '@iptvnator/services';
-import { ExternalPlayerSession } from '@iptvnator/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
+import { ExternalPlayerSession } from '@echo-tv/shared/interfaces';
 import { ExternalPlaybackDockComponent } from './external-playback-dock.component';
 
 class FakeTranslateLoader implements TranslateLoader {

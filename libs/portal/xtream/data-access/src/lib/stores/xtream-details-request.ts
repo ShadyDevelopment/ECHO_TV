@@ -1,7 +1,7 @@
 import {
     XtreamVodDetails,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { XtreamCredentials } from '../services/xtream-api.service';
 import { resolveXtreamVodPlaybackSource } from '../services/xtream-vod-playback-source';
 import {

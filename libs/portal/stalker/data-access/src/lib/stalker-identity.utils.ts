@@ -3,7 +3,7 @@ import {
     normalizeStalkerPortalIdentity as normalizeSharedStalkerPortalIdentity,
     type Playlist,
     type StalkerPortalIdentity,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export {
     buildStalkerSerialCfduid,
@@ -12,7 +12,7 @@ export {
     normalizeStalkerPortalIdentity,
     normalizeStalkerSerialNumber,
     type StalkerPortalIdentity,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Canonical fingerprint of WHO a portal session belongs to: the MAC plus

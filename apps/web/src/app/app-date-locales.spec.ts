@@ -1,8 +1,8 @@
 import { formatDate } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { normalizeDateLocale } from '@iptvnator/pipes';
-import { Language } from '@iptvnator/shared/interfaces';
+import { normalizeDateLocale } from '@echo-tv/pipes';
+import { Language } from '@echo-tv/shared/interfaces';
 import {
     APP_DATE_LOCALE_LOADERS,
     AppDateLocaleService,

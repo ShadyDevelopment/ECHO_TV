@@ -1,4 +1,4 @@
-import { ChannelScrollFocusDirective } from '@iptvnator/ui/components';
+import { ChannelScrollFocusDirective } from '@echo-tv/ui/components';
 import {
     CdkDragDrop,
     DragDropModule,
@@ -20,18 +20,18 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import {
     ChannelDetailsDialogComponent,
     ChannelListItemComponent,
-} from '@iptvnator/ui/components';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+} from '@echo-tv/ui/components';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
 import {
     buildStalkerEpgMappingKey,
     buildXtreamEpgMappingKey,
     EpgProgram,
     epgProviderClockMs,
     playlistDisplayLabel,
-} from '@iptvnator/shared/interfaces';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
-import { EpgMappingDialogComponent } from '@iptvnator/ui/components';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+} from '@echo-tv/shared/interfaces';
+import { resolveChannelEpgLookupKey } from '@echo-tv/m3u-state';
+import { EpgMappingDialogComponent } from '@echo-tv/ui/components';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
 import {
     DEFAULT_FAVORITES_CHANNEL_SORT_MODE,
     deriveVisibleFavoriteChannels,
@@ -40,7 +40,7 @@ import {
     getXtreamCatchupDays,
     isXtreamCatchupAvailable,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import { TranslateModule } from '@ngx-translate/core';
 
 export interface EnrichedUnifiedFavorite extends UnifiedFavoriteChannel {

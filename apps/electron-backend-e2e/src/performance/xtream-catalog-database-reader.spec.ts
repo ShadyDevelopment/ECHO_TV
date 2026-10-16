@@ -69,7 +69,7 @@ describe('Xtream catalog database reader', () => {
 
         const snapshot = await readXtreamCatalogDatabaseSnapshot(evaluator, {
             captureStoppedEpochMs: 2_000,
-            dataDirectory: '/tmp/iptvnator-performance-fixture',
+            dataDirectory: '/tmp/echo-tv-performance-fixture',
             playlistId: 'playlist-1',
             requireFromPath: '/workspace/dist/apps/electron-backend/main.js',
         });
@@ -116,7 +116,7 @@ describe('Xtream catalog database reader', () => {
             evaluatorFor(database, 3_001),
             {
                 captureStoppedEpochMs: 3_000,
-                dataDirectory: '/tmp/iptvnator-performance-fixture',
+                dataDirectory: '/tmp/echo-tv-performance-fixture',
                 playlistId: 'playlist-1',
                 requireFromPath:
                     '/workspace/dist/apps/electron-backend/main.js',
@@ -142,7 +142,7 @@ describe('Xtream catalog database reader', () => {
             evaluatorFor(database, 4_001),
             {
                 captureStoppedEpochMs: 4_000,
-                dataDirectory: '/tmp/iptvnator-performance-fixture',
+                dataDirectory: '/tmp/echo-tv-performance-fixture',
                 playlistId: 'playlist-1',
                 requireFromPath:
                     '/workspace/dist/apps/electron-backend/main.js',
@@ -161,7 +161,7 @@ describe('Xtream catalog database reader', () => {
         const database = createDatabase();
         const base = {
             captureStoppedEpochMs: 5_000,
-            dataDirectory: '/tmp/iptvnator-performance-fixture',
+            dataDirectory: '/tmp/echo-tv-performance-fixture',
             playlistId: 'playlist-1',
             requireFromPath: '/workspace/dist/apps/electron-backend/main.js',
         };
@@ -202,7 +202,7 @@ describe('Xtream catalog database reader', () => {
             evaluatorFor(database, 6_000.75),
             {
                 captureStoppedEpochMs: 6_000.5,
-                dataDirectory: '/tmp/iptvnator-performance-fixture',
+                dataDirectory: '/tmp/echo-tv-performance-fixture',
                 playlistId: 'playlist-1',
                 requireFromPath:
                     '/workspace/dist/apps/electron-backend/main.js',

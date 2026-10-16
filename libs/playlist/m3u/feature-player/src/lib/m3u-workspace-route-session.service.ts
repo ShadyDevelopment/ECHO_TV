@@ -13,15 +13,15 @@ import {
     FavoritesActions,
     PlaylistActions,
     selectPlaylistEntities,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import {
     measureRendererPerformancePhase,
     RENDERER_PERFORMANCE_PHASE,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 import { filter, firstValueFrom, map, Subscription, take } from 'rxjs';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { PlaylistsService } from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 
 type M3uLoadedSection = 'all' | 'groups';
 

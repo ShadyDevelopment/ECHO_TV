@@ -1,7 +1,7 @@
 import type {
     PlaylistRefreshEvent,
     PlaylistRefreshPayload,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { WorkerPerformanceCaptureResult } from './worker-performance-capture';
 
 export interface PlaylistRefreshWorkerRequestMessage {

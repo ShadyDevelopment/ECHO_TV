@@ -3,7 +3,7 @@ import type { RendererRssValidity } from './renderer-rss-validity';
 import type {
     DatabaseWorkerPerformancePhase,
     PerformancePhaseEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export const PERFORMANCE_ITERATION_KIND = {
     DIAGNOSTIC: 'diagnostic',

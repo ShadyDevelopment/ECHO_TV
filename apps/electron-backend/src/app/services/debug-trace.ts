@@ -1,7 +1,7 @@
 import {
     redactSensitiveData,
     summarizeSqlStatementForTrace,
-} from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/logging';
 import {
     createPerformanceCounterRegistry,
     PERFORMANCE_COUNTER,
@@ -14,7 +14,7 @@ const MAX_TRACE_OBJECT_KEYS = 8;
 const MAX_TRACE_STRING_LENGTH = 180;
 const MAX_TRACE_DEPTH = 2;
 
-export const DEBUG_TRACE_EVENT_CHANNEL = 'IPTVNATOR_DEBUG_TRACE_EVENT';
+export const DEBUG_TRACE_EVENT_CHANNEL = 'ECHO_TV_DEBUG_TRACE_EVENT';
 
 function readFlag(name: string): boolean {
     const value = process.env[name]?.trim().toLowerCase();
@@ -52,59 +52,59 @@ function summarizeObject(
 }
 
 export function isStartupTraceEnabled(): boolean {
-    return readFlag('IPTVNATOR_TRACE_STARTUP');
+    return readFlag('ECHO_TV_TRACE_STARTUP');
 }
 
 export function isRendererApiTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_IPC');
+    return isStartupTraceEnabled() || readFlag('ECHO_TV_TRACE_IPC');
 }
 
 export function isPerformanceCaptureEnabled(): boolean {
-    return readFlag('IPTVNATOR_PERF_CAPTURE');
+    return readFlag('ECHO_TV_PERF_CAPTURE');
 }
 
 /**
  * SQL statement counting wraps every statement execution, including each
  * row of a bulk insert, so it has its own opt-in on top of the capture flag:
  * only the launch journey sets it, and the import benchmarks that also run
- * with IPTVNATOR_PERF_CAPTURE=1 keep measuring the unwrapped workload.
+ * with ECHO_TV_PERF_CAPTURE=1 keep measuring the unwrapped workload.
  */
 export function isSqlStatementCountEnabled(): boolean {
     return (
-        isPerformanceCaptureEnabled() && readFlag('IPTVNATOR_PERF_COUNT_SQL')
+        isPerformanceCaptureEnabled() && readFlag('ECHO_TV_PERF_COUNT_SQL')
     );
 }
 
 /**
  * Process-wide performance counters (see `performance-counters.ts`). Every
- * call is a no-op unless `IPTVNATOR_PERF_CAPTURE=1`.
+ * call is a no-op unless `ECHO_TV_PERF_CAPTURE=1`.
  */
 export const performanceCounters = createPerformanceCounterRegistry(
     isPerformanceCaptureEnabled
 );
 
 export function isDbTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_DB');
+    return isStartupTraceEnabled() || readFlag('ECHO_TV_TRACE_DB');
 }
 
 export function isSqlTraceEnabled(): boolean {
     return (
         isStartupTraceEnabled() ||
-        readFlag('IPTVNATOR_TRACE_DB') ||
-        readFlag('IPTVNATOR_TRACE_SQL')
+        readFlag('ECHO_TV_TRACE_DB') ||
+        readFlag('ECHO_TV_TRACE_SQL')
     );
 }
 
 export function isWindowTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_WINDOW');
+    return isStartupTraceEnabled() || readFlag('ECHO_TV_TRACE_WINDOW');
 }
 
 export function isRendererConsoleTraceEnabled(): boolean {
-    return readFlag('IPTVNATOR_TRACE_RENDERER_CONSOLE');
+    return readFlag('ECHO_TV_TRACE_RENDERER_CONSOLE');
 }
 
 export function isExternalPlayerTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_PLAYER');
+    return isStartupTraceEnabled() || readFlag('ECHO_TV_TRACE_PLAYER');
 }
 
 export function roundTraceDuration(durationMs: number): number {

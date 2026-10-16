@@ -21,7 +21,7 @@ concurrency:
 jobs:
     refresh:
         name: Refresh checked-in runtime pin
-        if: github.repository == '4gray/iptvnator'
+        if: github.repository == 'ShadyDevelopment/ECHO_TV'
         runs-on: ubuntu-latest
         timeout-minutes: 10
 
@@ -85,10 +85,10 @@ jobs:
                   PR_BODY="$(printf '%s\n\n%s\n%s\n%s' \
                       'Automated refresh of the checksum-pinned Windows Embedded MPV CI input.' \
                       "- Pins upstream release \`${RELEASE_TAG}\` in repository history." \
-                      '- Keeps the binary on its upstream host; IPTVnator does not mirror it.' \
+                      '- Keeps the binary on its upstream host; ECHO TV does not mirror it.' \
                       '- Preserves the explicit checksum/layout-only license-verification statement.')"
                   PR_NUMBER="$(gh pr list \
-                      --base master \
+                      --base main \
                       --head "${BRANCH_NAME}" \
                       --state open \
                       --json number \
@@ -101,7 +101,7 @@ jobs:
                       gh pr view "${PR_NUMBER}" --json url --jq '.url'
                   else
                       gh pr create \
-                          --base master \
+                          --base main \
                           --head "${BRANCH_NAME}" \
                           --title "ci(embedded-mpv): refresh Windows runtime pin" \
                           --body "${PR_BODY}"

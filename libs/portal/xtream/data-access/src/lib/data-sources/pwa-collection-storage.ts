@@ -9,7 +9,7 @@ import {
 import {
     XTREAM_USER_DATA_KEYS,
     type UserDataStorage,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { XtreamContentItem } from './xtream-data-source.interface';
 
 const STORAGE_KEYS = {

@@ -1,6 +1,6 @@
 import { ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import { StalkerSeriesViewComponent } from './stalker-series-view.component';
 import { createStalkerSeriesViewHarness } from './stalker-series-view.test-harness';
 

@@ -61,7 +61,7 @@ export const defaultXtreamUsername = 'user1';
 export const defaultXtreamPassword = 'pass1';
 export const defaultStalkerMacAddress = '00:1A:79:00:00:01';
 const electronAppCloseTimeoutMs = Number(
-    process.env['IPTVNATOR_E2E_CLOSE_TIMEOUT_MS'] ?? '10000'
+    process.env['ECHO_TV_E2E_CLOSE_TIMEOUT_MS'] ?? '10000'
 );
 const electronAppKillWaitMs = 2000;
 
@@ -281,13 +281,13 @@ export function buildElectronLaunchEnvironment(
             ? selectElectronRuntimeEnvironment(inheritedEnvironment)
             : inheritedEnvironment),
         // Electron E2E uses local mock HTTP servers for playlists, portals, and EPG sources.
-        IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS: runtimeOnly
+        ECHO_TV_ALLOW_PRIVATE_NETWORK_URLS: runtimeOnly
             ? '1'
-            : (inheritedEnvironment['IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS'] ??
+            : (inheritedEnvironment['ECHO_TV_ALLOW_PRIVATE_NETWORK_URLS'] ??
               '1'),
         ...options.env,
         ELECTRON_IS_DEV: '0',
-        IPTVNATOR_E2E_DATA_DIR: dataDir,
+        ECHO_TV_E2E_DATA_DIR: dataDir,
         NODE_ENV: 'test',
     };
     for (const key of options.omitEnvKeys ?? []) {
@@ -349,7 +349,7 @@ function selectElectronRuntimeEnvironment(
  * without relying on electron-builder's local output directory names.
  */
 export function resolvePackagedLinuxExecutable(
-    explicitPath = process.env['IPTVNATOR_E2E_PACKAGED_EXECUTABLE']
+    explicitPath = process.env['ECHO_TV_E2E_PACKAGED_EXECUTABLE']
 ): string | undefined {
     if (explicitPath?.trim()) {
         return resolve(explicitPath.trim());
@@ -380,7 +380,7 @@ export function resolvePackagedLinuxExecutable(
         });
 
     for (const directory of unpackedDirectories) {
-        for (const executableName of ['IPTVnator', 'iptvnator']) {
+        for (const executableName of ['ECHO TV', 'echo-tv']) {
             const candidate = join(
                 executablesRoot,
                 directory.name,
@@ -457,11 +457,11 @@ export async function launchPackagedElectronApp(
         args: resolvePackagedElectronLaunchArgs(process.getuid),
         env: {
             ...process.env,
-            IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS:
-                process.env['IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS'] ?? '1',
+            ECHO_TV_ALLOW_PRIVATE_NETWORK_URLS:
+                process.env['ECHO_TV_ALLOW_PRIVATE_NETWORK_URLS'] ?? '1',
             ...options.env,
             ELECTRON_IS_DEV: '0',
-            IPTVNATOR_E2E_DATA_DIR: dataDir,
+            ECHO_TV_E2E_DATA_DIR: dataDir,
             NODE_ENV: 'test',
         },
     });
@@ -533,7 +533,7 @@ export async function launchCompetingElectronInstance(
             env: {
                 ...process.env,
                 ELECTRON_IS_DEV: '0',
-                IPTVNATOR_E2E_DATA_DIR: dataDir,
+                ECHO_TV_E2E_DATA_DIR: dataDir,
                 NODE_ENV: 'test',
             },
             stdio: ['ignore', 'ignore', 'pipe'],

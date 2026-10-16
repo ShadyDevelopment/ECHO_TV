@@ -14,7 +14,7 @@
  */
 
 import { ipcMain } from 'electron';
-import { CONNECTIVITY_GUARD_RESET } from '@iptvnator/shared/interfaces';
+import { CONNECTIVITY_GUARD_RESET } from '@echo-tv/shared/interfaces';
 import { resetGuardedHost } from '../util/host-connectivity-guard';
 
 export function registerConnectivityGuardHandlers(): void {

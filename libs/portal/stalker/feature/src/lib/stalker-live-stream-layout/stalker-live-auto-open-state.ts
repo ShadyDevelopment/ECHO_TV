@@ -1,12 +1,12 @@
 import { signal } from '@angular/core';
-import { normalizeStalkerEntityId } from '@iptvnator/portal/stalker/data-access';
+import { normalizeStalkerEntityId } from '@echo-tv/portal/stalker/data-access';
 import {
     OPEN_STALKER_LIVE_CATEGORY_STATE_KEY,
     OPEN_STALKER_LIVE_ITEM_STATE_KEY,
     OPEN_STALKER_LIVE_PLAYLIST_STATE_KEY,
     OPEN_STALKER_LIVE_POSTER_STATE_KEY,
     OPEN_STALKER_LIVE_TITLE_STATE_KEY,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 /**
  * The live handoff carried by the arrival's history state, and nothing else:

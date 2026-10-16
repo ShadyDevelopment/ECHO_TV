@@ -17,8 +17,8 @@ import { absoluteUrl } from '../../lib/site';
 
 const pageUrl = absoluteUrl('/download/docker/');
 const DOCKER_HUB_URL = 'https://hub.docker.com/r/shadydevelopment/echo-tv';
-const DOCKER_README_URL = `${REPO_URL}/blob/master/docker/README.md`;
-const COMPOSE_URL = `${REPO_URL}/blob/master/docker/docker-compose.yml`;
+const DOCKER_README_URL = `${REPO_URL}/blob/main/docker/README.md`;
+const COMPOSE_URL = `${REPO_URL}/blob/main/docker/docker-compose.yml`;
 
 const title = 'Self-Host ECHO TV with Docker – The Browser Version';
 const description =
@@ -78,7 +78,7 @@ const config = [
   { term: 'Port', value: 'The container listens on 80; the compose file maps it to 4333 on the host. Change the host side to taste.' },
   { term: 'CLIENT_URL', value: 'The origin browsers use to open the app, for CORS. Set it to your public URL behind a reverse proxy; several origins can be comma-separated.' },
   { term: 'BACKEND_URL', value: 'Where the app finds its backend. Keep the default /api for the bundled proxy.' },
-  { term: 'IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS', value: 'Off by default. Set to 1 only when your provider lives on your own LAN and the instance is limited to trusted users.' },
+  { term: 'ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS', value: 'Off by default. Set to 1 only when your provider lives on your own LAN and the instance is limited to trusted users.' },
   { term: 'NODE_EXTRA_CA_CERTS', value: 'Path to a CA bundle you mount into the container, for providers behind a private certificate authority. Keeps TLS validation on.' },
 ];
 

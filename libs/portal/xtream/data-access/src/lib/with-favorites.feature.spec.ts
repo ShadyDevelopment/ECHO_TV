@@ -1,10 +1,10 @@
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
 import { TestBed } from '@angular/core/testing';
 import { patchState, signalStore } from '@ngrx/signals';
 import { XTREAM_DATA_SOURCE } from './data-sources/xtream-data-source.interface';
 import { withFavorites } from './with-favorites.feature';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@echo-tv/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

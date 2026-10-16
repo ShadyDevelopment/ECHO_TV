@@ -1,4 +1,4 @@
-import { getXtreamPendingRestoreStorageKey } from '@iptvnator/shared/interfaces';
+import { getXtreamPendingRestoreStorageKey } from '@echo-tv/shared/interfaces';
 import {
     XtreamPendingRestoreService,
     XtreamPendingRestoreSnapshot,

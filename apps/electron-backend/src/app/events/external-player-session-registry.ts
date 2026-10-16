@@ -4,7 +4,7 @@ import {
     ExternalPlayerSession,
     PlayerContentInfo,
     stripExternalPlayerErrorTag,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 interface CreateExternalPlayerSessionOptions {
     player: ExternalPlayerName;

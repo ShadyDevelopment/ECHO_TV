@@ -13,7 +13,7 @@ export const WINDOWS_RUNTIME_PIN_PATH = path.join(
 );
 export const WINDOWS_RUNTIME_REPOSITORY = 'zhongfly/mpv-winbuild';
 export const WINDOWS_RUNTIME_LICENSE_CLAIM =
-    'Upstream labels this libmpv build LGPLv2.1+ with statically linked LGPLv3 FFmpeg; IPTVnator verifies the checksum and archive layout, not the complete transitive license closure.';
+    'Upstream labels this libmpv build LGPLv2.1+ with statically linked LGPLv3 FFmpeg; ECHO TV verifies the checksum and archive layout, not the complete transitive license closure.';
 
 const RELEASE_TAG_PATTERN = /^(\d{4})-(\d{2})-(\d{2})-([a-f0-9]{10})$/;
 const ASSET_NAME_PATTERN =

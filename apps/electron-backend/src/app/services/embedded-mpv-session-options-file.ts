@@ -15,7 +15,7 @@ const OPTIONS_FILE_PREFIX = 'session-options-';
  * owning process id: a session removes its file on dispose, the instance
  * removes its directory on shutdown, and a crashed instance's leftovers are
  * swept by the next one — but only once its process is gone, because two
- * instances may share one `userData` (IPTVNATOR_ALLOW_MULTIPLE_INSTANCES=1).
+ * instances may share one `userData` (ECHO_TV_ALLOW_MULTIPLE_INSTANCES=1).
  */
 export function resolveSessionOptionsRoot(userDataPath: string): string {
     return path.join(userDataPath, OPTIONS_ROOT);

@@ -1,8 +1,8 @@
 import {
     isExpectedPortalHttpStatus,
     PortalRequestFailure,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 import { isRendererApiTraceEnabled, trace } from '../services/debug-trace';
 import { formatPortalRequestError } from './portal-request-error.util';
 
@@ -91,7 +91,7 @@ export function classifyExpectedPortalFailure(
 /**
  * One line per failed request, at the level its outcome deserves.
  *
- * - cancelled: nothing, unless `IPTVNATOR_TRACE_IPC` (or the startup trace)
+ * - cancelled: nothing, unless `ECHO_TV_TRACE_IPC` (or the startup trace)
  *   is on — the renderer asked for it;
  * - HTTP 401/403: one `console.warn`, so an expired or wrong credential stays
  *   visible without a stack trace;

@@ -22,12 +22,12 @@ import {
     PlaylistActions,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import {
     keepSourcesChecked,
     SourceStatusService,
     sourceStatusBucket,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import {
     filterSources,
     orderFailingFirst,
@@ -36,14 +36,14 @@ import {
     SourceBucketOf,
     sourceSortName,
     SourcesViewStateService,
-} from '@iptvnator/playlist/shared/util';
+} from '@echo-tv/playlist/shared/util';
 import {
     RuntimeCapabilitiesService,
     SortBy,
     SortService,
     SourceActivityService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import type { PlaylistType } from '../add-playlist-menu/playlist-type';
 import { PlaylistRefreshActionService } from '../playlist-refresh-action.service';
 import { SourceRemovalService } from '../source-removal/source-removal.service';

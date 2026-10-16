@@ -1,5 +1,5 @@
 /*
- * iptvnator-mpv-helper — frame-copy embedded MPV helper process
+ * echo-tv-mpv-helper — frame-copy embedded MPV helper process
  * (macOS + Linux + Windows; platform GL context in frame_helper_gl.h).
  *
  * One process = one playback session. Owns libmpv end to end: decodes,
@@ -14,7 +14,7 @@
  * gated on a loaded path, only fatal/load errors flip the status.
  *
  * Usage:
- *   iptvnator_mpv_helper --shm-base /impv-<id> --width 1280 --height 720
+ *   echo-tv_mpv_helper --shm-base /impv-<id> --width 1280 --height 720
  *                        [--volume 0..1] [--hwdec auto]
  *                        [--mpv-options-stdin]
  */
@@ -1145,7 +1145,7 @@ int main(int argc, char** argv) {
                 emitLine(JsonWriter()
                              .str("event", "log")
                              .str("level", "warn")
-                             .str("prefix", "iptvnator")
+                             .str("prefix", "echo-tv")
                              .str("text", "rejected session option " + key +
                                               ": " +
                                               mpv_error_string(optionResult))

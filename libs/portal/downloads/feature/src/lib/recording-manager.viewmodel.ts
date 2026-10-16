@@ -1,6 +1,6 @@
-import type { RecordingItem } from '@iptvnator/services';
+import type { RecordingItem } from '@echo-tv/services';
 import { normalizeDownloadFilter } from './download-manager.viewmodel';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 export type RecordingAttentionReason = 'file-missing' | 'failed';
 

@@ -12,15 +12,15 @@ import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { RecordingsService, SettingsStore } from '@iptvnator/services';
-import { epgDisplayTimeMs } from '@iptvnator/shared/interfaces';
+import { RecordingsService, SettingsStore } from '@echo-tv/services';
+import { epgDisplayTimeMs } from '@echo-tv/shared/interfaces';
 import {
     DetailActionsTemplateDirective,
     DetailMetaTemplateDirective,
     DetailTagsTemplateDirective,
     MetaChipComponent,
     PortalDetailShellComponent,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import { map } from 'rxjs';
 import { formatDownloadBytes } from '../download-queue.component';
 import type { RecordingItemActionType } from '../recording-actions';

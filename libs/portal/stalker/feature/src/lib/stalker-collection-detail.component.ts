@@ -18,7 +18,7 @@ import {
     PortalDetailShellComponent,
     VIEW_IN_PORTAL_HANDOFF,
     ViewInPortalHandoff,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import {
     createLogger,
     getUnifiedCollectionDetailNavigation,
@@ -27,7 +27,7 @@ import {
     PORTAL_PLAYER,
     SeriesResumeTarget,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     buildStalkerSelectedVodItem,
     clearStalkerDetailViewState,
@@ -36,13 +36,13 @@ import {
     normalizeStalkerEntityId,
     StalkerSelectedVodItem,
     StalkerStore,
-} from '@iptvnator/portal/stalker/data-access';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+} from '@echo-tv/portal/stalker/data-access';
+import type { PlaybackFallbackRequest } from '@echo-tv/ui/playback';
 import {
     PlaybackPositionRuntimeBridgeService,
     PlaylistsService,
-} from '@iptvnator/services';
-import { Playlist, VodDetailsItem } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { Playlist, VodDetailsItem } from '@echo-tv/shared/interfaces';
 import { firstValueFrom } from 'rxjs';
 import { StalkerInlineDetailComponent } from './stalker-inline-detail/stalker-inline-detail.component';
 import { STALKER_SERIES_RESUME_TARGET } from './stalker-series-view/stalker-series-resume';

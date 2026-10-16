@@ -1,4 +1,4 @@
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
 import { addDays, addMinutes } from 'date-fns';
 import { parseEpgDateKey } from '../epg-date';
 import {

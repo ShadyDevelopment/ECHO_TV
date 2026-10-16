@@ -8,10 +8,10 @@ import {
 } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { getM3uArchiveDays, isM3uCatchupPlaybackSupported } from '@iptvnator/shared/m3u-utils';
-import { Channel } from '@iptvnator/shared/interfaces';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { getM3uArchiveDays, isM3uCatchupPlaybackSupported } from '@echo-tv/shared/m3u-utils';
+import { Channel } from '@echo-tv/shared/interfaces';
+import { resolveChannelEpgLookupKey } from '@echo-tv/m3u-state';
 import { EpgMappingDialogComponent } from '../epg-mapping-dialog/epg-mapping-dialog.component';
 
 interface ChannelDetailField {

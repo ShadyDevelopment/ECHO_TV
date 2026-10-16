@@ -2,8 +2,8 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     normalizeHost,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore, EpgSourceSettingsService } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import { SettingsStore, EpgSourceSettingsService } from '@echo-tv/services';
 import {
     EpgImportProgress,
     EpgRuntimeBridgeService,

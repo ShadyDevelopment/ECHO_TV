@@ -93,7 +93,7 @@ function writeEmbeddedMpvUnavailableMarker(resourceDir, targetArch) {
 function resolveLinuxFrameCopyPackagingContext(
     params,
     {
-        required = isTruthy(process.env.IPTVNATOR_REQUIRE_EMBEDDED_MPV),
+        required = isTruthy(process.env.ECHO_TV_REQUIRE_EMBEDDED_MPV),
         environment = process.env,
     } = {}
 ) {
@@ -136,7 +136,7 @@ function resolveLinuxFrameCopyPackagingContext(
     // marker-only native-view fallback.
     const foreignArch = targetArch !== 'x64';
     const profileValue =
-        environment.IPTVNATOR_LINUX_FRAME_COPY_PROFILE?.trim() ?? '';
+        environment.ECHO_TV_LINUX_FRAME_COPY_PROFILE?.trim() ?? '';
     if (!profileValue) {
         if (required && targetArch === 'x64') {
             resolveLinuxFrameCopyProfile(profileValue);
@@ -188,7 +188,7 @@ function ensureSnapGraphicsContentMount(appOutDir, targetNames) {
 
 async function afterPackHook(params) {
     const requireEmbeddedMpv = isTruthy(
-        process.env.IPTVNATOR_REQUIRE_EMBEDDED_MPV
+        process.env.ECHO_TV_REQUIRE_EMBEDDED_MPV
     );
     const linuxPackagingContext = resolveLinuxFrameCopyPackagingContext(
         params,

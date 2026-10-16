@@ -1,7 +1,7 @@
 import {
     applyDefaultAutoSelectFamilyAttemptTimeout,
     AUTO_SELECT_FAMILY_ATTEMPT_TIMEOUT_FLAG,
-} from '@iptvnator/shared/host-health';
+} from '@echo-tv/shared/host-health';
 import { closeGracefully } from './app/graceful-shutdown';
 import { createWebBackendApp } from './app/web-backend-app';
 import { readServerStorageConfig } from './app/storage/storage-config';
@@ -29,7 +29,7 @@ async function start(): Promise<void> {
             );
         } catch (error) {
             console.error(
-                `[web-backend] server storage could not open: ${describeStorageError(error)}. Check that IPTVNATOR_DATA_DIR is a writable volume.`
+                `[web-backend] server storage could not open: ${describeStorageError(error)}. Check that ECHO_TV_DATA_DIR is a writable volume.`
             );
             process.exit(1);
         }
@@ -43,7 +43,7 @@ async function start(): Promise<void> {
     });
     const server = app.listen(port, () => {
         console.log(
-            `IPTVnator web backend listening on http://localhost:${port}`
+            `ECHO TV web backend listening on http://localhost:${port}`
         );
     });
 

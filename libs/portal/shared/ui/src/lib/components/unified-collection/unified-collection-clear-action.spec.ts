@@ -4,9 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     CollectionMode,
     UnifiedCollectionDataService,
-} from '@iptvnator/portal/shared/data-access';
-import { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
-import { ConfirmDialogData, DialogService } from '@iptvnator/ui/components';
+} from '@echo-tv/portal/shared/data-access';
+import { UnifiedCollectionItem } from '@echo-tv/portal/shared/util';
+import { ConfirmDialogData, DialogService } from '@echo-tv/ui/components';
 import { createClearCollectionAction } from './unified-collection-clear-action';
 
 const recentItem: UnifiedCollectionItem = {

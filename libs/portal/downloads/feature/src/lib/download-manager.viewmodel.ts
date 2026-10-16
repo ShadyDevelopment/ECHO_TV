@@ -1,5 +1,5 @@
-import type { DownloadItem } from '@iptvnator/services';
-import type { Playlist } from '@iptvnator/shared/interfaces';
+import type { DownloadItem } from '@echo-tv/services';
+import type { Playlist } from '@echo-tv/shared/interfaces';
 import {
     buildDownloadLibrary,
     compareDownloadIds,
@@ -9,7 +9,7 @@ import {
     type DownloadLibraryEntity,
     type DownloadLibraryRow,
 } from './download-library.viewmodel';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 export type {
     DownloadCatchupCardViewModel,

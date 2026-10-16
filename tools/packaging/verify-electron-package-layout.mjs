@@ -51,7 +51,7 @@ const flatpakMetainfoPath = path.join(
     'apps',
     'electron-backend',
     'linux',
-    'com.fourgray.iptvnator.metainfo.xml'
+    'com.fourgray.echo-tv.metainfo.xml'
 );
 const packageMetadata = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
 const electronBuilderConfig = JSON.parse(
@@ -61,10 +61,10 @@ const flatpakFinishArgs = electronBuilderConfig.flatpak?.finishArgs ?? [];
 const linuxExecutableArgs = electronBuilderConfig.linux?.executableArgs ?? [];
 const snapConfigInspection = loadSnapConfigInspection();
 const embeddedMpvRequired = isTruthy(
-    process.env.IPTVNATOR_REQUIRE_EMBEDDED_MPV
+    process.env.ECHO_TV_REQUIRE_EMBEDDED_MPV
 );
 const linuxFrameCopyProfile =
-    process.env.IPTVNATOR_LINUX_FRAME_COPY_PROFILE?.trim() || undefined;
+    process.env.ECHO_TV_LINUX_FRAME_COPY_PROFILE?.trim() || undefined;
 const workerRelativeDir = path.join(
     'dist',
     'apps',
@@ -114,7 +114,7 @@ function getMacResourceDirs() {
             directory: path.join(
                 outputRoot,
                 'mac',
-                'IPTVnator.app',
+                'ECHO TV.app',
                 'Contents',
                 'Resources'
             ),
@@ -124,7 +124,7 @@ function getMacResourceDirs() {
             directory: path.join(
                 outputRoot,
                 'mac-arm64',
-                'IPTVnator.app',
+                'ECHO TV.app',
                 'Contents',
                 'Resources'
             ),

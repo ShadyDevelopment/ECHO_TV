@@ -1,11 +1,11 @@
 import { AppConfig } from '../../environments/environment';
 
-export interface IptvnatorRuntimeConfig {
+export interface EchoTvRuntimeConfig {
     readonly BACKEND_URL?: string;
 }
 
 export function resolveBackendUrl(
-    runtimeConfig: IptvnatorRuntimeConfig | undefined,
+    runtimeConfig: EchoTvRuntimeConfig | undefined,
     fallbackUrl: string
 ): string {
     const runtimeUrl = runtimeConfig?.BACKEND_URL?.trim();
@@ -14,7 +14,7 @@ export function resolveBackendUrl(
 
 export function getRuntimeBackendUrl(): string {
     return resolveBackendUrl(
-        globalThis.window?.__IPTVNATOR_CONFIG__,
+        globalThis.window?.__ECHO_TV_CONFIG__,
         AppConfig.BACKEND_URL
     );
 }

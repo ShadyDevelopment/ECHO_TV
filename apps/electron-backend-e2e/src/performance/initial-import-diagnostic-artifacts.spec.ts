@@ -139,7 +139,7 @@ test('accepts the complete parseable initial-import diagnostic artifact set', as
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-diagnostic-')
+        join(tmpdir(), 'echo-tv-initial-import-diagnostic-')
     );
 
     try {
@@ -158,7 +158,7 @@ test('fails closed for malformed or missing required process artifacts', async (
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-invalid-')
+        join(tmpdir(), 'echo-tv-initial-import-invalid-')
     );
 
     try {
@@ -195,10 +195,10 @@ test('rejects escaped paths and symlinks instead of reading outside the iteratio
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-contained-')
+        join(tmpdir(), 'echo-tv-initial-import-contained-')
     );
     const outsideDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-outside-')
+        join(tmpdir(), 'echo-tv-initial-import-outside-')
     );
 
     try {
@@ -241,7 +241,7 @@ test('requires exactly one database profile and rejects every playlist-worker pr
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-workers-')
+        join(tmpdir(), 'echo-tv-initial-import-workers-')
     );
 
     try {
@@ -275,7 +275,7 @@ test('requires a structurally valid database worker heap snapshot', async () => 
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-worker-snapshot-')
+        join(tmpdir(), 'echo-tv-initial-import-worker-snapshot-')
     );
 
     try {
@@ -316,10 +316,10 @@ test('rejects escaped and symlinked database worker heap snapshots', async () =>
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-worker-contained-')
+        join(tmpdir(), 'echo-tv-initial-import-worker-contained-')
     );
     const outsideDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-worker-outside-')
+        join(tmpdir(), 'echo-tv-initial-import-worker-outside-')
     );
 
     try {
@@ -365,7 +365,7 @@ test('rejects extra database snapshots and every playlist-worker snapshot', asyn
     const validate = module.validateInitialImportDiagnosticArtifacts;
     assert.ok(typeof validate === 'function');
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-initial-import-worker-snapshot-count-')
+        join(tmpdir(), 'echo-tv-initial-import-worker-snapshot-count-')
     );
 
     try {

@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 
-namespace iptvnator {
+namespace echo-tv {
 
 /** One libmpv option name/value pair handed to a session at creation. */
 using EmbeddedMpvExtraOption = std::pair<std::string, std::string>;
@@ -55,4 +55,4 @@ inline std::vector<EmbeddedMpvExtraOption> readEmbeddedMpvExtraOptions(
     return options;
 }
 
-} // namespace iptvnator
+} // namespace echo-tv

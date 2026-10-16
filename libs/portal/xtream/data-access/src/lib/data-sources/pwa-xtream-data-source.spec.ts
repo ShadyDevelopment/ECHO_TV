@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import { PwaXtreamDataSource } from './pwa-xtream-data-source';
 import type { XtreamContentItem } from './xtream-data-source.interface';
 import {
@@ -10,7 +10,7 @@ import {
     ParentalLockService,
     PlaylistsService,
     USER_DATA_STORAGE,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { of } from 'rxjs';
 
 describe('PwaXtreamDataSource', () => {

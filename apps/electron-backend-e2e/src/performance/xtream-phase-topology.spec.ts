@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { XtreamCodeActions } from '@iptvnator/shared/interfaces';
+import { XtreamCodeActions } from '@echo-tv/shared/interfaces';
 
 import { XTREAM_SCENARIO_ID } from './xtream-benchmark-contract';
 import {

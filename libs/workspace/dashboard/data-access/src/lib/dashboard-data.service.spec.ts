@@ -5,16 +5,16 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import { EMPTY, of, Subject } from 'rxjs';
-import { DatabaseService, PlaylistsService } from '@iptvnator/services';
+import { DatabaseService, PlaylistsService } from '@echo-tv/services';
 import {
     PlaybackPositionData,
     Playlist,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
-import { PORTAL_PLAYBACK_POSITIONS } from '@iptvnator/portal/shared/util';
-import { XTREAM_DATA_SOURCE } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/shared/interfaces';
+import { PORTAL_PLAYBACK_POSITIONS } from '@echo-tv/portal/shared/util';
+import { XTREAM_DATA_SOURCE } from '@echo-tv/portal/xtream/data-access';
 import {
     DashboardDataService,
     DashboardFavoriteItem,

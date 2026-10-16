@@ -1,7 +1,7 @@
 import type {
     DatabaseWorkerPerformancePhase,
     PerformancePhaseEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import type { WorkerRequestPerformanceMetrics } from './m3u-refresh-cancellation-contract';
 import type {

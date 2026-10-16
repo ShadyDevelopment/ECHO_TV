@@ -6,20 +6,20 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
     AudioPlayerComponent,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { EpgListViewComponent, EpgTimelineComponent } from '@iptvnator/ui/epg';
-import { ResizableDirective } from '@iptvnator/ui/components';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { PlaybackHistoryGate } from '@iptvnator/playback/data-access';
-import { EpgProgram, VideoPlayer } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/ui/playback';
+import { EpgListViewComponent, EpgTimelineComponent } from '@echo-tv/ui/epg';
+import { ResizableDirective } from '@echo-tv/ui/components';
+import { RuntimeCapabilitiesService, SettingsStore } from '@echo-tv/services';
+import { PlaybackHistoryGate } from '@echo-tv/playback/data-access';
+import { EpgProgram, VideoPlayer } from '@echo-tv/shared/interfaces';
 import {
     PORTAL_PLAYER,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     StreamResolverService,
     UnifiedRecentDataService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import { GlobalFavoritesListComponent } from '../global-favorites-list/global-favorites-list.component';
 import { UnifiedLiveTabComponent } from './unified-live-tab.component';
 import { createUnifiedLivePlaybackSessionKey } from './unified-live-playback-session-key';

@@ -1,5 +1,5 @@
 import { and, desc, eq, inArray, sql } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 import type { AppDatabase } from '../database.types';
 import { persistContentMetadataIfMissing } from './content-metadata.operations';
 

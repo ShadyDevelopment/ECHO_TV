@@ -1,5 +1,5 @@
 import { Signal, effect, signal } from '@angular/core';
-import { ContentMetadataPatch } from '@iptvnator/shared/interfaces';
+import { ContentMetadataPatch } from '@echo-tv/shared/interfaces';
 import {
     XtreamDetailMetadataSource,
     xtreamContentMetadataKey,

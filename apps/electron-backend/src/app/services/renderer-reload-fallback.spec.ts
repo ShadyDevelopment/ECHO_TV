@@ -9,7 +9,7 @@ import {
     restoreRendererRoute,
 } from './renderer-reload-fallback';
 
-const rendererRoot = resolve('/opt/iptvnator/resources/app/web');
+const rendererRoot = resolve('/opt/echo-tv/resources/app/web');
 const rendererIndexPath = join(rendererRoot, 'index.html');
 
 function routedUrl(route: string): string {
@@ -59,7 +59,7 @@ describe('resolveRoutedRendererUrl', () => {
         ).toBe(null);
         expect(
             resolveRoutedRendererUrl(
-                pathToFileURL(resolve('/opt/iptvnator/other')).href,
+                pathToFileURL(resolve('/opt/echo-tv/other')).href,
                 rendererIndexPath
             )
         ).toBe(null);
@@ -116,7 +116,7 @@ describe('resolveReloadedRendererRoute', () => {
     it('ignores paths outside the renderer root', () => {
         expect(
             resolveReloadedRendererRoute(
-                failure(pathToFileURL(resolve('/opt/iptvnator/other')).href),
+                failure(pathToFileURL(resolve('/opt/echo-tv/other')).href),
                 rendererIndexPath
             )
         ).toBe(null);

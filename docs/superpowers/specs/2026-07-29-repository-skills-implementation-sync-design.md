@@ -2,7 +2,7 @@
 
 ## Context
 
-IPTVnator currently has eight repository-specific Codex skills under
+ECHO TV currently has eight repository-specific Codex skills under
 `.codex/skills/`, with `release-cut` and `release-notes` mirrored under
 `.claude/skills/`. A read-only audit found that their literal paths and most
 high-level ownership rules remain valid, but several skills have drifted from
@@ -43,7 +43,7 @@ not honor that contract.
 ## Non-Goals
 
 - Migrating every existing `--mat-sys-*` SCSS reference in one change.
-- Redesigning IPTVnator UI or changing its visual language.
+- Redesigning ECHO TV UI or changing its visual language.
 - Reworking the complete playback-position database schema.
 - Replacing the Nx project layout or tag model.
 - Changing Snap, Docker, or GitHub release automation beyond documenting their
@@ -169,14 +169,14 @@ Descriptions will begin with `Use when...` and contain triggers only.
 
 ### Nx
 
-`iptvnator-nx-architecture` will add the current app/tool shape, the complete
+`echo-tv-nx-architecture` will add the current app/tool shape, the complete
 type-direction summary, domain-boundary awareness, path/tag exceptions,
 buildable-package naming, target-aware validation discovery, max-lines policy,
 and quoted lint-glob guardrail.
 
 ### SQLite worker
 
-`iptvnator-sqlite-db-worker` will list the full ownership chain, distinguish
+`echo-tv-sqlite-db-worker` will list the full ownership chain, distinguish
 worker-backed heavy operations from intentionally small main-thread handlers,
 name the cancellable-operation allowlist, explain `requestId` versus
 `operationId`, and require worker rebuild plus Electron restart before runtime
@@ -185,7 +185,7 @@ updated at the same time.
 
 ### Theme and UI
 
-`iptvnator-theme-style` and `iptvnator-ui-design` will use `--app-*` tokens as
+`echo-tv-theme-style` and `echo-tv-ui-design` will use `--app-*` tokens as
 the application-surface and selection contract. Material component mixins and
 component tokens remain valid for Material components. A `--mat-sys-*`
 reference outside that boundary must be verified as emitted and have a real

@@ -2,7 +2,7 @@ import type {
     EmbeddedMpvReconnectInfo,
     EmbeddedMpvSessionStatus,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { isEmbeddedMpvSessionGoneError } from './embedded-mpv-session-errors';
 
 /**

@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
  */
 
 export const distRoot = fileURLToPath(new URL('../../dist/apps/website/', import.meta.url));
-export const BASE_PATH = '/iptvnator';
+export const BASE_PATH = '/echo-tv';
 
 const MIME = {
   '.html': 'text/html',

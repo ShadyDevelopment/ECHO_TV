@@ -1,5 +1,5 @@
-import type { DbOperationEvent } from '@iptvnator/services';
-import type { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import type { DbOperationEvent } from '@echo-tv/services';
+import type { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import type { SettingsPlaylistDeleteSummary } from './settings.models';
 
 export function buildSettingsPlaylistDeleteSummary(

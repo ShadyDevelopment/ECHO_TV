@@ -1,6 +1,6 @@
 import { and, eq, type SQL } from 'drizzle-orm';
 import { SQLiteSyncDialect } from 'drizzle-orm/sqlite-core';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 
 function renderSql(query: SQL): string {
     return new SQLiteSyncDialect().sqlToQuery(query).sql;

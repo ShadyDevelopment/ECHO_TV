@@ -19,7 +19,7 @@ export default defineConfig({
   integrations: [sitemap(), mdx()],
   vite: {
     define: {
-      __IPTVNATOR_RELEASED_VERSION__: JSON.stringify(version),
+      __ECHO_TV_RELEASED_VERSION__: JSON.stringify(version),
     },
   },
 });

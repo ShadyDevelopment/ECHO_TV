@@ -3,12 +3,12 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { of, throwError } from 'rxjs';
-import { StalkerAccountInfoService } from '@iptvnator/portal/stalker/data-access';
-import { DataService, PlaylistsService } from '@iptvnator/services';
+import { StalkerAccountInfoService } from '@echo-tv/portal/stalker/data-access';
+import { DataService, PlaylistsService } from '@echo-tv/services';
 import {
     CONNECTIVITY_GUARD_RESET,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { StalkerAccountInfoComponent } from './stalker-account-info.component';
 
 describe('StalkerAccountInfoComponent', () => {

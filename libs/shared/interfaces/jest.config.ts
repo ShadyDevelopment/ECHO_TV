@@ -1,5 +1,5 @@
 export default {
-    displayName: '@iptvnator/shared/interfaces',
+    displayName: '@echo-tv/shared/interfaces',
     preset: '../../../jest.preset.js',
     testEnvironment: 'node',
     transform: {

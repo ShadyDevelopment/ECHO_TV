@@ -2,7 +2,7 @@ import {
     APP_PLAYLIST_GET_PERFORMANCE_PHASE,
     APP_PLAYLIST_UPSERT_PERFORMANCE_PHASE,
     type PerformancePhaseMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import {
     finishWorkerPerformanceCapture,

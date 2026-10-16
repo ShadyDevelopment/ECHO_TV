@@ -1,6 +1,6 @@
 import { publishDatabaseWorkerCancelReceipt } from './database-worker-cancel-receipt';
 
-const PROFILING_ENV = 'IPTVNATOR_PERF_WORKER_PROFILING';
+const PROFILING_ENV = 'ECHO_TV_PERF_WORKER_PROFILING';
 const originalProfilingValue = process.env[PROFILING_ENV];
 
 describe('database worker performance cancellation receipt', () => {

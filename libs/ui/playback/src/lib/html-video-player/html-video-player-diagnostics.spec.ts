@@ -1,5 +1,5 @@
 import { ErrorDetails, ErrorTypes, type ErrorData } from 'hls.js';
-import type { PlaybackDiagnostic } from '@iptvnator/playback/util';
+import type { PlaybackDiagnostic } from '@echo-tv/playback/util';
 import {
     emitFatalHlsPlaybackError,
     emitMpegTsPlaybackError,

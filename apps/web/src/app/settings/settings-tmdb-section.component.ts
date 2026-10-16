@@ -14,10 +14,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TranslateModule } from '@ngx-translate/core';
-import { TmdbApiService, TmdbCacheService } from '@iptvnator/services';
-import type { TmdbCacheStats } from '@iptvnator/shared/interfaces';
+import { TmdbApiService, TmdbCacheService } from '@echo-tv/services';
+import type { TmdbCacheStats } from '@echo-tv/shared/interfaces';
 import { markSectionForCheckOnFormEvents } from './settings-section-form-render';
-import { provideFormFieldDefaults } from '@iptvnator/ui/components/form-field-defaults';
+import { provideFormFieldDefaults } from '@echo-tv/ui/components/form-field-defaults';
 
 type TmdbKeyTestState = 'idle' | 'testing' | 'success' | 'error';
 

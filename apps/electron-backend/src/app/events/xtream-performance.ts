@@ -9,7 +9,7 @@ import {
     XTREAM_MAIN_PERFORMANCE_PHASE_EVENT_CHANNEL,
     type PerformancePhaseEvent,
     type XtreamMainPerformancePhase,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { randomUUID } from 'node:crypto';
 import { channel, type Channel } from 'node:diagnostics_channel';
 import { performance } from 'node:perf_hooks';
@@ -53,7 +53,7 @@ const DEFAULT_RUNTIME: XtreamMainPerformanceCaptureRuntime = {
     readMonotonicMs: () => performance.now(),
 };
 const ENVIRONMENT_CAPTURE_ENABLED =
-    process.env['IPTVNATOR_PERF_CAPTURE'] === '1';
+    process.env['ECHO_TV_PERF_CAPTURE'] === '1';
 const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
 const INTERNAL_REQUEST_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/;
 const RENDERER_REQUEST_ID = /^xtream-[0-9a-z]+-[1-9][0-9]*$/;

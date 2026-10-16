@@ -9,7 +9,7 @@
 
 import { sql } from 'drizzle-orm';
 import { ipcMain } from 'electron';
-import type { ElectronBridgeEpgSearchProgram } from '@iptvnator/shared/interfaces';
+import type { ElectronBridgeEpgSearchProgram } from '@echo-tv/shared/interfaces';
 import { getDatabase } from '../../database/connection';
 
 /** Raw `epg_programs` columns as `db.all` returns them, plus the joined channel name. */

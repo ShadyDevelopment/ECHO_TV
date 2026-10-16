@@ -128,7 +128,7 @@ test('rejects snapshots that were not frozen at the moments they claim', () => {
 });
 
 test('only the launch and search journeys opt into SQL statement counting', () => {
-    // The import benchmarks also run with IPTVNATOR_PERF_CAPTURE=1; the SQL
+    // The import benchmarks also run with ECHO_TV_PERF_CAPTURE=1; the SQL
     // hook wraps every row of a bulk insert, so they must not enable it.
     const sourceRoot = resolve(__dirname, '..');
     const files = readdirSync(sourceRoot, { recursive: true })
@@ -143,7 +143,7 @@ test('only the launch and search journeys opt into SQL statement counting', () =
             )
             .map((file) => relative(sourceRoot, join(sourceRoot, file)));
     // The journey launch builds its flags in one place...
-    assert.deepEqual(containing(/IPTVNATOR_PERF_COUNT_SQL/), [
+    assert.deepEqual(containing(/ECHO_TV_PERF_COUNT_SQL/), [
         join('performance', 'journey-launch-environment.ts'),
     ]);
     // ...and only J1's launch and J4, which records the count as

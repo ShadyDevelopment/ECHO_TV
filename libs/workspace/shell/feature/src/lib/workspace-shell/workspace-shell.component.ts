@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ExternalPlaybackDockComponent } from '@iptvnator/ui/components';
-import { EmbeddedMpvOverlayVisibilityService } from '@iptvnator/ui/playback';
+import { ExternalPlaybackDockComponent } from '@echo-tv/ui/components';
+import { EmbeddedMpvOverlayVisibilityService } from '@echo-tv/ui/playback';
 import {
     PlaylistDropOverlayComponent,
     PlaylistDropZoneDirective,
@@ -32,8 +32,8 @@ import { WorkspaceShellSearchSyncService } from './services/workspace-shell-sear
 import { WorkspaceShellSearchService } from './services/workspace-shell-search.service';
 import { WorkspaceKeyboardShortcutsService } from '../workspace-keyboard-shortcuts/workspace-keyboard-shortcuts.service';
 import { WorkspaceLiveCategoriesPopoverService } from '../workspace-live-categories-popover/workspace-live-categories-popover.service';
-import { WorkspaceShellContextDrawerService } from '@iptvnator/workspace/shell/util';
-import { LIVE_CATEGORIES_POPOVER } from '@iptvnator/portal/shared/util';
+import { WorkspaceShellContextDrawerService } from '@echo-tv/workspace/shell/util';
+import { LIVE_CATEGORIES_POPOVER } from '@echo-tv/portal/shared/util';
 
 @Component({
     selector: 'app-workspace-shell',

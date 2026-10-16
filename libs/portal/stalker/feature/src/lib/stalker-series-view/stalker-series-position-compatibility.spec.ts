@@ -1,8 +1,8 @@
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
-import type { StalkerMappedEpisode } from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/shared/interfaces';
+import type { StalkerMappedEpisode } from '@echo-tv/portal/stalker/data-access';
 import {
     clearStalkerSeriesPosition,
     reconcileStalkerSeriesPositions,

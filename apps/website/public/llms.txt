@@ -35,8 +35,8 @@
 - Compare, M3U vs Xtream Codes vs Stalker portal: https://shadydevelopment.github.io/ECHO_TV/compare/m3u-vs-xtream-vs-stalker/
 - Compare, playback engines (built-in vs MPV/VLC vs embedded MPV): https://shadydevelopment.github.io/ECHO_TV/compare/playback-engines/
 - Compare, desktop app vs self-hosted browser version: https://shadydevelopment.github.io/ECHO_TV/compare/desktop-vs-browser/
-- Compare, ECHO TV vs VLC (when a general media player is enough): https://shadydevelopment.github.io/ECHO_TV/compare/iptvnator-vs-vlc/
-- Compare, ECHO TV vs Kodi (media center with a PVR add-on vs dedicated player): https://shadydevelopment.github.io/ECHO_TV/compare/iptvnator-vs-kodi/
+- Compare, ECHO TV vs VLC (when a general media player is enough): https://shadydevelopment.github.io/ECHO_TV/compare/echo-tv-vs-vlc/
+- Compare, ECHO TV vs Kodi (media center with a PVR add-on vs dedicated player): https://shadydevelopment.github.io/ECHO_TV/compare/echo-tv-vs-kodi/
 - Compare, IPTV on a computer vs on a TV box (which room does what): https://shadydevelopment.github.io/ECHO_TV/compare/computer-vs-tv-box/
 - Release Notes (v0.18): https://shadydevelopment.github.io/ECHO_TV/blog/v0-18-release-notes/
 - Troubleshooting (macOS app damaged fix): https://shadydevelopment.github.io/ECHO_TV/blog/macos-arm-app-damaged-fix/

@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import type { DownloadItem } from '@iptvnator/services';
+import type { DownloadItem } from '@echo-tv/services';
 import { TranslatePipe } from '@ngx-translate/core';
 import type {
     DownloadItemAction,

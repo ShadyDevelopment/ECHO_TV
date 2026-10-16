@@ -3,7 +3,7 @@ import { AddressInfo, createServer } from 'net';
 import {
     PlayerContentInfo,
     readExternalPlayerErrorCode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     VLC_PLAYER_ARGUMENTS,
     VLC_PLAYER_PATH,

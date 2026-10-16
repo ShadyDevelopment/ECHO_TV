@@ -1,8 +1,8 @@
-import { applyApiMetadata } from '@iptvnator/portal/shared/data-access';
+import { applyApiMetadata } from '@echo-tv/portal/shared/data-access';
 import {
     unambiguousCategoryLanguage,
     type VodSourceCandidate,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { VodMultiSourceMovie } from './vod-multi-source-identity';
 
 /**

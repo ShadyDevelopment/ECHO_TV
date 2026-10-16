@@ -55,7 +55,7 @@ const MOCK_FIXTURE_CATEGORIES: ReadonlyArray<{
 ];
 /**
  * Live categories of the Stalker mock's marketing-demo scenario, from
- * `MARKETING_LIVE_CATEGORIES` in `@iptvnator/shared/marketing-fixtures`.
+ * `MARKETING_LIVE_CATEGORIES` in `@echo-tv/shared/marketing-fixtures`.
  * Spelled out here because `pnpm release:screenshots` runs tsx without the
  * base tsconfig, so workspace path aliases do not resolve in this file.
  */
@@ -82,7 +82,7 @@ export async function ensureXtreamMockServer(
 
     const child = spawn(
         path.join(workspaceRoot, 'node_modules/.bin/tsx'),
-        // The mock server imports `@iptvnator/shared/marketing-fixtures`, and
+        // The mock server imports `@echo-tv/shared/marketing-fixtures`, and
         // tsx only resolves that path alias when pointed at the base config —
         // matching how the project's own serve target invokes it.
         [
@@ -175,7 +175,7 @@ async function assertStalkerMockServerIdentity(): Promise<void> {
     for (const expected of STALKER_MOCK_FIXTURE_CATEGORIES) {
         if (!titles.has(expected)) {
             throw new Error(
-                `The server on ${STALKER_MOCK_ORIGIN} is not the IPTVnator marketing mock (missing live category "${expected}"). Refusing to capture screenshots from unknown data.`
+                `The server on ${STALKER_MOCK_ORIGIN} is not the ECHO TV marketing mock (missing live category "${expected}"). Refusing to capture screenshots from unknown data.`
             );
         }
     }
@@ -206,7 +206,7 @@ async function assertMockServerIdentity(): Promise<void> {
 
         if (!names.has(expected.name)) {
             throw new Error(
-                `The server on ${XTREAM_MOCK_ORIGIN} is not the IPTVnator marketing mock (missing ${expected.action} entry "${expected.name}"). Refusing to capture screenshots from unknown data.`
+                `The server on ${XTREAM_MOCK_ORIGIN} is not the ECHO TV marketing mock (missing ${expected.action} entry "${expected.name}"). Refusing to capture screenshots from unknown data.`
             );
         }
     }

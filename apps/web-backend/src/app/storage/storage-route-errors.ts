@@ -1,5 +1,5 @@
 import type { ErrorRequestHandler } from 'express';
-import type { ServerStorageErrorBody } from '@iptvnator/shared/interfaces';
+import type { ServerStorageErrorBody } from '@echo-tv/shared/interfaces';
 import {
     InvalidPlaylistDocumentError,
     PlaylistPayloadMissingError,

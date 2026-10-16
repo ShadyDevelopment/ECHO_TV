@@ -7,7 +7,7 @@ recommended built-in web player for the current content without changing their
 saved setting.
 
 **Architecture:** Extract the existing pure diagnostic contracts into a new
-`@iptvnator/playback/util` Nx project, then add a total ranked-policy function
+`@echo-tv/playback/util` Nx project, then add a total ranked-policy function
 over structured evidence and explicit target capabilities. Keep playback-session
 state in `WebPlayerViewComponent` through a focused helper, render recommendations
 through a presentational diagnostic panel, and make every host provide stable
@@ -210,7 +210,7 @@ Create `tsconfig.lib.json`:
 Add the scoped alias to `tsconfig.base.json`:
 
 ```json
-"@iptvnator/playback/util": ["libs/playback/util/src/index.ts"]
+"@echo-tv/playback/util": ["libs/playback/util/src/index.ts"]
 ```
 
 Run:
@@ -257,7 +257,7 @@ export interface ShakaErrorLike {
 
 Import that type locally from the moved Shaka classifier/evidence/lifecycle
 files. Remove its old declaration from `shaka-module.types.ts`, import it from
-`@iptvnator/playback/util`, and re-export the type there so the UI session keeps
+`@echo-tv/playback/util`, and re-export the type there so the UI session keeps
 its current local module surface. Keep `shaka-video-session`, the lazy module
 loader, `shaka-player-test-double`, and text-track suppression in
 `ui-playback`.
@@ -298,7 +298,7 @@ unavailable-probe behavior is unchanged.
 Add `playback-util-boundary.spec.ts` as a source-boundary regression test. It
 must recursively parse every non-spec `.ts` file under the project with the
 TypeScript compiler API and fail when an import starts with `@angular/`,
-`@iptvnator/ui/`, `electron`, or `@ngx-pwa/`, or when a non-property identifier
+`@echo-tv/ui/`, `electron`, or `@ngx-pwa/`, or when a non-property identifier
 references `window`, `document`, `localStorage`, `sessionStorage`,
 `MediaSource`, `MediaError`, `HTMLMediaElement`, or `HTMLElement`. Ignoring
 property names is required because app-owned evidence values such as
@@ -321,7 +321,7 @@ In `libs/ui/playback/src/index.ts`, replace the deleted relative diagnostic
 export with the compatibility export:
 
 ```typescript
-export * from '@iptvnator/playback/util';
+export * from '@echo-tv/playback/util';
 ```
 
 Change every internal source and spec import that names
@@ -418,7 +418,7 @@ Expected: FAIL because the contracts and mapper do not exist.
 Create `playback-recommendation.model.ts` with these exact public shapes:
 
 ```typescript
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
+import type { ExternalPlayerName } from '@echo-tv/shared/interfaces';
 import type {
     InlinePlaybackPlayer,
     PlaybackDiagnostic,
@@ -1947,7 +1947,7 @@ In `embedded-inline-playback.md`, document this exact sequence:
 
 ```text
 engine public error
-  -> sanitized PlaybackDiagnostic (@iptvnator/playback/util)
+  -> sanitized PlaybackDiagnostic (@echo-tv/playback/util)
   -> recommendPlaybackRecovery(context)
   -> ranked maximum-three action model
   -> WebPlayerView session-local user action
@@ -1960,7 +1960,7 @@ boundary.
 
 - [ ] **Step 2: Update workspace and controls ownership docs**
 
-Add `playback-util` and `@iptvnator/playback/util` to
+Add `playback-util` and `@echo-tv/playback/util` to
 `nx-workspace-boundaries.md` with tags
 `scope:shared/domain:playback/type:util`. State in
 `player-controls-contract.md` that `PlayerController` remains a sibling and
@@ -1982,7 +1982,7 @@ area: playback
 issues: [1159]
 ---
 
-When playback fails, IPTVnator now ranks useful next steps from the reported
+When playback fails, ECHO TV now ranks useful next steps from the reported
 error, including another compatible built-in player, MPV/VLC, Retry, or another
 source. Trying a built-in recommendation affects only the current item and
 does not change the saved player setting.

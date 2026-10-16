@@ -19,8 +19,8 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     SourceCleanupContext,
     SourceCleanupService,
-} from '@iptvnator/portal/shared/data-access';
-import { PlaylistMeta, sourceHealthType } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/data-access';
+import { PlaylistMeta, sourceHealthType } from '@echo-tv/shared/interfaces';
 
 export interface SourceCleanupDialogData extends SourceCleanupContext {
     playlists: readonly PlaylistMeta[];

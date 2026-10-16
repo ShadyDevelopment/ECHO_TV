@@ -10,7 +10,7 @@ import {
 import {
     PortalRailLink,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 @Component({
     selector: 'app-workspace-shell-rail-links',
@@ -27,6 +27,16 @@ export class WorkspaceShellRailLinksComponent {
         PortalRailSection | string | null | undefined
     >(null);
     readonly activeClass = input<'active' | 'is-active'>('is-active');
+
+    isDashboardLink(link: PortalRailLink): boolean {
+        const normalizedPath = link.path
+            .map((segment) => String(segment))
+            .join('/');
+        return (
+            normalizedPath === '/workspace/dashboard' ||
+            normalizedPath === 'workspace/dashboard'
+        );
+    }
 
     resolveIcon(link: PortalRailLink): string {
         const normalizedPath = link.path.map((segment) => String(segment)).join('/');

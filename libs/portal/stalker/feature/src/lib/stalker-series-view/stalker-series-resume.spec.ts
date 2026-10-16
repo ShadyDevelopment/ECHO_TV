@@ -1,8 +1,8 @@
-import type { SeriesResumeTarget } from '@iptvnator/portal/shared/util';
+import type { SeriesResumeTarget } from '@echo-tv/portal/shared/util';
 import type {
     StalkerMappedEpisode,
     VodSeriesSeasonVm,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import {
     findStalkerResumeLazySeason,
     MAX_RESUME_SEASON_HYDRATION_ATTEMPTS,

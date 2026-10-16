@@ -4,7 +4,7 @@ import {
     PlaylistSourceKind,
     resolvePlaylistSourceKind,
     SourceStatusBucket,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { sourceDisplayName, sourceHost } from './source-display';
 
 export type SourcesTypeFilter = 'all' | PlaylistSourceKind;

@@ -1,11 +1,11 @@
 import {
     PortalRailLink,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     WorkspacePortalContext,
     WorkspaceShellPageKind,
-} from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/workspace/shell/util';
 import {
     FILTER_SECTION_PLACEHOLDER,
     RAIL_TOOLTIP_KEYS,

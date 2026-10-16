@@ -1,4 +1,4 @@
-import { XtreamCodeActions } from '@iptvnator/shared/interfaces';
+import { XtreamCodeActions } from '@echo-tv/shared/interfaces';
 
 import {
     XTREAM_PHASE_SEMANTIC_TYPE as SEMANTIC,

@@ -1,7 +1,7 @@
 # Screenshot provenance
 
 - `multi-epg-v0-24.jpg`: original JPEG attached to the
-  [v0.24.0 release](https://github.com/4gray/iptvnator/releases/tag/v0.24.0),
+  [v0.24.0 release](https://github.com/4gray/echo-tv/releases/tag/v0.24.0),
   reused at the maintainer's explicit request on 2026-09-27.
   [Original attachment](https://github.com/user-attachments/assets/205dc53e-70cf-4c63-a49b-9b976fbeb5e5).
   Downloaded without edits; 2648×1626.

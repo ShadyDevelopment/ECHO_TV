@@ -1,7 +1,7 @@
 import {
     isStalkerAuthFailureMessage,
     isStalkerAuthFailureResponse,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Checks whether a response or thrown error indicates a Stalker authorization

@@ -3,7 +3,7 @@ import {
     PlaylistBackupManifestV1,
     XtreamPlaylistBackupEntry,
     XtreamPendingRestoreState,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createPlaylistBackupService,
     createStatefulBackupCollaborators,

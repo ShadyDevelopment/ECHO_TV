@@ -1,9 +1,9 @@
 ---
-name: iptvnator-sqlite-db-worker
+name: echo-tv-sqlite-db-worker
 description: Use when changing Electron SQLite IPC, database-worker operations, request-scoped progress or cancellation, worker packaging, or runtime verification of non-EPG database work.
 ---
 
-# IPTVnator SQLite DB Worker
+# ECHO TV SQLite DB Worker
 
 ## Ownership and Flow
 
@@ -23,7 +23,7 @@ description: Use when changing Electron SQLite IPC, database-worker operations, 
 The chain is renderer `DatabaseService` → preload IPC → main event handler →
 `DatabaseWorkerClient` and its request protocol → worker dispatcher →
 worker connection → operation module → shared
-`@iptvnator/shared/database/schema`, then response or request-scoped event back
+`@echo-tv/shared/database/schema`, then response or request-scoped event back
 to the originating renderer. Keep SQL-heavy logic in operation modules and the
 worker entrypoint focused on dispatch/orchestration.
 
@@ -63,7 +63,7 @@ stat dist/apps/electron-backend/workers/database.worker.js
 Confirm the artifact timestamp, restart Electron, then run the closest
 Electron E2E or CDP workflow.
 
-For SQL output, `IPTVNATOR_TRACE_DB=1` and `IPTVNATOR_TRACE_SQL=1` emit only
+For SQL output, `ECHO_TV_TRACE_DB=1` and `ECHO_TV_TRACE_SQL=1` emit only
 fixed, allowlisted statement types through the shared redacting summary in
 `libs/shared/logging/src/lib/sql-trace-summary.ts`; never log expanded SQL or
 bound values. DB transport traces remain separately redacted.

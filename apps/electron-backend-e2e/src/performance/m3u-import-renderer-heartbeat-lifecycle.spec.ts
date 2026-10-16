@@ -1,5 +1,5 @@
 /* eslint-disable playwright/expect-expect -- This is a Node assertion-based lifecycle test. */
-import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@iptvnator/shared/logging';
+import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@echo-tv/shared/logging';
 import assert from 'node:assert/strict';
 import { EventEmitter } from 'node:events';
 import { mkdtemp, rm } from 'node:fs/promises';
@@ -13,7 +13,7 @@ import { M3U_IMPORT_RENDERER_STATE_KEY } from './m3u-import-renderer-probe';
 test('waits for an in-flight heartbeat and flushes its next deadline once', async () => {
     const browser = installFakeBrowser();
     const outputDirectory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-renderer-heartbeat-stop-')
+        join(tmpdir(), 'echo-tv-renderer-heartbeat-stop-')
     );
     const session = new FakeCdpSession();
     const timerToken = Object.freeze({});

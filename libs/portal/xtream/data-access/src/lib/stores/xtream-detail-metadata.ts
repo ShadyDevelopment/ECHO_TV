@@ -3,7 +3,7 @@ import {
     readProviderText,
     XtreamSerieInfo,
     XtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const VOD_TEXT_FIELDS = [
     'name',

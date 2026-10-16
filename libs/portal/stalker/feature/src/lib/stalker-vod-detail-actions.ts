@@ -6,14 +6,14 @@ import {
     type PortalExternalPlayback,
     type PortalPlaybackPositions,
     type PortalPlayer,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import type {
     ExternalPlayerName,
     PlaybackPositionData,
     ResolvedPortalPlayback,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+} from '@echo-tv/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@echo-tv/ui/playback';
 
 /** A start the explicit launch joins: superseded by, and superseding, every other start of its host. */
 export interface PendingExternalLaunch {

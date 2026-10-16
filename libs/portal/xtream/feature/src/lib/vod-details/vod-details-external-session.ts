@@ -1,8 +1,8 @@
 import type {
     ExternalPlayerSession,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
-import { isLiveExternalPlayerSession } from '@iptvnator/portal/shared/util';
+} from '@echo-tv/shared/interfaces';
+import { isLiveExternalPlayerSession } from '@echo-tv/portal/shared/util';
 
 /**
  * Which external player process, and which position rows, belong to this page.

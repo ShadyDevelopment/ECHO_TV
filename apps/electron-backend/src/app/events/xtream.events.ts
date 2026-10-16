@@ -1,5 +1,5 @@
 import { sourceProbeControl } from './source-probe-control';
-import type { SourceProbeContext } from '@iptvnator/shared/interfaces';
+import type { SourceProbeContext } from '@echo-tv/shared/interfaces';
 /**
  * This module handles all Xtream Codes API related IPC communications
  * between the frontend and the electron backend.
@@ -15,7 +15,7 @@ import {
     createPortalRequestFailureEnvelope,
     normalizeXtreamServerUrl,
     describeXtreamConnectionFailure,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { emitPortalDebugEvent } from './portal-debug.events';
 import {
     classifyExpectedPortalFailure,

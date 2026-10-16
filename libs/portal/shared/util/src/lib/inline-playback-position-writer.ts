@@ -2,7 +2,7 @@ import type { Signal } from '@angular/core';
 import type {
     PlaybackPositionData,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Throttled persistence of the inline player's position.

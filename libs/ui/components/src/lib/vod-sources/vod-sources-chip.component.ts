@@ -16,7 +16,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     VodSourceDescriptor,
     VodSourceMatchKind,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { VodSourcesMenuComponent } from './vod-sources-menu.component';
 
 /**

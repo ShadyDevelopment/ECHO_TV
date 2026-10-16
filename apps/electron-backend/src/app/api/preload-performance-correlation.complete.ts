@@ -2,7 +2,7 @@ import {
     PRELOAD_PERFORMANCE_CORRELATION_STATE,
     PRELOAD_PERFORMANCE_INVALID_REASON,
     PRELOAD_PERFORMANCE_METHOD,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     PRELOAD_PERFORMANCE_SEQUENCE_STAGE,
     closeInvalidPreloadPerformanceSequenceWhenSettled,

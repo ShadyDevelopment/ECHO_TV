@@ -1,7 +1,7 @@
 import type {
     PerformancePhaseMetadata,
     XtreamDatabasePerformancePhase,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface DatabaseOperationPerformancePhaseCapture {
     captureAsync: <TResult>(

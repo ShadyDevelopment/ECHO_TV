@@ -7,8 +7,8 @@ const PUBLISH_UPLOAD_WORKSPACE_STEP_CONTRACT = Object.freeze({
     run: [
         'set -euo pipefail',
         '',
-        'VERIFIED_ASSET_DIRECTORY="/var/lib/iptvnator-snap-release/assets"',
-        'UPLOAD_DIRECTORY="/var/lib/iptvnator-snap-upload"',
+        'VERIFIED_ASSET_DIRECTORY="/var/lib/echo-tv-snap-release/assets"',
+        'UPLOAD_DIRECTORY="/var/lib/echo-tv-snap-upload"',
         'sudo test ! -e "${UPLOAD_DIRECTORY}"',
         'sudo install -d -m 0700 -o root -g root "${UPLOAD_DIRECTORY}"',
         'shopt -s nullglob dotglob',
@@ -108,7 +108,7 @@ const VERIFY_ARTIFACT_UPLOAD_STEP_CONTRACT = Object.freeze({
     uses: PINNED_UPLOAD_ARTIFACT_ACTION,
     with: {
         name: VERIFIED_RELEASE_ARTIFACT_NAME,
-        path: '/var/lib/iptvnator-snap-release/assets',
+        path: '/var/lib/echo-tv-snap-release/assets',
         'if-no-files-found': 'error',
         'retention-days': 1,
         'compression-level': 0,
@@ -131,7 +131,7 @@ const PUBLISH_SEALED_VERIFY_STEP_CONTRACT = Object.freeze({
     run: [
         'set -euo pipefail',
         '',
-        'VERIFIED_ASSET_DIRECTORY="/var/lib/iptvnator-snap-release/assets"',
+        'VERIFIED_ASSET_DIRECTORY="/var/lib/echo-tv-snap-release/assets"',
         'node tools/packaging/release-snap-assets.cjs verify-sealed \\',
         '    --manifest "${RUNNER_TEMP}/selected-snap-release-assets.json" \\',
         '    --directory "${VERIFIED_ASSET_DIRECTORY}" \\',
@@ -148,7 +148,7 @@ const VERIFY_TRANSFER_BINDING_STEP_CONTRACT = Object.freeze({
     run: [
         'set -euo pipefail',
         '',
-        'RECEIPT_PATH="/var/lib/iptvnator-snap-release/assets/verified-release-assets.json"',
+        'RECEIPT_PATH="/var/lib/echo-tv-snap-release/assets/verified-release-assets.json"',
         'RECEIPT_RECORD="$(/usr/bin/sha256sum --binary "${RECEIPT_PATH}")"',
         'RECEIPT_SHA256="${RECEIPT_RECORD%% *}"',
         '[[ "${RECEIPT_SHA256}" =~ ^[a-f0-9]{64}$ ]]',
@@ -169,7 +169,7 @@ const PUBLISH_TRANSFER_VERIFY_STEP_CONTRACT = Object.freeze({
         'set -euo pipefail',
         '',
         'TRANSFERRED_ASSET_DIRECTORY="${RUNNER_TEMP}/verified-snap-release-assets"',
-        'SEALED_ASSET_PARENT="/var/lib/iptvnator-snap-release"',
+        'SEALED_ASSET_PARENT="/var/lib/echo-tv-snap-release"',
         'SEALED_ASSET_DIRECTORY="${SEALED_ASSET_PARENT}/assets"',
         'test -d "${TRANSFERRED_ASSET_DIRECTORY}"',
         'test ! -L "${TRANSFERRED_ASSET_DIRECTORY}"',
@@ -266,8 +266,8 @@ const PUBLISH_STEP_CONTRACT = Object.freeze({
     run: [
         'set -euo pipefail',
         '',
-        'VERIFIED_ASSET_DIRECTORY="/var/lib/iptvnator-snap-release/assets"',
-        'UPLOAD_DIRECTORY="/var/lib/iptvnator-snap-upload"',
+        'VERIFIED_ASSET_DIRECTORY="/var/lib/echo-tv-snap-release/assets"',
+        'UPLOAD_DIRECTORY="/var/lib/echo-tv-snap-upload"',
         'STORE_CREDENTIALS="${SNAPCRAFT_STORE_CREDENTIALS}"',
         'unset SNAPCRAFT_STORE_CREDENTIALS',
         'shopt -s nullglob dotglob',

@@ -66,7 +66,7 @@ test('@settings @electron saves the portal cooldown preference and applies it wi
 }) => {
     const origin = await unusedLocalOrigin();
     let app = await launchElectronApp(dataDir, {
-        omitEnvKeys: ['IPTVNATOR_DISABLE_CONNECTIVITY_GUARD'],
+        omitEnvKeys: ['ECHO_TV_DISABLE_CONNECTIVITY_GUARD'],
     });
     try {
         await openSettings(app.mainWindow);
@@ -103,7 +103,7 @@ test('@settings @electron saves the portal cooldown preference and applies it wi
 
         await closeElectronApp(app);
         app = await launchElectronApp(dataDir, {
-            omitEnvKeys: ['IPTVNATOR_DISABLE_CONNECTIVITY_GUARD'],
+            omitEnvKeys: ['ECHO_TV_DISABLE_CONNECTIVITY_GUARD'],
         });
         // Check the cold-start mirror before opening Settings or saving again.
         for (let index = 0; index < 3; index++) {

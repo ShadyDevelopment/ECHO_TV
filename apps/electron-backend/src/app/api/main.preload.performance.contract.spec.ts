@@ -5,7 +5,7 @@ import {
     PRELOAD_PERFORMANCE_METHOD,
     type Playlist,
     type PreloadPerformanceMarker,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createPlaylist,
     createPreloadPerformanceHarness,

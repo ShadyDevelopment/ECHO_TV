@@ -1,9 +1,9 @@
-import type { DownloadItem } from '@iptvnator/services';
+import type { DownloadItem } from '@echo-tv/services';
 import type {
     DownloadMetadataPerson,
     DownloadMetadataSnapshot,
     TmdbEnrichedCastMember,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type {
     DeepReadonly,
     DownloadOfflineDetail,

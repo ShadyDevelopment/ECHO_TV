@@ -11,7 +11,7 @@ import {
     ElectronBridgeTrustOptions,
     EpgChannelMetadata,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { epgQueryService } from './epg-query.service';
 import { epgGuideQueryService } from './epg-guide-query.service';
 import { epgWorkerService } from './epg-worker.service';

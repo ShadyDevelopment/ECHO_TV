@@ -7,7 +7,7 @@ import {
     withState,
 } from '@ngrx/signals';
 import { ContentType, XtreamContentLoadState } from '../../xtream-state';
-import { foldSearchText } from '@iptvnator/shared/interfaces';
+import { foldSearchText } from '@echo-tv/shared/interfaces';
 
 /**
  * Module-level collator — allocating Intl.Collator is expensive;

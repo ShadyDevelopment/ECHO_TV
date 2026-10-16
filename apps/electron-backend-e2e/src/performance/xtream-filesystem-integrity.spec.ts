@@ -124,7 +124,7 @@ function capture(directory: string): XtreamDiagnosticCapture {
 
 async function createDirectory(label: string): Promise<string> {
     const directory = await mkdtemp(
-        join(tmpdir(), `iptvnator-xtream-fs-${label}-`)
+        join(tmpdir(), `echo-tv-xtream-fs-${label}-`)
     );
     directories.push(directory);
     return directory;

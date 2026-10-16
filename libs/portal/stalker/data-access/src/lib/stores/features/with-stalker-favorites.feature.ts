@@ -3,8 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { signalStoreFeature, withMethods } from '@ngrx/signals';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistMeta, StalkerPortalItem } from '@iptvnator/shared/interfaces';
+import { PlaylistsService } from '@echo-tv/services';
+import { PlaylistMeta, StalkerPortalItem } from '@echo-tv/shared/interfaces';
 import { firstNonBlankStalkerId } from '../../stalker-vod.utils';
 import { StalkerSelectionStoreContract } from '../stalker-store.contracts';
 import {

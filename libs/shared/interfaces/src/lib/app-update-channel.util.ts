@@ -1,9 +1,8 @@
 /**
  * Desktop update channel. Electron only.
  *
- * `stable` follows the tagged releases of `4gray/iptvnator`; `nightly`
- * follows the prereleases that every master merge publishes to
- * `4gray/iptvnator-nightly`. The value is persisted with the other settings
+ * `stable` follows tagged releases of `ShadyDevelopment/ECHO_TV`; `nightly`
+ * follows its prereleases. The value is persisted with the other settings
  * in the renderer and mirrored into the main-process config by the
  * `SETTINGS_UPDATE` handler, because the startup update check runs before
  * any renderer exists to ask.
@@ -44,8 +43,8 @@ interface AppUpdateRepository {
 }
 
 const APP_UPDATE_REPOSITORIES: Record<AppUpdateChannel, AppUpdateRepository> = {
-    stable: { owner: '4gray', repo: 'iptvnator' },
-    nightly: { owner: '4gray', repo: 'iptvnator-nightly' },
+    stable: { owner: 'ShadyDevelopment', repo: 'ECHO_TV' },
+    nightly: { owner: 'ShadyDevelopment', repo: 'ECHO_TV' },
 };
 
 export function appUpdateRepository(
@@ -56,8 +55,7 @@ export function appUpdateRepository(
 
 /**
  * Page a user can open to install by hand. `/releases/latest` never resolves
- * to a prerelease, and the nightly repository holds nothing else, so that
- * channel links to the release list instead.
+ * to a prerelease, so the nightly channel links to the release list instead.
  */
 export function appUpdateReleasesPageUrl(channel: AppUpdateChannel): string {
     const { owner, repo } = APP_UPDATE_REPOSITORIES[channel];

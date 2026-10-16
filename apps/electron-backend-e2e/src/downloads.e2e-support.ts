@@ -44,7 +44,7 @@ interface TruncatedDownloadServer {
 
 export const RANGE_SERVER_ETAG = '"e2e-range-etag"';
 export const INTERRUPTED_RANGE_SERVER_ETAG = '"e2e-reset-etag"';
-const downloadPlayCaptureKey = '__iptvnatorE2eDownloadPlayPaths';
+const downloadPlayCaptureKey = '__echo-tvE2eDownloadPlayPaths';
 
 export function getStalkerSeriesDownloadTarget(
     item: StalkerContentItem | undefined

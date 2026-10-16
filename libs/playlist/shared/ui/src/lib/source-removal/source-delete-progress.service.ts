@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DatabaseService, DbOperationEvent } from '@iptvnator/services';
+import { DatabaseService, DbOperationEvent } from '@echo-tv/services';
 
 interface DeleteOperation {
     operationId?: string;

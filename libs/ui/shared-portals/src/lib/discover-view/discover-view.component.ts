@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslatePipe } from '@ngx-translate/core';
-import { registerWorkspaceBack } from '@iptvnator/portal/shared/data-access';
+import { registerWorkspaceBack } from '@echo-tv/portal/shared/data-access';
 import {
     TitleResultItem,
     TitleResultsComponent,

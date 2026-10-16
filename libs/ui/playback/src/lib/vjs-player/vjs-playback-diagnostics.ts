@@ -3,7 +3,7 @@ import {
     classifyNativePlaybackIssue,
     classifyVhsPlaybackIssue,
     createPlaybackSourceMetadata,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import {
     getVideoJsPlaybackCodecs,
     hasActiveVhsSourceHandler,

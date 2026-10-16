@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 const postHtmlPath = new URL('../../dist/apps/website/blog/why-external-players-help/index.html', import.meta.url);
 
 const expectedGiscusAttributes = {
-  'data-repo': '4gray/iptvnator',
+  'data-repo': '4gray/echo-tv',
   'data-repo-id': 'MDEwOlJlcG9zaXRvcnkyMTMxOTQ3Mzg=',
   'data-category': 'Blog comments',
   'data-category-id': 'DIC_kwDODLUX8s4C9eBJ',

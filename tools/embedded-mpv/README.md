@@ -1,14 +1,14 @@
 # Embedded MPV Runtime
 
 This directory owns the source builders, staging, manifests, and archive
-helpers for IPTVnator's experimental Embedded MPV runtime.
+helpers for ECHO TV's experimental Embedded MPV runtime.
 
 The Linux architecture has a strict process boundary:
 
 - Electron, `embedded_mpv.node`, and `embedded_mpv_frame_reader.node` must not
   load or link libmpv.
 - Native-view starts a separate system `mpv --wid` process.
-- Frame-copy starts `iptvnator_mpv_helper`; only that helper may link libmpv.
+- Frame-copy starts `echo-tv_mpv_helper`; only that helper may link libmpv.
 
 Do not weaken this boundary to simplify packaging. A missing helper/runtime
 must make frame-copy unavailable and leave native-view as the safe x64
@@ -25,7 +25,7 @@ Release builds use an LGPL-compatible, dynamically linked runtime:
   build flags, local patches, and build scripts are published with the release.
 
 Homebrew mpv is local-development-only. It requires
-`IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1`, and release validation rejects it.
+`ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1`, and release validation rejects it.
 
 ## Generated Layout
 
@@ -117,7 +117,7 @@ hold for any pin.
 
 The upstream archive is checksum- and layout-verified, not independently
 certified as a complete LGPL closure. It contains no corresponding source or
-license notices, so IPTVnator does not mirror it. Any future stable mirror must
+license notices, so ECHO TV does not mirror it. Any future stable mirror must
 ship complete corresponding source, exact build scripts and patches, notices,
 and a validated transitive license record beside the binary.
 
@@ -171,7 +171,7 @@ Before publication, the Linux builder verifies:
 
 ## Linux Package Profiles
 
-Set one exact `IPTVNATOR_LINUX_FRAME_COPY_PROFILE` per packaging pass:
+Set one exact `ECHO_TV_LINUX_FRAME_COPY_PROFILE` per packaging pass:
 
 | Profile    | Formats          | Runtime handling                                                             |
 | ---------- | ---------------- | ---------------------------------------------------------------------------- |
@@ -193,7 +193,7 @@ Snap's `mesa-core22`.
 The DEB metadata is release-tested on Ubuntu 24.04 (Noble). Ubuntu 22.04
 (Jammy) only provides `libmpv1`; use the x64 AppImage on that distribution
 rather than relaxing the runtime contract. CI explicitly installs the distro
-Mesa software renderer for headless smoke. IPTVnator does not add DRI-driver
+Mesa software renderer for headless smoke. ECHO TV does not add DRI-driver
 packages as direct dependencies; any transitive graphics-driver stack remains
 under the distro's dependency policy.
 
@@ -202,7 +202,7 @@ Builder's default plugs and adds an auto-connected private `shared-memory`
 plug plus `graphics-core22`, targeting a real empty mode-0755 `$SNAP/graphics`
 with external `mesa-core22` as default provider. The graphics provider supplies
 EGL/GL/GLX/GBM/DRM/VA, while Electron Builder's exact GNOME content runtime
-supplies ALSA/PulseAudio. Neither provider is bundled into IPTVnator's Snap,
+supplies ALSA/PulseAudio. Neither provider is bundled into ECHO TV's Snap,
 source archive, notices, or package-size accounting. The package hook creates
 the empty content target because core22 does not synthesize one; the extracted
 artifact verifier rejects a missing, redirected, non-empty, or wrongly
@@ -226,7 +226,7 @@ interfaces. Inside the exact packaged Flatpak `/app` context, the helper
 reconstructs only Freedesktop Platform 24.08's immutable
 `__EGL_EXTERNAL_PLATFORM_CONFIG_DIRS` value; the GL extension's
 `add-ld-path` remains available through the sandbox loader cache. Flatpak CI
-therefore invokes `flatpak run com.fourgray.iptvnator
+therefore invokes `flatpak run com.fourgray.echo-tv
 --embedded-mpv-runtime-probe` instead of executing the helper around the
 application gate. In a genuine Snap mount, filtered `SNAP_LIBRARY_PATH` GL roots
 under `/var/lib/snapd/lib/gl` come next, then the fixed x64
@@ -253,10 +253,10 @@ controlled status `1`, then reconnects the provider and requires a successful
 diagnostic. This keeps the canonical layouts and missing-provider fallback in
 the same regression contract.
 
-Flatpak is an isolated packaging pass and keeps `iptvnator` as the real
+Flatpak is an isolated packaging pass and keeps `echo-tv` as the real
 Electron ELF so Electron Builder's `electron-wrapper` passes it directly to
-Zypak. Other Linux targets retain the conditional `iptvnator` wrapper and
-`iptvnator.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation. A
+Zypak. Other Linux targets retain the conditional `echo-tv` wrapper and
+`echo-tv.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation. A
 missing or unsupported profile, or a target from another profile, fails
 packaging.
 
@@ -292,7 +292,7 @@ At startup, Linux x64 frame-copy is advertised only after the main process
 validates that manifest/files and successfully executes:
 
 ```bash
-iptvnator_mpv_helper --runtime-probe
+echo-tv_mpv_helper --runtime-probe
 ```
 
 The bounded probe initializes idle libmpv plus EGL/OpenGL and mpv render
@@ -307,7 +307,7 @@ one exact protocol-v1 line with a fixed allowlisted reason. Its optional
 `helperDetail` is restricted to 1–1024 printable ASCII characters; invalid
 detail suppresses both helper fields. Every probe has the same explicit 16 MiB
 aggregate captured-output ceiling, regardless of tracing. With
-`IPTVNATOR_TRACE_PLAYER=1`, non-empty captured helper stderr is written
+`ECHO_TV_TRACE_PLAYER=1`, non-empty captured helper stderr is written
 separately as one JSON-escaped stderr line: its `stderr` field contains at most
 the first 16,384 characters and its `truncated` boolean is always explicit.
 Empty captures, disabled tracing, and trace-writer failures do not emit a
@@ -315,7 +315,7 @@ record or alter availability. The installed-Snap probe therefore tests the
 private shared-memory confinement
 needed by playback rather than only loader and graphics startup.
 Packaging CI invokes the same gate through
-`snap run iptvnator --embedded-mpv-runtime-probe`. This packaging-only
+`snap run echo-tv --embedded-mpv-runtime-probe`. This packaging-only
 application switch runs before BrowserWindow startup, emits one availability
 JSON line, and returns zero only for a usable runtime; it never directly loads
 libmpv in Electron. The installed-Snap smoke adds `EGL_LOG_LEVEL=debug` and
@@ -413,7 +413,7 @@ artifact-transfer actions use full pinned commits, and checkout does not
 persist its repository credential. The verifier bounds
 source members, the archive, SquashFS listing, extracted size, entry count,
 command time, and job time; every Snap must use the canonical snap-root
-layout (Electron app at `/`, so `/iptvnator.bin` and `/resources/**`) and
+layout (Electron app at `/`, so `/echo-tv.bin` and `/resources/**`) and
 pass the existing static package validator.
 The public-release boundary also reapplies the exact strict
 `meta/snap.yaml` graphics/shared-memory/layout contract and enumerates the
@@ -450,7 +450,7 @@ Windows CI stages the x64 LGPL archive selected by the checked-in validated pin
 described above. PR, master, and tag builds consume that same record; repository
 variables and fallback URLs are not build inputs. The DLL basename encoded in
 the archive's import library is preserved and must be present beside
-`iptvnator_mpv_helper.exe`. The weekly workflow rotates the reviewed pin before
+`echo-tv_mpv_helper.exe`. The weekly workflow rotates the reviewed pin before
 the upstream's latest-30-build retention removes it. A permanent mirror still
 requires the complete corresponding source/build records, license notices, and
 validated transitive license closure beside the binary.

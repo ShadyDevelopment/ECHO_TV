@@ -7,8 +7,8 @@ import {
 
 jest.mock('drizzle-orm', () => mockDrizzleOrmModule());
 
-import * as schema from '@iptvnator/shared/database/schema';
-import type { VodSourcePin } from '@iptvnator/shared/interfaces';
+import * as schema from '@echo-tv/shared/database/schema';
+import type { VodSourcePin } from '@echo-tv/shared/interfaces';
 import {
     clearVodSourcePin,
     getVodSourcePin,

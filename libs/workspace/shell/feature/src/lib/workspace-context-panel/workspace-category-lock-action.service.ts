@@ -1,11 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { ParentalLockService } from '@iptvnator/services';
+import { ParentalLockService } from '@echo-tv/services';
 import {
     toParentalLockStalkerCategoryType,
     toParentalLockXtreamCategoryType,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 export interface CategoryLockTarget {
     readonly provider: 'xtreams' | 'stalker';

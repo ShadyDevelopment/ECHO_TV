@@ -1,5 +1,5 @@
-import * as schema from '@iptvnator/shared/database/schema';
-import { XTREAM_DATABASE_PERFORMANCE_PHASE } from '@iptvnator/shared/interfaces';
+import * as schema from '@echo-tv/shared/database/schema';
+import { XTREAM_DATABASE_PERFORMANCE_PHASE } from '@echo-tv/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import { createRecordingOperationPhaseCapture } from './performance-phase-capture.test-helpers';
 import { deletePlaylist } from './playlist.operations';

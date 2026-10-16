@@ -3,9 +3,9 @@ import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
-import { SettingsStore } from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
-import { EpgProgrammeDialogService } from '@iptvnator/ui/epg';
+import { SettingsStore } from '@echo-tv/services';
+import { EpgProgram } from '@echo-tv/shared/interfaces';
+import { EpgProgrammeDialogService } from '@echo-tv/ui/epg';
 import { ChannelListItemComponent } from './channel-list-item.component';
 
 describe('ChannelListItemComponent', () => {

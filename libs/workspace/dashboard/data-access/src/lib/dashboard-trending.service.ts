@@ -4,9 +4,9 @@ import {
     TmdbEnrichmentService,
     groupTitleMatchesByKey,
     pickTitleMatch,
-} from '@iptvnator/services';
-import { CatalogTitleMatch } from '@iptvnator/shared/interfaces';
-import type { TmdbTrendingEntry } from '@iptvnator/services';
+} from '@echo-tv/services';
+import { CatalogTitleMatch } from '@echo-tv/shared/interfaces';
+import type { TmdbTrendingEntry } from '@echo-tv/services';
 
 /** One trending card: TMDB entry + optional library match for navigation */
 export interface DashboardTrendingItem extends TmdbTrendingEntry {

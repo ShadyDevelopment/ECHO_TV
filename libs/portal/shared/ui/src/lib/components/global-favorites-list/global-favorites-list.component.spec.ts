@@ -3,10 +3,10 @@ import { signal } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { ChannelDetailsDialogComponent } from '@iptvnator/ui/components';
-import { UnifiedFavoriteChannel } from '@iptvnator/portal/shared/util';
-import { Channel } from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
+import { ChannelDetailsDialogComponent } from '@echo-tv/ui/components';
+import { UnifiedFavoriteChannel } from '@echo-tv/portal/shared/util';
+import { Channel } from '@echo-tv/shared/interfaces';
+import { SettingsStore } from '@echo-tv/services';
 import { GlobalFavoritesListComponent } from './global-favorites-list.component';
 
 describe('GlobalFavoritesListComponent', () => {

@@ -235,7 +235,7 @@ records no shift. `app.config.spec.ts` keeps the animations renderer out, and
 pages and that neither the dashboard nor the content pane shifts.
 
 Destroy hooks therefore run with the view's DOM already detached; the
-[UI guidelines](./iptvnator-ui-guidelines.md) ("No animations module") say
+[UI guidelines](./echo-tv-ui-guidelines.md) ("No animations module") say
 how hooks record geometry and focus instead.
 
 Do not add `provideAnimations()` or `provideAnimationsAsync()` back; animate
@@ -246,8 +246,8 @@ removal in the same way, so a routed page must not carry one.
 
 The header's leading slot is the workspace's one page-level Back. Pages do not
 render an arrow of their own: they register a `WorkspaceBackTarget`
-(`@iptvnator/portal/shared/util`) with `WorkspaceBackNavigationService`
-(`@iptvnator/portal/shared/data-access`), normally through
+(`@echo-tv/portal/shared/util`) with `WorkspaceBackNavigationService`
+(`@echo-tv/portal/shared/data-access`), normally through
 `registerWorkspaceBack()`, which registers for the calling component's
 lifetime while its optional `available` predicate holds. The newest
 registration wins, and each release removes only its own target. The button
@@ -300,7 +300,7 @@ Back cannot return to the page just left; with nothing in-app before it, the
 parent shows no history fallback. The resolver returns a URL or router commands, may be asynchronous, and
 returns null when the page knows no parent, which keeps `Location.back()`.
 Portal pages build their parent with `workspacePortalCommands()`
-(`@iptvnator/portal/shared/util`) from the route's `:id`; without a section,
+(`@echo-tv/portal/shared/util`) from the route's `:id`; without a section,
 the portal route's `redirectTo` picks the default section within the same
 navigation, so the replacement still applies. Detail pages keep their own
 return logic (`backClicked`).
@@ -365,7 +365,7 @@ On live sections the category panel can be folded away independently of the
 channels list; the folded panel is reachable as a popover from the channels
 header through the `LIVE_CATEGORIES_POPOVER` token the shell provides. The
 three nested levels, their affordances and persistence are specified in
-`iptvnator-ui-guidelines.md` ("Collapsible Live Sidebar").
+`echo-tv-ui-guidelines.md` ("Collapsible Live Sidebar").
 
 A category click in a LIVE section (Xtream `live`, Stalker `itv` and `radio`)
 changes only the selected category: the live layouts gate their player on the
@@ -470,7 +470,7 @@ and from the command palette. Both use the same index and ranking.
 
 1. The index is `SETTINGS_SEARCH_ENTRIES` in
    `libs/workspace/shell/util/src/lib/settings-search/`, published through the
-   `@iptvnator/workspace/shell/util/settings-search` sub-entrypoint. Eager
+   `@echo-tv/workspace/shell/util/settings-search` sub-entrypoint. Eager
    code imports the main shell util barrel, so the index stays out of it and
    ships only in lazy chunks (the initial-bytes ratchet enforces this).
 2. Each entry names its section, title and description translation keys,
@@ -533,7 +533,7 @@ The Electron window hides the native title bar on all desktop platforms
 
 1. macOS keeps the native traffic lights (`titleBarOverlay: true`,
    `trafficLightPosition` from `MACOS_TRAFFIC_LIGHTS_POSITION` in
-   `@iptvnator/shared/interfaces`); the renderer draws no window buttons.
+   `@echo-tv/shared/interfaces`); the renderer draws no window buttons.
    The lights sit in the header band (`--workspace-header-band`, 56 px) over
    the rail and the header's leading padding. The macOS rail
    (`.app-rail.is-macos`) starts its first link below the band: level with
@@ -687,7 +687,7 @@ Startup window mode (`Settings.startupWindowMode`, issue #1455):
    (`MAIN_WINDOW_BACKGROUND_COLOR`, keep it in sync with `#initial-splash`
    in `apps/web/src/index.html`), so showing before the first paint does
    not flash.
-4. `iptvnator --fullscreen` (read via `app.commandLine.hasSwitch`, so it can
+4. `echo-tv --fullscreen` (read via `app.commandLine.hasSwitch`, so it can
    sit anywhere in argv; the playlist-path extractor already skips every
    `-`-prefixed argument) forces `fullscreen` for that launch only and is
    never persisted. Resolution lives in

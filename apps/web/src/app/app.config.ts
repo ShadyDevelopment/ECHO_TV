@@ -21,20 +21,20 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { PlaylistEffects, playlistReducer } from '@iptvnator/m3u-state';
+import { PlaylistEffects, playlistReducer } from '@echo-tv/m3u-state';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util/tokens';
-import { STALKER_PLAYLIST_CONNECTION_EDITOR } from '@iptvnator/playlist/shared/ui/stalker-connection-editor';
-import { provideXtreamDataSource } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util/tokens';
+import { STALKER_PLAYLIST_CONNECTION_EDITOR } from '@echo-tv/playlist/shared/ui/stalker-connection-editor';
+import { provideXtreamDataSource } from '@echo-tv/portal/xtream/data-access';
 import {
     provideParentalLockPlaylistCleanup,
     DataService,
-} from '@iptvnator/services';
-import { dbConfig } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { dbConfig } from '@echo-tv/shared/interfaces';
 import { storeDevtoolsProviders } from '../environments/store-devtools.providers';
 import { routes } from './app.routes';
 import { ElectronService } from './services/electron.service';
@@ -82,7 +82,7 @@ const SUPPORTED_LANGS = new Set([
     'zh',
     'zhtw',
 ]);
-export const PREFERRED_LANGUAGE_STORAGE_KEY = 'iptvnator:preferred-language';
+export const PREFERRED_LANGUAGE_STORAGE_KEY = 'echo-tv:preferred-language';
 export function getInitialLanguage(): string {
     try {
         const saved = localStorage.getItem(PREFERRED_LANGUAGE_STORAGE_KEY);

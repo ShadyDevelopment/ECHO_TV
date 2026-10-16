@@ -5,20 +5,20 @@ import {
     input,
     output,
 } from '@angular/core';
-import { type PlaybackFallbackRequest } from '@iptvnator/ui/playback';
-import { EpgProgramActivationEvent } from '@iptvnator/ui/epg';
+import { type PlaybackFallbackRequest } from '@echo-tv/ui/playback';
+import { EpgProgramActivationEvent } from '@echo-tv/ui/epg';
 import {
     EpgProgram,
     RecordingStartMetadata,
     RecordingStoppedEvent,
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     DEFAULT_FAVORITES_CHANNEL_SORT_MODE,
     FavoritesChannelSortMode,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 
 /**
  * Stand-ins for the components UnifiedLiveTabComponent renders. They mirror

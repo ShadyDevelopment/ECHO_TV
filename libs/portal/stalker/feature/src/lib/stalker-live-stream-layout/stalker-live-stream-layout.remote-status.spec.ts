@@ -3,15 +3,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { PORTAL_PLAYER } from '@iptvnator/portal/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { PORTAL_PLAYER } from '@echo-tv/portal/shared/util';
+import { StalkerStore } from '@echo-tv/portal/stalker/data-access';
 import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { ElectronBridgeApi, EpgProgram } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { ElectronBridgeApi, EpgProgram } from '@echo-tv/shared/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { StalkerLiveStreamLayoutComponent } from './stalker-live-stream-layout.component';

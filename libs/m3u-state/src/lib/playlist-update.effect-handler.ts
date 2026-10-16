@@ -1,4 +1,4 @@
-import type { Playlist } from '@iptvnator/shared/interfaces';
+import type { Playlist } from '@echo-tv/shared/interfaces';
 
 interface PlaylistUpdateAction {
     operationId?: string;

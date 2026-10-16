@@ -12,13 +12,13 @@ import {
     VodSourceDiscoveryService,
     VodSourceProbeCacheService,
     VodSourceResolverService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@echo-tv/portal/shared/data-access';
 import {
     ParentalLockService,
     SettingsStore,
     StreamProbeService,
     VodSourcePinService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     vodMultiSourceMovieKey,
     vodMultiSourceSessionKey,
@@ -54,7 +54,7 @@ import {
     type ResolvedPortalPlayback,
     type VodSourceCandidate,
     type VodSourceDescriptor,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Wires VOD multi-source into one open movie on the Xtream detail page.

@@ -7,7 +7,7 @@ import {
     PlaybackRuntimeSupport,
     SHAKA_ERROR_CODE,
     type PlaybackDiagnostic,
-} from '@iptvnator/playback/util';
+} from '@echo-tv/playback/util';
 import { getDiagnosticEvidence } from './playback-diagnostic-summary.util';
 
 function allowed<T extends string>(
@@ -50,7 +50,7 @@ export function createDiagnosticReport(
     return JSON.stringify(
         {
             schemaVersion: 1,
-            app: 'IPTVnator',
+            app: 'ECHO TV',
             appVersion:
                 /^\d{1,4}\.\d{1,4}\.\d{1,4}(?:-(?:alpha|beta|rc)\.?\d{1,5})?$/.test(
                     appVersion

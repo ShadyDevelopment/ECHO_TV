@@ -77,7 +77,7 @@ describe('Xtream exclusive artifact writer', () => {
 
 async function createDirectory(): Promise<string> {
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-xtream-exclusive-')
+        join(tmpdir(), 'echo-tv-xtream-exclusive-')
     );
     directories.push(directory);
     return directory;

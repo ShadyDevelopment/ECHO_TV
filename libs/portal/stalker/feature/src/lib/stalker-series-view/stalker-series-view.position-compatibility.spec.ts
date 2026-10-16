@@ -7,19 +7,19 @@ import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import {
     StalkerStore,
     type StalkerVodSource,
     type VodSeriesSeasonVm,
-} from '@iptvnator/portal/stalker/data-access';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/stalker/data-access';
+import type { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 import {
     CrossPortalSimilarService,
     DownloadsService,
     PlaybackPositionRuntimeBridgeService,
     TmdbEnrichmentService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { EMPTY, of } from 'rxjs';
 import { StalkerSeriesViewComponent } from './stalker-series-view.component';
 const PLAYLIST_ID = 'playlist-1';

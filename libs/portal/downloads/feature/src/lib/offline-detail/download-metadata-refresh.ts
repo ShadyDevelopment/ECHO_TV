@@ -1,5 +1,5 @@
-import { TMDB_DETAILS_CACHE_TTL_MS } from '@iptvnator/services';
-import type { DownloadMetadataSnapshot } from '@iptvnator/shared/interfaces';
+import { TMDB_DETAILS_CACHE_TTL_MS } from '@echo-tv/services';
+import type { DownloadMetadataSnapshot } from '@echo-tv/shared/interfaces';
 
 export const TMDB_REFRESH_STATE = {
     DISABLED: 'disabled',

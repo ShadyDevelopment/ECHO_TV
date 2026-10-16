@@ -1,5 +1,5 @@
-import type { EpgProgram, PlaylistMeta } from '@iptvnator/shared/interfaces';
-import { DEFAULT_DASHBOARD_RAILS_SETTINGS } from '@iptvnator/shared/interfaces';
+import type { EpgProgram, PlaylistMeta } from '@echo-tv/shared/interfaces';
+import { DEFAULT_DASHBOARD_RAILS_SETTINGS } from '@echo-tv/shared/interfaces';
 import {
     buildDashboardCollectionViewState,
     buildDashboardContinueWatchingActions,
@@ -28,7 +28,7 @@ import {
 } from './dashboard-playback.utils';
 import { resolveDashboardHeroArtwork } from './dashboard-hero.utils';
 import type { DashboardRailCard } from './dashboard-rail.component';
-import { COLLECTION_VIEW_STATE_KEY } from '@iptvnator/portal/shared/util';
+import { COLLECTION_VIEW_STATE_KEY } from '@echo-tv/portal/shared/util';
 
 describe('buildDashboardSourceActions', () => {
     const basePlaylist = {

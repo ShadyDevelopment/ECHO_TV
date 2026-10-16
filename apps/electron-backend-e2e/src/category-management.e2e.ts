@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test';
-import type { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+import type { ElectronBridgeApi } from '@echo-tv/shared/interfaces';
 import { ok as assert } from 'node:assert';
 import {
     addXtreamPortal,

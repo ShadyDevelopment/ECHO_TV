@@ -1,5 +1,5 @@
 import { createReducer } from '@ngrx/store';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@echo-tv/shared/interfaces';
 import { FavoritesActions } from '../actions';
 import { playlistsAdapter } from '../playlists.state';
 import { initialState } from '../state';

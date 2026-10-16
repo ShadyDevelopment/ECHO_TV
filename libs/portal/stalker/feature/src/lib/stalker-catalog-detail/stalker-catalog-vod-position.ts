@@ -1,8 +1,8 @@
 import { type Signal, effect, signal } from '@angular/core';
-import type { PortalPlaybackPositions } from '@iptvnator/portal/shared/util';
-import type { StalkerSelectedVodItem } from '@iptvnator/portal/stalker/data-access';
-import type { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import type { PortalPlaybackPositions } from '@echo-tv/portal/shared/util';
+import type { StalkerSelectedVodItem } from '@echo-tv/portal/stalker/data-access';
+import type { PlaybackPositionRuntimeBridgeService } from '@echo-tv/services';
+import type { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 
 interface StalkerCatalogVodPositionConfig {
     readonly playbackPositions: Pick<

@@ -7,7 +7,7 @@ import {
     XTREAM_MAIN_PERFORMANCE_PHASE,
     type PerformancePhaseEvent,
     type XtreamMainPerformancePhase,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createXtreamMainPerformanceCapture,
     createXtreamMeasuredTransformResponse,

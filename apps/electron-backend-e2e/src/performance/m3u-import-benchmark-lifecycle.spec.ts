@@ -16,7 +16,7 @@ import { assertM3uImportRequestDelta } from './m3u-import.benchmark';
 
 describe('initial M3U import benchmark lifecycle', () => {
     it('keeps requested output and variant strictly below dist/performance', () => {
-        const workspaceRoot = resolve('/workspace/iptvnator');
+        const workspaceRoot = resolve('/workspace/echo-tv');
         const outputRoot = resolve(
             workspaceRoot,
             'dist/performance/20260727T040000Z-m3u-import'
@@ -78,7 +78,7 @@ describe('initial M3U import benchmark lifecycle', () => {
 
     it('rejects an existing output ancestor symlink before artifact creation', async () => {
         const fixtureRoot = await mkdtemp(
-            join(tmpdir(), 'iptvnator-m3u-output-path-')
+            join(tmpdir(), 'echo-tv-m3u-output-path-')
         );
         const repositoryRoot = join(fixtureRoot, 'repository');
         const performanceRoot = join(
@@ -128,7 +128,7 @@ describe('initial M3U import benchmark lifecycle', () => {
         for (const invalid of ['0', '1023', '65536', '9222.5', 'not-a-port']) {
             assert.throws(
                 () => resolveM3uImportRendererCdpPort(true, invalid),
-                /IPTVNATOR_PERF_CDP_PORT is invalid/
+                /ECHO_TV_PERF_CDP_PORT is invalid/
             );
         }
     });

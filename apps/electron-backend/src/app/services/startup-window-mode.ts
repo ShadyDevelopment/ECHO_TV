@@ -1,11 +1,11 @@
 import {
     normalizeStartupWindowMode,
     StartupWindowMode,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Command-line switch that forces one fullscreen launch:
- * `iptvnator --fullscreen`. Meant for HTPC autostart scripts. It is read
+ * `echo-tv --fullscreen`. Meant for HTPC autostart scripts. It is read
  * through Electron's parsed command line, so it can sit anywhere in argv;
  * the playlist-path extractor already skips every `-`-prefixed argument.
  */

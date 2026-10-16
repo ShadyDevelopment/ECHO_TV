@@ -41,7 +41,7 @@ describe('worker cancellation while performance capture arms', () => {
         jest.doMock('iptv-playlist-parser', () => ({
             parse: jest.fn(() => ({ items: [] })),
         }));
-        jest.doMock('@iptvnator/shared/m3u-utils', () => ({
+        jest.doMock('@echo-tv/shared/m3u-utils', () => ({
             createPlaylistObject: jest.fn(() => ({ id: 'playlist-1' })),
             getFilenameFromUrl: jest.fn(() => 'playlist.m3u'),
         }));

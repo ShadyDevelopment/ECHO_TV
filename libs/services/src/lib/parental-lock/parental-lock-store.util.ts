@@ -6,7 +6,7 @@ import {
     ParentalLockStalkerCategoryType,
     ParentalLockStore,
     ParentalLockXtreamCategoryType,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Pure builders for the next lock set of one playlist: each replaces the

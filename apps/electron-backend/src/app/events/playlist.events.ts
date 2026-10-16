@@ -4,7 +4,7 @@
  */
 
 import { app, dialog, ipcMain, WebContents } from 'electron';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 import { writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'url';
 import { Worker } from 'worker_threads';
@@ -21,7 +21,7 @@ import {
     PlaylistRefreshEvent,
     PlaylistRefreshPayload,
     summarizeAutoUpdateOutcomes,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { resolveWorkerRuntimeBootstrap } from '../workers/worker-runtime-paths';
 import type {
     PlaylistRefreshWorkerMessage,

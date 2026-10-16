@@ -42,7 +42,7 @@ jest.mock('../services/store.service', () => ({
 import { spawn, type ChildProcess } from 'child_process';
 import { EventEmitter } from 'events';
 import { createConnection, createServer } from 'net';
-import type { PlayerContentInfo } from '@iptvnator/shared/interfaces';
+import type { PlayerContentInfo } from '@echo-tv/shared/interfaces';
 import {
     MPV_PLAYER_PATH,
     MPV_REUSE_INSTANCE,

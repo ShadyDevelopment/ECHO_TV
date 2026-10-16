@@ -1,7 +1,7 @@
 import {
     XtreamCodeActions,
     type XtreamPreloadPerformanceMarker,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { ExposedElectronApi } from './main.preload.performance.test-helpers';
 
 type ExpectedMetadata = Pick<

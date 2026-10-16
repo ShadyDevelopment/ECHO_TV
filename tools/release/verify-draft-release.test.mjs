@@ -13,27 +13,27 @@ import {
 /** The asset list of a real, complete v0.23.0 matrix build. */
 function completeAssets(version) {
     return [
-        `iptvnator-${version}-linux-amd64.deb`,
-        `iptvnator-${version}-linux-amd64.snap`,
-        `iptvnator-${version}-linux-arm64.AppImage`,
-        `iptvnator-${version}-linux-arm64.deb`,
-        `iptvnator-${version}-linux-armhf.snap`,
-        `iptvnator-${version}-linux-armv7l.AppImage`,
-        `iptvnator-${version}-linux-armv7l.deb`,
-        `iptvnator-${version}-linux-x64.pacman`,
-        `iptvnator-${version}-linux-x86_64.AppImage`,
-        `iptvnator-${version}-linux-x86_64.flatpak`,
-        `iptvnator-${version}-linux-x86_64.rpm`,
-        `iptvnator-${version}-mac-arm64.dmg`,
-        `iptvnator-${version}-mac-arm64.dmg.blockmap`,
-        `iptvnator-${version}-mac-arm64.zip`,
-        `iptvnator-${version}-mac-arm64.zip.blockmap`,
-        `iptvnator-${version}-mac-x64.dmg`,
-        `iptvnator-${version}-mac-x64.dmg.blockmap`,
-        `iptvnator-${version}-mac-x64.zip`,
-        `iptvnator-${version}-mac-x64.zip.blockmap`,
-        `iptvnator-${version}-windows-x64-setup.exe`,
-        `iptvnator-${version}-windows-x64-setup.exe.blockmap`,
+        `echo-tv-${version}-linux-amd64.deb`,
+        `echo-tv-${version}-linux-amd64.snap`,
+        `echo-tv-${version}-linux-arm64.AppImage`,
+        `echo-tv-${version}-linux-arm64.deb`,
+        `echo-tv-${version}-linux-armhf.snap`,
+        `echo-tv-${version}-linux-armv7l.AppImage`,
+        `echo-tv-${version}-linux-armv7l.deb`,
+        `echo-tv-${version}-linux-x64.pacman`,
+        `echo-tv-${version}-linux-x86_64.AppImage`,
+        `echo-tv-${version}-linux-x86_64.flatpak`,
+        `echo-tv-${version}-linux-x86_64.rpm`,
+        `echo-tv-${version}-mac-arm64.dmg`,
+        `echo-tv-${version}-mac-arm64.dmg.blockmap`,
+        `echo-tv-${version}-mac-arm64.zip`,
+        `echo-tv-${version}-mac-arm64.zip.blockmap`,
+        `echo-tv-${version}-mac-x64.dmg`,
+        `echo-tv-${version}-mac-x64.dmg.blockmap`,
+        `echo-tv-${version}-mac-x64.zip`,
+        `echo-tv-${version}-mac-x64.zip.blockmap`,
+        `echo-tv-${version}-windows-x64-setup.exe`,
+        `echo-tv-${version}-windows-x64-setup.exe.blockmap`,
         'latest-linux-arm.yml',
         'latest-linux-arm64.yml',
         'latest-linux.yml',
@@ -104,8 +104,8 @@ describe('verifyReleaseAssets', () => {
         const { missing } = verifyReleaseAssets(withoutSnap, '0.24.0');
 
         assert.deepEqual(missing, [
-            'Snap (iptvnator-0.24.0-linux-amd64.snap)',
-            'Snap (iptvnator-0.24.0-linux-armhf.snap)',
+            'Snap (echo-tv-0.24.0-linux-amd64.snap)',
+            'Snap (echo-tv-0.24.0-linux-armhf.snap)',
         ]);
     });
 
@@ -121,7 +121,7 @@ describe('verifyReleaseAssets', () => {
     it('accepts the alternate pacman artifact shape', () => {
         const assets = completeAssets('0.24.0').map((name) =>
             name.endsWith('.pacman')
-                ? 'iptvnator-0.24.0-linux-x86_64.pkg.tar.zst'
+                ? 'echo-tv-0.24.0-linux-x86_64.pkg.tar.zst'
                 : name
         );
 
@@ -130,21 +130,21 @@ describe('verifyReleaseAssets', () => {
 
     it('does not let the pacman pattern match across version dots', () => {
         const { extras } = verifyReleaseAssets(
-            ['iptvnator-0x24y0-linux-x64.pacman'],
+            ['echo-tv-0x24y0-linux-x64.pacman'],
             '0.24.0'
         );
 
-        assert.deepEqual(extras, ['iptvnator-0x24y0-linux-x64.pacman']);
+        assert.deepEqual(extras, ['echo-tv-0x24y0-linux-x64.pacman']);
     });
 
     it('surfaces unrecognized assets as extras, not errors', () => {
         const { missing, extras } = verifyReleaseAssets(
-            [...completeAssets('0.24.0'), 'iptvnator-0.24.0-win-arm64.exe'],
+            [...completeAssets('0.24.0'), 'echo-tv-0.24.0-win-arm64.exe'],
             '0.24.0'
         );
 
         assert.deepEqual(missing, []);
-        assert.deepEqual(extras, ['iptvnator-0.24.0-win-arm64.exe']);
+        assert.deepEqual(extras, ['echo-tv-0.24.0-win-arm64.exe']);
     });
 });
 
@@ -153,7 +153,7 @@ describe('parseVerifyArguments', () => {
         assert.deepEqual(parseVerifyArguments([]), {
             version: null,
             wait: true,
-            repo: '4gray/iptvnator',
+            repo: 'ShadyDevelopment/ECHO_TV',
         });
     });
 
@@ -162,10 +162,10 @@ describe('parseVerifyArguments', () => {
             parseVerifyArguments([
                 '--no-wait',
                 '--repo',
-                'fork/iptvnator',
+                'fork/echo-tv',
                 'v0.24.0',
             ]),
-            { version: '0.24.0', wait: false, repo: 'fork/iptvnator' }
+            { version: '0.24.0', wait: false, repo: 'fork/echo-tv' }
         );
     });
 
@@ -189,7 +189,11 @@ describe('parseVerifyArguments', () => {
 });
 
 describe('runVerification', () => {
-    const options = { version: '0.24.0', wait: true, repo: '4gray/iptvnator' };
+    const options = {
+        version: '0.24.0',
+        wait: true,
+        repo: 'ShadyDevelopment/ECHO_TV',
+    };
 
     it('passes a complete draft and points at the manual next steps', async () => {
         const result = await runVerification(options, io());
@@ -286,7 +290,9 @@ describe('runVerification', () => {
             })
         );
 
-        assert.deepEqual(watched, [{ repo: '4gray/iptvnator', runId: 7 }]);
+        assert.deepEqual(watched, [
+            { repo: 'ShadyDevelopment/ECHO_TV', runId: 7 },
+        ]);
         assert.equal(result.exitCode, 0);
     });
 
@@ -417,7 +423,7 @@ describe('runVerification', () => {
                     release({
                         assets: [
                             ...completeAssets('0.24.0'),
-                            'iptvnator-0.24.0-win-arm64.exe',
+                            'echo-tv-0.24.0-win-arm64.exe',
                         ].map((name) => ({ name })),
                     }),
             })
@@ -426,7 +432,7 @@ describe('runVerification', () => {
         assert.equal(result.exitCode, 0);
         assert.match(
             result.lines.find((line) => line.startsWith('NOTE:')),
-            /unrecognized asset iptvnator-0\.24\.0-win-arm64\.exe/
+            /unrecognized asset echo-tv-0\.24\.0-win-arm64\.exe/
         );
     });
 });

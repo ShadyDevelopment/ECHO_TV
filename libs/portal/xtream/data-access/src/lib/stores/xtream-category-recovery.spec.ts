@@ -1,4 +1,4 @@
-import { XtreamVodStream } from '@iptvnator/shared/interfaces';
+import { XtreamVodStream } from '@echo-tv/shared/interfaces';
 import { recoverXtreamVodCatalogItem } from './xtream-details-request';
 
 describe('Xtream VOD category recovery', () => {

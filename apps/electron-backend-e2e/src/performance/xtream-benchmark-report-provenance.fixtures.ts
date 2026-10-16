@@ -148,7 +148,7 @@ async function diagnosticEvidence(
     identity: number
 ): Promise<XtreamDiagnosticArtifactEvidence> {
     const directory = await mkdtemp(
-        join(tmpdir(), `iptvnator-xtream-report-diagnostic-${identity}-`)
+        join(tmpdir(), `echo-tv-xtream-report-diagnostic-${identity}-`)
     );
     directories.push(directory);
     await writeArtifacts(directory);

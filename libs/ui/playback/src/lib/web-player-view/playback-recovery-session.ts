@@ -2,8 +2,8 @@ import { signal, type Signal } from '@angular/core';
 import type {
     InlinePlaybackPlayer,
     PlaybackRecommendationTarget,
-} from '@iptvnator/playback/util';
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/playback/util';
+import type { ExternalPlayerName } from '@echo-tv/shared/interfaces';
 
 export interface PlaybackBinding {
     readonly generation: number;

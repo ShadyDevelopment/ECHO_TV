@@ -1,4 +1,4 @@
-import type { XtreamSerieSeason } from '@iptvnator/shared/interfaces';
+import type { XtreamSerieSeason } from '@echo-tv/shared/interfaces';
 import { buildSeasonDescriptions } from './season-descriptions.util';
 
 function season(

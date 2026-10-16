@@ -11,7 +11,7 @@ import {
 import {
     isStalkerSeriesFlag,
     StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Marks a Stalker handoff whose origin is exactly one history entry back, so

@@ -4,7 +4,7 @@ import {
     ZOOM_LEVEL_MAX,
     ZOOM_LEVEL_MIN,
     ZOOM_LEVEL_STEP,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     pageZoomFactor,
     TrafficLightsClearanceDirective,

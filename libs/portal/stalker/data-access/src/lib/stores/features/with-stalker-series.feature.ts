@@ -7,9 +7,9 @@ import {
     withProps,
     withState,
 } from '@ngrx/signals';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService } from '@iptvnator/services';
-import { StalkerPortalActions } from '@iptvnator/shared/interfaces';
+import { createLogger } from '@echo-tv/portal/shared/util';
+import { DataService } from '@echo-tv/services';
+import { StalkerPortalActions } from '@echo-tv/shared/interfaces';
 import {
     StalkerSeason,
     StalkerVodSeriesEpisode,

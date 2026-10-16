@@ -122,7 +122,7 @@ const temporaryDirectories: string[] = [];
 
 export function createTemporaryDirectory(): string {
     const directory = mkdtempSync(
-        path.join(tmpdir(), 'iptvnator-mpv-linkage-')
+        path.join(tmpdir(), 'echo-tv-mpv-linkage-')
     );
     temporaryDirectories.push(directory);
     return directory;
@@ -178,7 +178,7 @@ export function createArtifactFixture(): ArtifactFixture {
     const outputs: Record<string, string> = {
         'embedded_mpv.node': readelfDynamic([['NEEDED', 'libX11.so.6']]),
         'embedded_mpv_frame_reader.node': readelfDynamic([]),
-        iptvnator_mpv_helper: readelfDynamic([
+        'echo-tv_mpv_helper': readelfDynamic([
             ['NEEDED', 'libmpv.so.2'],
             ['NEEDED', 'libEGL.so.1'],
             ['RUNPATH', '$ORIGIN/lib'],

@@ -1,8 +1,8 @@
-import type { Playlist } from '@iptvnator/shared/interfaces';
+import type { Playlist } from '@echo-tv/shared/interfaces';
 import {
     createPlaylistObject,
     getFilenameFromUrl,
-} from '@iptvnator/shared/m3u-utils';
+} from '@echo-tv/shared/m3u-utils';
 import { parse } from 'iptv-playlist-parser';
 import { readFile } from 'node:fs/promises';
 import { basename } from 'node:path';
@@ -14,7 +14,7 @@ import {
 } from '../util/security-errors';
 import { requestWithValidatedRedirects } from '../util/validated-axios';
 import type { M3uImportPerformanceCapture } from './playlist-import-performance';
-import { M3U_IMPORT_PERFORMANCE_PHASE } from '@iptvnator/shared/interfaces';
+import { M3U_IMPORT_PERFORMANCE_PHASE } from '@echo-tv/shared/interfaces';
 
 export interface PlaylistFetchOptions {
     userAgent?: string;

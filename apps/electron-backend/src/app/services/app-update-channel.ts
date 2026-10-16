@@ -1,7 +1,7 @@
 import {
     AppUpdateChannel,
     normalizeAppUpdateChannel,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { APP_UPDATE_CHANNEL, store } from './store.service';
 
 type AppUpdateChannelListener = (channel: AppUpdateChannel) => void;

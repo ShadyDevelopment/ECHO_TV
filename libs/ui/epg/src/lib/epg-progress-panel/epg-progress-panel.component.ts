@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgProgressService } from '@iptvnator/epg/data-access';
+import { EpgProgressService } from '@echo-tv/epg/data-access';
 import { EpgProgressPanelViewComponent } from './epg-progress-panel-view.component';
 
 /**

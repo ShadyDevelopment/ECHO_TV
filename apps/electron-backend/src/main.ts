@@ -42,7 +42,7 @@ import {
 import { EMBEDDED_MPV_FRAME_COPY, store } from './app/services/store.service';
 
 // Keep the legacy app name so existing userData and settings remain available.
-app.setName('iptvnator');
+app.setName('echo-tv');
 
 traceStartupPhase('compile-cache', () => readCompileCacheOutcome());
 // Before anything can open the shared database connection.
@@ -82,11 +82,11 @@ if (
     isEmbeddedMpvFeatureEnabled() &&
     shouldPromotePersistedFrameCopyOptIn(
         store.get(EMBEDDED_MPV_FRAME_COPY, false),
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY,
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY,
         isFrameCopyRuntimeUsable
     )
 ) {
-    process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+    process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
 }
 
 /** Set once bootstrapAppEvents() arms the deferred group; read at quit. */
@@ -117,7 +117,7 @@ export default class Main {
      */
     static async bootstrapAppEvents() {
         traceStartupPhase('bootstrap-events:start');
-        // Only with IPTVNATOR_PERF_CAPTURE=1; the preload never exposes it.
+        // Only with ECHO_TV_PERF_CAPTURE=1; the preload never exposes it.
         registerPerformanceCountersHandler(
             ipcMain,
             performanceCounters,

@@ -161,12 +161,12 @@ describe('acquireSingleInstanceLock', () => {
         const [, handler] = app.on.mock.calls[0];
         (handler as SecondInstanceHandler)(
             {},
-            ['/opt/iptvnator/iptvnator', '/home/user/list.m3u'],
+            ['/opt/echo-tv/echo-tv', '/home/user/list.m3u'],
             '/home/user'
         );
 
         expect(onSecondInstance).toHaveBeenCalledWith(
-            ['/opt/iptvnator/iptvnator', '/home/user/list.m3u'],
+            ['/opt/echo-tv/echo-tv', '/home/user/list.m3u'],
             '/home/user'
         );
         expect(onSecondInstance.mock.invocationCallOrder[0]).toBeLessThan(
@@ -202,12 +202,12 @@ describe('acquireSingleInstanceLock', () => {
         const [, handler] = app.on.mock.calls[0];
         (handler as SecondInstanceHandler)(
             {},
-            ['/opt/iptvnator/iptvnator', '/home/user/list.m3u8'],
+            ['/opt/echo-tv/echo-tv', '/home/user/list.m3u8'],
             '/home/user'
         );
 
         expect(onSecondInstance).toHaveBeenCalledWith(
-            ['/opt/iptvnator/iptvnator', '/home/user/list.m3u8'],
+            ['/opt/echo-tv/echo-tv', '/home/user/list.m3u8'],
             '/home/user'
         );
         expect(createMainWindow).toHaveBeenCalledTimes(1);

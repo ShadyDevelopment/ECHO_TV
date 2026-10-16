@@ -3,8 +3,8 @@ import {
     normalizeEmbeddedMpvExtraOptions,
     normalizeExternalPlayerArguments,
     normalizeStartupWindowMode,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 import {
     EMBEDDED_MPV_AUTO_RECONNECT,
     EMBEDDED_MPV_EXTRA_OPTIONS,

@@ -10,13 +10,13 @@ This document describes the browser PWA and self-hosted Docker path.
 - `docker/` owns the production self-hosted image that bundles the PWA and
   `web-backend` into one container.
 
-The old external `4gray/iptvnator-backend` repository is not required for the
+The old external `4gray/echo-tv-backend` repository is not required for the
 default self-hosted deployment. Sync behavior from that repository only when a
 change intentionally restores or imports missing backend capabilities.
 
 ## Runtime Backend Configuration
 
-The PWA reads `window.__IPTVNATOR_CONFIG__.BACKEND_URL` through
+The PWA reads `window.__ECHO_TV_CONFIG__.BACKEND_URL` through
 `apps/web/src/app/services/runtime-config.ts`. The static placeholder lives at
 `apps/web/src/assets/app-config.js` and keeps hosted builds working without
 Docker-specific values.
@@ -90,8 +90,8 @@ yet:
 - `GET|PUT /v1/app-state/:key`
 
 Server storage lives in `apps/web-backend/src/app/storage/`. With
-`IPTVNATOR_STORAGE=server`, `main.ts` opens the shared database through
-`initDatabase()` (path from `IPTVNATOR_DATA_DIR`), so the server has the same
+`ECHO_TV_STORAGE=server`, `main.ts` opens the shared database through
+`initDatabase()` (path from `ECHO_TV_DATA_DIR`), so the server has the same
 schema and migrations as the desktop app and writes playlists with the
 shared row codec. It adds two server-only tables: `server_user_state` for
 Xtream user data, and `server_playlist_meta`, a copy of each document
@@ -100,7 +100,7 @@ the payload blobs (filled once on open for rows written without it). ETags
 come from an in-memory revision counter; the server is the only writer of
 its database. Storage errors are logged by error name and code only, because
 Drizzle messages can carry bound values such as portal credentials. With
-`IPTVNATOR_ACCESS_TOKEN`, every route except `/`, `/health`, `/config.js`
+`ECHO_TV_ACCESS_TOKEN`, every route except `/`, `/health`, `/config.js`
 and `/v1/instance` requires `Authorization: Bearer <token>`, the proxy
 routes included. The PWA cannot send that token yet, so the variable must
 stay unset until the browser side lands. Browser app state written through
@@ -109,7 +109,7 @@ server-owned keys such as the instance id.
 
 `pnpm nx run web-backend:serve` starts the backend by hand on port 3333 with
 `TSX_TSCONFIG_PATH=tsconfig.base.json`, which `tsx` needs for the
-`@iptvnator/*` path aliases. `apps/web-e2e/playwright.config.ts` does not use
+`@echo-tv/*` path aliases. `apps/web-e2e/playwright.config.ts` does not use
 that target: it launches `node --import tsx apps/web-backend/src/main.ts` with
 an `env` that mirrors the target's. Nx `run-commands` starts its command in a
 detached process group, and Playwright stops a `webServer` with a
@@ -131,7 +131,7 @@ runtime. Electron routes remain owned by the Electron backend and preload
 bridge.
 
 Renderer code that needs to branch by runtime should use
-`RuntimeCapabilitiesService` from `@iptvnator/services` instead of adding new
+`RuntimeCapabilitiesService` from `@echo-tv/services` instead of adding new
 direct `window.electron` or `DataService.getAppEnvironment()` checks. Keep
 feature decisions expressed as capabilities such as `supportsEpg`,
 `supportsSqlite`, `supportsXtreamSqliteDataSource`, `supportsDownloads`, or
@@ -140,9 +140,9 @@ from one shared boundary. `supportsSqlite` requires the complete playlist
 storage preload API surface used by `PlaylistsService`, `supportsDownloads`
 requires the complete downloads preload API surface used by `DownloadsService`,
 and EPG renderer code should use `EpgRuntimeBridgeService` from
-`@iptvnator/epg/data-access` instead of calling `window.electron` directly.
+`@echo-tv/epg/data-access` instead of calling `window.electron` directly.
 Playback-position renderer code should use `PlaybackPositionRuntimeBridgeService`
-from `@iptvnator/services` for Electron SQLite persistence and external-player
+from `@echo-tv/services` for Electron SQLite persistence and external-player
 position update events; `supportsPlaybackPositionStorage` and
 `supportsPlaybackPositionUpdates` describe those surfaces independently so PWA
 and partial Electron bridges can degrade without direct preload checks.
@@ -190,7 +190,7 @@ before any outbound request:
 - URL credentials are rejected
 - loopback, private, link-local, and reserved network targets are blocked by
   default
-- `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=1` explicitly enables trusted
+- `ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS=1` explicitly enables trusted
   local/LAN targets for development, mock servers, or private deployments
 
 ### Provider redirects and connection policy
@@ -270,7 +270,7 @@ and sidecar state in localStorage:
 - `xtream-playback-positions`
 
 `PwaXtreamDataSource` and `PwaCollectionStorage` reach these keys through the
-`USER_DATA_STORAGE` token from `@iptvnator/services` (default:
+`USER_DATA_STORAGE` token from `@echo-tv/services` (default:
 `localStorage`), never through `localStorage` directly, so a deployment can
 substitute a server-synced storage. The key names are shared as
 `XTREAM_USER_DATA_KEYS` with the playlist backup, which exports and restores
@@ -284,7 +284,7 @@ type, and category IDs after navigation or a page reload without relying on the
 Electron SQLite content table.
 
 Shared collection services that need Xtream favorites or recent data should use
-`XTREAM_DATA_SOURCE` from `@iptvnator/portal/xtream/data-access` from a
+`XTREAM_DATA_SOURCE` from `@echo-tv/portal/xtream/data-access` from a
 `type:data-access` or `type:feature` boundary. UI libraries in the M3U domain
 must not import Xtream data-access directly; use `PlaylistsService` for source
 metadata changes and let app-level cleanup providers handle portal-specific
@@ -310,11 +310,11 @@ Default runtime values:
 - `BACKEND_URL=/api`
 - `CLIENT_URL=http://localhost:4333`
 - `PORT=3000`
-- `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=0`
+- `ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS=0`
 - `NODE_EXTRA_CA_CERTS` unset
-- `IPTVNATOR_STORAGE=server`, `IPTVNATOR_DATA_DIR=/data` (a `VOLUME`)
-- `IPTVNATOR_ACCESS_TOKEN` unset, `IPTVNATOR_MAX_DOCUMENT_MB=64`
-- `IPTVNATOR_BACKEND_START_TIMEOUT=300`: seconds the entrypoint waits for
+- `ECHO_TV_STORAGE=server`, `ECHO_TV_DATA_DIR=/data` (a `VOLUME`)
+- `ECHO_TV_ACCESS_TOKEN` unset, `ECHO_TV_MAX_DOCUMENT_MB=64`
+- `ECHO_TV_BACKEND_START_TIMEOUT=300`: seconds the entrypoint waits for
   `/health`; the backend migrates its database before it listens
 
 better-sqlite3 is a native addon, so the Dockerfile builds it in a separate
@@ -324,7 +324,7 @@ produce it for each target platform. nginx raises `client_max_body_size` to
 
 When hosting behind another domain, set `CLIENT_URL` to the browser origin and
 keep `BACKEND_URL=/api` unless the reverse proxy exposes the backend elsewhere.
-Only set `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=1` when the self-hosted
+Only set `ECHO_TV_PROXY_ALLOW_PRIVATE_NETWORKS=1` when the self-hosted
 instance is restricted to trusted users and intentionally needs private network
 IPTV targets. For providers using private certificate authorities, mount the CA
 bundle into the container and set `NODE_EXTRA_CA_CERTS` to that mounted path.
@@ -343,7 +343,7 @@ pnpm nx run web-e2e:e2e -- --project=chromium --grep @self-hosted
 docker compose -f docker/docker-compose.yml config
 ```
 
-Run `docker build -t iptvnator:self-hosted-test -f docker/Dockerfile .` when a
+Run `docker build -t echo-tv:self-hosted-test -f docker/Dockerfile .` when a
 Docker daemon is available.
 
 For manual Docker smoke testing, run the Xtream and Stalker mock servers plus a
@@ -362,7 +362,7 @@ SQLite bridge, and feature visibility follows `RuntimeCapabilitiesService`.
 The same workspace route tree is used in both runtimes.
 
 Desktop relational data uses the canonical schema/connection in
-`libs/shared/database`; the SQLite path is `~/.iptvnator/databases/iptvnator.db`.
+`libs/shared/database`; the SQLite path is `~/.echo-tv/databases/echo-tv.db`.
 Desktop Chromium settings/storage still exist alongside SQLite. PWA data uses
 browser IndexedDB (with browser quotas); its structure is not the SQL schema.
 Browser-selected file uploads remain possible even though native filesystem

@@ -9,7 +9,7 @@ import {
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { TranslatePipe } from '@ngx-translate/core';
-import { registerWorkspaceBack } from '@iptvnator/portal/shared/data-access';
+import { registerWorkspaceBack } from '@echo-tv/portal/shared/data-access';
 import { InfiniteScrollDirective } from '../../directives/infinite-scroll.directive';
 
 @Component({

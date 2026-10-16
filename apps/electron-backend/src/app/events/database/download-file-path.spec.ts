@@ -159,7 +159,7 @@ describe('partial download helpers', () => {
     });
 
     it('refuses to size a .part that is not a regular file', () => {
-        const directory = mkdtempSync(join(tmpdir(), 'iptvnator-part-'));
+        const directory = mkdtempSync(join(tmpdir(), 'echo-tv-part-'));
         const finalPath = join(directory, 'movie.mp4');
         const partialPath = `${finalPath}.part`;
 
@@ -193,7 +193,7 @@ describe('partial download helpers', () => {
     });
 
     it('reports zero for a missing .part with the default stat reader', () => {
-        const directory = mkdtempSync(join(tmpdir(), 'iptvnator-part-'));
+        const directory = mkdtempSync(join(tmpdir(), 'echo-tv-part-'));
 
         try {
             expect(

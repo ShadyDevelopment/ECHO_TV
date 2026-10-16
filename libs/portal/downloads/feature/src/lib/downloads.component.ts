@@ -21,16 +21,16 @@ import {
     type RecordingItem,
     RecordingsService,
     injectTranslationTick,
-} from '@iptvnator/services';
-import { EmptyStateComponent } from '@iptvnator/playlist/shared/ui';
+} from '@echo-tv/services';
+import { EmptyStateComponent } from '@echo-tv/playlist/shared/ui';
 import {
     PORTAL_SHELL_ACTIONS,
     PortalCollectionContextService,
     buildStandardCollectionCategories,
     createPortalCollectionContext,
     queryParamSignal,
-} from '@iptvnator/portal/shared/util';
-import type { Playlist, XtreamCategory } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import type { Playlist, XtreamCategory } from '@echo-tv/shared/interfaces';
 import { map, startWith, take } from 'rxjs';
 import type {
     DownloadActionResult,

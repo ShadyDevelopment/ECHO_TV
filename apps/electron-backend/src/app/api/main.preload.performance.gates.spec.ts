@@ -4,8 +4,8 @@ import {
     PRELOAD_PERFORMANCE_METHOD,
     type Settings,
     Theme,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 import { DEBUG_TRACE_EVENT_CHANNEL } from '../services/debug-trace';
 import {
     createPreloadPerformanceHarness,

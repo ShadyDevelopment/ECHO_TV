@@ -1,11 +1,11 @@
-# IPTVnator Website
+# ECHO TV Website
 
-The website is an Astro static site deployed to GitHub Pages at `https://4gray.github.io/iptvnator/`.
+The website is an Astro static site deployed to GitHub Pages at `https://4gray.github.io/echo-tv/`.
 
 ## Blog Comments
 
 Blog posts render Giscus comments from `apps/website/src/components/GiscusComments.astro`.
-Giscus stores comments in GitHub Discussions for `4gray/iptvnator` and maps each page to a discussion by `pathname`, including the GitHub Pages base path such as `/iptvnator/blog/why-external-players-help/`.
+Giscus stores comments in GitHub Discussions for `4gray/echo-tv` and maps each page to a discussion by `pathname`, including the GitHub Pages base path such as `/echo-tv/blog/why-external-players-help/`.
 
 The embed is **click-to-load**: the configuration sits as `data-*` attributes on a
 "Show comments" button and the `giscus.app` script is created only when a reader
@@ -27,7 +27,7 @@ If the category is recreated, query the new category id:
 ```bash
 gh api graphql \
   -f owner=4gray \
-  -f name=iptvnator \
+  -f name=echo-tv \
   -f query='query($owner:String!, $name:String!) { repository(owner:$owner, name:$name) { discussionCategories(first:25) { nodes { id name slug isAnswerable } } } }'
 ```
 
@@ -58,7 +58,7 @@ the site from needing a consent banner.
 `/download/` plus `/download/windows/`, `/download/macos/`, `/download/linux/`
 and `/download/docker/` (the self-hosted browser version: quick start, variables,
 tags, FAQ, with `docker/README.md` as the reference behind it) are landing pages (`apps/website/src/pages/download/`). They exist for
-search visibility on "IPTVnator <OS> download" style queries and to spare users
+search visibility on "ECHO TV <OS> download" style queries and to spare users
 the 27-asset GitHub release page; each carries OS-specific install steps,
 requirements, an FAQ and `SoftwareApplication` / `FAQPage` / `BreadcrumbList`
 structured data. Shared pieces live in `src/components/download/` and reuse the
@@ -69,7 +69,7 @@ blog components (`StepRail`, `Alert`, `FaqAccordion`, `CopyCommand`).
 Direct asset links need the release version, so `src/lib/downloads.ts`
 resolves it at build time:
 
-1. `GET https://api.github.com/repos/4gray/iptvnator/releases/latest` (8 s
+1. `GET https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases/latest` (8 s
    timeout). The asset list from the *published* release is authoritative:
    options whose file is missing are dropped, sizes and the publish date come
    from the API. `deploy-website.yml` passes `GITHUB_TOKEN` to the build so
@@ -127,7 +127,7 @@ Evergreen how-to posts live in the blog collection next to release notes
 
 - **`ContentDisclaimer`.** Every guide opens with
   `src/components/blog/ContentDisclaimer.astro` right after its intro: the
-  `general` variant states that IPTVnator ships no content, the `offline`
+  `general` variant states that ECHO TV ships no content, the `offline`
   variant (downloads, recordings) adds what the feature is for and that keeping
   a copy is governed by the provider's terms and local law. Reuse it instead of
   rewriting the notice per post, and keep the surrounding prose to "content you
@@ -216,9 +216,9 @@ screenshots that show real channel names.
 
 `/compare/` plus one page per decision the app asks users to make
 (`m3u-vs-xtream-vs-stalker`, `playback-engines`, `desktop-vs-browser`,
-`iptvnator-vs-vlc`, `iptvnator-vs-kodi`, `computer-vs-tv-box`) live in
+`echo-tv-vs-vlc`, `echo-tv-vs-kodi`, `computer-vs-tv-box`) live in
 `apps/website/src/pages/compare/`; the registry is
-`src/lib/comparisons.ts`. Most of them compare IPTVnator's own options against
+`src/lib/comparisons.ts`. Most of them compare ECHO TV's own options against
 each other, so every claim is checkable against this repository.
 
 Each page opens with a one-paragraph verdict (`CompareHero`), carries at least
@@ -243,7 +243,7 @@ technical one. Where it has been made, the page follows stricter rules, and
   that something is missing unless it was actually checked,
 - no third-party logos, brand styling, download links or affiliate links.
 
-Prefer describing what IPTVnator does and letting the difference speak. The
+Prefer describing what ECHO TV does and letting the difference speak. The
 comparison that works best is the one where the other project is a partner
-rather than a rival: `iptvnator-vs-vlc` ends on the external-player
+rather than a rival: `echo-tv-vs-vlc` ends on the external-player
 integration, because that is the honest answer.

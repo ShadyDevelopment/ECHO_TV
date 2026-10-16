@@ -39,7 +39,7 @@ test('showcase markup: a vertical tablist with one selected channel and a panel 
     assert.match(panel, new RegExp(`aria-labelledby="screen-tab-${CHANNELS[i]}"`));
     assert.match(panel, new RegExp(`aria-hidden="${i === 0 ? 'false' : 'true'}"`));
   }
-  assert.match(html, /href="\/iptvnator\/features\/epg\/"/, 'captions link into the feature pages');
+  assert.match(html, /href="\/echo-tv\/features\/epg\/"/, 'captions link into the feature pages');
   const toggleTag = html.match(/<button[^>]*data-autoplay-toggle[^>]*>/)?.[0];
   assert.ok(toggleTag && /aria-label="Pause auto-advance"/.test(toggleTag), 'a persistent pause control ships in the markup');
   assert.doesNotMatch(toggleTag, /aria-pressed/, 'the control is an action button, not a toggle with a changing name');
@@ -52,7 +52,7 @@ test('showcase markup: a vertical tablist with one selected channel and a panel 
 
   const frames = panels.map((panel) => html.slice(html.indexOf(panel)).match(/<img[^>]*>/)[0]);
   assert.equal(frames.filter((img) => / src="/.test(img)).length, 1, 'only the first frame ships with a src');
-  assert.ok(frames.every((img) => /data-src="\/iptvnator\/screenshots\//.test(img)), 'every frame carries its data-src');
+  assert.ok(frames.every((img) => /data-src="\/echo-tv\/screenshots\//.test(img)), 'every frame carries its data-src');
 });
 
 const selectedChannel = (page) => page.$eval('.channel-tab[aria-selected="true"]', (el) => el.dataset.channel);

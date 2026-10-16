@@ -4,12 +4,12 @@ import {
     PARENTAL_LOCK_PROMPT,
     ParentalLockPrompt,
     ParentalLockPromptRequest,
-} from '@iptvnator/services';
-import { LazyMatDialog } from '@iptvnator/ui/components/lazy-dialog';
+} from '@echo-tv/services';
+import { LazyMatDialog } from '@echo-tv/ui/components/lazy-dialog';
 
 /**
  * Application implementation of the parental lock prompt: the shared PIN
- * dialog from `@iptvnator/ui/components`, which the data-access lock
+ * dialog from `@echo-tv/ui/components`, which the data-access lock
  * service cannot import itself. The dialog, and Material's dialog service
  * with it, is loaded on first use (the service is constructed at startup,
  * the dialog is not needed until a PIN is asked for).

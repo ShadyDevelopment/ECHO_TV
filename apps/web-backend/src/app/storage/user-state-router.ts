@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import {
     isServerUserStateNamespace,
     type ServerUserStateNamespace,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { ServerStorage } from './server-storage';
 import { StorageRequestError } from './storage-route-errors';
 

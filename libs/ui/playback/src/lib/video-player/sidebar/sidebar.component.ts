@@ -5,9 +5,9 @@ import {
     output,
     ChangeDetectionStrategy,
 } from '@angular/core';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { Channel } from '@iptvnator/shared/interfaces';
-import { ChannelListContainerComponent } from '@iptvnator/ui/components';
+import { PlaylistContextFacade } from '@echo-tv/playlist/shared/util';
+import { Channel } from '@echo-tv/shared/interfaces';
+import { ChannelListContainerComponent } from '@echo-tv/ui/components';
 
 @Component({
     selector: 'app-sidebar',

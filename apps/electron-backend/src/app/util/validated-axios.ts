@@ -8,7 +8,7 @@ import type { LookupAddress } from 'node:dns';
 import { Agent as HttpAgent } from 'node:http';
 import { Agent as HttpsAgent } from 'node:https';
 import { isIP, LookupFunction } from 'node:net';
-import { observeAgentSocketConnections } from '@iptvnator/shared/host-health';
+import { observeAgentSocketConnections } from '@echo-tv/shared/host-health';
 import { getProxyForUrl } from 'proxy-from-env';
 import {
     RemoteUrlPolicy,

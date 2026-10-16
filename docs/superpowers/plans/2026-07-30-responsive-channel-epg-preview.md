@@ -325,7 +325,7 @@ git commit -m "fix(ui): preserve EPG in narrow channel rows"
 
 **Files:**
 
-- Modify: `docs/architecture/iptvnator-ui-guidelines.md:111`
+- Modify: `docs/architecture/echo-tv-ui-guidelines.md:111`
 - Create: `.changes/ui-narrow-channel-epg.md`
 
 - [ ] **Step 1: Add the canonical responsive priority**
@@ -371,7 +371,7 @@ Run:
 
 ```bash
 pnpm exec prettier --check \
-  docs/architecture/iptvnator-ui-guidelines.md \
+  docs/architecture/echo-tv-ui-guidelines.md \
   .changes/ui-narrow-channel-epg.md
 pnpm run release:notes:validate
 git diff --check
@@ -383,7 +383,7 @@ Expected: all commands pass.
 
 ```bash
 git add \
-  docs/architecture/iptvnator-ui-guidelines.md \
+  docs/architecture/echo-tv-ui-guidelines.md \
   .changes/ui-narrow-channel-epg.md
 git commit -m "docs(ui): document narrow channel row priority"
 ```
@@ -410,7 +410,7 @@ pnpm exec prettier --check \
   apps/electron-backend-e2e/src/xtream-epg.e2e.ts \
   libs/ui/components/src/lib/channel-list-container/channel-list-item/channel-list-item.component.scss \
   libs/ui/components/src/lib/channel-list-container/channel-list-item-skeleton/channel-list-item-skeleton.component.scss \
-  docs/architecture/iptvnator-ui-guidelines.md \
+  docs/architecture/echo-tv-ui-guidelines.md \
   .changes/ui-narrow-channel-epg.md
 git diff --check
 ```
@@ -438,9 +438,9 @@ pnpm nx run-many \
 Create a disposable profile and launch the built app with CDP:
 
 ```bash
-IPTVNATOR_VISUAL_DATA_DIR="$(mktemp -d /tmp/iptvnator-sidebar.XXXXXX)"
-IPTVNATOR_E2E_DATA_DIR="$IPTVNATOR_VISUAL_DATA_DIR" \
-IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS=1 \
+ECHO_TV_VISUAL_DATA_DIR="$(mktemp -d /tmp/echo-tv-sidebar.XXXXXX)"
+ECHO_TV_E2E_DATA_DIR="$ECHO_TV_VISUAL_DATA_DIR" \
+ECHO_TV_ALLOW_PRIVATE_NETWORK_URLS=1 \
 ELECTRON_IS_DEV=0 \
 NODE_ENV=test \
 TZ=UTC \
@@ -452,7 +452,7 @@ TZ=UTC \
 
 - [ ] **Step 3: Verify real layout behavior with `agent-browser`**
 
-Connect to the IPTVnator renderer, not a DevTools target:
+Connect to the ECHO TV renderer, not a DevTools target:
 
 ```bash
 agent-browser --cdp 9222 tab list
@@ -476,8 +476,8 @@ using the shared row has the same geometry. Save screenshots only under
 `/tmp`, for example:
 
 ```bash
-agent-browser --cdp 9222 screenshot /tmp/iptvnator-narrow-epg-xtream.png
-agent-browser --cdp 9222 screenshot /tmp/iptvnator-narrow-epg-stalker.png
+agent-browser --cdp 9222 screenshot /tmp/echo-tv-narrow-epg-xtream.png
+agent-browser --cdp 9222 screenshot /tmp/echo-tv-narrow-epg-stalker.png
 ```
 
 - [ ] **Step 4: Check repository scope and hand off**

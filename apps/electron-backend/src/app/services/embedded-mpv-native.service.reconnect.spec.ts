@@ -8,7 +8,7 @@ import type {
     EmbeddedMpvSession,
     EmbeddedMpvSessionStatus,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     existsSync,
     mkdirSync,
@@ -169,10 +169,10 @@ describe('EmbeddedMpvNativeService reconnect', () => {
         Object.defineProperty(process, 'platform', { value: 'darwin' });
         Object.defineProperty(process, 'arch', { value: 'arm64' });
         originalExperiment =
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT = '1';
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+        process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT = '1';
         userDataDir = mkdtempSync(
-            path.join(tmpdir(), 'iptvnator-mpv-options-')
+            path.join(tmpdir(), 'echo-tv-mpv-options-')
         );
 
         ({ EmbeddedMpvNativeService } =
@@ -223,9 +223,9 @@ describe('EmbeddedMpvNativeService reconnect', () => {
         Object.defineProperty(process, 'platform', { value: originalPlatform });
         Object.defineProperty(process, 'arch', { value: originalArch });
         if (originalExperiment === undefined) {
-            delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+            delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT;
         } else {
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT =
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT =
                 originalExperiment;
         }
     });

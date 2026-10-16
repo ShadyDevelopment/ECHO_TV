@@ -2,7 +2,7 @@ import { signal } from '@angular/core';
 import type {
     ExternalPlayerSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     externalEpisodeSessionIds,
     isEpisodeLaunchPending,

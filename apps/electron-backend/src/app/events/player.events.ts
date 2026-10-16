@@ -4,7 +4,7 @@ import {
     type ExternalPlayerName,
     PLAYBACK_SET_KEEP_AWAKE,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { setPlaybackKeepAwake } from '../services/playback-keep-awake.service';
 import { waitForLoginShellPath } from '../startup/login-shell-path';
 import {

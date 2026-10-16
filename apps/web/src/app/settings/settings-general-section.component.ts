@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TranslateModule } from '@ngx-translate/core';
-import { CoverSize, Language, Theme } from '@iptvnator/shared/interfaces';
+import { CoverSize, Language, Theme } from '@echo-tv/shared/interfaces';
 import {
     CoverSizeOption,
     StartupBehaviorOption,
@@ -20,7 +20,7 @@ import {
     ThemeOption,
 } from './settings.models';
 import { markSectionForCheckOnFormEvents } from './settings-section-form-render';
-import { provideFormFieldDefaults } from '@iptvnator/ui/components/form-field-defaults';
+import { provideFormFieldDefaults } from '@echo-tv/ui/components/form-field-defaults';
 
 @Component({
     selector: 'app-settings-general-section',

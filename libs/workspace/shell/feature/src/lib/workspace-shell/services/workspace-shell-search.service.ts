@@ -4,14 +4,14 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     StalkerStore,
     stalkerCategoryLabelText,
-} from '@iptvnator/portal/stalker/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/stalker/data-access';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     RuntimeCapabilitiesService,
     injectTranslationTick,
-} from '@iptvnator/services';
-import { WorkspaceSearchCapability } from '@iptvnator/workspace/shell/util';
-import { SettingsSearchService } from '@iptvnator/workspace/shell/util/settings-search';
+} from '@echo-tv/services';
+import { WorkspaceSearchCapability } from '@echo-tv/workspace/shell/util';
+import { SettingsSearchService } from '@echo-tv/workspace/shell/util/settings-search';
 import {
     SEARCH_LOADED_ONLY_STATUS,
     SEARCH_PLAYLIST_PLACEHOLDER,

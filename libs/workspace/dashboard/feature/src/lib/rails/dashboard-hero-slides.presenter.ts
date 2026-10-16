@@ -9,15 +9,15 @@ import {
     untracked,
 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { injectTranslationTick } from '@iptvnator/services';
-import { splitSeasonSuffix } from '@iptvnator/portal/shared/util';
+import { injectTranslationTick } from '@echo-tv/services';
+import { splitSeasonSuffix } from '@echo-tv/portal/shared/util';
 import {
     playlistDisplayLabel,
     resolvePortalActivityWatchKind,
     type PlaybackPositionData,
     type PortalActivityItem,
-} from '@iptvnator/shared/interfaces';
-import { DashboardDataService } from '@iptvnator/workspace/dashboard/data-access';
+} from '@echo-tv/shared/interfaces';
+import { DashboardDataService } from '@echo-tv/workspace/dashboard/data-access';
 import {
     DashboardHeroTmdbService,
     type DashboardHeroTmdbExtras,

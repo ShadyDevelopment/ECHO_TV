@@ -1,5 +1,5 @@
 import { ipcMain, WebContents } from 'electron';
-import { PARENTAL_LOCK_SET_STATE } from '@iptvnator/shared/interfaces';
+import { PARENTAL_LOCK_SET_STATE } from '@echo-tv/shared/interfaces';
 import { databaseWorkerClient } from '../services/database-worker-client';
 import {
     getParentalLockActive,

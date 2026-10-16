@@ -1,5 +1,5 @@
 import { eq, sql, type SQL } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@echo-tv/shared/database/schema';
 
 /**
  * Process-wide parental lock enforcement flag for the SQLite worker.

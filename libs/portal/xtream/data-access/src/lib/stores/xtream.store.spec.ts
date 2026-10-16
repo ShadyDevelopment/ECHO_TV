@@ -8,9 +8,9 @@ import {
     SettingsStore,
     TmdbEnrichmentService,
     XtreamPendingRestoreService,
-} from '@iptvnator/services';
-import { PORTAL_PLAYER } from '@iptvnator/portal/shared/util';
-import { XtreamVodStream } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/services';
+import { PORTAL_PLAYER } from '@echo-tv/portal/shared/util';
+import { XtreamVodStream } from '@echo-tv/shared/interfaces';
 import {
     XTREAM_DATA_SOURCE,
     XtreamPlaylistData,

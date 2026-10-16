@@ -44,12 +44,12 @@ describe('external player error codes', () => {
         expect(readExternalPlayerErrorCode(new Error('boom'))).toBeNull();
         expect(
             readExternalPlayerErrorCode(
-                '[iptvnator:external-player:not-a-code] boom'
+                '[echo-tv:external-player:not-a-code] boom'
             )
         ).toBeNull();
         expect(
             readExternalPlayerErrorCode(
-                '[iptvnator:external-player:constructor]'
+                '[echo-tv:external-player:constructor]'
             )
         ).toBeNull();
         expect(readExternalPlayerErrorCode(null)).toBeNull();

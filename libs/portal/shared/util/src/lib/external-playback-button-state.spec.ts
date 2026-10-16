@@ -2,7 +2,7 @@ import { signal } from '@angular/core';
 import type {
     ExternalPlayerSession,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createExternalPlaybackButtonState,
     isLiveExternalPlayerSession,

@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { PlaybackPositionData } from '@echo-tv/shared/interfaces';
 
 export interface PortalPlaybackPositions {
     savePlaybackPosition(

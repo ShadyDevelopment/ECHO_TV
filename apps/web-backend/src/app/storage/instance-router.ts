@@ -3,7 +3,7 @@ import {
     SERVER_STORAGE_API_VERSION,
     type ServerInstanceInfo,
     type ServerStorageStatusResponse,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type { ServerStorage } from './server-storage';
 import { StorageRequestError } from './storage-route-errors';
 
@@ -15,7 +15,7 @@ export function createInstanceRouter(deps: {
 
     router.get('/instance', (_req, res) => {
         const body: ServerInstanceInfo = {
-            service: 'iptvnator',
+            service: 'echo-tv',
             apiVersion: SERVER_STORAGE_API_VERSION,
             instanceId: deps.storage?.database.instanceId ?? null,
             storage: deps.storage ? 'server' : 'none',

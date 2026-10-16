@@ -2,7 +2,7 @@ import {
     APP_PLAYLIST_GET_PERFORMANCE_PHASE,
     APP_PLAYLIST_UPSERT_PERFORMANCE_PHASE,
     M3U_IMPORT_PERFORMANCE_PHASE,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import type { M3uImportRendererCaptureMetrics } from './m3u-import-renderer-capture';
 import type {

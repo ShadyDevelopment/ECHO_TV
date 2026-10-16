@@ -20,15 +20,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
-import { ParentalLockService, SettingsStore } from '@iptvnator/services';
+import { EpgRuntimeBridgeService } from '@echo-tv/epg/data-access';
+import { resolveChannelEpgLookupKey } from '@echo-tv/m3u-state';
+import { ParentalLockService, SettingsStore } from '@echo-tv/services';
 import {
     foldSearchText,
     Channel,
     EpgProgram,
     epgProviderClockMs,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { buildChannelEpgMetadataMap } from '../epg-enrichment.util';
 import {
     PlaylistChannelSortMode,

@@ -1,6 +1,6 @@
-# IPTVnator UI Guidelines
+# ECHO TV UI Guidelines
 
-This document captures the current UI language used across IPTVnator, with emphasis on channel lists, EPG views, settings surfaces, and shared selection patterns.
+This document captures the current UI language used across ECHO TV, with emphasis on channel lists, EPG views, settings surfaces, and shared selection patterns.
 
 Use it when changing existing views or introducing new list-based UI in the workspace, Xtream, or Stalker flows.
 
@@ -32,7 +32,7 @@ the subsystem's document.
 - Angular Material stays as the behaviour and accessibility layer: dialog,
   menu, select (inside forms only), form field and input, snack-bar, tooltip,
   slide-toggle, checkbox, progress and icon.
-- The look comes from the IPTVnator design kit, applied through
+- The look comes from the ECHO TV design kit, applied through
   `mat.*-overrides()` on the `--app-*` tokens in one place: the shared
   partials under `libs/ui/styles/` (the control mixins live in
   `_app-controls.scss`), not per-component `::ng-deep`.
@@ -163,14 +163,14 @@ Everything else is lazy by these rules:
 
 - **Form-field defaults.** A component that renders `<mat-form-field>`
   adds `providers: [provideFormFieldDefaults()]`
-  (`@iptvnator/ui/components/form-field-defaults`); the token is never
+  (`@echo-tv/ui/components/form-field-defaults`); the token is never
   provided at the root, where its import alone put the 54 KB form-field
   chunk on the initial path. `pnpm run ui:form-field-defaults:validate` (CI)
   requires the provider on every such component and allows the token
   nowhere else; see the Dialogs and forms notes below.
 - **Dialogs from services created with the app.** A root service that opens a
   dialog resolves `MatDialog` through `LazyMatDialog`
-  (`@iptvnator/ui/components/lazy-dialog`) and imports the dialog component
+  (`@echo-tv/ui/components/lazy-dialog`) and imports the dialog component
   on demand, as `DialogService`, the player service, the parental lock prompt
   and the workspace shell actions do; `openConfirmDialog` returns a promise
   that settles once the dialog is open. A component in a lazy chunk injects
@@ -303,7 +303,7 @@ stylesheet.
 
 A `mat-menu` that picks one value, such as a sort order or a rating
 threshold, uses `appMenuItemRadio` and `appMenuItemRadioCheck` from
-`@iptvnator/ui/components`:
+`@echo-tv/ui/components`:
 
 ```html
 <button mat-menu-item [appMenuItemRadio]="mode() === option.mode">
@@ -663,7 +663,7 @@ remain local when the meaning is explicit.
 ### Collapsible Live Sidebar
 
 - Live-TV panels fold from the outside in, in three nested levels owned by
-  `LiveSidebarState` (`@iptvnator/portal/shared/util`):
+  `LiveSidebarState` (`@echo-tv/portal/shared/util`):
     1. `expanded` — categories rail + channels rail + player.
     2. `categories-hidden` — channels rail + player. The shell's categories
        rail (`WorkspaceShellContextSidebarComponent`, live sections only:
@@ -702,7 +702,7 @@ remain local when the meaning is explicit.
       also opens that drawer (`WorkspaceShellContextDrawerService.open()`).
     - The category dropdown (`data-test-id="live-category-dropdown"`) opens
       `LIVE_CATEGORIES_POPOVER` anchored below itself. The token lives in
-      `@iptvnator/portal/shared/util`; the workspace shell provides it
+      `@echo-tv/portal/shared/util`; the workspace shell provides it
       (`WorkspaceLiveCategoriesPopoverService`, CDK overlay hosting
       `WorkspaceLiveCategoriesPopoverComponent`, which stamps the context
       panel with `presentation="popover"`) and the live layouts reach it
@@ -735,7 +735,7 @@ remain local when the meaning is explicit.
       uses `expand('portal')` for the same reason: revealing the row must not
       unfold a deliberately hidden categories rail.
 - Collapsed state is owned by `LiveLayoutSidebarStateService`
-  (`providedIn: 'root'`) in `@iptvnator/portal/shared/util` and kept **per
+  (`providedIn: 'root'`) in `@echo-tv/portal/shared/util` and kept **per
   surface** (`LiveSidebarSurface`): `m3u` (the M3U player), `portal` (Xtream
   and Stalker live layouts plus the shell categories rail) and `collection`
   (the unified favorites/recent live tab). Every participant injects the
@@ -767,7 +767,7 @@ remain local when the meaning is explicit.
   At the phone breakpoint (≤640px) the header toggle is hidden: the rail is a
   bottom drawer there with its own toggle and the header has no spare width.
 - While the rail is collapsed and nothing is playing, every live host renders
-  `app-channel-list-hidden-state` (`@iptvnator/portal/shared/ui`) instead of
+  `app-channel-list-hidden-state` (`@echo-tv/portal/shared/ui`) instead of
   the "select a channel" empty state: a title that says the list is hidden, a
   one-line hint naming the shortcut, and a full-size "Show channels list"
   stroked button wired to the same toggle. The generic
@@ -783,7 +783,7 @@ remain local when the meaning is explicit.
   Every level change removes or inerts the very button the user activated,
   so focus drops to `<body>`; the side that gains the replacement affordance
   picks it up after its next render via `focusIfFocusLost()`
-  (`@iptvnator/portal/shared/util`): the layouts' `LivePanelsController`
+  (`@echo-tv/portal/shared/util`): the layouts' `LivePanelsController`
   installs `handoffFocusOnLiveSidebarChange()` over the EFFECTIVE level (on
   the live root the first category selection folds the rail with no state
   change) and focuses the floating restore handle at player-only or the
@@ -1179,7 +1179,7 @@ per-theme tokens in `apps/web/src/_settings-theme.scss`.
 
 Every `<mat-form-field>` is outlined with a dynamic subscript. A component
 that renders one adds `providers: [provideFormFieldDefaults()]`
-(`@iptvnator/ui/components/form-field-defaults`); the root injector does not
+(`@echo-tv/ui/components/form-field-defaults`); the root injector does not
 provide the defaults, because the token import there would load Material's
 form field and `@angular/forms` on startup. `pnpm run
 ui:form-field-defaults:validate` (in CI) reports a missing provider.
@@ -1198,7 +1198,7 @@ vocabulary, so a field reads the same wherever it appears:
   with "Add playlist" (`HOME.URL_UPLOAD.ADD_PLAYLIST`).
 - **Passwords.** A password input is masked and has a `mat-icon-button`
   suffix with `PasswordVisibilityToggleDirective`
-  (`@iptvnator/ui/components/password-visibility-toggle`). The input binds
+  (`@echo-tv/ui/components/password-visibility-toggle`). The input binds
   `[type]="toggle.inputType()"`; the button keeps one translated label
   ("Show password", `HOME.SHOW_PASSWORD`) and exposes its state through
   `aria-pressed`, as an ARIA toggle button does.
@@ -1222,7 +1222,7 @@ after the first render. Text on screen must follow the current language:
   name empty. The Stalker every-item genre is an example.
 - Prefer `| translate` in the template. A `computed` that calls
   `TranslateService.instant` must also read `injectTranslationTick()` from
-  `@iptvnator/services`. It ticks on the three events the translate pipe
+  `@echo-tv/services`. It ticks on the three events the translate pipe
   listens to: `onLangChange`, `onDefaultLangChange` and
   `onTranslationChange`. `onLangChange` alone is not enough. A start-up
   without a saved language never calls `use()`, so only
@@ -1234,7 +1234,7 @@ after the first render. Text on screen must follow the current language:
 
 ## Source Type Icons
 
-`SOURCE_TYPE_ICONS` in `@iptvnator/shared/interfaces` is the only source of
+`SOURCE_TYPE_ICONS` in `@echo-tv/shared/interfaces` is the only source of
 provider icons: Xtream `cloud`, Stalker `cast`, the M3U family
 `playlist_play`, and per playlist `link` (URL), `description` (local file or
 text) and `subject` (pasted text in the add flow). Use
@@ -1289,7 +1289,7 @@ but the component has not.
   pane, opened from a toggle in the workspace header, closed by selection,
   backdrop tap, Escape, or any navigation. State lives in
   `WorkspaceShellContextDrawerService` (root-provided from
-  `@iptvnator/workspace/shell/util` — see below for why); the
+  `@echo-tv/workspace/shell/util` — see below for why); the
   panels call `close()` after selections that do not navigate — a
   NavigationEnd listener alone misses Stalker ITV/radio categories, settings
   sections, sources filters, and collection filters. The drawer positioning
@@ -1319,7 +1319,7 @@ but the component has not.
   on their own by checking for an `inert` ancestor, since `inert` does not
   silence document-level listeners. Any NEW document-level key listener on
   routed content must apply the same `closest('[inert]')` guard. The service is root-provided
-  from `@iptvnator/workspace/shell/util` so consumers outside the shell's
+  from `@echo-tv/workspace/shell/util` so consumers outside the shell's
   element injector (AppComponent's Ctrl/Cmd+R handler) can observe it
   without pulling the lazy shell chunk into the eager bundle. The shell
   also registers the open drawer with
@@ -1412,18 +1412,18 @@ Before creating new markup or CSS:
 1. Check whether `app-channel-list-item` can be reused.
 2. Check whether `app-epg-timeline` already provides the correct structure.
 3. Check whether `nav-list.scss` already solves the list-selection problem.
-4. Inspect the public APIs of `@iptvnator/ui/components`,
-   `@iptvnator/ui/epg`, `@iptvnator/ui/playback`,
-   `@iptvnator/ui/shared-portals`, `@iptvnator/portal/shared/ui`, and
-   `@iptvnator/playlist/shared/ui`.
+4. Inspect the public APIs of `@echo-tv/ui/components`,
+   `@echo-tv/ui/epg`, `@echo-tv/ui/playback`,
+   `@echo-tv/ui/shared-portals`, `@echo-tv/portal/shared/ui`, and
+   `@echo-tv/playlist/shared/ui`.
 5. Put provider-neutral collection loading, persistence, and cross-provider
-   orchestration in `@iptvnator/portal/shared/data-access`, not a UI library or
+   orchestration in `@echo-tv/portal/shared/data-access`, not a UI library or
    the shared util library.
 6. Extend tokens first, duplicate styles last.
 
 ## Implementation Workflow
 
-When updating IPTVnator UI:
+When updating ECHO TV UI:
 
 1. Inspect the current shared component first.
 2. Reuse the shared structure where possible.
@@ -1455,7 +1455,7 @@ A visual change is not done until:
 
 1. Shared component reuse was considered first.
 2. Light theme and dark theme both look intentional.
-3. Selection and progress states match existing IPTVnator patterns.
+3. Selection and progress states match existing ECHO TV patterns.
 4. Scroll behavior is correct.
 5. The result was checked in the running app for layout-sensitive work.
 
@@ -1485,7 +1485,7 @@ in the switcher (52px, 32px tile, ⋯ only). In both the active source's row
 is tinted with the selected-row token; the switcher adds a check. The page
 header (title, Clean up, Sort) stays; only the list below it scrolls. The meta line is always type · channels · added · updated · URL, with
 empty parts left out; only M3U playlists store a channel count. The helpers
-in `@iptvnator/playlist/shared/util` (`source-display`, `source-format`,
+in `@echo-tv/playlist/shared/util` (`source-display`, `source-format`,
 `source-list`) own that text, the filters and the counts.
 
 - **No credentials on screen.** Names come from `sourceDisplayName`: a URL, a

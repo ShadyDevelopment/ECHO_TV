@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { PlaylistDeleteActionService } from '@iptvnator/services';
+import { PlaylistDeleteActionService } from '@echo-tv/services';
 import {
     PlaylistMeta,
     SourceHealthSnapshot,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { SourceCleanupService } from './source-cleanup.service';
 import { SourceHealthService } from './source-health.service';
 

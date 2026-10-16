@@ -184,7 +184,7 @@ describe('DatabaseWorkerClient', () => {
     });
 
     describe('SQL statement counts', () => {
-        const PERF_CAPTURE_ENV = 'IPTVNATOR_PERF_CAPTURE';
+        const PERF_CAPTURE_ENV = 'ECHO_TV_PERF_CAPTURE';
         const originalCapture = process.env[PERF_CAPTURE_ENV];
 
         afterEach(() => {

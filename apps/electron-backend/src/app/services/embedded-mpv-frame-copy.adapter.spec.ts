@@ -249,7 +249,7 @@ describe('EmbeddedMpvFrameCopyAdapter', () => {
             child.emitStdout({
                 event: 'log',
                 level: 'warn',
-                prefix: 'iptvnator',
+                prefix: 'echo-tv',
                 text: 'rejected session option nonexistent-option: option not found',
             });
             child.emitStdout({

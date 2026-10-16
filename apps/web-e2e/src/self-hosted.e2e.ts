@@ -19,7 +19,7 @@ async function installRuntimeConfig(page: Page): Promise<void> {
     await page.route('**/assets/app-config.js', async (route) => {
         await route.fulfill({
             contentType: 'application/javascript',
-            body: `window.__IPTVNATOR_CONFIG__ = { BACKEND_URL: ${JSON.stringify(WEB_BACKEND_URL)} };\n`,
+            body: `window.__ECHO_TV_CONFIG__ = { BACKEND_URL: ${JSON.stringify(WEB_BACKEND_URL)} };\n`,
         });
     });
 }
@@ -128,7 +128,7 @@ test('@self-hosted runtime config points PWA calls at the monorepo backend', asy
 }) => {
     await expect
         .poll(() =>
-            page.evaluate(() => window.__IPTVNATOR_CONFIG__?.BACKEND_URL)
+            page.evaluate(() => window.__ECHO_TV_CONFIG__?.BACKEND_URL)
         )
         .toBe(WEB_BACKEND_URL);
 
@@ -203,7 +203,7 @@ test('@self-hosted Stalker portal loads through web-backend proxy', async ({
 test('@self-hosted M3U User-Agent reaches the provider on import and refresh', async ({
     page,
 }) => {
-    const userAgent = 'IPTVnator-Test/1.0';
+    const userAgent = 'ECHO TV-Test/1.0';
     const received: (string | undefined)[] = [];
     let channel = 'Initial UA Channel';
     const server = createServer((req, res) => {

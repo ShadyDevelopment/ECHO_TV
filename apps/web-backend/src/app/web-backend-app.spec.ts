@@ -14,7 +14,7 @@ describe('web backend app', () => {
 
             await expect(response.json()).resolves.toEqual({
                 status: 'ok',
-                service: 'iptvnator-web-backend',
+                service: 'echo-tv-web-backend',
             });
         });
     });
@@ -31,7 +31,7 @@ describe('web backend app', () => {
                 expect(response.headers.get('content-type')).toContain(
                     'application/javascript'
                 );
-                expect(body).toContain('window.__IPTVNATOR_CONFIG__');
+                expect(body).toContain('window.__ECHO_TV_CONFIG__');
                 expect(body).toContain('"BACKEND_URL":"/api"');
             }
         );
@@ -99,7 +99,7 @@ https://stream.example/news.m3u8`);
         );
     });
 
-    it.each(['  IPTVnator-Test/1.0  ', '', '   '])(
+    it.each(['  ECHO TV-Test/1.0  ', '', '   '])(
         'forwards and persists the optional playlist User-Agent: %s',
         async (userAgent) => {
             const httpClient = new StubHttpClient();
@@ -217,7 +217,7 @@ https://stream.example/news.m3u8`);
         const kid = '00112233445566778899aabbccddeeff';
         const key = 'ffeeddccbbaa99887766554433221100';
         // First channel uses the KODIPROP-before-#EXTINF layout (supported
-        // since the 0.15.2-iptvnator.2 parser pin), the second the common
+        // since the 0.15.2-echo-tv.2 parser pin), the second the common
         // between-#EXTINF-and-URL layout.
         httpClient.queueResponse(`#EXTM3U
 #KODIPROP:inputstream.adaptive.license_type=clearkey

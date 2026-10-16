@@ -1,4 +1,4 @@
-import { ChannelDrm, ChannelDrmClearKeys } from '@iptvnator/shared/interfaces';
+import { ChannelDrm, ChannelDrmClearKeys } from '@echo-tv/shared/interfaces';
 
 /**
  * `#KODIPROP:` DRM extraction.

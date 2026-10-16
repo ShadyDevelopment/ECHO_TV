@@ -56,10 +56,10 @@ function resolvePackagedExecutable() {
                 executable: path.join(
                     executablesRoot,
                     'mac',
-                    'IPTVnator.app',
+                    'ECHO TV.app',
                     'Contents',
                     'MacOS',
-                    'IPTVnator'
+                    'ECHO TV'
                 ),
             },
             {
@@ -67,10 +67,10 @@ function resolvePackagedExecutable() {
                 executable: path.join(
                     executablesRoot,
                     'mac-arm64',
-                    'IPTVnator.app',
+                    'ECHO TV.app',
                     'Contents',
                     'MacOS',
-                    'IPTVnator'
+                    'ECHO TV'
                 ),
             },
         ];
@@ -82,11 +82,11 @@ function resolvePackagedExecutable() {
     }
 
     if (currentPlatform === 'windows') {
-        return findUnpackedExecutable('win', ['IPTVnator.exe']);
+        return findUnpackedExecutable('win', ['ECHO TV.exe']);
     }
 
     if (currentPlatform === 'linux') {
-        return findUnpackedExecutable('linux', ['IPTVnator', 'iptvnator']);
+        return findUnpackedExecutable('linux', ['ECHO TV', 'echo-tv']);
     }
 
     return undefined;

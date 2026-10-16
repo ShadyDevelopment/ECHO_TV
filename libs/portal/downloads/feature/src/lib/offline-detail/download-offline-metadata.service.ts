@@ -7,12 +7,12 @@ import {
     SettingsStore,
     TmdbEnrichmentService,
     type DownloadItem,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     createMovieDownloadSnapshot,
     createSeriesEpisodeDownloadSnapshot,
-} from '@iptvnator/portal/shared/util';
-import type { DownloadMetadataSnapshot } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import type { DownloadMetadataSnapshot } from '@echo-tv/shared/interfaces';
 import {
     mapProviderToDownloadSnapshot,
     mergeSnapshotWithTmdb,

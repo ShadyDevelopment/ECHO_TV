@@ -4,10 +4,10 @@ import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
-import type { PlayerContentInfo } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@echo-tv/services';
+import type { PlayerContentInfo } from '@echo-tv/shared/interfaces';
 import { VodDetailsPlaybackService } from './vod-details-playback.service';
 
 /**

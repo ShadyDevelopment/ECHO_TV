@@ -6,7 +6,7 @@
 ## Context
 
 The current desktop download manager renders every download as the same
-management card. The approved handoff in `IPTVnator Download Manager.html`
+management card. The approved handoff in `ECHO TV Download Manager.html`
 instead separates work that needs attention from content that is ready to
 watch:
 
@@ -43,7 +43,7 @@ signal with a partial list.
   remove operation reachable.
 - Make file-retention behavior explicit instead of implying that a completed
   media file is deleted when only its manager entry is removed.
-- Reuse IPTVnator's existing light/dark theme tokens, typography, icons,
+- Reuse ECHO TV's existing light/dark theme tokens, typography, icons,
   layout mixins, and empty-state components.
 - Split the oversized page into focused standalone Angular components with a
   pure, unit-tested view-model layer.
@@ -348,9 +348,9 @@ explicit delete and recovery semantics.
 ## Theme and visual language
 
 The handoff's standalone `tokens.css` is a visual reference, not a new runtime
-token source. Its roles map to existing IPTVnator variables:
+token source. Its roles map to existing ECHO TV variables:
 
-| Handoff role               | IPTVnator source                                         |
+| Handoff role               | ECHO TV source                                         |
 | -------------------------- | -------------------------------------------------------- |
 | page background            | `--app-content-bg`                                       |
 | panel/card background      | `--app-widget-bg`                                        |

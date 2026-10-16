@@ -1,5 +1,5 @@
 import type { ChildProcess } from 'child_process';
-import { tagExternalPlayerError } from '@iptvnator/shared/interfaces';
+import { tagExternalPlayerError } from '@echo-tv/shared/interfaces';
 
 const TERMINATION_GRACE_PERIOD_MS = 3_000;
 const FORCED_TERMINATION_WAIT_MS = 2_000;

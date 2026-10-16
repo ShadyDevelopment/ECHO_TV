@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { VodSourceDiscoveryService } from '@iptvnator/portal/shared/data-access';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
-import { EMBEDDED_MPV_SUPPORT_RECHECK_MS } from '@iptvnator/shared/interfaces';
+import { VodSourceDiscoveryService } from '@echo-tv/portal/shared/data-access';
+import { RuntimeCapabilitiesService } from '@echo-tv/services';
+import { EMBEDDED_MPV_SUPPORT_RECHECK_MS } from '@echo-tv/shared/interfaces';
 import { SETTINGS_SEARCH_ENTRIES } from './settings-search-entries';
 import { SETTINGS_SECTION_DEFINITIONS } from './settings-search-sections';
 import { SettingsSearchService } from './settings-search.service';

@@ -1,12 +1,12 @@
-import { SourceActivityService } from '@iptvnator/services';
+import { SourceActivityService } from '@echo-tv/services';
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { DialogService } from '@iptvnator/ui/components';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { SettingsStore } from '@iptvnator/services';
+import { DialogService } from '@echo-tv/ui/components';
+import { PlaylistActions } from '@echo-tv/m3u-state';
+import { SettingsStore } from '@echo-tv/services';
 import {
     AUTO_UPDATE_PLAYLISTS,
     AutoUpdatePlaylistOutcome,
@@ -20,7 +20,7 @@ import {
     Playlist,
     SECURITY_ERROR_PREFIX,
     tagExternalPlayerError,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { ElectronService } from './electron.service';
 
 describe('ElectronService', () => {
@@ -376,7 +376,7 @@ describe('ElectronService', () => {
     it('forwards URL import User-Agent alongside trust options and dispatches the persisted value', async () => {
         const playlist = {
             _id: 'ua-playlist',
-            userAgent: 'IPTVnator-Test/1.0',
+            userAgent: 'ECHO TV-Test/1.0',
         };
         electronBridge.fetchPlaylistByUrl.mockResolvedValue(playlist);
         service.sendIpcEvent(PLAYLIST_PARSE_BY_URL, {

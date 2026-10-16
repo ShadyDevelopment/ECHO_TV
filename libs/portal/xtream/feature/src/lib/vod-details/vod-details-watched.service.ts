@@ -6,12 +6,12 @@ import {
     VOD_WATCHED_FEEDBACK_KEYS,
     createLogger,
     createVodWatchedToggle,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     XtreamVodDetails,
     getXtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { VodDetailsPlaybackService } from './vod-details-playback.service';
 
 /**

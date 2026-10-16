@@ -14,7 +14,7 @@ import {
     WINDOW_ZOOM_LEVEL_APPLIED,
     WINDOW_TOGGLE_FULLSCREEN,
     WINDOW_TOGGLE_MAXIMIZE,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { toggleFullScreen } from '../services/native-fullscreen-transitions';
 import {
     markZoomLevelApplied,

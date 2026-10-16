@@ -4,7 +4,7 @@ import {
     type M3uImportPerformancePhase,
     type PerformancePhaseEvent,
     type PerformancePhaseMetadata,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { randomUUID } from 'node:crypto';
 import { channel, type Channel } from 'node:diagnostics_channel';
 import { performance } from 'node:perf_hooks';

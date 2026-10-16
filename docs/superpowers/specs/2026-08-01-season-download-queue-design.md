@@ -8,7 +8,7 @@
 
 ## Summary
 
-IPTVnator will let a user enqueue several episode downloads one after another
+ECHO TV will let a user enqueue several episode downloads one after another
 and enqueue every eligible episode in the currently selected season. The
 existing Electron transfer model remains unchanged: one active transfer and a
 FIFO queue behind it.

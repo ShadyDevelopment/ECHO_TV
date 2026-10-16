@@ -32,7 +32,7 @@ chosen deliberately by bumping `package.json`.
 
 Run the two stdout commands as `pnpm --silent run …` whenever the output is
 redirected to a file or a clipboard. Without it pnpm prints its lifecycle
-banner (`> iptvnator@0.23.0 release:notes:telegram …`) to the same stdout, and
+banner (`> echo-tv@0.23.0 release:notes:telegram …`) to the same stdout, and
 the saved post starts with two lines of build noise.
 
 ### The ordering constraint that matters
@@ -178,7 +178,7 @@ and seed its `marketing-demo` portal as a third source, which is why they are
 never part of a release run. That scenario's MAC, `00:1A:79:00:00:07`, is the
 one MAC-shaped string G4 accepts (`FICTIONAL_STALKER_MAC`); every other MAC
 still fails the frame. The scenario's live channels and logos come from
-`@iptvnator/shared/marketing-fixtures`, served by the mock itself, so no
+`@echo-tv/shared/marketing-fixtures`, served by the mock itself, so no
 third-party image is ever requested.
 
 Output lands in `dist/release-highlight-cards/v<version>/`, outside version
@@ -262,7 +262,7 @@ canonical GitHub repository. AppManager 3.8.0 reads these URL fields and can
 discover GitHub releases and download complete AppImages. Its architecture
 selection recognizes the existing `x86_64`, `arm64` and `armv7l` asset names.
 Other Linux package formats do not inherit these AppImage-specific fields.
-`extraMetadata.desktopName=iptvnator` preserves the existing window class and
+`extraMetadata.desktopName=echo-tv` preserves the existing window class and
 desktop filename. Do not reintroduce a shared `linux.desktop.entry` object:
 electron-builder 26.15.7's target merge mutates nested defaults, which would
 leak the AppImage URL fields into Snap in the same portable packaging pass.
@@ -289,7 +289,7 @@ References: [AppImage desktop keys](https://docs.appimage.org/reference/desktop-
 
 Every non-fork PR build publishes its artifacts to a rolling **draft** release
 tagged `test-pr-<n>`; a non-PR, non-tag build (a dispatch on a branch) uses
-`test-<branch>`, the shape master pushes used before the nightly channel took
+`test-<branch>`, the shape main pushes used before the nightly channel took
 over. The tag is stable per PR, so the draft is updated in place and a PR has
 at most one.
 
@@ -305,10 +305,10 @@ lookup failure, a `test-<branch>` draft — is left alone.
 
 ## Nightly channel
 
-Every push to `master` of `4gray/iptvnator` is also a nightly. The same
+Every push to `main` of `ShadyDevelopment/ECHO_TV` is also a nightly. The same
 `build-and-make.yaml` run that builds the matrix publishes its artifacts as a
-**prerelease of `4gray/iptvnator-nightly`** instead of the rolling
-`test-master` draft: a draft is invisible to anyone without write access and
+**prerelease of `ShadyDevelopment/ECHO_TV`** instead of the rolling
+`test-main` draft: a draft is invisible to anyone without write access and
 to electron-updater, while a published prerelease is what the desktop app's
 **Nightly** update channel installs. PR builds keep their `test-pr-<n>`
 drafts; tag builds are unaffected.
@@ -350,14 +350,12 @@ frontend and backend builds and before electron-builder reads it
 
 **Publication** (steps at the end of the `create-release` job):
 
-1. `NIGHTLY_RELEASE_TOKEN` — a fine-grained PAT with *Contents: read/write*
-   on `4gray/iptvnator-nightly` — is required. Without it the run only warns;
-   `GITHUB_TOKEN` cannot write to another repository. The nightly repository
-   needs one commit on its default branch, because `gh release create`
-   creates the release tag there.
-2. The notes list the master commits since the previous nightly. That
-   nightly's source commit is read back from the `<!-- iptvnator-commit: … -->`
-   marker its own notes carry, then `compare` on the main repository (with
+1. The `create-release` job has *Contents: write* permission on
+   `ShadyDevelopment/ECHO_TV` and uses `GITHUB_TOKEN`, so no separate PAT
+   is needed. `gh release create` tags the repository's default branch.
+2. The notes list the main commits since the previous nightly. That
+   nightly's source commit is read back from the `<!-- echo-tv-commit: … -->`
+   marker its own notes carry, then `compare` on the same repository (with
    `GITHUB_TOKEN`) lists the range. A missing marker or a rewritten history
    only drops the list.
 3. The release is created as a draft, assets are uploaded, then it is
@@ -367,7 +365,7 @@ frontend and backend builds and before electron-builder reads it
    release is never deleted by a re-run: re-running after a successful
    publish is a no-op, and only a draft left behind by a failed run is
    replaced.
-4. The release job is serialized per ref, but two master runs can finish out
+4. The release job is serialized per ref, but two main runs can finish out
    of order. electron-updater takes the newest feed entry, so a nightly older
    than the newest published one is dropped rather than published.
 5. Only the newest `NIGHTLY_KEEP_RELEASES` (20) nightlies are kept; older
@@ -383,9 +381,9 @@ or the explicit `latest` for stable — the setter refuses `null` once set),
 and `allowDowngrade = false` reset afterwards, since assigning a channel
 silently enables downgrades and the constructor enables prereleases for any
 prerelease build. Release notes and the manual-install fallback (Linux
-without AppImage) read the channel's release list; notes for a nightly
-version always come from the nightly repository, so a nightly build on the
-stable channel still shows its own notes. `AppUpdateReleaseCatalogs`
+without AppImage) read the channel's release list; stable and nightly
+versions share a repository, so a nightly build on the stable channel still
+shows its own notes. `AppUpdateReleaseCatalogs`
 (`app-update-release-notes.ts`) owns one catalog per channel and both reads
 the updater performs on them (release notes with paging, newest release for
 the manual-install fallback); the service only delegates. Each catalog is a
@@ -430,8 +428,8 @@ persisted.
 Switching is forward-only on purpose: a nightly build stays installed until
 a newer stable release exists, because a downgrade could land on a release
 that does not understand the database schema a nightly migration already
-applied. Nightly users therefore accept that everything merged into master
-is de facto shipped — a migration on master can only be followed by another
+applied. Nightly users therefore accept that everything merged into main
+is de facto shipped — a migration on main can only be followed by another
 migration, never reworked.
 
 ## After verification
@@ -449,8 +447,8 @@ verify the website deployment. The fallback pin must never follow the
 development/nightly version in the root `package.json`.
 
 If a Store upload fails after publication, run `publish-snap.yaml` from
-`master` with its `tag` input set to the existing public stable tag, for example
-`gh workflow run publish-snap.yaml --ref master -f tag=v0.24.0`. The workflow
+`main` with its `tag` input set to the existing public stable tag, for example
+`gh workflow run publish-snap.yaml --ref main -f tag=v0.24.0`. The workflow
 resolves the public release through the API, rejects drafts/prereleases and
 invalid tags, and repeats the full released-tooling, asset and source-archive
 verification before uploading to `edge`. Do not move the release tag, rebuild

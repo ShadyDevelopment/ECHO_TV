@@ -1024,7 +1024,7 @@ type CapturedExternalPlayerLaunch = {
 };
 
 const externalPlayerLaunchCaptureKey =
-    '__iptvnatorE2eExternalPlayerLaunches';
+    '__echo-tvE2eExternalPlayerLaunches';
 
 async function installExternalPlayerLaunchCapture(
     app: LaunchedElectronApp

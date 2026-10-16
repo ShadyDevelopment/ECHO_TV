@@ -119,7 +119,7 @@ class FakeCdpSession extends EventEmitter {
 
 async function createDirectory(): Promise<string> {
     const directory = await mkdtemp(
-        join(tmpdir(), 'iptvnator-performance-artifact-')
+        join(tmpdir(), 'echo-tv-performance-artifact-')
     );
     directories.push(directory);
     return directory;

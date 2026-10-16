@@ -12,11 +12,11 @@ import {
     ACKNOWLEDGE_PLAYLIST_OPEN_REQUEST,
     ANNOUNCE_PLAYLIST_OPEN_LISTENER,
     OPEN_FILE,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import type {
     DownloadMetadataSnapshot,
     ElectronBridgeApi,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     dbPreloadCases,
     epgPreloadCases,

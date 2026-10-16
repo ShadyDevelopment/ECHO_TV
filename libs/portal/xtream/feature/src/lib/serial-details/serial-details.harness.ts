@@ -11,19 +11,19 @@ import {
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     SeriesResumeTarget,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     DownloadsService,
     PlaybackPositionRuntimeBridgeService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import {
     PlaybackPositionData,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { SeasonContainerComponent } from '@iptvnator/ui/components';
-import { PortalInlinePlayerComponent } from '@iptvnator/ui/playback';
+} from '@echo-tv/shared/interfaces';
+import { SeasonContainerComponent } from '@echo-tv/ui/components';
+import { PortalInlinePlayerComponent } from '@echo-tv/ui/playback';
 import { BehaviorSubject, EMPTY, of } from 'rxjs';
 import { SerialDetailsComponent } from './serial-details.component';
 import { XTREAM_SERIES_RESUME_TARGET } from './serial-details-resume-target.token';

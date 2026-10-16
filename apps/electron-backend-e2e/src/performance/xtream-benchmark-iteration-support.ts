@@ -208,12 +208,12 @@ export async function assertXtreamBenchmarkEnvironmentIsolated(
         [
             ...ELECTRON_RUNTIME_ENVIRONMENT_KEYS,
             'ELECTRON_IS_DEV',
-            'IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS',
-            'IPTVNATOR_DB_WORKER_BATCH_DELAY_MS',
-            'IPTVNATOR_E2E_DATA_DIR',
-            'IPTVNATOR_PERF_CAPTURE',
-            'IPTVNATOR_PERF_WORKER_PROFILING',
-            'IPTVNATOR_TRACE_RENDERER_CONSOLE',
+            'ECHO_TV_ALLOW_PRIVATE_NETWORK_URLS',
+            'ECHO_TV_DB_WORKER_BATCH_DELAY_MS',
+            'ECHO_TV_E2E_DATA_DIR',
+            'ECHO_TV_PERF_CAPTURE',
+            'ECHO_TV_PERF_WORKER_PROFILING',
+            'ECHO_TV_TRACE_RENDERER_CONSOLE',
             'NODE_ENV',
         ].map((key) => key.toUpperCase())
     );

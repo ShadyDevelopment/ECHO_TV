@@ -1,5 +1,5 @@
 import type { ArchiveFileIdentity } from './download-catchup-output';
-import type { CatchupDownloadMetadata } from '@iptvnator/shared/interfaces';
+import type { CatchupDownloadMetadata } from '@echo-tv/shared/interfaces';
 import type { getDatabase } from '../../database/connection';
 
 export type DownloadsDatabase = Awaited<ReturnType<typeof getDatabase>>;

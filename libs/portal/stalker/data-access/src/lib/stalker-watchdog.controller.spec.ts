@@ -1,5 +1,5 @@
-import type { Playlist } from '@iptvnator/shared/interfaces';
-import type { createLogger } from '@iptvnator/portal/shared/util';
+import type { Playlist } from '@echo-tv/shared/interfaces';
+import type { createLogger } from '@echo-tv/portal/shared/util';
 import { StalkerWatchdogController } from './stalker-watchdog.controller';
 
 describe('StalkerWatchdogController', () => {

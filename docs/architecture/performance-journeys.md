@@ -1,6 +1,6 @@
 # Performance journeys and the CI ratchet
 
-IPTVnator measures performance through a small set of everyday user journeys.
+ECHO TV measures performance through a small set of everyday user journeys.
 Each journey has deterministic counters that are asserted exactly, and
 wall-clock timings that are recorded as evidence. Counters are ratcheted in CI:
 a committed baseline may only be lowered, and only with the measured output as
@@ -32,7 +32,7 @@ pnpm run perf:journeys
 The script runs the Nx target `electron-backend-e2e:journeys`, which builds the
 `electron-performance` configuration of the Electron app and the renderer
 first, starts the Xtream mock server on the dedicated loopback port
-`127.0.0.1:3231` (override with `IPTVNATOR_JOURNEY_XTREAM_MOCK_PORT`), and runs
+`127.0.0.1:3231` (override with `ECHO_TV_JOURNEY_XTREAM_MOCK_PORT`), and runs
 `playwright.journeys.config.ts` with one worker. Each run writes one file:
 
 ```
@@ -42,7 +42,7 @@ dist/performance/journeys/<YYYYMMDDTHHMMSSZ>/summary.json
 Every journey spec (`src/journeys/*.journey.ts`) adds its own
 `journeys.<id>` entry to that file. The config starts a run only in the
 Playwright runner (not in a worker, which has `TEST_WORKER_INDEX`): it sets
-`IPTVNATOR_JOURNEY_RUN_STARTED_AT` and a random `IPTVNATOR_JOURNEY_RUN_ID`
+`ECHO_TV_JOURNEY_RUN_STARTED_AT` and a random `ECHO_TV_JOURNEY_RUN_ID`
 before the worker forks, replacing any value left in the environment. All
 specs of one invocation, including a restarted worker, therefore share the
 directory and `harness.runId`. The first spec creates the file; a later one
@@ -50,7 +50,7 @@ merges into it only when `harness.runId` matches and the rest of the harness
 is identical, through a temporary file and a rename. A journey that is
 already present fails, so no measurement is ever overwritten; a second
 invocation in the same second fails instead of merging into the first.
-`IPTVNATOR_JOURNEY_MEASURED_ITERATIONS` lowers the five measured iterations
+`ECHO_TV_JOURNEY_MEASURED_ITERATIONS` lowers the five measured iterations
 for a quick local check; the warm-up iteration always runs. Numbers from a
 laptop are previews: the Linux CI runner is the canonical measurer for
 baselines, as it is for `renderer.initialBytes`.
@@ -74,7 +74,7 @@ frozen at that microtask checkpoint, so bridge calls and mutations issued
 later in the same task are included and everything after it is not.
 
 Three test-side pieces are injected. The app itself only contributes the
-main-process counters below, which exist only with `IPTVNATOR_PERF_CAPTURE=1`:
+main-process counters below, which exist only with `ECHO_TV_PERF_CAPTURE=1`:
 
 - `journey-renderer-gate.cjs` is loaded into the main process with `-r`, the
   mechanism Playwright uses for its own loader. Playwright resolves
@@ -102,11 +102,11 @@ main-process counters below, which exist only with `IPTVNATOR_PERF_CAPTURE=1`:
 - `journey-renderer-probe.ts` is registered with `addInitScript` on that
   `about:blank` page, so it runs at the start of the real document. It
   records that it ran while the document was still `loading` with zero
-  scripts and emits one JSON blob under `window.__iptvnatorJourneyProbe`,
+  scripts and emits one JSON blob under `window.__echo-tvJourneyProbe`,
   complete once the [settle window](#settle-window) has closed.
 - `journey-main-ipc-capture.ts` subscribes to the preload's renderer-API trace
-  channel (`IPTVNATOR_DEBUG_TRACE_EVENT`, enabled with
-  `IPTVNATOR_TRACE_IPC=1`) through `electronApp.evaluate`, also before the
+  channel (`ECHO_TV_DEBUG_TRACE_EVENT`, enabled with
+  `ECHO_TV_TRACE_IPC=1`) through `electronApp.evaluate`, also before the
   release. The record refuses an iteration whose gate timed out, saw a second
   load, or released before the probe was in place.
 
@@ -114,7 +114,7 @@ main-process counters below, which exist only with `IPTVNATOR_PERF_CAPTURE=1`:
 
 | Counter                            | Source                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `renderer.ipcCallsToFirstCard`     | `start` trace events the preload emits for every bridge invocation (listener registrations `on*`/`remove*` excluded, as in `wrapElectronApi`). The renderer probe fires one sentinel `cancelSourceProbe('__iptvnator-journey-sentinel__')` at the terminal moment; renderer-to-main IPC is ordered, so events before the sentinel are the exact count. The preload traces the call before forwarding it, and `SOURCE_HEALTH_CANCEL` only looks the id up in an in-memory map, so the sentinel never reaches the database worker.                      |
+| `renderer.ipcCallsToFirstCard`     | `start` trace events the preload emits for every bridge invocation (listener registrations `on*`/`remove*` excluded, as in `wrapElectronApi`). The renderer probe fires one sentinel `cancelSourceProbe('__echo-tv-journey-sentinel__')` at the terminal moment; renderer-to-main IPC is ordered, so events before the sentinel are the exact count. The preload traces the call before forwarding it, and `SOURCE_HEALTH_CANCEL` only looks the id up in an in-memory map, so the sentinel never reaches the database worker.                      |
 | `renderer.ipcSerialDepthToFirstCard` | Length of the longest chain of bridge calls before the sentinel in which each call started after the previous one completed. Derived from the same trace channel; see [Serial IPC depth](#serial-ipc-depth). |
 | `renderer.domMutationsToFirstCard` | `MutationRecord`s (not callback batches) from a `MutationObserver` on the document element with `childList`, `attributes`, `characterData` and `subtree`. When the init script runs before `<html>` exists the observer watches `document`, which the blob reports in `capabilities.observedTarget`.                                                                                                                                                                                                                                                  |
 | `renderer.layoutShiftScore`        | Sum of `layout-shift` entries with `hadRecentInput === false`, rounded to three decimals (a shift of 0.0001 flips in and out of the cutoff between runs; the CLS "good" threshold is 0.1, so three decimals keep the counter exact without hiding anything a user could see). The cutoff is sampled in a timer queued from the first `requestAnimationFrame` after the terminal batch, that is after the frame that paints the card has been committed; entries delivered live after the terminal batch are buffered and filtered by the same cutoff. |
@@ -256,7 +256,7 @@ idle buckets and the public
 `ApplicationRef.tick()` all call it, and it is where Angular emits the
 profiler's `ChangeDetectionStart`. The count therefore equals the profiler's
 tick count and stays comparable across the zoneless migration. The running
-total is `window.__iptvnatorCdTicks.count`; the probe subtracts it at the
+total is `window.__echo-tvCdTicks.count`; the probe subtracts it at the
 journey's boundaries (zero at document start for J1, the value in the
 capture-phase click listener for J2). If a future Angular renames `_tick`,
 the performance build throws at startup instead of reporting zero.
@@ -309,13 +309,13 @@ before/after tables are in [zoneless migration](zoneless-migration.md).
 
 #### Main-process counters
 
-With `IPTVNATOR_PERF_CAPTURE=1`, which the journey sets,
+With `ECHO_TV_PERF_CAPTURE=1`, which the journey sets,
 `apps/electron-backend/src/app/services/debug-trace.ts` keeps named counters
 in the main process (`services/performance-counters.ts`) and `main.ts`
 registers the `performance:read-counters` IPC handler. Without the flag
 nothing is counted, no listener is attached and the handler does not exist;
 the preload never exposes the channel. SQL statements are counted only with
-`IPTVNATOR_PERF_COUNT_SQL=1` as well, because the hook wraps every statement
+`ECHO_TV_PERF_COUNT_SQL=1` as well, because the hook wraps every statement
 execution: the launch journey and J4, which reports
 `renderer.sqlStatementsPerSearch`, set both (the flags are built in
 `journey-launch-environment.ts`), while J2's and J3's launches and the M3U,
@@ -670,8 +670,8 @@ running app to `measureOpenSourceJourney` in
 J1's terminal condition and its counters are final, and after J1's settle
 window has closed, so the two journeys never overlap. One warm-up and five measured iterations, as for J1; the J1 numbers
 of these launches are not reported again. J2 does not read J1's
-main-process counters, so its launches run without `IPTVNATOR_PERF_CAPTURE`
-and `IPTVNATOR_PERF_COUNT_SQL` (`runLaunchJourney` with
+main-process counters, so its launches run without `ECHO_TV_PERF_CAPTURE`
+and `ECHO_TV_PERF_COUNT_SQL` (`runLaunchJourney` with
 `mainCounters: false`). The click is not measured under the SQL hook that
 wraps every statement.
 
@@ -699,7 +699,7 @@ with `startClick` set). It registers a capture-phase `click` listener on
 `window`, which runs before every listener of the app. On the first click
 inside the start selector it stamps the start at the event's timestamp (or
 the listener's time if that is earlier) and sends the start sentinel
-`cancelSourceProbe('__iptvnator-journey-open-source-start__')`, the same
+`cancelSourceProbe('__echo-tv-journey-open-source-start__')`, the same
 no-op marker as J1's. Only then do
 the counters start.
 
@@ -708,7 +708,7 @@ path contains `/workspace/xtreams/`, an item of the first page is visible
 (`app-grid-list mat-card, .content-card, [data-test-id="channel-item"]`;
 skeleton cards do not match) and a category of the context panel is visible
 (`app-workspace-context-panel .category-item`). The probe then sends the end
-sentinel `cancelSourceProbe('__iptvnator-journey-open-source-end__')` and closes
+sentinel `cancelSourceProbe('__echo-tv-journey-open-source-end__')` and closes
 the observers at the same post-paint cutoff as J1. A portal card opens the
 source's default section, which is VOD (`getPlaylistLink` links to
 `/workspace/xtreams/<id>/vod`): the category list is the movie category list
@@ -814,7 +814,7 @@ IPC capture with a start sentinel, arms the probe, hovers the first
 1 s quiet as J2 (`src/performance/journey-click-settle.ts`, shared with J2).
 J1's capture is detached and the channel is clicked. The probe's capture-phase
 `click` listener stamps the start and sends
-`cancelSourceProbe('__iptvnator-journey-playback-start__')`. The record
+`cancelSourceProbe('__echo-tv-journey-playback-start__')`. The record
 rejects activity between the settle snapshot and the click exactly as J2
 does.
 
@@ -824,7 +824,7 @@ listener on `window` sees them before any listener of the app. The first
 `playing` event after the start on an element matching
 `app-web-player-view video` ends the journey: pending mutation records are
 taken synchronously, the end sentinel
-`cancelSourceProbe('__iptvnator-journey-playback-end__')` is sent, and the
+`cancelSourceProbe('__echo-tv-journey-playback-end__')` is sent, and the
 element's state is recorded (`evidence.media`: `readyState`, `paused`,
 `currentTime`, intrinsic size, and `currentSrcScheme`, which is `blob` for
 Media Source playback). The first `loadedmetadata` on such an element after
@@ -917,8 +917,8 @@ every iteration copies it, spawns a fresh process through `runLaunchJourney`
 and hands the running app to `measureSearchJourney` in
 `src/journeys/search-journey-app.ts`. One warm-up and five measured
 iterations. Unlike J2 and J3 the launch runs with the main-process counters
-(`mainCounters: true`, so `IPTVNATOR_PERF_CAPTURE` and
-`IPTVNATOR_PERF_COUNT_SQL`), because SQL statements are a J4 counter; every
+(`mainCounters: true`, so `ECHO_TV_PERF_CAPTURE` and
+`ECHO_TV_PERF_COUNT_SQL`), because SQL statements are a J4 counter; every
 statement then runs through the counting hook.
 
 **Profile.** J1's M3U source plus an Xtream portal ("Journey search portal")
@@ -958,7 +958,7 @@ the first key (well below the 300 ms debounce, as steady typing would be),
 and samples the main process just before each key. The probe's
 capture-phase `keydown` listener on `window` stamps every key in the search
 box before the app sees it; the first one starts the journey and sends
-`cancelSourceProbe('__iptvnator-journey-search-start__')`. The record
+`cancelSourceProbe('__echo-tv-journey-search-start__')`. The record
 rejects an iteration whose DOM mutations, bridge calls or SQL statements
 moved between the quiet snapshot and the first key.
 
@@ -972,7 +972,7 @@ mutation batch that first meets that condition opens a 200 ms quiet window,
 and every later batch restarts it. When the window elapses the journey has
 settled: the settled moment is the last mutation batch, the counters stop at
 the confirmation, and the probe sends
-`cancelSourceProbe('__iptvnator-journey-search-end__')`. Without a settle
+`cancelSourceProbe('__echo-tv-journey-search-end__')`. Without a settle
 within 15 s of the last key the probe marks the iteration invalid
 (`settle-timeout`).
 
@@ -1173,7 +1173,7 @@ export carries the module's whole code: providing
 form-field chunk on the initial path, although every form field renders in a
 lazy route or dialog. Angular Material therefore stays off the startup path by
 construction, with the rules and guards in the
-[UI guidelines](iptvnator-ui-guidelines.md#material-off-the-startup-path):
+[UI guidelines](echo-tv-ui-guidelines.md#material-off-the-startup-path):
 form-field defaults are provided per component (#1928), services created with
 the app resolve `MatDialog` through `LazyMatDialog`, the panels the shell
 mounts on every launch defer their Material views, the theme emits tokens only
@@ -1594,7 +1594,7 @@ owner node when its first paint chunk belongs to an anonymous box.
   old scroller radius still produced seven.
 - `pnpm run perf:compositing` (`electron-backend-e2e:compositing-report`,
   `playwright.compositing.config.ts`, Xtream mock on `127.0.0.1:3233`,
-  override with `IPTVNATOR_COMPOSITING_XTREAM_MOCK_PORT`) measures. One fresh
+  override with `ECHO_TV_COMPOSITING_XTREAM_MOCK_PORT`) measures. One fresh
   profile is seeded through the app's dialogs with a live, a movie and a
   series favourite, artwork is served from memory, and the window is 1600x1000
   CSS pixels. For Live TV, the movie and series details, the dashboard (idle,

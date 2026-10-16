@@ -26,17 +26,17 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
+} from '@echo-tv/epg/data-access';
 import {
     selectAllPlaylistsMeta,
     selectIsEpgAvailable,
-} from '@iptvnator/m3u-state';
+} from '@echo-tv/m3u-state';
 import {
     DatabaseService,
     DataService,
     PlaylistsService,
-} from '@iptvnator/services';
-import { PlaylistBackupService } from '@iptvnator/services/playlist-backup';
+} from '@echo-tv/services';
+import { PlaylistBackupService } from '@echo-tv/services/playlist-backup';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
@@ -46,15 +46,15 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { DialogService } from '@iptvnator/ui/components';
+} from '@echo-tv/shared/interfaces';
+import { DialogService } from '@echo-tv/ui/components';
 import { provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { MockModule, MockProvider } from 'ng-mocks';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { BehaviorSubject, from, of } from 'rxjs';
 import { ElectronServiceStub } from '../../services/electron.service.stub';
-import { SettingsStorageFailure } from '@iptvnator/services';
+import { SettingsStorageFailure } from '@echo-tv/services';
 import { SettingsStore } from '../../services/settings-store.service';
 import { SettingsService } from '../../services/settings.service';
 import { SettingsComponent } from '../settings.component';
@@ -317,10 +317,10 @@ export function createDialogRef(
 }
 
 export const BACKUP_EXPORT_RESULT = {
-    defaultFileName: 'iptvnator-playlist-backup-2026-04-21.json',
+    defaultFileName: 'echo-tv-playlist-backup-2026-04-21.json',
     json: '{}',
     manifest: {
-        kind: 'iptvnator-playlist-backup',
+        kind: 'echo-tv-playlist-backup',
         version: 1,
         exportedAt: PLAYLIST_IMPORT_DATE,
         includeSecrets: true,

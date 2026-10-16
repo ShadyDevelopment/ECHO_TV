@@ -2,7 +2,7 @@ import {
     PRELOAD_PERFORMANCE_MARKER_CHANNEL,
     XTREAM_PRELOAD_PERFORMANCE_MARKER_CHANNEL,
     type XtreamPreloadPerformanceMarker,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     createPreloadPerformanceHarness,
     createRefreshPayload,

@@ -2,7 +2,7 @@ import {
     APP_PLAYLIST_UPSERT_PERFORMANCE_PHASE,
     M3U_IMPORT_PERFORMANCE_PHASE,
     type PerformancePhaseEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 import {
     createM3uImportPerformanceCapture,
@@ -15,7 +15,7 @@ const mockGetFilenameFromUrl = jest.fn();
 const mockParse = jest.fn();
 const mockRequestWithValidatedRedirects = jest.fn();
 
-jest.mock('@iptvnator/shared/m3u-utils', () => ({
+jest.mock('@echo-tv/shared/m3u-utils', () => ({
     createPlaylistObject: (...args: unknown[]) =>
         mockCreatePlaylistObject(...args),
     getFilenameFromUrl: (...args: unknown[]) => mockGetFilenameFromUrl(...args),

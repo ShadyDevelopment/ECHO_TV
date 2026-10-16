@@ -49,8 +49,8 @@ test.describe('Electron Xtream Responsiveness', () => {
 
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
-                IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION:
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION:
                     dbWorkerRowsPerTransaction,
             },
         });
@@ -129,8 +129,8 @@ test.describe('Electron Xtream Responsiveness', () => {
 
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
-                IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION:
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION:
                     dbWorkerRowsPerTransaction,
             },
         });
@@ -267,8 +267,8 @@ test.describe('Electron Xtream Responsiveness', () => {
 
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
-                IPTVNATOR_DB_WORKER_ROWS_PER_TRANSACTION:
+                ECHO_TV_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                ECHO_TV_DB_WORKER_ROWS_PER_TRANSACTION:
                     dbWorkerRowsPerTransaction,
             },
         });

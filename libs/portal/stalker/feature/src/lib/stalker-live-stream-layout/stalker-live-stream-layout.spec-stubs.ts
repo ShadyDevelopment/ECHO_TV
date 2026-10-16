@@ -5,12 +5,12 @@ import {
     input,
     output,
 } from '@angular/core';
-import { type PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+import { type PlaybackFallbackRequest } from '@echo-tv/ui/playback';
 import {
     EpgProgram,
     RecordingStartMetadata,
     RecordingStoppedEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 /**
  * Stand-ins for the children StalkerLiveStreamLayoutComponent renders, mirroring

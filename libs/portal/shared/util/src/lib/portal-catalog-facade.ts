@@ -1,5 +1,5 @@
 import { InjectionToken, Signal } from '@angular/core';
-import { ResolvedPortalPlayback } from '@iptvnator/shared/interfaces';
+import { ResolvedPortalPlayback } from '@echo-tv/shared/interfaces';
 import type { PortalWatchState } from './portal-watch-state';
 
 export type PortalCatalogProvider = 'xtream' | 'stalker';

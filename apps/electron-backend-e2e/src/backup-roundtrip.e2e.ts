@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Locator, Page } from '@playwright/test';
-import type { PlaylistBackupManifestV1 } from '@iptvnator/shared/interfaces';
+import type { PlaylistBackupManifestV1 } from '@echo-tv/shared/interfaces';
 import {
     addXtreamPortal,
     closeElectronApp,

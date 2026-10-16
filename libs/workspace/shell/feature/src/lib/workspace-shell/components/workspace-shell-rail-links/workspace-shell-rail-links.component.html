@@ -14,7 +14,16 @@
                 activeClass() === 'is-active' && isActive(link)
             "
         >
-            <mat-icon>{{ resolveIcon(link) }}</mat-icon>
+            @if (isDashboardLink(link)) {
+                <img
+                    class="portal-rail-link__brand-mark"
+                    src="assets/images/echo-tv-mark.png"
+                    alt=""
+                    aria-hidden="true"
+                />
+            } @else {
+                <mat-icon>{{ resolveIcon(link) }}</mat-icon>
+            }
         </a>
     }
 </nav>

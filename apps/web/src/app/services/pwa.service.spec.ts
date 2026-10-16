@@ -15,11 +15,11 @@ import {
     PLAYLIST_UPDATE,
     STALKER_REQUEST,
     XTREAM_REQUEST,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import {
     getStalkerRequestErrorStatus,
     isStalkerProbeTimeout,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@echo-tv/portal/stalker/data-access';
 import { PwaService } from './pwa.service';
 
 describe('PwaService', () => {
@@ -112,7 +112,7 @@ describe('PwaService', () => {
             service.sendIpcEvent(event, {
                 id: 'playlist-1',
                 url: 'https://provider.example/list.m3u',
-                userAgent: '  IPTVnator-Test/1.0  ',
+                userAgent: '  ECHO TV-Test/1.0  ',
             });
             http.expectOne((req) =>
                 req.url.endsWith('/provider-targets')
@@ -120,14 +120,14 @@ describe('PwaService', () => {
             await new Promise((resolve) => setTimeout(resolve));
             const parse = http.expectOne((req) => req.url.endsWith('/parse'));
             expect(parse.request.params.get('userAgent')).toBe(
-                'IPTVnator-Test/1.0'
+                'ECHO TV-Test/1.0'
             );
             expect(parse.request.headers.has('User-Agent')).toBe(false);
-            parse.flush({ _id: 'playlist-1', userAgent: 'IPTVnator-Test/1.0' });
+            parse.flush({ _id: 'playlist-1', userAgent: 'ECHO TV-Test/1.0' });
             expect(TestBed.inject(Store).dispatch).toHaveBeenCalledWith(
                 expect.objectContaining({
                     playlist: expect.objectContaining({
-                        userAgent: 'IPTVnator-Test/1.0',
+                        userAgent: 'ECHO TV-Test/1.0',
                     }),
                 })
             );

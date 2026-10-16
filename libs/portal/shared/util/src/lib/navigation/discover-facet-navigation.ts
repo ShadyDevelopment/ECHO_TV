@@ -5,7 +5,7 @@ import {
     TmdbGenreFacet,
     TmdbMediaType,
     parseFacetYear,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 import { discoverLink } from './discover-link.util';
 
 /**

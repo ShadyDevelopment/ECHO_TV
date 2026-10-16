@@ -14,13 +14,13 @@ import astroConfig from '../../apps/website/astro.config.mjs';
 
 const distRoot = new URL('../../dist/apps/website/', import.meta.url);
 const { version: publishedVersion } = JSON.parse(await readFile(new URL('../../apps/website/released-version.json', import.meta.url), 'utf8'));
-const SITE = 'https://4gray.github.io/iptvnator';
+const SITE = 'https://shadydevelopment.github.io/ECHO_TV';
 
 const readDist = (relativePath) => readFile(new URL(relativePath, distRoot), 'utf8');
 
 const assetLink = (suffix) =>
   new RegExp(
-    `https://github\\.com/4gray/iptvnator/releases/download/v\\d+\\.\\d+\\.\\d+/iptvnator-\\d+\\.\\d+\\.\\d+${suffix}`
+    `https://github\\.com/ShadyDevelopment/ECHO_TV/releases/download/v\\d+\\.\\d+\\.\\d+/echo-tv-\\d+\\.\\d+\\.\\d+${suffix}`
   );
 
 const PAGES = {
@@ -61,7 +61,7 @@ for (const [platform, page] of Object.entries(PAGES)) {
   test(`${platform} download page: title, canonical and direct asset links`, async () => {
     const html = await readDist(page.path);
 
-    assert.match(html, new RegExp(`<title>[^<]*IPTVnator for ${page.label}[^<]*</title>`));
+    assert.match(html, new RegExp(`<title>[^<]*ECHO TV for ${page.label}[^<]*</title>`));
     assert.match(html, new RegExp(`<link rel="canonical" href="${SITE}/download/${platform}/"`));
     assert.match(html, /<meta name="robots" content="index, follow/);
 
@@ -78,7 +78,10 @@ for (const [platform, page] of Object.entries(PAGES)) {
     assert.ok(app, 'Expected a SoftwareApplication entry.');
     assert.match(String(app.operatingSystem), page.operatingSystem);
     assert.match(String(app.softwareVersion), /^\d+\.\d+\.\d+$/);
-    assert.match(String(app.downloadUrl), /^https:\/\/github\.com\/4gray\/iptvnator\/releases\//);
+    assert.match(
+      String(app.downloadUrl),
+      /^https:\/\/github\.com\/ShadyDevelopment\/ECHO_TV\/releases\//
+    );
     assert.equal(app.isAccessibleForFree, true);
 
     const faq = schema.find((entry) => entry['@type'] === 'FAQPage');
@@ -93,10 +96,10 @@ for (const [platform, page] of Object.entries(PAGES)) {
   test(`${platform} download page: links to the other platforms and the hub`, async () => {
     const html = await readDist(page.path);
     for (const other of Object.keys(PAGES).filter((candidate) => candidate !== platform)) {
-      assert.match(html, new RegExp(`href="/iptvnator/download/${other}/"`));
+      assert.match(html, new RegExp(`href="/ECHO_TV/download/${other}/"`));
     }
-    assert.match(html, /href="\/iptvnator\/download\/"/);
-    assert.match(html, /href="\/iptvnator\/blog\/beware-unofficial-iptvnator-websites\/"/);
+    assert.match(html, /href="\/ECHO_TV\/download\/"/);
+    assert.match(html, /href="\/ECHO_TV\/blog\/beware-unofficial-echo-tv-websites\/"/);
   });
 }
 
@@ -104,11 +107,11 @@ test('docker page: canonical, schema, quick start and links', async () => {
   const html = await readDist('download/docker/index.html');
   assert.match(html, new RegExp(`<link rel="canonical" href="${SITE}/download/docker/"`));
   assert.match(html, /docker compose -f docker\/docker-compose\.yml up --build -d/);
-  assert.match(html, /4gray\/iptvnator:latest/);
-  assert.match(html, /href="https:\/\/hub\.docker\.com\/r\/4gray\/iptvnator"/);
-  assert.match(html, /href="https:\/\/github\.com\/4gray\/iptvnator\/blob\/master\/docker\/README\.md"/);
-  assert.match(html, /href="\/iptvnator\/compare\/desktop-vs-browser\/"/);
-  assert.match(html, /href="\/iptvnator\/download\/"/);
+  assert.match(html, /shadydevelopment\/echo-tv:latest/);
+  assert.match(html, /href="https:\/\/hub\.docker\.com\/r\/shadydevelopment\/echo-tv"/);
+  assert.match(html, /href="https:\/\/github\.com\/ShadyDevelopment\/ECHO_TV\/blob\/main\/docker\/README\.md"/);
+  assert.match(html, /href="\/ECHO_TV\/compare\/desktop-vs-browser\/"/);
+  assert.match(html, /href="\/ECHO_TV\/download\/"/);
 
   const schema = extractJsonLd(html);
   const app = schema.find((entry) => entry['@type'] === 'SoftwareApplication');
@@ -122,10 +125,10 @@ test('docker page: canonical, schema, quick start and links', async () => {
 
 test('the homepage and the platform pages link to the docker page', async () => {
   const home = await readDist('index.html');
-  assert.match(home, /href="\/iptvnator\/download\/docker\/"/);
+  assert.match(home, /href="\/ECHO_TV\/download\/docker\/"/);
   for (const platform of Object.keys(PAGES)) {
     const html = await readDist(PAGES[platform].path);
-    assert.match(html, /href="\/iptvnator\/download\/docker\/"/, `${platform} page should link to the docker page`);
+    assert.match(html, /href="\/ECHO_TV\/download\/docker\/"/, `${platform} page should link to the docker page`);
   }
 });
 
@@ -133,17 +136,17 @@ test('download hub links to every platform page', async () => {
   const html = await readDist('download/index.html');
   assert.match(html, new RegExp(`<link rel="canonical" href="${SITE}/download/"`));
   for (const platform of Object.keys(PAGES)) {
-    assert.match(html, new RegExp(`href="/iptvnator/download/${platform}/"`));
+    assert.match(html, new RegExp(`href="/ECHO_TV/download/${platform}/"`));
   }
-  assert.match(html, /href="\/iptvnator\/download\/docker\/"/);
-  assert.match(html, /brew install --cask iptvnator/);
-  assert.match(html, /sudo snap install iptvnator/);
+  assert.match(html, /href="\/ECHO_TV\/download\/docker\/"/);
+  assert.match(html, /brew install --cask echo-tv/);
+  assert.match(html, /sudo snap install echo-tv/);
 });
 
 test('homepage download cards point at the platform pages', async () => {
   const html = await readDist('index.html');
   for (const platform of Object.keys(PAGES)) {
-    assert.match(html, new RegExp(`href="/iptvnator/download/${platform}/"`));
+    assert.match(html, new RegExp(`href="/ECHO_TV/download/${platform}/"`));
   }
   const schema = extractJsonLd(html);
   const app = schema.find((entry) => entry['@type'] === 'SoftwareApplication');
@@ -186,7 +189,7 @@ for (const failure of ['offline', 'rate-limit', 'timeout']) {
       const downloads = exports.resolveDownloads(release, platform);
       assert.ok(downloads.length > 0);
       for (const download of downloads) {
-        assert.ok(download.url.includes(`/releases/download/v${publishedVersion}/iptvnator-${publishedVersion}-`), download.url);
+        assert.ok(download.url.includes(`/releases/download/v${publishedVersion}/echo-tv-${publishedVersion}-`), download.url);
       }
     }
   });

@@ -9,7 +9,7 @@ import {
     EMBEDDED_MPV_PREPARE,
     EMBEDDED_MPV_SUPPORT,
     type EmbeddedMpvSupport,
-} from '@iptvnator/shared/interfaces';
+} from '@echo-tv/shared/interfaces';
 
 const mockSpawnSync = jest.fn();
 const mockIpcHandle = jest.fn();
@@ -67,8 +67,8 @@ describe('Embedded MPV support and a slow login shell (Linux native-view)', () =
         PATH: process.env.PATH,
         DISPLAY: process.env.DISPLAY,
         WAYLAND_DISPLAY: process.env.WAYLAND_DISPLAY,
-        IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY:
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY,
+        ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY:
+            process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY,
     };
     let answerShell: (path: string) => void;
 
@@ -98,7 +98,7 @@ describe('Embedded MPV support and a slow login shell (Linux native-view)', () =
         process.env.PATH = INHERITED_PATH;
         process.env.DISPLAY = ':0';
         delete process.env.WAYLAND_DISPLAY;
-        delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY;
+        delete process.env.ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY;
 
         const { scheduleDeferredFixPath } =
             await import('../startup/login-shell-path');

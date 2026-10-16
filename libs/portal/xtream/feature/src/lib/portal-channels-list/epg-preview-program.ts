@@ -1,4 +1,4 @@
-import { EpgItem, EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgItem, EpgProgram } from '@echo-tv/shared/interfaces';
 
 /**
  * Selection rules for the "current program" line under a channel row, kept

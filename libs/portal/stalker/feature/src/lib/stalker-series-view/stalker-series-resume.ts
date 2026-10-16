@@ -1,11 +1,11 @@
 import { InjectionToken, Signal, signal, WritableSignal } from '@angular/core';
-import type { SeriesResumeTarget } from '@iptvnator/portal/shared/util';
+import type { SeriesResumeTarget } from '@echo-tv/portal/shared/util';
 import {
     getVodSeriesSeasonNumber,
     type StalkerMappedEpisode,
     type VodSeriesSeasonVm,
-} from '@iptvnator/portal/stalker/data-access';
-import type { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+} from '@echo-tv/portal/stalker/data-access';
+import type { XtreamSerieEpisode } from '@echo-tv/shared/interfaces';
 
 /**
  * One-shot "resume this episode" handoff for a Stalker series, the

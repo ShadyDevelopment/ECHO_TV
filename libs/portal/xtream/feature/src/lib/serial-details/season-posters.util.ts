@@ -1,4 +1,4 @@
-import { XtreamSerieDetails } from '@iptvnator/shared/interfaces';
+import { XtreamSerieDetails } from '@echo-tv/shared/interfaces';
 
 const HTTP_URL_PATTERN = /^https?:\/\//i;
 

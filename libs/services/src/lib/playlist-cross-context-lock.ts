@@ -1,4 +1,4 @@
-const PLAYLIST_AUTHORITY_BARRIER = 'iptvnator:playlist-authority';
+const PLAYLIST_AUTHORITY_BARRIER = 'echo-tv:playlist-authority';
 
 export type PlaylistAuthorityReservation =
     | {

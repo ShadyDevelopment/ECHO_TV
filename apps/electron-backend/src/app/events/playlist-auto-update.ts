@@ -2,8 +2,8 @@ import type {
     AutoUpdatePlaylistStatus,
     AutoUpdatePlaylistsResult,
     Playlist,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 import {
     fetchPlaylistFromFile,
     fetchPlaylistFromUrl,

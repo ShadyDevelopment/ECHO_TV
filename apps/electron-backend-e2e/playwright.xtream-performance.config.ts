@@ -4,9 +4,9 @@ import { workspaceRoot } from '@nx/devkit';
 import { defineConfig } from '@playwright/test';
 
 const controlToken =
-    process.env['IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN'] ??
+    process.env['ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN'] ??
     randomBytes(32).toString('base64url');
-process.env['IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN'] = controlToken;
+process.env['ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN'] = controlToken;
 
 export default defineConfig({
     fullyParallel: false,
@@ -24,8 +24,8 @@ export default defineConfig({
         cwd: workspaceRoot,
         env: {
             HOST: '127.0.0.1',
-            IPTVNATOR_XTREAM_MOCK_CONTROL: '1',
-            IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN: controlToken,
+            ECHO_TV_XTREAM_MOCK_CONTROL: '1',
+            ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN: controlToken,
             NODE_ENV: 'development',
             PORT: '3221',
             TSX_TSCONFIG_PATH: 'tsconfig.base.json',

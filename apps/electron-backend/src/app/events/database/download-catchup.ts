@@ -1,4 +1,4 @@
-import type { CatchupDownloadMetadata } from '@iptvnator/shared/interfaces';
+import type { CatchupDownloadMetadata } from '@echo-tv/shared/interfaces';
 
 export function validateCatchupDownload(
     value: CatchupDownloadMetadata | null | undefined,

@@ -1,5 +1,5 @@
 import type { Page } from '@playwright/test';
-import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@iptvnator/shared/logging';
+import { RENDERER_PERFORMANCE_PHASE_HOOK_KEY } from '@echo-tv/shared/logging';
 
 import { XTREAM_SCENARIO_ID } from './xtream-benchmark-contract';
 import {

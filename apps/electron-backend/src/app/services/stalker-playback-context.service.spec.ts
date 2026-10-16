@@ -1,4 +1,4 @@
-import { LEGACY_DEFAULT_STALKER_SERIAL } from '@iptvnator/shared/interfaces';
+import { LEGACY_DEFAULT_STALKER_SERIAL } from '@echo-tv/shared/interfaces';
 import {
     getStalkerPlaybackContextHeaders,
     rememberStalkerPlaybackContext,

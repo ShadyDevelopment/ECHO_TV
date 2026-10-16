@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import type {
     StreamProbeHeaders,
     VodSourceProbeResult,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@echo-tv/shared/interfaces';
+import { redactSensitiveData } from '@echo-tv/shared/logging';
 
 /**
  * On-demand stream reachability checks via the Electron main process.

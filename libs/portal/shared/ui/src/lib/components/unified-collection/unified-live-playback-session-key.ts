@@ -1,5 +1,5 @@
-import { createPlaybackSessionKey } from '@iptvnator/playback/util';
-import type { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
+import { createPlaybackSessionKey } from '@echo-tv/playback/util';
+import type { UnifiedCollectionItem } from '@echo-tv/portal/shared/util';
 
 export function createUnifiedLivePlaybackSessionKey(
     item: UnifiedCollectionItem | null

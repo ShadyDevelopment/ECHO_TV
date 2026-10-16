@@ -691,7 +691,7 @@ route:
 {
     path: 'downloads/:downloadId',
     loadComponent: () =>
-        import('@iptvnator/portal/downloads/feature').then(
+        import('@echo-tv/portal/downloads/feature').then(
             (c) => c.DownloadOfflineDetailComponent
         ),
 },
@@ -846,7 +846,7 @@ Expected: FAIL because mapper and resolver do not exist.
 
 - [ ] **Step 4: Implement deterministic snapshot mapping**
 
-Create provider-neutral factories in `@iptvnator/portal/shared/util`:
+Create provider-neutral factories in `@echo-tv/portal/shared/util`:
 
 ```ts
 export function createMovieDownloadSnapshot(
@@ -1185,11 +1185,11 @@ git commit -m "feat(downloads): hand off to provider-only details"
 Run:
 
 ```bash
-pnpm nx graph --file=/tmp/iptvnator-offline-detail-graph.json
+pnpm nx graph --file=/tmp/echo-tv-offline-detail-graph.json
 ```
 
 Confirm Xtream/Stalker features import the snapshot factories only from
-`@iptvnator/portal/shared/util`; they must not import
+`@echo-tv/portal/shared/util`; they must not import
 `portal-downloads-feature`.
 
 - [ ] **Step 2: Write failing Xtream start-payload assertions**
@@ -1437,7 +1437,7 @@ check is empty.
 Start:
 
 ```bash
-IPTVNATOR_ALLOW_MULTIPLE_INSTANCES=1 pnpm nx serve electron-backend
+ECHO_TV_ALLOW_MULTIPLE_INSTANCES=1 pnpm nx serve electron-backend
 ```
 
 Connect with:

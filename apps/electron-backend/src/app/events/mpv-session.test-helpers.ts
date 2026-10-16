@@ -6,7 +6,7 @@
 import { spawn, type ChildProcess } from 'child_process';
 import { EventEmitter } from 'events';
 import { createConnection } from 'net';
-import type { ExternalPlayerSession } from '@iptvnator/shared/interfaces';
+import type { ExternalPlayerSession } from '@echo-tv/shared/interfaces';
 import {
     MPV_PLAYER_PATH,
     MPV_REUSE_INSTANCE,

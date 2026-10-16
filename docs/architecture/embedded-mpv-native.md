@@ -1,6 +1,6 @@
 # Embedded MPV Native Integration
 
-This document explains how IPTVnator embeds MPV inside the Electron app, which files are source versus generated build output, and what must be true before the feature is safe to expose to users.
+This document explains how ECHO TV embeds MPV inside the Electron app, which files are source versus generated build output, and what must be true before the feature is safe to expose to users.
 
 ## What To Commit
 
@@ -21,7 +21,7 @@ Source files for the embedded MPV integration:
 Frame-copy engine sources (experimental, macOS Apple Silicon, Linux x64, and
 Windows — see the "Frame-Copy Engine" section below):
 
-- `apps/electron-backend/native/helper/` — `iptvnator_mpv_helper` process (`mpv_frame_helper.cpp`, `frame_helper_render.h`, `frame_helper_gl.h`, `frame_helper_io.h`, `frame_shm.h`).
+- `apps/electron-backend/native/helper/` — `echo-tv_mpv_helper` process (`mpv_frame_helper.cpp`, `frame_helper_render.h`, `frame_helper_gl.h`, `frame_helper_io.h`, `frame_shm.h`).
 - `apps/electron-backend/native/src/embedded_mpv_frame_reader.c` — N-API shm frame reader used by the preload frame pump.
 - `apps/electron-backend/src/app/services/embedded-mpv-frame-copy.adapter.ts` — helper-process adapter behind the `NativeEmbeddedMpvAddon` surface.
 - `apps/electron-backend/src/app/api/embedded-mpv-frame-pump.ts` — preload frame pump (shm → WebGL canvas).
@@ -39,8 +39,8 @@ Embedded MPV has two rendering paths. The native-view engine renders into an
 app-owned platform video surface: macOS uses the libmpv render API in an
 `NSOpenGLView` because the mpv `wid` path produced a black video surface inside
 Electron; Windows loads `libmpv` through the native Node addon and uses mpv's
-`wid` option against an IPTVnator-owned child `HWND`; Linux creates an
-IPTVnator-owned X11/Xwayland child `Window` and starts an out-of-process
+`wid` option against an ECHO TV-owned child `HWND`; Linux creates an
+ECHO TV-owned X11/Xwayland child `Window` and starts an out-of-process
 `mpv --wid=<window>` instance for that child window. The frame-copy engine
 instead uploads helper-produced frames to a Chromium-owned DOM canvas.
 
@@ -52,7 +52,7 @@ startup, so the Settings support probe hides the Embedded MPV option. The
 frame-copy helper is a separate executable and resolves that same import from
 its own directory. Package validation therefore reads the helper's PE import
 table and requires the exact referenced MPV DLL beside
-`iptvnator_mpv_helper.exe`, not only under `native/lib/`.
+`echo-tv_mpv_helper.exe`, not only under `native/lib/`.
 
 On Linux, `embedded_mpv.node` must not link directly to `libmpv` or load libmpv in-process. Electron loads its own `libffmpeg` and Chromium graphics stack; in-process libmpv can resolve FFmpeg/GL symbols against incompatible Electron symbols, while isolated dynamic-loader namespaces introduce thread/runtime ownership problems. The Linux addon therefore owns only the X11 child-window embedding, process lifecycle, and a private MPV JSON IPC socket. It starts `mpv --wid=<window> --input-ipc-server=<socket>`, polls `time-pos`, `duration`, `volume`, and `pause`, and forwards pause/seek/volume/audio-track commands through that socket. The Linux MPV JSON IPC polling runs on an addon-owned background thread; `getSessionSnapshot()` returns the last cached snapshot and must not perform socket round trips on Electron's main thread. Linux MPV process teardown sends `SIGTERM` on the caller path, then waits and escalates to `SIGKILL` on a detached cleanup thread. A healthy Linux build lists X11/Xext as addon dependencies, but `ldd apps/electron-backend/native/build/Release/embedded_mpv.node` must not list `libmpv`. Runtime support also requires an `mpv` executable on `PATH`.
 
@@ -66,7 +66,7 @@ engines have different runtime requirements:
 | Engine      | Display path                  | MPV runtime                                                                |
 | ----------- | ----------------------------- | -------------------------------------------------------------------------- |
 | native-view | X11 or Xwayland               | An `mpv` executable on `PATH`; playback is an isolated `mpv --wid` process |
-| frame-copy  | Headless EGL; no window embed | A separately linked and capability-probed `iptvnator_mpv_helper`           |
+| frame-copy  | Headless EGL; no window embed | A separately linked and capability-probed `echo-tv_mpv_helper`           |
 
 Native Wayland embedding is not implemented for native-view. Frame-copy itself
 does not embed a window and can render through EGL on a native Wayland desktop,
@@ -154,7 +154,7 @@ The flow is:
    Angular and sent through bounds sync. Native-view uses them to align the
    platform host; frame-copy uses them to resize helper rendering and the
    canvas frame source.
-10. Playback controls remain IPTVnator-owned Angular UI. Frame-copy uses the
+10. Playback controls remain ECHO TV-owned Angular UI. Frame-copy uses the
     shared `app-player-controls` overlay through
     `EmbeddedMpvControlsAdapter`; native-view keeps its compositor-safe fixed
     dock. MPV receives commands only through the controlled IPC surface.
@@ -195,7 +195,7 @@ result stands, and probes again once the shell answers. Every other answer,
 including a missing `mpv` after the shell answered, is final. An inconclusive
 answer is not a verdict on the machine: never persist a decision made from it.
 Whatever holds on to one answer follows it through `watchEmbeddedMpvSupport()`
-(`@iptvnator/shared/interfaces`), which asks again after
+(`@echo-tv/shared/interfaces`), which asks again after
 `EMBEDDED_MPV_SUPPORT_RECHECK_MS`, backing off to
 `EMBEDDED_MPV_SUPPORT_RECHECK_MAX_MS`, until the answer is final:
 
@@ -238,7 +238,7 @@ the frame-copy canvas.
 
 ## Frame-Copy Engine (Experimental, Apple Silicon, Linux and Windows)
 
-`IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY=1` (on top of the regular
+`ECHO_TV_ENABLE_EMBEDDED_MPV_FRAME_COPY=1` (on top of the regular
 embedded MPV experiment flag) switches macOS/arm64, Linux and Windows to a
 second rendering engine that replaces the native-view compositing entirely
 (gate: `isFrameCopyPlatformSupported()` in
@@ -246,7 +246,7 @@ second rendering engine that replaces the native-view compositing entirely
 while `main.ts` and the service call it transitively through the same util
 module's `isFrameCopyRuntimeUsable()` / `getFrameCopyRuntimeAvailability()`):
 
-- `apps/electron-backend/native/helper/` — `iptvnator_mpv_helper`, a
+- `apps/electron-backend/native/helper/` — `echo-tv_mpv_helper`, a
   one-process-per-session libmpv host. It decodes (hwdec), renders
   offscreen at viewport size (async PBO readback ring over a headless GL
   context — `frame_helper_gl.h`: CGL on macOS; on Linux EGL, acquiring a
@@ -305,7 +305,7 @@ when embedded MPV itself is enabled for the current run (packaged app or the
 regular development experiment flag) and one process-wide capability decision
 has succeeded. On Linux x64 that decision validates the profile manifest,
 regular-file/access modes, the complete declared bundled closure and hashes,
-then runs `iptvnator_mpv_helper --runtime-probe` with a three-second timeout.
+then runs `echo-tv_mpv_helper --runtime-probe` with a three-second timeout.
 That short budget belongs to the application gate alone, because it blocks the
 main process and a timeout there degrades to the native-view fallback;
 `tools/packaging/verify-linux-frame-copy-runtime.mjs` runs the same probe under
@@ -326,7 +326,7 @@ characters; an invalid detail rejects both helper fields. Malformed,
 multi-line, wrong-protocol, or unknown failure output never reaches either
 field. Every probe uses the same explicit 16 MiB aggregate captured-output
 ceiling, independent of tracing, so verbose diagnostics do not fall back to
-Node's smaller implicit buffer. When `IPTVNATOR_TRACE_PLAYER=1`, the probe also
+Node's smaller implicit buffer. When `ECHO_TV_TRACE_PLAYER=1`, the probe also
 emits non-empty captured helper stderr separately as one JSON line. JSON
 escaping keeps embedded newlines on that single line, the `stderr` field is
 limited to the first 16,384 characters, and the `truncated` boolean is always
@@ -345,7 +345,7 @@ then uses the default system loader without a private path. Bundled profiles
 put the validated packaged `native/lib` first. AppImage and Flatpak resolve the
 declared external graphics/audio interfaces through their normal host or
 sandbox loader.
-For the exact `com.fourgray.iptvnator` Flatpak payload under `/app`, the helper
+For the exact `com.fourgray.echo-tv` Flatpak payload under `/app`, the helper
 reconstructs Freedesktop Platform 24.08's immutable
 `__EGL_EXTERNAL_PLATFORM_CONFIG_DIRS` value:
 `/etc/egl/egl_external_platform.d:/usr/lib/x86_64-linux-gnu/GL/egl/egl_external_platform.d:/usr/share/egl/egl_external_platform.d`.
@@ -354,7 +354,7 @@ GL extension `add-ld-path` is supplied through the sandbox loader cache, so no
 ambient `LD_LIBRARY_PATH` is needed. Flatpak CI runs the application-level
 `--embedded-mpv-runtime-probe`; direct helper execution is only a package
 layout check and cannot substitute for the real gate.
-The installed-Snap smoke enables `IPTVNATOR_TRACE_PLAYER=1`,
+The installed-Snap smoke enables `ECHO_TV_TRACE_PLAYER=1`,
 `EGL_LOG_LEVEL=debug`, and `LIBGL_DEBUG=verbose`, so GLVND/Mesa loader failures
 remain observable through the bounded stderr record while the same hostile
 ambient-path assertions and fail-closed application gate stay active.
@@ -389,7 +389,7 @@ default plugs and adds an auto-connected private `shared-memory` plug plus the
 supplies the shared
 EGL/GL/GLX/GBM/DRM/VA userspace; the existing GNOME content runtime supplies
 ALSA/PulseAudio. These providers are external shared snaps, so their binaries,
-source, notices, and installed bytes are not part of the IPTVnator Snap or its
+source, notices, and installed bytes are not part of the ECHO TV Snap or its
 compliance archive. CI installs and explicitly connects both providers for a
 locally installed `--dangerous` artifact, then runs the application-level
 probe under strict confinement.
@@ -434,7 +434,7 @@ generation when it changes — letterbox bars are never baked into frames,
 frames stay as small as possible, and the canvas letterboxes with a
 transparent canvas over a black video viewport in both windowed and
 fullscreen mode. Snapshots carry `videoWidth`/`videoHeight`.
-`IPTVNATOR_EMBEDDED_MPV_AUDIO_DELAY=<seconds>` passes through to mpv's
+`ECHO_TV_EMBEDDED_MPV_AUDIO_DELAY=<seconds>` passes through to mpv's
 `audio-delay` for lip-sync tuning until a calibration flow exists.
 
 Lifecycle safety: `EmbeddedMpvNativeService` watches the main window for
@@ -443,7 +443,7 @@ session — Angular teardown never runs on a renderer crash/hard reload, and
 without the watch helper processes (or native mpv handles) would leak until
 app shutdown. Unexpected helper exits surface as a session `error`. macOS
 and Windows package validation requires the helper
-(`iptvnator_mpv_helper` / `iptvnator_mpv_helper.exe`) and
+(`echo-tv_mpv_helper` / `echo-tv_mpv_helper.exe`) and
 `embedded_mpv_frame_reader.node` next to the addon whenever the addon
 ships; on Windows the bundled mpv DLL is also copied beside the helper so
 the executable resolves it from its own directory. The after-pack hook
@@ -694,11 +694,11 @@ reported without any trace flag, by key only (a value may carry credentials):
 the Windows and macOS native-view engines collect the refused keys into the
 snapshot's `rejectedOptionKeys`, which the service logs once per session as a
 main-process warning; the frame-copy helper emits a `log` warn event with
-prefix `iptvnator` that the adapter forwards unconditionally. The Linux
+prefix `echo-tv` that the adapter forwards unconditionally. The Linux
 native-view path is the exception: mpv skips a bad `--include` line and
 continues, but reports it only on its own stderr, which the addon discards
-(`--really-quiet`; `IPTVNATOR_TRACE_EMBEDDED_MPV` writes it to
-`/tmp/iptvnator-embedded-mpv.log`). The service itself never
+(`--really-quiet`; `ECHO_TV_TRACE_EMBEDDED_MPV` writes it to
+`/tmp/echo-tv-embedded-mpv.log`). The service itself never
 touches the config store — it is constructed at module load, and importing it
 would drag electron-conf into every consumer of the service, its unit tests
 included.
@@ -804,7 +804,7 @@ the selection back to the user and restore nothing.
 
 ## Live Stream Recording
 
-Embedded MPV can record live streams through mpv's `stream-record` option. IPTVnator exposes this only for playback classified as live (`ResolvedPortalPlayback.isLive` when present, otherwise no `contentInfo`); VOD, episodes, catchup playback, radio audio playback, and non-embedded players do not show the recording control.
+Embedded MPV can record live streams through mpv's `stream-record` option. ECHO TV exposes this only for playback classified as live (`ResolvedPortalPlayback.isLive` when present, otherwise no `contentInfo`); VOD, episodes, catchup playback, radio audio playback, and non-embedded players do not show the recording control.
 
 Recording is session-scoped:
 
@@ -827,7 +827,7 @@ recording UI and timer path.
 
 The default recording folder is `app.getPath('downloads')`, matching the desktop download manager's fallback. Users can override it in Settings through `Settings.recordingFolder`; an empty setting means system Downloads. Recordings never enter the Downloads queue (MPV writes from the active playback session while the download manager owns independent backend download jobs), but their lifecycle IS tracked: `EmbeddedMpvRecordingTracker` (`apps/electron-backend/src/app/services/embedded-mpv-recording-tracker.ts`) persists each recording into the dedicated `recordings` SQLite table — start hook and explicit-stop hook from `EmbeddedMpvNativeService`, plus a session-snapshot observer that catches the three implicit stop paths (stream-replacement auto-stop, frame-copy helper crash leaving `active: true` behind, session error/close). Rows left in `recording` by a hard app kill are repaired at startup into playable `interrupted` partials or `failed`. The download manager surfaces these rows; see `docs/architecture/download-manager.md` ("Live-TV recordings").
 
-mpv's own caveats apply: the output container is inferred from the target extension, and seeking or switching streams while recording can produce broken output. IPTVnator limits the UI to live streams and stops recording on playback replacement to avoid the most obvious corruption path, but the feature should still be treated as an experimental embedded MPV capability.
+mpv's own caveats apply: the output container is inferred from the target extension, and seeking or switching streams while recording can produce broken output. ECHO TV limits the UI to live streams and stops recording on playback replacement to avoid the most obvious corruption path, but the feature should still be treated as an experimental embedded MPV capability.
 
 ## Renderer Architecture And Reactivity
 
@@ -1065,7 +1065,7 @@ Current development behavior:
   closure.
 - Linux never bundles or loads libmpv in the Electron process. The native-view
   addon remains X11/process-only; the inverse rule applies to frame-copy:
-  `iptvnator_mpv_helper` must link exactly the declared `libmpv.so.2`, while
+  `echo-tv_mpv_helper` must link exactly the declared `libmpv.so.2`, while
   the addon and frame reader must not.
 - `afterPack` copies `dist/apps/electron-backend/native/` into `app.asar.unpacked/electron-backend/native/` on macOS, Windows, and Linux so the addon, manifest, and runtime libraries are filesystem-addressable.
 - Electron Builder excludes `electron-backend/native{,/**/*}` from `app.asar`;
@@ -1074,22 +1074,22 @@ Current development behavior:
 
 Linux release profiles:
 
-- `IPTVNATOR_LINUX_FRAME_COPY_PROFILE=system` builds DEB, RPM, and Pacman.
+- `ECHO_TV_LINUX_FRAME_COPY_PROFILE=system` builds DEB, RPM, and Pacman.
   `afterPack` removes the private `lib` directory, writes a
   `system-libmpv-frame-copy` manifest, and package metadata requires the exact
   libmpv plus EGL/GL/GBM package set listed above. The DEB path is verified
   on Ubuntu 24.04+; Ubuntu 22.04 users need the x64 AppImage because Jammy only
   provides `libmpv1`.
-- `IPTVNATOR_LINUX_FRAME_COPY_PROFILE=portable` builds AppImage and Snap with
+- `ECHO_TV_LINUX_FRAME_COPY_PROFILE=portable` builds AppImage and Snap with
   the pinned source-built closure and a `bundled-lgpl-frame-copy` manifest.
-- `IPTVNATOR_LINUX_FRAME_COPY_PROFILE=flatpak` builds Flatpak with the same
+- `ECHO_TV_LINUX_FRAME_COPY_PROFILE=flatpak` builds Flatpak with the same
   source-built closure and manifest origin. Its app-level probe reconstructs
   only the exact Freedesktop 24.08 EGL external-platform search path inside the
   trusted `/app` payload.
-- Flatpak is an isolated packaging pass and keeps `iptvnator` as the real
+- Flatpak is an isolated packaging pass and keeps `echo-tv` as the real
   Electron ELF so Electron Builder's `electron-wrapper` passes it directly to
-  Zypak. Other Linux targets retain the conditional `iptvnator` wrapper and
-  `iptvnator.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
+  Zypak. Other Linux targets retain the conditional `echo-tv` wrapper and
+  `echo-tv.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
 - Linux packages for other architectures (arm64, armv7l) must not ship x64
   native artifacts. `afterPack` replaces the native directory with
   `embedded-mpv-unavailable.txt`, and package verification requires that marker.
@@ -1100,7 +1100,7 @@ Linux release profiles:
 - macOS release packaging rejects embedded MPV binaries linked to `/opt/homebrew` or `/usr/local`.
 - Windows release packaging verifies that the platform runtime file is present
   when Embedded MPV is required.
-- Local development can opt into Homebrew `libmpv` only by setting `IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1`; packaged release validation rejects that runtime origin.
+- Local development can opt into Homebrew `libmpv` only by setting `ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1`; packaged release validation rejects that runtime origin.
 
 Release packaging must:
 
@@ -1210,7 +1210,7 @@ update manually.
 
 The zhongfly asset contains only libmpv headers, its import library, and the
 DLL. Upstream labels it LGPLv2.1+ with statically linked LGPLv3 FFmpeg, but also
-states that its transitive LGPL compatibility is not guaranteed. IPTVnator
+states that its transitive LGPL compatibility is not guaranteed. ECHO TV
 therefore verifies availability, checksum, and archive layout only, records
 that limitation in the pin and generated runtime manifest, and does not host a
 long-lived mirror of the binary. A future mirror or first-party Windows build
@@ -1255,7 +1255,7 @@ For local development before the vendored runtime exists, Homebrew can be used e
 pnpm run serve:backend:embedded-mpv
 ```
 
-That script first runs the local native build with `IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1`, then starts Electron with `IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT=1`. This path is intentionally macOS development-only. Packaged builds reject `homebrew-dev` manifests and macOS packages reject any `/opt/homebrew` or `/usr/local` embedded MPV links.
+That script first runs the local native build with `ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1`, then starts Electron with `ECHO_TV_ENABLE_EMBEDDED_MPV_EXPERIMENT=1`. This path is intentionally macOS development-only. Packaged builds reject `homebrew-dev` manifests and macOS packages reject any `/opt/homebrew` or `/usr/local` embedded MPV links.
 
 If the settings page does not show `Embedded MPV (Experimental)` after starting with those flags, check the native build output:
 
@@ -1263,12 +1263,12 @@ If the settings page does not show `Embedded MPV (Experimental)` after starting 
 ls apps/electron-backend/native/build/Release/embedded_mpv.node
 ```
 
-If only `embedded-mpv-unavailable.txt` exists, the dev app started from a build where no runtime was available. Stop the Electron dev process and rerun `pnpm run serve:backend:embedded-mpv` so the native target is rebuilt before Electron starts. The native MPV build target is intentionally uncached because it depends on local runtime files and environment variables such as `IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW` and `IPTVNATOR_EMBEDDED_MPV_ARCH`.
+If only `embedded-mpv-unavailable.txt` exists, the dev app started from a build where no runtime was available. Stop the Electron dev process and rerun `pnpm run serve:backend:embedded-mpv` so the native target is rebuilt before Electron starts. The native MPV build target is intentionally uncached because it depends on local runtime files and environment variables such as `ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW` and `ECHO_TV_EMBEDDED_MPV_ARCH`.
 
 If opening Settings hard-crashes Electron on macOS and the crash report says `Code Signature Invalid`, one of the copied runtime binaries was modified by `install_name_tool` without being re-signed. Rebuild the native target and verify the copied addon/runtime files:
 
 ```bash
-IPTVNATOR_EMBEDDED_MPV_ALLOW_HOMEBREW=1 node apps/electron-backend/build-embedded-mpv.js
+ECHO_TV_EMBEDDED_MPV_ALLOW_HOMEBREW=1 node apps/electron-backend/build-embedded-mpv.js
 codesign --verify --verbose=2 apps/electron-backend/native/build/Release/embedded_mpv.node
 codesign --verify --verbose=2 apps/electron-backend/native/build/Release/lib/libmpv.2.dylib
 ```
@@ -1277,22 +1277,22 @@ If macOS support detection reports a missing `@rpath/...` dependency, the depend
 
 ## Same-Version Desktop Release Gate
 
-The normal release tag can produce Linux, Windows, and macOS artifacts from the same source version. Embedded MPV is required only for jobs where `IPTVNATOR_REQUIRE_EMBEDDED_MPV=1`; otherwise package validators still reject a present but invalid runtime while allowing the addon to be absent.
+The normal release tag can produce Linux, Windows, and macOS artifacts from the same source version. Embedded MPV is required only for jobs where `ECHO_TV_REQUIRE_EMBEDDED_MPV=1`; otherwise package validators still reject a present but invalid runtime while allowing the addon to be absent.
 
 For tagged macOS builds, CI must:
 
 - build the pinned LGPL-compatible runtime for the matrix architecture
 - stage it into `vendor/embedded-mpv/darwin-${arch}` before `pnpm run build:backend`
-- set `IPTVNATOR_EMBEDDED_MPV_PLATFORM=darwin`
-- set `IPTVNATOR_EMBEDDED_MPV_ARCH=${arch}` for backend build and packaging
-- set `IPTVNATOR_REQUIRE_EMBEDDED_MPV=1` for packaging and package-layout verification
+- set `ECHO_TV_EMBEDDED_MPV_PLATFORM=darwin`
+- set `ECHO_TV_EMBEDDED_MPV_ARCH=${arch}` for backend build and packaging
+- set `ECHO_TV_REQUIRE_EMBEDDED_MPV=1` for packaging and package-layout verification
 
 For Windows builds, CI must resolve the validated checked-in pin, restore its
 exact-keyed `win32-x64` staged runtime cache or stage that checksum-pinned
 archive, and only then run `pnpm run build:backend`. The Windows job must set
-`IPTVNATOR_EMBEDDED_MPV_PLATFORM=win32`,
-`IPTVNATOR_EMBEDDED_MPV_ARCH=x64`, and
-`IPTVNATOR_REQUIRE_EMBEDDED_MPV=1` for backend build, package make, and
+`ECHO_TV_EMBEDDED_MPV_PLATFORM=win32`,
+`ECHO_TV_EMBEDDED_MPV_ARCH=x64`, and
+`ECHO_TV_REQUIRE_EMBEDDED_MPV=1` for backend build, package make, and
 package-layout verification. CI narrows `electron-builder.json` to x64 Windows
 targets while only a `win32-x64` runtime is available. The Windows job is
 pinned to `windows-2022` until the Electron `node-gyp` toolchain can identify
@@ -1300,10 +1300,10 @@ Visual Studio 18 from `windows-latest`.
 
 For Linux builds, CI first builds or restores the pinned x64 source runtime and
 stages it under `vendor/embedded-mpv/linux-x64`. It then runs three isolated
-packaging passes with `IPTVNATOR_EMBEDDED_MPV_PLATFORM=linux`,
-`IPTVNATOR_EMBEDDED_MPV_ARCH=x64`,
-`IPTVNATOR_REQUIRE_EMBEDDED_MPV=1`, and one exact
-`IPTVNATOR_LINUX_FRAME_COPY_PROFILE`. Each produced artifact is extracted and
+packaging passes with `ECHO_TV_EMBEDDED_MPV_PLATFORM=linux`,
+`ECHO_TV_EMBEDDED_MPV_ARCH=x64`,
+`ECHO_TV_REQUIRE_EMBEDDED_MPV=1`, and one exact
+`ECHO_TV_LINUX_FRAME_COPY_PROFILE`. Each produced artifact is extracted and
 verified, and the x64 helper probe runs in the intended runtime environment.
 That extracted-artifact probe uses its own 15-second bound rather than the
 application gate's three seconds: nothing waits on it but the CI job, which
@@ -1361,7 +1361,7 @@ hashes, the exact VCS-free libplacebo tree inventory/digest, and byte-identical
 tooling from the released tag. Checkout and both artifact-transfer actions use
 full pinned commits, and checkout sets `persist-credentials: false`.
 The bounded SquashFS preflight and extraction then require the canonical
-snap-root layout (Electron app at `/`, so `/iptvnator.bin` and
+snap-root layout (Electron app at `/`, so `/echo-tv.bin` and
 `/resources/**` — the layout Electron Builder's Snap target produces) and
 reuse the static package validator for every selected Snap. The public-release verifier separately reapplies the exact
 strict `meta/snap.yaml` graphics/shared-memory/layout contract and enumerates
@@ -1393,7 +1393,7 @@ transfer mismatch aborts before Store credentials are available.
 Candidate/stable promotion is manual after installed-Snap frame-copy and
 missing-runtime fallback smoke; GitHub Actions never promotes automatically.
 
-During temporary artifact tests, CI may also set `IPTVNATOR_REQUIRE_EMBEDDED_MPV=1` for PR and `master` push jobs where a runtime is known to exist. After the artifacts are manually validated, remove temporary conditions so ordinary development builds leave `IPTVNATOR_REQUIRE_EMBEDDED_MPV` unset or `0`. This keeps the native feature in-tree without making every non-release build depend on runtime artifacts.
+During temporary artifact tests, CI may also set `ECHO_TV_REQUIRE_EMBEDDED_MPV=1` for PR and `master` push jobs where a runtime is known to exist. After the artifacts are manually validated, remove temporary conditions so ordinary development builds leave `ECHO_TV_REQUIRE_EMBEDDED_MPV` unset or `0`. This keeps the native feature in-tree without making every non-release build depend on runtime artifacts.
 
 ## Release Safety
 
@@ -1405,7 +1405,7 @@ The feature is still experimental. The largest risks are native-process risks, n
 - Windows `HWND` and Linux X11/Xwayland embedding need packaged-app smoke coverage for focus, resize, and fullscreen behavior
 - Linux native-view remains unsupported on native Wayland; frame-copy has no
   window-embedding dependency but still requires a working EGL probe
-- Homebrew `libmpv` builds can target a newer macOS version than IPTVnator's declared deployment target
+- Homebrew `libmpv` builds can target a newer macOS version than ECHO TV's declared deployment target
 
 It is reasonable to ship the code in-tree behind the current experiment flag. It is not yet safe to make it the default player. It can be exposed as desktop experimental if support detection is strict, the UI clearly labels it experimental, and fallback to Video.js or external MPV/VLC stays available.
 

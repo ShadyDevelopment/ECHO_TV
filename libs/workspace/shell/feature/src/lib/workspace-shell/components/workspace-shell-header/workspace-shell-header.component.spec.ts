@@ -18,7 +18,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     WorkspaceBackPhoneSlot,
     WorkspaceBackTarget,
-} from '@iptvnator/portal/shared/util';
+} from '@echo-tv/portal/shared/util';
 import { WorkspaceShellHeaderComponent } from './workspace-shell-header.component';
 import { LayoutSlideDirective } from '../../layout-slide.directive';
 

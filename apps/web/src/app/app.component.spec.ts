@@ -12,11 +12,11 @@ import {
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
+} from '@echo-tv/epg/data-access';
 import {
     WorkspaceShellContextDrawerService,
     WORKSPACE_SHELL_ACTIONS,
-} from '@iptvnator/workspace/shell/util';
+} from '@echo-tv/workspace/shell/util';
 import { MockProvider } from 'ng-mocks';
 import { EMPTY, of } from 'rxjs';
 import {
@@ -25,7 +25,7 @@ import {
     ParentalLockService,
     SettingsStore,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@echo-tv/services';
 import { ParentalLockEnforcementService } from './services/parental-lock-enforcement.service';
 import {
     Language,
@@ -35,8 +35,8 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+} from '@echo-tv/shared/interfaces';
+import { PlaylistActions } from '@echo-tv/m3u-state';
 import { AppComponent } from './app.component';
 import { AppDateLocaleService } from './app-date-locales';
 import { ElectronServiceStub } from './services/electron.service.stub';

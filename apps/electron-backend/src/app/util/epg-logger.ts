@@ -1,4 +1,4 @@
-import { redactSensitiveData, REDACTED_VALUE } from '@iptvnator/shared/logging';
+import { redactSensitiveData, REDACTED_VALUE } from '@echo-tv/shared/logging';
 
 /** Shared redaction produces a bounded, acyclic plain-data tree. XMLTV feeds
  * can also put opaque secrets in arbitrary URL paths/query keys, so omit URLs

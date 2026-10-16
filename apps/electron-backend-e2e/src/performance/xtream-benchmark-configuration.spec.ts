@@ -138,7 +138,7 @@ describe('Xtream benchmark mode configuration', () => {
         for (const requested of ['1023', '65536', '9322.5', '0x246a']) {
             assert.throws(
                 () => resolveXtreamBenchmarkCdpPort('smoke', requested),
-                /IPTVNATOR_PERF_CDP_PORT is invalid/
+                /ECHO_TV_PERF_CDP_PORT is invalid/
             );
         }
     });
@@ -175,11 +175,11 @@ describe('Xtream benchmark mode configuration', () => {
                 readGitSourceState: () => SOURCE,
             },
             environment: {
-                IPTVNATOR_PERF_CDP_PORT: '9322',
-                IPTVNATOR_PERF_OUTPUT_DIR: outputRoot,
-                IPTVNATOR_PERF_SMOKE: '1',
-                IPTVNATOR_PERF_VARIANT: 'smoke',
-                IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN: 'a'.repeat(64),
+                ECHO_TV_PERF_CDP_PORT: '9322',
+                ECHO_TV_PERF_OUTPUT_DIR: outputRoot,
+                ECHO_TV_PERF_SMOKE: '1',
+                ECHO_TV_PERF_VARIANT: 'smoke',
+                ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN: 'a'.repeat(64),
             },
             workspaceRoot: repositoryRoot,
         });
@@ -227,13 +227,13 @@ describe('Xtream benchmark mode configuration', () => {
                         }),
                     },
                     environment: {
-                        IPTVNATOR_PERF_OUTPUT_DIR: join(
+                        ECHO_TV_PERF_OUTPUT_DIR: join(
                             repositoryRoot,
                             'dist',
                             'performance',
                             '20260728T123456Z-xtream'
                         ),
-                        IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN: 'b'.repeat(64),
+                        ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN: 'b'.repeat(64),
                     },
                     workspaceRoot: repositoryRoot,
                 }),
@@ -302,14 +302,14 @@ describe('Xtream Playwright and Nx plumbing', () => {
         assert.match(source, /randomBytes\(32\)/);
         assert.match(
             source,
-            /process\.env\['IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN'\]\s*\?\?/
+            /process\.env\['ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN'\]\s*\?\?/
         );
         assert.match(source, /http:\/\/127\.0\.0\.1:3221\/health/);
         assert.match(source, /reuseExistingServer:\s*false/);
-        assert.match(source, /IPTVNATOR_XTREAM_MOCK_CONTROL:\s*'1'/);
+        assert.match(source, /ECHO_TV_XTREAM_MOCK_CONTROL:\s*'1'/);
         assert.match(
             source,
-            /IPTVNATOR_XTREAM_MOCK_CONTROL_TOKEN:\s*controlToken/
+            /ECHO_TV_XTREAM_MOCK_CONTROL_TOKEN:\s*controlToken/
         );
         assert.match(source, /HOST:\s*'127\.0\.0\.1'/);
         assert.match(source, /PORT:\s*'3221'/);
@@ -357,7 +357,7 @@ describe('Xtream Playwright and Nx plumbing', () => {
 });
 
 async function createRepositoryRoot(): Promise<string> {
-    const directory = await mkdtemp(join(tmpdir(), 'iptvnator-xtream-config-'));
+    const directory = await mkdtemp(join(tmpdir(), 'echo-tv-xtream-config-'));
     temporaryDirectories.push(directory);
     return directory;
 }

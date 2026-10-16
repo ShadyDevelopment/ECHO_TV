@@ -1,6 +1,6 @@
 # Release cover artwork
 
-Use this recipe for IPTVnator announcement covers in the sculptural graphite
+Use this recipe for ECHO TV announcement covers in the sculptural graphite
 style selected for 0.24. It is a reusable visual direction; adapt it when the
 user requests another style. Release ordering and publication remain governed
 by the [release pipeline](../architecture/release-pipeline.md).
@@ -34,9 +34,9 @@ guarantee from the image model.
 
 ```text
 Use case: identity-preserve
-Asset type: one horizontal 2:1 IPTVnator release cover, finished raster artwork.
+Asset type: one horizontal 2:1 ECHO TV release cover, finished raster artwork.
 Image 1: approved previous release cover; style and composition reference.
-Image 2: authentic IPTVnator app icon; identity reference.
+Image 2: authentic ECHO TV app icon; identity reference.
 
 Create the next release cover in the visual language of Image 1. Use warm
 off-white uncoated paper, graphite ink, brushed graphite metal and one restrained
@@ -52,7 +52,7 @@ left and a restrained flowing wave on the right. These extensions belong to one
 continuous object; the TV, stand and Wi-Fi symbol must remain immediately legible.
 Use slight relief depth and a mostly frontal editorial perspective.
 
-Keep the small authentic blue icon and IPTVnator wordmark at upper left. Place
+Keep the small authentic blue icon and ECHO TV wordmark at upper left. Place
 the display version at lower right, in a distinctive heavy compressed industrial
 sans with squared mechanical numerals, like Druk or Monument Grotesk. Set the
 feature captions as a compact left-aligned stack at lower left, in a precise
@@ -60,7 +60,7 @@ JetBrains Mono-like monospaced face. Use a refined Cabinet Grotesk-like wordmark
 All lettering is solid graphite. Keep the central sculpture clear of every label.
 
 Render only these exact strings:
-"IPTVnator"
+"ECHO TV"
 "{{DISPLAY_VERSION}}"
 "{{HIGHLIGHT_1}}"
 "{{HIGHLIGHT_2}}"

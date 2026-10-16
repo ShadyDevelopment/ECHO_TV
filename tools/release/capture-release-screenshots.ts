@@ -13,7 +13,7 @@
  * apps/website/public/blog/<group>/screenshots/ when that group is selected.
  * Guards (screenshot-guards.mjs):
  *
- *   G1  the real ~/.iptvnator/databases directory — including the SQLite WAL
+ *   G1  the real ~/.echo-tv/databases directory — including the SQLite WAL
  *       sidecars, compared after Electron exits and checkpoints — is proven
  *       untouched
  *   G2  the app gets an allowlisted environment, never ...process.env
@@ -76,7 +76,7 @@ const electronMainPath = path.join(
     workspaceRoot,
     'dist/apps/electron-backend/main.js'
 );
-const realDbDir = path.join(homedir(), '.iptvnator/databases');
+const realDbDir = path.join(homedir(), '.echo-tv/databases');
 
 const args = process.argv.slice(2);
 const flag = (name: string): string | null => {
@@ -154,7 +154,7 @@ async function main(): Promise<void> {
     // Frames are staged outside the repo and published only once every shot
     // and every guard has passed, so a late failure can never destroy the
     // release assets an earlier run already committed.
-    const stagingDir = mkdtempSync(path.join(tmpdir(), 'iptvnator-shots-'));
+    const stagingDir = mkdtempSync(path.join(tmpdir(), 'echo-tv-shots-'));
     const mockServer = await driver.ensureXtreamMockServer(workspaceRoot);
     // The Stalker portal is seeded only for shots that walk into it: it adds
     // a third source card to the dashboard, which release shots must not show.
@@ -175,7 +175,7 @@ async function main(): Promise<void> {
             )
         )
     );
-    const dataDir = mkdtempSync(path.join(tmpdir(), 'iptvnator-release-shots-'));
+    const dataDir = mkdtempSync(path.join(tmpdir(), 'echo-tv-release-shots-'));
     let app: Awaited<ReturnType<typeof driver.launchApp>> | undefined;
     let page: Page | undefined;
     let recordedRequests: string[] = [];
@@ -188,7 +188,7 @@ async function main(): Promise<void> {
             electronMainPath,
             buildCaptureEnv(process.env, {
                 ELECTRON_IS_DEV: '0',
-                IPTVNATOR_E2E_DATA_DIR: dataDir,
+                ECHO_TV_E2E_DATA_DIR: dataDir,
                 NODE_ENV: 'test',
             }),
             HOST_RESOLVER_RULES
@@ -292,7 +292,7 @@ async function main(): Promise<void> {
 
         assertSync(
             snapshotDatabaseState(path.join(dataDir, 'databases')).exists,
-            'G1 failed: the isolated database was never created — the app did not honor IPTVNATOR_E2E_DATA_DIR'
+            'G1 failed: the isolated database was never created — the app did not honor ECHO_TV_E2E_DATA_DIR'
         );
     } catch (error) {
         // Captured rather than rethrown: a failing run is exactly when a lost

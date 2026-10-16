@@ -1,4 +1,4 @@
-import { createPlaylistObject } from '@iptvnator/shared/m3u-utils';
+import { createPlaylistObject } from '@echo-tv/shared/m3u-utils';
 import { parse } from 'iptv-playlist-parser';
 import { resolve } from 'node:path';
 

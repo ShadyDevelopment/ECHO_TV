@@ -1,8 +1,11 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {
+    HttpClientTestingModule,
+    HttpTestingController,
+} from '@angular/common/http/testing';
 import { inject, TestBed } from '@angular/core/testing';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { of } from 'rxjs';
-import { STORE_KEY, Theme } from '@iptvnator/shared/interfaces';
+import { STORE_KEY, Theme } from '@echo-tv/shared/interfaces';
 import { SettingsService } from './settings.service';
 
 describe('Service: Settings', () => {
@@ -74,6 +77,24 @@ describe('Service: Settings', () => {
                 .subscribe((value) => {
                     expect(value).toBe(version);
                 });
+        }
+    ));
+
+    it('checks the latest ECHO TV release tag on GitHub', inject(
+        [SettingsService, HttpTestingController],
+        (service: SettingsService, http: HttpTestingController) => {
+            service.getAppVersion().subscribe((version) => {
+                expect(version).toBe('v0.1.1');
+            });
+
+            const request = http.expectOne(
+                'https://api.github.com/repos/ShadyDevelopment/ECHO_TV/releases/latest'
+            );
+            expect(request.request.method).toBe('GET');
+            request.flush({
+                tag_name: 'v0.1.1',
+                name: 'ECHO TV 0.1.1',
+            });
         }
     ));
 

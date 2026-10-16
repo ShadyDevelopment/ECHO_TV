@@ -9,8 +9,8 @@ import {
     shortCountryList,
     shortCountryName,
     type RemainingTimeLabel,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@echo-tv/portal/shared/util';
+import { XtreamStore } from '@echo-tv/portal/xtream/data-access';
 import {
     youtubeEmbedUrl,
     type PlaybackPositionData,
@@ -18,16 +18,16 @@ import {
     type TmdbEnrichedCastMember,
     type TmdbGenreFacet,
     type XtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore, injectTranslationTick } from '@iptvnator/services';
-import type { CrossPortalSimilarItem } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import { SettingsStore, injectTranslationTick } from '@echo-tv/services';
+import type { CrossPortalSimilarItem } from '@echo-tv/services';
 import {
     castMembersFromNames,
     splitPeopleNames,
     TrailerDialogService,
     type DetailActionButtonState,
     type SimilarRailItem,
-} from '@iptvnator/ui/components';
+} from '@echo-tv/ui/components';
 import type { SimilarCatalogItem } from '../tmdb-similar.util';
 
 export interface VodHeroGenreChip {

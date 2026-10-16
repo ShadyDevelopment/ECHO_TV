@@ -55,7 +55,7 @@ describe('createLinuxFrameCopyHelperEnvironment', () => {
                     HOME: '/home/user',
                     ...HOSTILE_LOADER_ENVIRONMENT,
                 },
-                '/opt/iptvnator/native',
+                '/opt/echo-tv/native',
                 'system'
             )
         ).toEqual({
@@ -68,14 +68,14 @@ describe('createLinuxFrameCopyHelperEnvironment', () => {
         expect(
             createLinuxFrameCopyHelperEnvironment(
                 GRAPHICS_SELECTOR_ENVIRONMENT,
-                '/opt/iptvnator/native',
+                '/opt/echo-tv/native',
                 'system'
             )
         ).toEqual(GRAPHICS_SELECTOR_ENVIRONMENT);
     });
 
     it('keeps trusted Snap GL and core22 roots ahead of older and generic libraries', () => {
-        const snapRoot = '/snap/iptvnator/42';
+        const snapRoot = '/snap/echo-tv/42';
         const nativeDir = path.join(
             snapRoot,
             'resources',
@@ -276,12 +276,12 @@ describe('createLinuxFrameCopyHelperEnvironment', () => {
 
     it.each([
         '/tmp/gnome-platform',
-        '/snap/iptvnator/42/gnome-platform-evil',
+        '/snap/echo-tv/42/gnome-platform-evil',
         'gnome-platform',
     ])(
         'ignores an untrusted Snap desktop runtime declaration: %s',
         (declaredDesktopRuntime) => {
-            const snapRoot = '/snap/iptvnator/42';
+            const snapRoot = '/snap/echo-tv/42';
             const nativeDir = path.join(
                 snapRoot,
                 'resources',
@@ -350,20 +350,20 @@ describe('createLinuxFrameCopyHelperEnvironment', () => {
             createLinuxFrameCopyHelperEnvironment(
                 {
                     PATH: '/usr/bin',
-                    SNAP: '/snap/iptvnator/42',
+                    SNAP: '/snap/echo-tv/42',
                     SNAP_LIBRARY_PATH: '/var/lib/snapd/lib/gl:/tmp/hostile-gl',
                     LD_AUDIT: '/tmp/audit.so',
                     LD_LIBRARY_PATH: '/tmp/hostile-libs',
                     LD_PRELOAD: '/tmp/inject.so',
                 },
-                '/opt/iptvnator/native',
+                '/opt/echo-tv/native',
                 'bundled'
             )
         ).toEqual({
             PATH: '/usr/bin',
-            SNAP: '/snap/iptvnator/42',
+            SNAP: '/snap/echo-tv/42',
             SNAP_LIBRARY_PATH: '/var/lib/snapd/lib/gl:/tmp/hostile-gl',
-            LD_LIBRARY_PATH: '/opt/iptvnator/native/lib',
+            LD_LIBRARY_PATH: '/opt/echo-tv/native/lib',
         });
     });
 });

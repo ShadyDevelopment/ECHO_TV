@@ -7,8 +7,8 @@ import {
     XtreamLiveStream,
     XtreamSerieItem,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
-import type { DbOperationEvent } from '@iptvnator/services';
+} from '@echo-tv/shared/interfaces';
+import type { DbOperationEvent } from '@echo-tv/services';
 import {
     CategoryType,
     StreamType,
